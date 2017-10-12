@@ -4,3 +4,15 @@
 
 
 /* @define Content */
+
+.Content {
+    background: #fff;
+    padding: 10px var(--g-gutter) 20px;
+}
+
+
+@media (--c-bp-sm) {
+    .Content {
+        padding: var(--g-gutter-sm);
+    }
+}

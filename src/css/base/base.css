@@ -2,17 +2,13 @@
    Base
    ========================================================================== */
 
-:root {
-    --base-body-background: #fff;
-}
-
 /**
  * 1. By default, `<body>` has no `background-color` so we set one
  *    as a best practice.
  */
 
 body {
-    background: var(--base-body-background); /* 1 */
+    background: var(--theme-body-background); /* 1 */
 }
 
 /**

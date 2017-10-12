@@ -14,14 +14,14 @@
  */
 
 :root {
-    --Button-background: #555;
-    --Button-backgroundHover: #9f9f9f;
+    --Button-background: var(--theme-button-background);
+    --Button-backgroundHover: var(--theme-button-background-hover);
     --Button-border: 0;
     --Button-border-radius: 4px;
-    --Button-color: #fff;
-    --Button-colorHover: #fff;
+    --Button-color: var(--theme-button-color);
+    --Button-colorHover: var(--theme-button-color-hover);
     --Button-disabled-opacity: .6;
-    --Button-fontFamily: inherit;
+    --Button-fontFamily: var(--theme-button-font);
     --Button-fontSize: inherit;
     --Button-letterSpacing: inherit;
     --Button-lineHeight: 1.4;
@@ -86,13 +86,15 @@
  * Color modifiers
  */
 .Button--secondary {
-    background: #555;
+    background: var(--theme-button-background-alt);
+    color: var(--theme-button-color-alt);
 }
 
 .Button--secondary:active,
 .Button--secondary:focus,
 .Button--secondary:hover {
-    background: #333;
+    background: var(--theme-button-background-hover-alt);
+    color: var(--theme-button-color-hover-alt);
 }
 
 /**

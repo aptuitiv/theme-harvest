@@ -6,6 +6,6 @@
 /** @define NavBar */
 
 .NavBar {
-    background: #ddd;
-    color: #fff;
+    background: var(--theme-navbar-bg);
+    color: var(--theme-nav-color);
 }

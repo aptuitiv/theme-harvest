@@ -1,0 +1,69 @@
+/* =========================================================================== *\
+    Default Theme
+\* =========================================================================== */
+
+/* Color Config */
+
+:root {
+    --c-core-theme-color: #3379ae;
+}
+
+/* Body */
+
+:root {
+    --theme-body-background: #fff;
+}
+
+/* Core typography */
+
+:root {
+    --theme-typography-color: #333;
+    --theme-typography-fontFamily: 'Verdana', sans-serif;
+}
+
+/* Links & Buttons */
+
+:root {
+    --theme-typography-link-color: var(--c-core-theme-color);
+    --theme-typography-link-colorHover: #7a0504;
+    --theme-button-background: #999;
+    --theme-button-background-alt: #7a0504;
+    --theme-button-color: #fff;
+    --theme-button-color-alt: #fff;
+    --theme-button-background-hover: var(--c-core-theme-color);
+    --theme-button-background-hover-alt: #333;
+    --theme-button-color-hover: #fff;
+    --theme-button-color-hover-alt: #fff;
+    --theme-button-font: var(--theme-typography-fontFamily);
+}
+
+/* Headings */
+
+:root {
+    --theme-typography-heading-color: var(--c-core-theme-color);
+    --theme-typography-heading-fontFamily: var(--theme-typography-fontFamily);
+}
+
+/* Main Navigation and Navigation Bar */
+
+:root {
+    --theme-navbar-bg: var(--c-core-theme-color);
+    --theme-nav-color: #fff;
+    --theme-nav-color-hover: #fff;
+    --theme-nav-font: var(--theme-typography-fontFamily);
+    --theme-nav-font-size: 18px;
+    --theme-nav-line-height: 1.5;
+    --theme-nav-dropdown-background: color(var(--c-core-theme-color) shade(15%));
+    --theme-nav-dropdown-color: #fff;
+    --theme-nav-dropdown-color-hover: #fff;
+}
+
+/* Footer */
+
+:root {
+    --theme-footer-bg: var(--c-core-theme-color);
+    --theme-footer-color: #fff;
+    --theme-footer-nav-font: var(--theme-typography-fontFamily);
+    --theme-footer-nav-color: #fff;
+    --theme-footer-nav-color-hover: #fff;
+}

@@ -29,3 +29,9 @@
 @import './config.css';
 @import './base';
 @import './components';
+
+/**
+ * Theme configuration
+ */
+ 
+@import './theme';

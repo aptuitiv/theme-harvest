@@ -8,8 +8,8 @@
  */
 
 :root {
-    --base-typography-color: #333;
-    --base-typography-fontFamily: sans-serif;
+    --base-typography-color: var(--theme-typography-color);
+    --base-typography-fontFamily: var(--theme-typography-fontFamily);
     --base-typography-fontSize: 15px;
     --base-typography-fontWeight: 400;
     --base-typography-hrule-width: 1px;
@@ -19,8 +19,8 @@
 }
 
 :root {
-    --base-typography-link-color: #000;
-    --base-typography-link-colorHover: var(--base-typography-link-color);
+    --base-typography-link-color: var(--theme-typography-link-color);
+    --base-typography-link-colorHover: var(--theme-typography-link-colorHover);
     --base-typography-link-decoration: underline;
     --base-typography-link-decorationHover: underline;
 }
@@ -186,8 +186,8 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--base-typography-heading-color);
-    font-family: var(--base-typography-heading-fontFamily);
+    color: var(--theme-typography-heading-color);
+    font-family: var(--theme-typography-heading-fontFamily);
     font-weight: var(--base-typography-heading-fontWeight);
     letter-spacing: var(--base-typography-heading-letterSpacing);
 }

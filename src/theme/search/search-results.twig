@@ -1,0 +1,59 @@
+<h1>Search Results</h1>
+{% if totalItemCount > 0 %}
+    {# SHOW THE TOTAL NUMBER OF RESULTS #}
+    <p>{{ firstItemNumber }} - {{ lastItemNumber }} of {{ totalItemCount }}
+    {% if totalItemCount > 1 %}
+        results
+    {% else %}
+        result
+    {% endif %}
+    for "{{ searchTerm }}".
+    </p>
+    
+    {# SHOW THE LINKS TO CHANGE THE NUMBER OF RESULTS TO SHOW ON THE PAGE #}
+    {% if resultsPerPageIntervals|length > 0 %}
+        <p>
+            {% for interval in resultsPerPageIntervals %}
+                {% if loop.first != true %} | {% endif %}
+                <a href="{{ interval.url }}">{{ interval.number }}</a>
+            {% endfor %}
+        </p>
+    {% endif %}
+    
+    {# SHOW THE SEARCH RESULTS #}
+    {% for result in results %}
+        <p>
+            <a href="{{ result.url }}">{{ result.title }}</a><br>
+            {{ result.publishDate }}<br />
+            {% if result.content %}
+                {{ result.content }}
+            {% endif %}
+        </p>
+    {% endfor %}
+  
+    {# PAGINATION #}
+    {% if pageCount > 1 %}
+        <p>
+            {% if previousUrl %}
+                <a href="{{ previousUrl }}" title="Previous Page">&lt; Previous</a> | 
+            {% endif %}
+            {% for page in pagesInRange %}
+                {% if page.number != current %}
+                    <a href="{{ page.url }}" title="Go to Page {{ page.number }}">{{ page.number }}</a>
+                {% else %}
+                    <strong>{{ page.number }}</strong>
+                {% endif %}
+            {% endfor %}
+            {% if nextUrl %}
+                | <a href="{{ nextUrl }}" title="Next Page">Next &gt;</a>
+            {% endif %}
+        </p>
+    {% endif %}
+{% else %}
+    {# NO MATCHING RESULTS #}
+    <p>There were no results for "{{ searchTerm }}".</p>
+{% endif %}
+ 
+{# SHOW THE SEARCH FORM TO SEARCH AGAIN #}
+<p>Search Again</p>
+{{ form.content }}

@@ -1,4 +1,28 @@
-    <script src="{{ 'js/main.js'|theme_url }}"></script>
-    {{ _page.js() }}
+<div class="Container">
+    <div class="Footer">
+        {{ _api.navigation.get.key('main').showSubNav('no').template('footer') }}
+        <div class="Grid Grid--withGutter Grid--alignMiddle">
+            <div class="Grid-cell u-size1of2 u-sm-sizeFull u-sm-margBottom2 u-textLeft u-sm-textCenter">&copy; {{ _core.date.year }} My Company</div>
+            <div class="Grid-cell u-size1of2 u-sm-sizeFull u-textRight u-sm-textCenter">
+                <a href="https://www.aptuitiv.com" target="_blank" class="Footer-link">Website by Aptuitiv</a>
+                <a href="https://www.branchcms.com" target="_blank" class="Footer-link">Powered by BranchCMS</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ 'js/main.js'|theme_url }}"></script>
+{{ _page.js() }}
+    {#
+    UNCOMMENT IF USING GOOGLE FONTS
+    CHANGE THE FONTS BELOW TO THE ONES NEEDED FOR THIS WEBSITE
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                families: ['Vollkorn:400,400i,700,700i','Montserrat:300,700']
+            }
+        });
+    </script>
+    #}
 </body>
 </html>

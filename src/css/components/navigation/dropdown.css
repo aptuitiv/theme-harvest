@@ -9,13 +9,13 @@
  */
 
 :root {
-    --Dropdown-background: #a0a0a0;
+    --Dropdown-background: var(--theme-nav-dropdown-background);
     --Dropdown-fontSize: inherit;
     --Dropdown-lineHeight: inherit;
     --Dropdown-item-padding: .5em 1em;
     --Dropdown-item-padding-small-screen: .8em 30px .8em 1em;
-    --Dropdown-link-color: #333;
-    --Dropdown-link-colorHover: #000;
+    --Dropdown-link-color: var(--theme-nav-dropdown-color);
+    --Dropdown-link-colorHover: var(--theme-nav-dropdown-color-hover);
 }
 
 .Dropdown {

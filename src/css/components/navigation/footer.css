@@ -9,8 +9,8 @@
 :root {
     --FooterNav-fontSize: 15px;
     --FooterNav-lineHeight: 1;
-    --FooterNav-link-color: #333;
-    --FooterNav-link-colorHover: #000;
+    --FooterNav-link-color: var(--theme-footer-nav-color);
+    --FooterNav-link-colorHover: var(--theme-footer-nav-color-hover);
 }
 
 /**
@@ -20,10 +20,11 @@
 .FooterNav {
     box-sizing: border-box;
     display: inline-block;
+    font-family: var(--theme-footer-nav-font);
     font-size: var(--FooterNav-fontSize);
     line-height: var(--FooterNav-lineHeight);
     list-style: none;
-    margin: 0;
+    margin: 0 0 30px;
     padding: 0;
 }
 

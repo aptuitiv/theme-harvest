@@ -12,3 +12,10 @@
 
 @custom-media --c-bp-smallScreenNav (max-width: 1050px);
 @custom-media --c-bp-largeScreenNav (min-width: 1051px);
+
+/* Core variables */
+
+:root {
+    --g-gutter: 20px;
+    --g-gutter-sm: 10px;
+}

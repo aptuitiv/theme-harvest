@@ -1,5 +1,17 @@
 {%  include 'snippets/header' %}
 <div class="Container">
-    {{ _page.content() }}
+    {% if _page.isHome == false %}
+        {{ _page.breadcrumb }}
+    {% endif %}
+    <div class="Content">
+        <div class="Grid Grid--withGutter">
+            <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
+                {{ _page.content() }}
+            </div>
+            <div class="Grid-cell u-size1of4 u-md-sizeFull u-pull3of4 u-md-pullNone">
+                {{ _api.navigation.getSubNavigationByUrl.key('main').getParentItem('yes').showSubNav('yes').template('sidebar') }}
+            </div>
+        </div>
+    </div>
 </div>
 {%  include 'snippets/footer' %}

@@ -2,6 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="dns-prefetch preconnect" href="//www.google-analytics.com">
+    {# UNCOMMENT IF USING GOOGLE FONTS
+    <link rel="dns-prefetch preconnect" href="//ajax.googleapis.com">
+    <link rel="dns-prefetch preconnect" href="//fonts.googleapis.com">
+    #}
     <title>{{ _page.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ _page.meta() }}
@@ -13,10 +18,33 @@
 <body>
     <div class="Container">
         <div class="Header">
-            <a href="/"><img src="{{ 'images/cacao.svg'|theme_url }}" class="Logo"></a>
-            <div class="NavBar">
-                <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
-                {{ _api.navigation.get.key('main') }}
+            <div class="Grid Grid--withGutter Grid--alignMiddle">
+                <div class="Grid-cell u-size1of2 u-md-sizeFull u-md-margBottom2 u-md-textCenter">
+                    <a href="/"><img src="{{ 'images/cacao.svg'|theme_url }}" class="Logo"  width="300" height="118"></a>
+                </div>
+                <div class="Grid-cell u-size1of2 u-md-sizeFull u-textRight u-md-textCenter">
+                    <div class="u-margBottom2">
+                        <a href="#" title="Follow us on Facebook" ><i class="Icon-facebook"></i></a>
+                        <a href="#" title="Follow us on Instagram"><i class="Icon-instagram"></i></a>
+                        <a href="#" title="Follow us on LinkedIn"><i class="Icon-linkedin"></i></a>
+                        <a href="#" title="Follow us on Pinterest"><i class="Icon-pinterest"></i></a>
+                        <a href="#" title="Follow us on Twitter"><i class="Icon-twitter"></i></a>
+                        <a href="#" title="Follow us on Youtube"><i class="Icon-you"></i></a>
+                    </div>
+                    <div itemscope itemtype="http://schema.org/Organization">
+                        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            <span itemprop="streetAddress">1 Main St</span>,
+                            <span itemprop="addressLocality">Farmington</span>,
+                            <span itemprop="addressRegion">ME</span>
+                        </div>
+                        <span itemprop="telephone"><a href="tel:1-207-860-0000" >207-860-0000</a></span>
+                    </div>
+                    {{ _api.search.form.key('search-header') }}
+                </div>
             </div>
+        </div>
+        <div class="NavBar">
+            <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
+            {{ _api.navigation.get.key('main') }}
         </div>
     </div>

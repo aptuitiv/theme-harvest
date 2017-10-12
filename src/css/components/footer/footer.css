@@ -4,3 +4,29 @@
 
 
 /* @define Footer */
+
+.Footer {
+    background: var(--theme-footer-bg);
+    color: var(--theme-footer-color);
+    padding: 15px var(--g-gutter);
+    text-align: center;
+}
+
+@media (--c-bp-sm) {
+    .Footer {
+        padding: 10px var(--g-gutter-sm);
+    }
+}
+
+
+.Footer-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.Footer-link:active,
+.Footer-link:focus,
+.Footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
