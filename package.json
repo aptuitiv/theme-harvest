@@ -24,7 +24,7 @@
         "gulp-concat": "^2.6.1",
         "gulp-fontello": "^0.4.6",
         "gulp-header": "^1.8.9",
-        "gulp-image": "^3.0.0",
+        "gulp-image": "^4.0.0",
         "gulp-load-plugins": "^1.5.0",
         "gulp-newer": "^1.3.0",
         "gulp-plumber": "^1.1.0",
@@ -34,22 +34,22 @@
         "gulp-tap": "^1.0.1",
         "gulp-uglify": "^3.0.0",
         "merge-stream": "^1.0.1",
-        "moment": "^2.18.1",
-        "postcss-bem-linter": "^3.0.0",
+        "moment": "^2.19.1",
+        "postcss-bem-linter": "^3.1.0",
         "postcss-cssnext": "^3.0.2",
         "postcss-import": "^11.0.0",
         "require-glob": "^3.2.0",
         "run-sequence": "^2.2.0",
-        "stylelint": "^8.1.1",
-        "stylelint-order": "^0.6.0"
+        "stylelint": "^8.2.0",
+        "stylelint-order": "^0.7.0"
     },
     "dependencies": {
         "cacao-css": "^1.4.0",
         "jquery": "^3.2.1",
-        "jquery-form": "^4.2.1",
+        "jquery-form": "^4.2.2",
         "jquery-validation": "^1.17.0",
         "magnific-popup": "^1.1.0",
-        "slick-carousel": "^1.7.1"
+        "slick-carousel": "^1.8.1"
     },
     "scripts": {
         "start": "gulp",
