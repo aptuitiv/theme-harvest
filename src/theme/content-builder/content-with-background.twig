@@ -1,0 +1,6 @@
+<div class="Content-shaded">
+    {{ content }}
+    {% if learnMoreLink %}
+        <div class="u-textCenter"><a href="{{ learnMoreLink }}">{{ learnMoreLinkText ?: 'Learn More' }}<i class="Icon Icon-right-dir"></i></a></div>
+    {% endif %}
+</div>
