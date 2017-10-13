@@ -28,7 +28,7 @@
 
 :root {
     --theme-typography-link-color: var(--theme-primary-color);
-    --theme-typography-link-colorHover: #7a0504;
+    --theme-typography-link-colorHover: color(var(--theme-primary-color) shade(40%));
     --theme-button-background: var(--theme-primary-color);
     --theme-button-background-alt: #fff;
     --theme-button-color: #fff;
