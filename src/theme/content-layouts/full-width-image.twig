@@ -1,0 +1,9 @@
+{% if image %}
+    {% if imageAltText %}
+        {% set image.medium.alt = imageAltText %}
+    {% endif %}
+    {% set image.medium.class = 'u-sizeFull' %}
+    {% set image.medium.srcset = image.large.src ~ ' 2000w, ' ~ image.medium.src ~ ' 1200w, ' ~ image.small.src ~ ' 600w' %}
+    {% set image.medium.sizes = '100vw' %}
+    <div class="u-margBottom3">{{ image.medium.tag }}</div>
+{% endif %}
