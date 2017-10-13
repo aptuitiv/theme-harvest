@@ -65,8 +65,3 @@
     padding-top: 4px;
 }
 
-@media (--c-bp-md) {
-    .SidebarNav {
-        text-align: center;
-    }
-}
