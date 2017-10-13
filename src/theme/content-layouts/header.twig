@@ -1,5 +1,5 @@
 {% if headingText %}
-    <h1 class="u-textCenter">{{ headingText }}</h1>
+    <h1 class="u-textCenter u-margBottom2">{{ headingText }}</h1>
 {% endif %}
 {% if image %}
     {% if image.large.alt|length == 0 %}
@@ -8,5 +8,5 @@
     {% set image.large.class = 'u-sizeFull' %}
     {% set image.large.srcset = image.large.src ~ ' 1200w, ' ~ image.small.src ~ ' 600w' %}
     {% set image.large.sizes = '100vw' %}
-    {{ image.large.tag }}
+    <div class="u-margBottom3">{{ image.large.tag }}</div>
 {% endif %}
