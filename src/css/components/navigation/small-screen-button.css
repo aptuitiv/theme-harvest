@@ -6,7 +6,7 @@
 /** @define SmScBtn **/
 
 .SmScBtn {
-    background: rgba(0, 0, 0, .1);
+    background: var(--theme-primary-color);
     border: none;
     color: #fff;
     display: none;
@@ -23,8 +23,9 @@
     }
 }
 
-@media (--c-bp-sm) {
+@media (--c-bp-md) {
     .SmScBtn {
+        background: color(var(--theme-primary-color) shade(30%));
         display: block;
         width: 100%;
     }

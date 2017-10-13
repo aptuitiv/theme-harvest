@@ -5,7 +5,8 @@
 /* Color Config */
 
 :root {
-    --c-core-theme-color: #3379ae;
+    --theme-primary-color: #4e9d30;
+    --theme-secondary-color: #e0f3d8;
 }
 
 /* Body */
@@ -17,20 +18,22 @@
 /* Core typography */
 
 :root {
-    --theme-typography-color: #333;
-    --theme-typography-fontFamily: 'Verdana', sans-serif;
+    --theme-typography-color: #444;
+    --theme-typography-serif: 'Roboto Slab', 'Georgia', serif;
+    --theme-typography-sans-serif: 'Roboto', 'Franklin Gothic Medium', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
+    --theme-typography-fontFamily: var(--theme-typography-sans-serif);
 }
 
 /* Links & Buttons */
 
 :root {
-    --theme-typography-link-color: var(--c-core-theme-color);
+    --theme-typography-link-color: var(--theme-primary-color);
     --theme-typography-link-colorHover: #7a0504;
     --theme-button-background: #999;
     --theme-button-background-alt: #7a0504;
     --theme-button-color: #fff;
     --theme-button-color-alt: #fff;
-    --theme-button-background-hover: var(--c-core-theme-color);
+    --theme-button-background-hover: var(--theme-primary-color);
     --theme-button-background-hover-alt: #333;
     --theme-button-color-hover: #fff;
     --theme-button-color-hover-alt: #fff;
@@ -40,28 +43,28 @@
 /* Headings */
 
 :root {
-    --theme-typography-heading-color: var(--c-core-theme-color);
-    --theme-typography-heading-fontFamily: var(--theme-typography-fontFamily);
+    --theme-typography-heading-color: var(--theme-primary-color);
+    --theme-typography-heading-fontFamily: var(--theme-typography-serif);
 }
 
 /* Main Navigation and Navigation Bar */
 
 :root {
-    --theme-navbar-bg: var(--c-core-theme-color);
-    --theme-nav-color: #fff;
-    --theme-nav-color-hover: #fff;
+    --theme-navbar-bg: #fff;
+    --theme-nav-color: var(--theme-typography-color);
+    --theme-nav-color-hover: var(--theme-typography-color);
     --theme-nav-font: var(--theme-typography-fontFamily);
     --theme-nav-font-size: 18px;
     --theme-nav-line-height: 1.5;
-    --theme-nav-dropdown-background: color(var(--c-core-theme-color) shade(15%));
-    --theme-nav-dropdown-color: #fff;
-    --theme-nav-dropdown-color-hover: #fff;
+    --theme-nav-dropdown-background: #e0f3d8;
+    --theme-nav-dropdown-color: var(--theme-nav-color);
+    --theme-nav-dropdown-color-hover: var(--theme-nav-color);
 }
 
 /* Footer */
 
 :root {
-    --theme-footer-bg: var(--c-core-theme-color);
+    --theme-footer-bg: var(--theme-primary-color);
     --theme-footer-color: #fff;
     --theme-footer-nav-font: var(--theme-typography-fontFamily);
     --theme-footer-nav-color: #fff;

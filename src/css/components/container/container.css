@@ -17,6 +17,13 @@
 @custom-media --c-bp-container (max-width: 1200px);
 
 .Container--pad {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: var(--g-gutter);
+    padding-right: var(--g-gutter);
+}
+
+@media (--c-bp-sm) {
+    .Container--pad {
+        padding-left: var(--g-gutter-sm);
+        padding-right: var(--g-gutter-sm);
+    }
 }

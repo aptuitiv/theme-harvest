@@ -6,11 +6,12 @@
 /* @define Header */
 
 .Header {
-    padding: 15px var(--g-gutter);
+    padding: 30px var(--g-gutter) 20px;
+    text-align: center;
 }
 
 @media (--c-bp-sm) {
     .Header {
-        padding: 10px var(--g-gutter-sm);
+        padding: 20px var(--g-gutter-sm);
     }
 }

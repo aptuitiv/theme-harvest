@@ -20,13 +20,14 @@
 
 .MainNav {
     box-sizing: border-box;
-    display: inline-block;
+    display: block;
     font-family: var(--MainNav-fontFamily);
     font-size: var(--MainNav-fontSize);
     line-height: var(--MainNav-lineHeight);
     list-style: none;
-    margin: 0 0 0 -1em;
+    margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 /**
@@ -36,7 +37,6 @@
 .MainNav-item {
     box-sizing: border-box;
     display: inline-block;
-    margin-left: 1em;
 }
 
 /** Item that should only be shown in the small screen navigation **/
@@ -57,12 +57,15 @@
 
 .MainNav-link {
     background: var(--MainNav-link-background);
+    border-top: 2px solid #fff;
     box-sizing: border-box;
     color: var(--MainNav-link-color);
     display: block;
-    padding: .5em 1.5rem;
+    letter-spacing: 1px;
+    padding: 10px 10px;
     position: relative;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 @media (--c-bp-largeScreenNav) {
@@ -70,6 +73,7 @@
     .MainNav-item.is-currentParent > .MainNav-link,
     .MainNav-item:hover > .MainNav-link {
         background: var(--MainNav-link-backgroundHover);
+        border-top: 2px solid var(--Dropdown-background);
         color: var(--MainNav-link-colorHover);
         text-decoration: none;
     }

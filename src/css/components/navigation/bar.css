@@ -9,3 +9,9 @@
     background: var(--theme-navbar-bg);
     color: var(--theme-nav-color);
 }
+
+@media (--c-bp-smallScreenNav) {
+    .NavBar {
+        text-align: center;
+    }
+}

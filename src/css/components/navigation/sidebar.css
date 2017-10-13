@@ -43,3 +43,9 @@
     color: #333;
     text-decoration: none;
 }
+
+@media (--c-bp-md) {
+    .SidebarNav {
+        text-align: center;
+    }
+}

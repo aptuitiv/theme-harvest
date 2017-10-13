@@ -41,9 +41,9 @@
     --base-typography-h5-lineHeight: 20px;
     --base-typography-h6-lineHeight: 20px;
     --base-typography-heading-color: inherit;
-    --base-typography-heading-fontFamily: sans-serif;
-    --base-typography-heading-fontWeight: 700;
-    --base-typography-heading-letterSpacing: 0;
+    --base-typography-heading-fontFamily: var(--base-typography-fontFamily);
+    --base-typography-heading-fontWeight: 400;
+    --base-typography-heading-letterSpacing: 1px;
 }
 
 /* General
@@ -190,9 +190,11 @@ h6 {
     font-family: var(--theme-typography-heading-fontFamily);
     font-weight: var(--base-typography-heading-fontWeight);
     letter-spacing: var(--base-typography-heading-letterSpacing);
+    text-transform: uppercase;
 }
 
 h1 {
+    color: var(--base-typography-color);
     font-size: var(--base-typography-h1-fontSize);
     line-height: var(--base-typography-h1-lineHeight);
 }

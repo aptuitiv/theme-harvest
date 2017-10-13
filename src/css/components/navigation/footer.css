@@ -59,3 +59,30 @@
     color: var(--FooterNav-link-colorHover);
     text-decoration: underline;
 }
+
+@media (--c-bp-lg) {
+    .FooterNav {
+        column-count: 3;
+        column-gap: 50px;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .FooterNav-item {
+        border-left: none;
+        display: block;
+        padding: 8px 0;
+    }
+}
+
+@media (--c-bp-sm) {
+    .FooterNav {
+        column-count: 2;
+    }
+}
+
+@media (--c-bp-xs) {
+    .FooterNav {
+        column-count: 1;
+    }
+}

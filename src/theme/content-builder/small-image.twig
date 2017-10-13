@@ -1,1 +1,20 @@
-{{ image.tag }}
+{# Setup image alt text #}
+{% if caption and image.alt|length == 0 %}
+    {% set image.alt = caption %}
+{% endif %}
+
+{# Setup caption #}
+{% if caption %}
+    {% set caption = '<div style="text-align: center; font-size: .9em; font-style: italic">' ~ caption ~ '</div>' %}
+{% endif %}
+
+{# Display the image based on alignment #}
+{% if alignment == 'Center' %}
+    <div class="u-textCenter">{{ image.tag }}{{ caption }}</div>
+{% elseif alignment == 'Float Left' %}
+    <div class="Image Image-left">{{ image.tag }}{{ caption }}</div>
+{% elseif alignment == 'Float Right' %}
+    <div class="Image Image-left">{{ image.tag }}{{ caption }}</div>
+{% else %}
+    {{ image.tag }}
+{% endif %}

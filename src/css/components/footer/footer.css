@@ -30,3 +30,23 @@
     color: #fff;
     text-decoration: underline;
 }
+
+.Footer-credit {
+    border-left: 1px solid #fff;
+    display: inline-block;
+    line-height: 1;
+    padding: 0 10px;
+}
+
+.Footer-credit:first-child {
+    border-left: none;
+}
+
+@media (max-width: 750px) {
+    .Footer-credit {
+        border-left: none;
+        display: block;
+        line-height: 1.5;
+        padding: 0;
+    }
+}

@@ -1,0 +1,11 @@
+{%  include 'snippets/header' %}
+<div class="Container">
+    {% if _page.isHome == false %}
+        {{ _page.breadcrumb }}
+    {% endif %}
+    <div class="Content">
+        {{ _page.content('header') }}
+        {{ _page.content() }}
+    </div>
+</div>
+{%  include 'snippets/footer' %}

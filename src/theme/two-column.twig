@@ -4,11 +4,12 @@
         {{ _page.breadcrumb }}
     {% endif %}
     <div class="Content">
+        {{ _page.content('header') }}
         <div class="Grid Grid--withGutter">
-            <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
+            <div class="Grid-cell u-size3of4 u-md-sizeFull">
                 {{ _page.content() }}
             </div>
-            <div class="Grid-cell u-size1of4 u-md-sizeFull u-pull3of4 u-md-pullNone">
+            <div class="Grid-cell u-size1of4 u-md-sizeFull">
                 {{ _api.navigation.getSubNavigationByUrl.key('main').getParentItem('yes').showSubNav('yes').template('sidebar') }}
             </div>
         </div>

@@ -7,10 +7,16 @@
 
 .Breadcrumb {
     font-size: 12px;
-    padding: 10px 0 0;
+    padding: 10px var(--g-gutter) 0;
 }
 
 .Breadcrumb-link {
     color: #888;
     text-decoration: none;
+}
+
+@media (--c-bp-sm) {
+    .Breadcrumb {
+        padding: 10px var(--g-gutter-sm) 0;
+    }
 }
