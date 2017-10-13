@@ -1,2 +1,10 @@
+{% if caption and image.alt|length == 0 %}
+    {% set image.alt = caption %}
+{% endif %}
 {% set image.class = 'u-sizeFull' %}
-{{ image.tag }}
+<div class="ImageWrapper">
+    {{ image.tag }}
+    {% if caption %}
+        <div class="ImageCaption">{{ caption }}</div>
+    {% endif %}
+</div>
