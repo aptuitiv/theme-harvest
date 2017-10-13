@@ -1,11 +1,22 @@
-<div class="Container">
-    <div class="Footer">
+<div class="Footer">
+    <div class="Container">
+        <div class="u-textCenter"><a href="/" title="Back to home page"><img src="{{ 'images/logo.svg'|theme_url }}" class="Logo"  width="300" height="47"></a></div>
         {{ _api.navigation.get.key('main').showSubNav('no').template('footer') }}
+        <div class="u-margBottom2">
+            <a href="#" title="Follow us on Facebook" class="Footer-social"><i class="Icon-facebook"></i></a>
+            <a href="#" title="Follow us on Instagram" class="Footer-social"><i class="Icon-instagram"></i></a>
+            <a href="#" title="Follow us on LinkedIn" class="Footer-social"><i class="Icon-linkedin"></i></a>
+            <a href="#" title="Follow us on Pinterest" class="Footer-social"><i class="Icon-pinterest"></i></a>
+            <a href="#" title="Follow us on Twitter" class="Footer-social"><i class="Icon-twitter"></i></a>
+            <a href="#" title="Follow us on Youtube" class="Footer-social"><i class="Icon-youtube"></i></a>
+        </div>
         <div class="Grid Grid--withGutter Grid--alignMiddle">
-            <div class="Grid-cell u-size1of2 u-sm-sizeFull u-sm-margBottom2 u-textLeft u-sm-textCenter">&copy; {{ _core.date.year }} My Company</div>
+            <div class="Grid-cell u-size1of2 u-sm-sizeFull u-sm-margBottom2 u-textLeft u-sm-textCenter">
+                <div class="Footer-copyright">&copy; {{ _core.date.year }} My Company</div>
+            </div>
             <div class="Grid-cell u-size1of2 u-sm-sizeFull u-textRight u-sm-textCenter">
-                <a href="https://www.aptuitiv.com" target="_blank" class="Footer-link Footer-credit">Website by Aptuitiv</a>
-                <a href="https://www.branchcms.com" target="_blank" class="Footer-link Footer-credit">Powered by BranchCMS</a>
+                <a href="https://www.aptuitiv.com" target="_blank" class="Footer-credit">Website by Aptuitiv</a>
+                <a href="https://www.branchcms.com" target="_blank" class="Footer-credit">Powered by BranchCMS</a>
             </div>
         </div>
     </div>

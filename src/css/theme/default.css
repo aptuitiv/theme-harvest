@@ -64,9 +64,9 @@
 /* Footer */
 
 :root {
-    --theme-footer-bg: var(--theme-primary-color);
-    --theme-footer-color: #fff;
+    --theme-footer-bg: var(--theme-secondary-color);
+    --theme-footer-color: var(--theme-primary-color);
     --theme-footer-nav-font: var(--theme-typography-fontFamily);
-    --theme-footer-nav-color: #fff;
-    --theme-footer-nav-color-hover: #fff;
+    --theme-footer-nav-color: #666;
+    --theme-footer-nav-color-hover: var(--theme-primary-color);
 }

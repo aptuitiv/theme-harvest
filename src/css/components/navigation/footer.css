@@ -7,7 +7,7 @@
 /** @define FooterNav */
 
 :root {
-    --FooterNav-fontSize: 15px;
+    --FooterNav-fontSize: .9em;
     --FooterNav-lineHeight: 1;
     --FooterNav-link-color: var(--theme-footer-nav-color);
     --FooterNav-link-colorHover: var(--theme-footer-nav-color-hover);
@@ -24,8 +24,9 @@
     font-size: var(--FooterNav-fontSize);
     line-height: var(--FooterNav-lineHeight);
     list-style: none;
-    margin: 0 0 30px;
+    margin: 30px 0;
     padding: 0;
+    text-transform: uppercase;
 }
 
 /**
@@ -33,14 +34,12 @@
  */
 
 .FooterNav-item {
-    border-left: 1px solid var(--FooterNav-link-color);
     box-sizing: border-box;
     display: inline-block;
     padding: 0 20px;
 }
 
 .FooterNav-item:first-child {
-    border-left: none;
     margin-left: 0;
 }
 
@@ -69,7 +68,6 @@
     }
 
     .FooterNav-item {
-        border-left: none;
         display: block;
         padding: 8px 0;
     }
