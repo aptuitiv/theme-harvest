@@ -6,8 +6,8 @@
 /** @define Breadcrumb **/
 
 .Breadcrumb {
-    font-size: 12px;
-    padding: 10px var(--g-gutter) 0;
+    font-size: 1.2rem;
+    padding: 1em var(--g-gutter) 0;
 }
 
 .Breadcrumb-link {
@@ -17,6 +17,6 @@
 
 @media (--c-bp-sm) {
     .Breadcrumb {
-        padding: 10px var(--g-gutter-sm) 0;
+        padding: 1em var(--g-gutter-sm) 0;
     }
 }

@@ -8,6 +8,7 @@
 .TopBar {
     background: var(--theme-primary-color);
     color: #fff;
+    font-size: 1.6rem;
     padding: 6px 0;
 }
 
@@ -34,6 +35,7 @@
 
 .TopBar-contact {
     font-family: var(--theme-typography-serif);
+    font-size: .9em;
     font-weight: 300;
     text-align: center;
 }

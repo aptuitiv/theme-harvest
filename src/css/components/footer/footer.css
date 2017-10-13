@@ -8,13 +8,13 @@
 .Footer {
     background: var(--theme-footer-bg);
     color: var(--theme-footer-color);
-    padding: 15px var(--g-gutter);
+    padding: 1.5rem var(--g-gutter);
     text-align: center;
 }
 
 @media (--c-bp-sm) {
     .Footer {
-        padding: 10px var(--g-gutter-sm);
+        padding: 1rem var(--g-gutter-sm);
     }
 }
 
@@ -35,7 +35,7 @@
     border-left: 1px solid #fff;
     display: inline-block;
     line-height: 1;
-    padding: 0 10px;
+    padding: 0 1rem;
 }
 
 .Footer-credit:first-child {
