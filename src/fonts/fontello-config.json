@@ -43,6 +43,12 @@
             "src": "fontawesome"
         },
         {
+            "uid": "37f6cfbb4062ed0d01b351ec35c334ff",
+            "css": "right-open-mini",
+            "code": 59394,
+            "src": "entypo"
+        },
+        {
             "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
             "css": "search",
             "code": 59393,
