@@ -52,6 +52,7 @@
     padding: var(--Button-padding);
     text-align: center;
     text-decoration: none;
+    text-transform: uppercase;
     user-select: none; /* 2 */
 }
 
@@ -72,7 +73,7 @@
  */
 
 .Button--lg {
-    font-size: calc(var(--base-typography-fontSize) + 3);
+    font-size: calc(var(--base-typography-fontSize) + 3px);
     padding: var(--Button-paddingLg);
 }
 

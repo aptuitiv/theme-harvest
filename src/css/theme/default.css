@@ -29,12 +29,12 @@
 :root {
     --theme-typography-link-color: var(--theme-primary-color);
     --theme-typography-link-colorHover: #7a0504;
-    --theme-button-background: #999;
-    --theme-button-background-alt: #7a0504;
+    --theme-button-background: var(--theme-primary-color);
+    --theme-button-background-alt: #fff;
     --theme-button-color: #fff;
-    --theme-button-color-alt: #fff;
-    --theme-button-background-hover: var(--theme-primary-color);
-    --theme-button-background-hover-alt: #333;
+    --theme-button-color-alt: var(--theme-primary-color);
+    --theme-button-background-hover: color(var(--theme-primary-color) shade(40%));
+    --theme-button-background-hover-alt: var(--theme-primary-color);
     --theme-button-color-hover: #fff;
     --theme-button-color-hover-alt: #fff;
     --theme-button-font: var(--theme-typography-fontFamily);

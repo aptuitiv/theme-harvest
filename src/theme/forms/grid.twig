@@ -4,7 +4,7 @@
 
         {% set field.class = field.class|replace({"error": "is-invalid"}) %}
         <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size1of4">
+            <div class="Grid-cell u-size1of4 u-md-sizeFull">
                 {% set field.label.class = field.label.class ~ ' FormLabel' %}
                 {% if field.isRequired %}
                     {% set field.required = true %}
@@ -12,7 +12,7 @@
                 {% endif %}
                 {{ field.label.tag }}
             </div>
-            <div class="Grid-cell u-size3of4">
+            <div class="Grid-cell u-size3of4 u-md-sizeFull">
                 {% if field.fieldType in ['email', 'text', 'url'] %}
                     {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
                     {{ field.tag }}
@@ -90,33 +90,33 @@
     {# Show the CAPTCHA field if necessary #}
     {% if form.captcha.type == 'recaptcha' %}
         <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size3of4 u-push1of4">
+            <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
                 <strong>Please check the box below before submitting.</strong>
                 {{ form.captcha.tag }}
             </div>
         </div>
     {% elseif form.captcha.type == 'image' %}
         <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size3of4 u-push1of4">
+            <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
                 {{ form.captcha.image.tag }}
             </div>
         </div>
         <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size1of4">
+            <div class="Grid-cell u-size1of4 u-md-sizeFull">
                 <label for="ap-form-captcha-input" class="FormLabel">Captcha Text <span class="FormRequired">*</span>:</label>
                 <a class="js-captchaReload" href="{{ form.captcha.reloadUrl }}" rel="nofollow">reload</a>
             </div>
-            <div class="Grid-cell u-size3of4">
+            <div class="Grid-cell u-size3of4 u-md-sizeFull">
                 {{ form.captcha.tag|replace({'id="ap-form-captcha-input"': 'class="TextInput u-size1of2 u-sm-size3of4 required" title="Captcha value is wrong" id="ap-form-captcha-input"'}) }}
             </div>
         </div>
     {% endif %}
 
     <div class="Grid Grid--withGutter u-margBottom2">
-        <div class="Grid-cell u-size3of4 u-push1of4">
+        <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
             <p class="u-margBottom1"><em>* Required Fields</em></p>
 
-            <p><button type="submit" class="Button Button--lg">{{ form.submitButtonText }}</button></p>
+            <p><button type="submit" class="Button Button--lg u-sm-sizeFull">{{ form.submitButtonText }}</button></p>
         </div>
     </div>
     {{ form.closeTag }}
