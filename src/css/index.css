@@ -3,24 +3,22 @@
  * Only importing components that are not overridden by this website.
  */
 
-@import '../../node_modules/cacao-css/src/styles/lib/config.css';
-@import '../../node_modules/cacao-css/src/styles/lib/base';
-@import '../../node_modules/cacao-css/src/styles/lib/utils';
-@import '../../node_modules/cacao-css/src/styles/lib/components/arrange';
-@import '../../node_modules/cacao-css/src/styles/lib/components/button';
-@import '../../node_modules/cacao-css/src/styles/lib/components/constrain';
-@import '../../node_modules/cacao-css/src/styles/lib/components/container';
-@import '../../node_modules/cacao-css/src/styles/lib/components/content';
-@import '../../node_modules/cacao-css/src/styles/lib/components/flexembed';
-@import '../../node_modules/cacao-css/src/styles/lib/components/form';
-@import '../../node_modules/cacao-css/src/styles/lib/components/grid';
-@import '../../node_modules/cacao-css/src/styles/lib/components/image';
-@import '../../node_modules/cacao-css/src/styles/lib/components/list';
-@import '../../node_modules/cacao-css/src/styles/lib/components/media';
-@import '../../node_modules/cacao-css/src/styles/lib/components/message';
-@import '../../node_modules/cacao-css/src/styles/lib/components/pagination';
-@import '../../node_modules/cacao-css/src/styles/lib/components/selectinput';
-@import '../../node_modules/cacao-css/src/styles/lib/components/textinput';
+@import '../../node_modules/cacao-css/src/css/config.css';
+@import '../../node_modules/cacao-css/src/css/base';
+@import '../../node_modules/cacao-css/src/css/utils';
+@import '../../node_modules/cacao-css/src/css/components/arrange';
+@import '../../node_modules/cacao-css/src/css/components/button';
+@import '../../node_modules/cacao-css/src/css/components/constrain';
+@import '../../node_modules/cacao-css/src/css/components/container';
+@import '../../node_modules/cacao-css/src/css/components/content';
+@import '../../node_modules/cacao-css/src/css/components/flexembed';
+@import '../../node_modules/cacao-css/src/css/components/form';
+@import '../../node_modules/cacao-css/src/css/components/grid';
+@import '../../node_modules/cacao-css/src/css/components/image';
+@import '../../node_modules/cacao-css/src/css/components/list';
+@import '../../node_modules/cacao-css/src/css/components/media';
+@import '../../node_modules/cacao-css/src/css/components/message';
+@import '../../node_modules/cacao-css/src/css/components/pagination';
 
 /**
  * Styles for this website
@@ -33,5 +31,5 @@
 /**
  * Theme configuration
  */
- 
+
 @import './theme';
