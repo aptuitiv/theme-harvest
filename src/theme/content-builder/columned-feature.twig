@@ -12,7 +12,7 @@
     {% set class = 'u-sizeFull u-margBottom2' %}
 {% endif %}
 
-<div class="Grid Grid--withGutterLg u-margTop2">
+<div class="Grid Grid--withGutterLg u-margTop4 u-margBottom2">
     {% for column in columns %}
         <div class="Grid-cell {{ class }}">
             {% if column.image.alt|length == 0 %}
@@ -20,7 +20,7 @@
             {% endif %}
             {% set column.image.class = 'u-sizeFull' %}
             <a href="{{ column.link }}">{{ column.image.tag }}</a>
-            <a href="{{ column.link }}" class="Button u-sizeFull">{{ column.text }} <i class="Icon Icon-right-dir"></i></a>
+            <a href="{{ column.link }}" class="Button u-sizeFull">{{ column.text }}<i class="Icon Icon-right-dir"></i></a>
         </div>
     {% endfor %}
 </div>

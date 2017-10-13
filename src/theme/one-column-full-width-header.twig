@@ -4,7 +4,7 @@
     {% if _page.isHome == false %}
         {{ _page.breadcrumb }}
     {% endif %}
-    <div class="Content">
+    <div class="Content{% if _page.isHome == true %} u-padTop0{% endif %}">
         {{ _page.content() }}
     </div>
 </div>

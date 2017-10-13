@@ -12,6 +12,7 @@
 
 @media (--c-bp-smallScreenNav) {
     .NavBar {
+        margin-bottom: 1em;
         text-align: center;
     }
 }
