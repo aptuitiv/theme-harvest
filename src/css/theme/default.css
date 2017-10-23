@@ -54,7 +54,7 @@
     --theme-nav-color: var(--theme-typography-color);
     --theme-nav-color-hover: var(--theme-typography-color);
     --theme-nav-font: var(--theme-typography-fontFamily);
-    --theme-nav-font-size: 18px;
+    --theme-nav-font-size: 1em;
     --theme-nav-line-height: 1.5;
     --theme-nav-dropdown-background: #e0f3d8;
     --theme-nav-dropdown-color: var(--theme-nav-color);
