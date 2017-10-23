@@ -84,7 +84,8 @@
     text-decoration: none;
 }
 
-.TopBar-button {
+.TopBar-button,
+a[href^=tel].TopBar-button {
     background: #fff;
     color: var(--theme-primary-color);
     text-transform: uppercase;
@@ -92,7 +93,10 @@
 
 .TopBar-button:active,
 .TopBar-button:focus,
-.TopBar-button:hover {
+.TopBar-button:hover,
+a[href^=tel].TopBar-button:active,
+a[href^=tel].TopBar-button:focus,
+a[href^=tel].TopBar-button:hover {
     background: color(var(--theme-primary-color) shade(40%));
     color: #fff;
 }
