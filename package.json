@@ -14,17 +14,17 @@
         "Android >= 4.3"
     ],
     "devDependencies": {
-        "chalk": "^2.1.0",
+        "chalk": "^2.3.0",
         "fancy-log": "^1.3.0",
         "glob-watcher": "^4.0.0",
         "gulp": "^3.9.1",
         "gulp-cached": "^1.1.1",
-        "gulp-changed": "^3.1.0",
+        "gulp-changed": "^3.1.1",
         "gulp-clean-css": "^3.9.0",
         "gulp-concat": "^2.6.1",
         "gulp-fontello": "^0.4.6",
         "gulp-header": "^1.8.9",
-        "gulp-image": "^4.0.0",
+        "gulp-image": "^4.1.0",
         "gulp-load-plugins": "^1.5.0",
         "gulp-newer": "^1.3.0",
         "gulp-plumber": "^1.1.0",
@@ -44,7 +44,7 @@
         "stylelint-order": "^0.7.0"
     },
     "dependencies": {
-        "cacao-css": "^3.2.0",
+        "cacao-css": "^3.4.0",
         "jquery": "^3.2.1",
         "jquery-form": "^4.2.2",
         "jquery-validation": "^1.17.0",
