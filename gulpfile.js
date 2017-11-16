@@ -14,7 +14,6 @@ const $ = require('gulp-load-plugins')({
 
 // Load node packages
 const del = require('del');
-//const map = require('map-stream');
 const path = require('path');
 
 // Error handler
@@ -47,12 +46,12 @@ gulp.task('copy', () => {
         return gulp.src(entry.src)
             .pipe($.newer(config.paths.dist.base + '/' + entry.dest))
             .pipe($.tap((file) => {
-                $.fancyLog($.chalk.cyan('copying ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' to ' + $.chalk.green(config.paths.dist.base + '/' + entry.dest))
-            }))
-            .pipe($.plumber({errorHandler: onError}))
+                    $.fancyLog($.chalk.cyan('copying ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' to ' + $.chalk.green(config.paths.dist.base + '/' + entry.dest))
+    }))
+        .pipe($.plumber({errorHandler: onError}))
             .pipe(gulp.dest(config.paths.dist.base + '/' + entry.dest));
     });
-    return $.mergeStream(assets);
+return $.mergeStream(assets);
 });
 
 /**
@@ -79,9 +78,9 @@ gulp.task('scripts', function () {
         return gulp.src(entry.src)
             .pipe($.newer(config.paths.dist.js + '/' + entry.name))
             .pipe($.tap((file) => {
-                $.fancyLog($.chalk.cyan('Merging script ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' into ' + $.chalk.green(config.paths.dist.js + '/' + entry.name));
-            }))
-            .pipe($.plumber({errorHandler: onError}))
+                    $.fancyLog($.chalk.cyan('Merging script ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' into ' + $.chalk.green(config.paths.dist.js + '/' + entry.name));
+    }))
+        .pipe($.plumber({errorHandler: onError}))
             .pipe($.uglify({mangle: false}))
             .pipe($.remember('scripts' + index))
             .pipe($.concat(entry.name))
@@ -104,9 +103,9 @@ var processors = [
 gulp.task('buildcss', ['stylelint'], function () {
     return gulp.src(config.paths.src.css)
         .pipe($.tap((file) => {
-            logFile(file, 'Build CSS');
-        }))
-        .pipe($.plumber({errorHandler: onError}))
+                logFile(file, 'Build CSS');
+}))
+    .pipe($.plumber({errorHandler: onError}))
         .pipe($.postcss(processors))
         .pipe($.rename('main.css'))
         .pipe(gulp.dest(config.paths.build.css));
@@ -118,13 +117,13 @@ gulp.task('css', ['buildcss'], () => {
         config.paths.build.fontello + '/css/icon.css'
     ])
         .pipe($.tap((file) => {
-            $.fancyLog($.chalk.cyan('Merging CSS ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' into ' + $.chalk.green(config.paths.dist.css + '/' + config.cssName));
-        }))
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.concat(config.cssName))
-        .pipe($.cleanCss({level: 2, compatibility: 'ie8'}))
-        .pipe($.header(banner))
-        .pipe(gulp.dest(config.paths.dist.css))
+                $.fancyLog($.chalk.cyan('Merging CSS ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' into ' + $.chalk.green(config.paths.dist.css + '/' + config.cssName));
+}))
+.pipe($.plumber({errorHandler: onError}))
+    .pipe($.concat(config.cssName))
+    .pipe($.cleanCss({level: 2, compatibility: 'ie8'}))
+    .pipe($.header(banner))
+    .pipe(gulp.dest(config.paths.dist.css))
 });
 
 /**
@@ -143,9 +142,9 @@ gulp.task('stylelint', function () {
     return gulp.src(config.paths.src.stylelint)
         .pipe($.cached('Stylelint'))
         .pipe($.tap((file) => {
-            logFile(file, 'Linting');
-        }))
-        .pipe($.plumber({errorHandler: onError}))
+                logFile(file, 'Linting');
+}))
+    .pipe($.plumber({errorHandler: onError}))
         .pipe($.postcss([
             $.postcssBemLinter(bemlinterOpts),
             $.stylelint()
@@ -159,9 +158,9 @@ gulp.task('theme', function() {
     return gulp.src(config.paths.src.theme)
         .pipe($.changed(config.paths.dist.theme, {hasChanged: $.changed.compareContents}))
         .pipe($.tap((file) => {
-            logFile(file, 'Theme');
-        }))
-        .pipe(gulp.dest(config.paths.dist.theme))
+                logFile(file, 'Theme');
+}))
+    .pipe(gulp.dest(config.paths.dist.theme))
 });
 
 // Copy theme files from the src directory to the dist directory
@@ -180,17 +179,33 @@ gulp.task('pull-theme', function() {
  */
 gulp.task('fontello', (cb) => {
     if (typeof fontelloConfig.glyphs !== 'undefined' && fontelloConfig.glyphs.length > 0) {
-        return gulp.src(config.paths.src.fontello)
-            .pipe($.fontello({font: 'fonts'}))
-            .pipe(gulp.dest(config.paths.build.fontello));
-    } else {
-        cb();
-    }
+    return gulp.src(config.paths.src.fontello)
+        .pipe($.fontello({font: 'fonts'}))
+        .pipe(gulp.dest(config.paths.build.fontello));
+} else {
+    cb();
+}
 });
 
 gulp.task('fonts', ['fontello'], () => {
     return gulp.src(config.paths.build.fontello + '/fonts/**')
         .pipe(gulp.dest(config.paths.dist.fonts));
+});
+
+/**
+ * Export theme files into a folder for distribution
+ */
+gulp.task('export-theme', () => {
+    var assets = config.export.src.map(function (entry) {
+        return gulp.src(entry.src)
+            .pipe($.newer(config.export.dist + '/' + entry.src))
+            .pipe($.tap((file) => {
+                    $.fancyLog($.chalk.cyan('exporting the file ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' to ' + $.chalk.green(config.export.dest + '/' + entry.dest))
+    }))
+        .pipe($.plumber({errorHandler: onError}))
+            .pipe(gulp.dest(config.export.dest + '/' + entry.dest));
+    });
+return $.mergeStream(assets);
 });
 
 /**

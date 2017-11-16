@@ -66,6 +66,44 @@ module.exports = {
     ],
 
     /**
+     * Path to export the theme files to and from.
+     * This creates a folder that can simply be copied to start a new website from this theme
+     */
+    export: {
+        dest: '_export',
+        src: [
+            {
+                src: src + '/**/*',
+                dest: 'src'
+            },
+            {
+                src: '.editorconfig',
+                dest: ''
+            },
+            {
+                src: '.gitignore',
+                dest: ''
+            },
+            {
+                src: '.stylelintrc',
+                dest: ''
+            },
+            {
+                src: 'config.js',
+                dest: ''
+            },
+            {
+                src: 'gulpfile.js',
+                dest: ''
+            },
+            {
+                src: 'package.json',
+                dest: ''
+            }
+        ]
+    },
+
+    /**
      * Scripts to build
      * name: The name of the file to build
      * src: The sources for the file
