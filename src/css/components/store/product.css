@@ -1,0 +1,139 @@
+/* =========================================================================== *\
+    Store products
+\* =========================================================================== */
+
+/* @define Product */
+
+/* postcss-bem-linter: ignore */
+
+.Product-details input[type='text'] {
+    width: 50px;
+}
+
+.Product-button {
+
+}
+
+.Product-quantity {
+    width: 80px;
+}
+
+.Product-price {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.Product-imageList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.Product-imageListItem {
+    display: none;
+}
+
+.Product-imageListItem:first-child {
+    display: block;
+}
+
+.Product-imageWrap {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+.Product-image {
+    max-height: 270px;
+    width: auto;
+}
+
+.Product-imageDesc {
+    background: rgba(0, 0, 0, .5);
+    bottom: 0;
+    box-sizing: border-box;
+    color: #fff;
+    left: 0;
+    padding: 8px 10px;
+    position: absolute;
+    width: 100%;
+}
+
+.Product-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Product-thumbWrap {
+    display: inline-block;
+    flex: 0 23%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.Product-thumb {
+    box-sizing: border-box;
+    max-height: 65px;
+    width: auto;
+}
+
+@supports(object-fit: cover) {
+    .Product-imageWrap::after {
+        content: '';
+        display: block;
+        padding-bottom: 75%;
+        width: 100%;
+    }
+
+    .Product-image {
+        height: 100%;
+        left: 0;
+        max-height: none;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .Product-thumbWrap::after {
+        content: '';
+        display: block;
+        padding-bottom: 75%;
+        width: 100%;
+    }
+
+    .Product-thumb {
+        height: 100%;
+        left: 0;
+        max-height: none;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+
+.Product-lightbox {
+    background: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+    width: auto;
+}
+
+/* postcss-bem-linter: ignore */
+
+.mfp-close {
+    right: -12px !important;
+    top: -11px !important;
+}
+
+@media (--c-bp-md) {
+    .Product-lightbox {
+        max-height: 90%;
+        max-width: 100%;
+        padding: 10px;
+    }
+}

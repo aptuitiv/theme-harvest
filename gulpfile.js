@@ -1,6 +1,5 @@
 // Configuration
 const config = require('./config.js');
-const fontelloConfig = require('./' + config.paths.src.fontello);
 
 // Load gulp
 const gulp = require('gulp');
@@ -15,6 +14,7 @@ const $ = require('gulp-load-plugins')({
 // Load node packages
 const del = require('del');
 const path = require('path');
+const fs = require('fs');
 
 // Error handler
 const onError = (err) => {
@@ -32,10 +32,70 @@ const banner = [
     ""
 ].join("\n");
 
-// Logging function
+/**
+ * Logs the current file being dealt with
+ * @param {object} file The file object
+ * @param {string} [prefix] The log prefix
+ */
 function logFile(file, prefix) {
     prefix = prefix || 'Using'
-    $.fancyLog($.chalk.cyan(prefix) + ' ' + $.chalk.magenta(path.relative(file.cwd, file.path)));
+    log(path.relative(file.cwd, file.path), prefix);
+}
+
+/**
+ * Log something with an optional prefix
+ * @param {string} content The string to log
+ * @param {string} [prefix] The log prefix
+ */
+function log(content, prefix) {
+    if (typeof prefix !== 'undefined' && prefix.length > 0) {
+        $.fancyLog($.chalk.cyan(prefix) + ' ' + $.chalk.magenta(content));
+    } else {
+        $.fancyLog($.chalk.magenta(content));
+    }
+}
+
+/**
+ * Logs moving a file from one location to another
+ * @param {string} message The text to prefix the files
+ * @param {object|string} file The file being moved
+ * @param {string} dest The destination location
+ */
+function logFileTo(message, file, dest) {
+    if (typeof file === 'string') {
+        $.fancyLog($.chalk.cyan(message) + ' ' + $.chalk.blue(file) + ' to ' + $.chalk.green(dest));
+    } else {
+        $.fancyLog($.chalk.cyan(message) + ' ' + $.chalk.blue(path.relative(file.cwd, file.path)) + ' to ' + $.chalk.green(dest));
+    }
+}
+
+/**
+ * Process an array of data synchronously.
+ *
+ * @link https://gist.github.com/steve-taylor/5075717
+ * Updated slightly to be ES6
+ *
+ * @param data An array of data.
+ * @param processData A function that processes an item of data.
+ *                    Signature: function(item, i, callback), where {@code item} is the i'th item,
+ *                               {@code i} is the loop index value and {@code calback} is the
+ *                               parameterless function to call on completion of processing an item.
+ */
+function doSynchronousLoop(data, processData, done) {
+    if (data.length > 0) {
+        const loop = (data, i, processData, done) => {
+            processData(data[i], i, () => {
+                if (++i < data.length) {
+                loop(data, i, processData, done);
+            } else {
+                done();
+            }
+        });
+        };
+        loop(data, 0, processData, done);
+    } else {
+        done();
+    }
 }
 
 /**
@@ -46,7 +106,7 @@ gulp.task('copy', () => {
         return gulp.src(entry.src)
             .pipe($.newer(config.paths.dist.base + '/' + entry.dest))
             .pipe($.tap((file) => {
-                    $.fancyLog($.chalk.cyan('copying ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' to ' + $.chalk.green(config.paths.dist.base + '/' + entry.dest))
+                    logFileTo('Copying', file, config.paths.dist.base + '/' + entry.dest);
     }))
         .pipe($.plumber({errorHandler: onError}))
             .pipe(gulp.dest(config.paths.dist.base + '/' + entry.dest));
@@ -64,7 +124,6 @@ return $.mergeStream(assets);
 gulp.task('images', () => {
     return gulp.src(config.paths.src.img)
         .pipe($.newer(config.paths.dist.img))
-
         .pipe($.plumber({errorHandler: onError}))
         .pipe($.image())
         .pipe(gulp.dest(config.paths.dist.img));
@@ -78,7 +137,7 @@ gulp.task('scripts', function () {
         return gulp.src(entry.src)
             .pipe($.newer(config.paths.dist.js + '/' + entry.name))
             .pipe($.tap((file) => {
-                    $.fancyLog($.chalk.cyan('Merging script ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' into ' + $.chalk.green(config.paths.dist.js + '/' + entry.name));
+                    logFileTo('Merging script', file, config.paths.dist.js + '/' + entry.name);
     }))
         .pipe($.plumber({errorHandler: onError}))
             .pipe($.uglify({mangle: false}))
@@ -100,31 +159,65 @@ var processors = [
     $.postcssCssnext()
 ];
 
-gulp.task('buildcss', ['stylelint'], function () {
-    return gulp.src(config.paths.src.css)
-        .pipe($.tap((file) => {
-                logFile(file, 'Build CSS');
-}))
-    .pipe($.plumber({errorHandler: onError}))
-        .pipe($.postcss(processors))
-        .pipe($.rename('main.css'))
-        .pipe(gulp.dest(config.paths.build.css));
+gulp.task('css', ['stylelint'], () => {
+    var tasks = config.paths.src.css.map(function(cssFile) {
+        return gulp.src(cssFile)
+            .pipe($.tap((file) => {
+                    logFile(file, 'Start Build CSS');
+    }))
+        .pipe($.plumber({errorHandler: onError}))
+            .pipe($.postcss(processors))
+            .pipe($.cleanCss({level: 2, compatibility: 'ie8'}))
+            .pipe($.changedInPlace({firstPass: true}))
+            .pipe($.header(banner))
+            .pipe($.tap((file) => {
+                    logFile(file, 'Output CSS');
+    }))
+        .pipe(gulp.dest(config.paths.dist.css));
+    });
+return $.mergeStream(tasks);
 });
 
-gulp.task('css', ['buildcss'], () => {
-    return gulp.src([
-        config.paths.build.css + '/' + config.cssName,
-        config.paths.build.fontello + '/css/icon.css'
-    ])
-        .pipe($.tap((file) => {
-                $.fancyLog($.chalk.cyan('Merging CSS ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' into ' + $.chalk.green(config.paths.dist.css + '/' + config.cssName));
-}))
-.pipe($.plumber({errorHandler: onError}))
-    .pipe($.concat(config.cssName))
-    .pipe($.cleanCss({level: 2, compatibility: 'ie8'}))
-    .pipe($.header(banner))
-    .pipe(gulp.dest(config.paths.dist.css))
+/**
+ * Generate the critical CSS for each template
+ */
+gulp.task('criticalcss', (callback) => {
+    doSynchronousLoop(config.criticalCss, generateCriticalCSS, () => {
+    callback();
 });
+});
+
+/**
+ * Generate the critical CSS
+ * @param {object} data The template data
+ * @param {integer} i The loop value index
+ * @param {function} callback The parameterless function to call on completion
+ */
+function generateCriticalCSS(data, i, callback) {
+    const src = config.url + data.url;
+    const dest = config.paths.src.themeFolder + '/snippets/criticalcss-' + data.template + '.twig';
+    logFileTo('Critical CSS', src, dest);
+
+    $.penthouse({
+        url: src,
+        css: config.paths.dist.css  + '/' + config.cssName,
+        renderWaitTime: 500,
+        width: 1200,
+        height: 1200
+    }).then(criticalCss => {
+        fs.writeFile(
+        dest,
+        '<style>' + criticalCss + '</style>',
+        (err) => {
+        if (err) throw err;
+}
+);
+    callback();
+}).catch(err => {
+        $.fancyLog($.chalk.red('ERROR generating Critial CSS: ') + err);
+    callback();
+});
+}
 
 /**
  * Stylesheet lint
@@ -175,21 +268,14 @@ gulp.task('pull-theme', function() {
 });
 
 /**
- * Build fonts
+ * Process the theme config file
  */
-gulp.task('fontello', (cb) => {
-    if (typeof fontelloConfig.glyphs !== 'undefined' && fontelloConfig.glyphs.length > 0) {
-    return gulp.src(config.paths.src.fontello)
-        .pipe($.fontello({font: 'fonts'}))
-        .pipe(gulp.dest(config.paths.build.fontello));
-} else {
-    cb();
-}
-});
-
-gulp.task('fonts', ['fontello'], () => {
-    return gulp.src(config.paths.build.fontello + '/fonts/**')
-        .pipe(gulp.dest(config.paths.dist.fonts));
+gulp.task('theme-config', () => {
+    return gulp.src(config.paths.src.base + '/theme.json')
+        .pipe($.tap((file) => {
+                logFile(file, 'Theme Config');
+}))
+.pipe(gulp.dest(config.paths.dist.base));
 });
 
 /**
@@ -200,12 +286,41 @@ gulp.task('export-theme', () => {
         return gulp.src(entry.src)
             .pipe($.newer(config.export.dist + '/' + entry.src))
             .pipe($.tap((file) => {
-                    $.fancyLog($.chalk.cyan('exporting the file ') + $.chalk.blue(path.relative(file.cwd, file.path)) + ' to ' + $.chalk.green(config.export.dest + '/' + entry.dest))
+                    logFileTo('Exporting the file', file, config.export.dest + '/' + entry.dest);
     }))
         .pipe($.plumber({errorHandler: onError}))
             .pipe(gulp.dest(config.export.dest + '/' + entry.dest));
     });
 return $.mergeStream(assets);
+});
+
+/**
+ * Take the icons in src/icons folder and generate an SVG sprite from them.
+ * Insert the SVG sprite into a snippet
+ */
+gulp.task('svg-icon-sprite', () => {
+    return gulp.src(config.paths.src.base + '/icons/**/*.svg')
+        .pipe($.tap((file) => {
+                logFile(file, 'SVG Icon Sprite');
+}))
+.pipe($.rename({prefix: 'icon-'}))
+    .pipe($.svgmin(function (file) {
+        var prefix = path.basename(file.relative, path.extname(file.relative));
+        return {
+            plugins: [{
+                cleanupIDs: {
+                    prefix: prefix + '-',
+                    minify: true
+                }
+            }]
+        }
+    }))
+    .pipe($.svgstore({ inlineSvg: true }))
+    .pipe($.rename('svg-icons.twig'))
+    .pipe(gulp.dest(config.paths.src.themeFolder + '/snippets'))
+    .pipe($.tap((file) => {
+            logFile(file, 'Generated SVG Twig File');
+}));
 });
 
 /**
@@ -248,6 +363,11 @@ gulp.task('watch', function () {
         $.runSequence('copy', cb);
     });
 
+    // SVG Icons
+    $.globWatcher(config.paths.src.icon, function(cb) {
+        $.runSequence('svg-icon-sprite', cb);
+    });
+
     // Images
     $.globWatcher(config.paths.src.img, function(cb) {
         $.runSequence('images', cb);
@@ -271,6 +391,11 @@ gulp.task('watch', function () {
     }).on('unlink', function(file) {
         deleteFile(file, config.paths.src.theme, config.paths.dist.theme, 'theme file');
     });
+
+    // Theme config
+    $.globWatcher(config.paths.src.base + '/theme.json', function(cb) {
+        $.runSequence('theme-config', cb);
+    });
 });
 
 
@@ -282,9 +407,9 @@ var buildTasks = [
 ];
 
 gulp.task('build', function (cb) {
-    $.runSequence('fonts', buildTasks, cb);
+    $.runSequence(buildTasks, cb);
 });
 
 gulp.task('default', function (cb) {
-    $.runSequence('fonts', buildTasks, 'watch', cb);
+    $.runSequence(buildTasks, 'watch', cb);
 });

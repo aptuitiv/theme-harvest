@@ -15,12 +15,24 @@ module.exports = {
     cssName: 'main.css',
 
     /**
+     * Holds the base URL for the site to use within the gulp scripts.
+     * It should include the closing "/"
+     * http://www.mysite.com/
+     */
+    url: 'http://harvest-theme.branchcms.com',
+
+    /**
      * Paths for different asset sources and their distribution path
      */
     paths: {
         src: {
-            css: [src + '/css/index.css'],
-            fontello: src + '/fonts/fontello-config.json',
+            base: src,
+            css: [
+                src + '/css/main.css',
+                src + '/css/calendar.css',
+                src + '/css/store.css'
+            ],
+            icon: src + '/icons/**/*.svg',
             img: src + '/images/**/*.{png,jpg,gif,svg}',
             stylelint: [src + '/css/**/*.css'],
             theme: src + '/theme/**/*.twig',
@@ -28,18 +40,17 @@ module.exports = {
         },
         build: {
             base: build,
-            css: build + '/css',
-            fontello: build + '/fontello'
+            css: build + '/css'
         },
         dist: {
             base: dist,
             css: dist + '/css',
-            fonts: dist + '/fonts',
             img: dist + '/images',
             js: dist + '/js',
             theme: dist + '/templates',
             themeFiles: dist + '/templates/**/*.twig'
         },
+        theme: '/theme/custom',
         watch: {
             css: [src + '/css/**/*.css']
         }
@@ -63,6 +74,17 @@ module.exports = {
             src: ['node_modules/slick-carousel/slick/fonts/*'],
             dest: 'slick/fonts'
         }
+    ],
+
+    /**
+     * Templates to generate critical CSS for.
+     * 'template' is the name(path) of the template to generate for
+     * 'url' is a sample URL of a page using that template to generate the critical CSS from
+     */
+    criticalCss: [
+        {'template': 'one-column', 'url': '/contact'},
+        {'template': 'one-column-full-width-header', 'url': ''},
+        {'template': 'two-column', 'url': '/who-we-are'},
     ],
 
     /**

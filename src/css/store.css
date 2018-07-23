@@ -1,0 +1,11 @@
+/**
+ * Component styles
+ */
+
+@import './components/store';
+
+/**
+ * Theme configuration
+ */
+@import './config.css';
+@import './theme';

@@ -1,0 +1,56 @@
+/* =========================================================================== *\
+    Store Cart
+\* =========================================================================== */
+
+
+/* @define: Cart */
+
+.Cart th {
+    display: table-cell;
+}
+
+.Cart input[type='text'] {
+    width: 50px;
+}
+
+.Cart tr {
+    margin-bottom: 10px;
+}
+
+@media (--c-bp-sm) {
+    .Cart {
+        width: 100%;
+    }
+
+    .Cart tr:nth-child(odd) {
+        background-color: #f8f8f8;
+    }
+
+    .Cart td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        padding-left: 120px !important;
+        position: relative;
+        text-align: left;
+    }
+
+    .Cart td::before {
+        color: #333;
+        content: attr(data-th) '';
+        font-size: 16px;
+        font-weight: 700;
+        left: 15px;
+        position: absolute;
+        top: 7px;
+    }
+
+    .Cart tr,
+    .Cart thead,
+    .Cart tbody {
+        display: block;
+    }
+
+    .Cart th {
+        display: none;
+    }
+}
