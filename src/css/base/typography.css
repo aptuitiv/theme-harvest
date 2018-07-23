@@ -23,44 +23,6 @@
  * http://clagnut.com/blog/2384/
  */
 
-:root {
-    --base-typography-color: var(--theme-typography-color);
-    --base-typography-fontFamily: var(--theme-typography-fontFamily);
-    --base-typography-fontSize: 1.8rem;
-    --base-typography-fontWeight: 400;
-    --base-typography-hrule-width: 1px;
-    --base-typography-letterSpacing: 0;
-    --base-typography-lineHeight: 1.58;
-    --base-typography-spacing: 1.58em;
-}
-
-:root {
-    --base-typography-link-color: var(--theme-typography-link-color);
-    --base-typography-link-colorHover: var(--theme-typography-link-colorHover);
-    --base-typography-link-decoration: underline;
-    --base-typography-link-decorationHover: underline;
-}
-
-/* headings */
-
-:root {
-    --base-typography-h1-fontSize: 1.5em;
-    --base-typography-h2-fontSize: 1.4em;
-    --base-typography-h3-fontSize: 1.3em;
-    --base-typography-h4-fontSize: 1.1em;
-    --base-typography-h5-fontSize: 1em;
-    --base-typography-h6-fontSize: 1em;
-    --base-typography-h1-lineHeight: 1.2;
-    --base-typography-h2-lineHeight: 1.2;
-    --base-typography-h3-lineHeight: 1.2;
-    --base-typography-h4-lineHeight: 1.2;
-    --base-typography-h5-lineHeight: 1.2;
-    --base-typography-h6-lineHeight: 1.2;
-    --base-typography-heading-color: inherit;
-    --base-typography-heading-fontFamily: var(--base-typography-fontFamily);
-    --base-typography-heading-fontWeight: 400;
-    --base-typography-heading-letterSpacing: .1em;
-}
 
 /* General
    ========================================================================== */

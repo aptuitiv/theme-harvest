@@ -84,12 +84,16 @@
     text-decoration: none;
 }
 
+/* postcss-bem-linter: ignore */
+
 .TopBar-button,
 a[href^=tel].TopBar-button {
     background: #fff;
     color: var(--theme-primary-color);
     text-transform: uppercase;
 }
+
+/* postcss-bem-linter: ignore */
 
 .TopBar-button:active,
 .TopBar-button:focus,
