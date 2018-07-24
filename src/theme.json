@@ -894,35 +894,35 @@
         },
         {
             "key": "snippets\/pagination",
-            "name": "pagination"
+            "name": "Pagination"
         },
         {
             "key": "snippets\/header",
-            "name": "header"
+            "name": "Header"
         },
         {
             "key": "snippets\/footer",
-            "name": "footer"
+            "name": "Footer"
         },
         {
             "key": "snippets\/svg-icons",
-            "name": "svg-icons"
+            "name": "SVG Icons"
         },
         {
             "key": "navigation\/embeded-navigation",
-            "name": "embeded-navigation"
+            "name": "Embedded Navigation"
         },
         {
             "key": "navigation\/sidebar",
-            "name": "sidebar"
+            "name": "Sidebar"
         },
         {
             "key": "navigation\/main",
-            "name": "main"
+            "name": "Main"
         },
         {
             "key": "navigation\/footer",
-            "name": "footer"
+            "name": "Footer"
         },
         {
             "key": "content-builder\/heading-1",
@@ -1046,11 +1046,11 @@
         },
         {
             "key": "forms\/grid",
-            "name": "grid"
+            "name": "Grid"
         },
         {
             "key": "forms\/label-above-field",
-            "name": "label-above-field"
+            "name": "Label Above Field"
         }
     ],
     "siteSettings": {
