@@ -14,48 +14,76 @@
     {{ _page.head() }}
 </head>
 <body>
+<div class="u-hiddenVisually" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
     {% spaceless %}
-    <div class="Header u-hidden u-md-show">
-        <a href="/" title="Back to home page"><img src="{{ 'images/logo.svg'|theme_url }}" class="Logo"  width="382" height="60"></a>
-    </div>
-    <div class="TopBar">
-        <div class="Container Container--pad">
-            <div class="Grid Grid--withGutter Grid--alignMiddle">
-                <div class="Grid-cell u-size1of3 u-md-hide">
-                    <a href="#" title="Follow us on Facebook" class="TopBar-social"><i class="Icon-facebook"></i></a>
-                    <a href="#" title="Follow us on Instagram" class="TopBar-social"><i class="Icon-instagram"></i></a>
-                    <a href="#" title="Follow us on LinkedIn" class="TopBar-social"><i class="Icon-linkedin"></i></a>
-                    <a href="#" title="Follow us on Pinterest" class="TopBar-social"><i class="Icon-pinterest"></i></a>
-                    <a href="#" title="Follow us on Twitter" class="TopBar-social"><i class="Icon-twitter"></i></a>
-                    <a href="#" title="Follow us on Youtube" class="TopBar-social"><i class="Icon-youtube"></i></a>
-                </div>
-                <div class="Grid-cell u-size1of3 u-md-sizeFull">
-                    <div class="TopBar-contact" itemscope itemtype="http://schema.org/Organization">
-                        <span class="TopBar-contactItem u-md-hide" itemprop="telephone"><a href="tel:1-207-860-4040" >207-860-4040</a></span>
-                        <a href="tel:1-207-860-4040" class="Button Button--lg TopBar-button u-hidden u-md-show u-margBottom2">Call Now</a>
-                        <span class="TopBar-contactItem" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                            <span itemprop="streetAddress">1 Main St</span>,
-                            <span itemprop="addressLocality">Farmington</span>,
-                            <span itemprop="addressRegion">ME</span>
-                        </span>
+    <header role="banner">
+        {% if _core.theme.settings.headerLogo %}
+            {% if _core.theme.settings.headerLogo.alt|length == 0 %}
+                {% set _core.theme.settings.headerLogo.alt = _core.theme.settings.company %}
+            {% endif %}
+            {% set _core.theme.settings.headerLogo.class = 'u-size' ~ _core.theme.settings.headerLogoSize|capitalize %}
+            <div class="Header u-hidden u-md-show">
+                <a href="/" title="Back to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
+            </div>
+        {% endif %}
+        <div class="TopBar">
+            <div class="Container Container--pad">
+                <div class="Grid Grid--withGutter Grid--alignMiddle">
+                    <div class="Grid-cell u-size1of3 u-md-hide">
+                        {% if _core.theme.settings.headerShowSocial == 'yes' %}
+                            {% for social in _core.theme.settings.social %}
+                                <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="TopBar-social"><svg class="Icon"><use xlink:href="#icon-{{ social.icon }}" /></svg></a>
+                            {% endfor %}
+                        {% endif %}
                     </div>
-                </div>
-                <div class="Grid-cell u-size1of3 u-md-sizeFull">
-                    <div class="TopBar-nav">
-                        <div class="TopBar-navItem"><a href="#" class="TopBar-link">Subscribe</a></div>
-                        <div class="TopBar-navItem"><a href="#" class="Button TopBar-button">Donate</a></div>
+                    <div class="Grid-cell u-size1of3 u-md-sizeFull">
+                        {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
+                            <div class="TopBar-contact" itemscope itemtype="http://schema.org/Organization">
+                                {% if _core.theme.settings.headerShowPhone == 'yes' and _core.theme.settings.phone|length > 0 %}
+                                    <span class="TopBar-contactItem u-md-hide" itemprop="telephone"><a href="tel:{{ _core.theme.settings.phone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.theme.settings.phone }}">{{ _core.theme.settings.phone }}</a></span>
+                                    <a href="tel:{{ _core.theme.settings.phone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button u-hidden u-md-show u-margBottom2" aria-label="Call {{ _core.theme.settings.phone }}">Call Now</a>
+                                {% endif %}
+                                {% if _core.theme.settings.headerShowAddress == 'yes' %}
+                                    <span class="TopBar-contactItem" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                        {% if _core.theme.settings.address %}
+                                            <span itemprop="streetAddress">{{ _core.theme.settings.address }}</span>,
+                                        {% endif %}
+                                        {% if _core.theme.settings.city %}
+                                            <span itemprop="addressLocality">{{ _core.theme.settings.city }}</span>,
+                                        {% endif %}
+                                        {% if _core.theme.settings.state %}
+                                            <span itemprop="addressRegion">{{ _core.theme.settings.state }}</span>
+                                        {% endif %}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="Grid-cell u-size1of3 u-md-sizeFull">
+                        {% if _core.theme.settings.headerShowPrimaryButton == 'yes' or _core.theme.settings.headerShowSecondaryButton == 'yes' %}
+                            <div class="TopBar-nav">
+                                {% if _core.theme.settings.headerShowSecondaryButton == 'yes' %}
+                                    <div class="TopBar-navItem"><a href="{{ _core.theme.settings.headerSecondaryButtonUrl }}" class="TopBar-link">{{ _core.theme.settings.headerSecondaryButtonText }}</a></div>
+                                {% endif  %}
+                                {% if _core.theme.settings.headerShowPrimaryButton == 'yes' %}
+                                    <div class="TopBar-navItem"><a href="{{ _core.theme.settings.headerPrimaryButtonUrl }}" class="Button TopBar-button">{{ _core.theme.settings.headerPrimaryButtonText }}</a></div>
+                                {% endif  %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="Container">
-        <div class="Header u-md-hide">
-            <a href="/" title="Back to home page"><img src="{{ 'images/logo.svg'|theme_url }}" class="Logo"  width="382" height="60"></a>
+        <div class="Container">
+            {% if _core.theme.settings.headerLogo %}
+                <div class="Header u-md-hide">
+                    <a href="/" title="Back to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
+                </div>
+            {% endif %}
+            <div class="NavBar">
+                <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
+                {{ _api.navigation.get.key('main') }}
+            </div>
         </div>
-        <div class="NavBar">
-            <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
-            {{ _api.navigation.get.key('main') }}
-        </div>
-    </div>
+    </header>
     {% endspaceless %}

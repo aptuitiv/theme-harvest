@@ -1,18 +1,23 @@
 <div class="Footer">
     <div class="Container">
-        <div class="u-textCenter"><a href="/" title="Back to home page"><img src="{{ 'images/logo.svg'|theme_url }}" class="Logo"  width="300" height="47"></a></div>
+        {% if _core.theme.settings.footerLogo %}
+            {% if _core.theme.settings.footerLogo.alt|length == 0 %}
+                {% set _core.theme.settings.footerLogo.alt = _core.theme.settings.company %}
+            {% endif %}
+            {% set _core.theme.settings.footerLogo.class = 'u-size' ~ _core.theme.settings.footerLogoSize|capitalize %}
+            <div class="u-textCenter"><a href="/" title="Back to home page">{{ _core.theme.settings.footerLogo.tag }}</a></div>
+        {% endif %}
         {{ _api.navigation.get.key('main').showSubNav('no').template('footer') }}
         <div class="u-margBottom2">
-            <a href="#" title="Follow us on Facebook" class="Footer-social"><i class="Icon-facebook"></i></a>
-            <a href="#" title="Follow us on Instagram" class="Footer-social"><i class="Icon-instagram"></i></a>
-            <a href="#" title="Follow us on LinkedIn" class="Footer-social"><i class="Icon-linkedin"></i></a>
-            <a href="#" title="Follow us on Pinterest" class="Footer-social"><i class="Icon-pinterest"></i></a>
-            <a href="#" title="Follow us on Twitter" class="Footer-social"><i class="Icon-twitter"></i></a>
-            <a href="#" title="Follow us on Youtube" class="Footer-social"><i class="Icon-youtube"></i></a>
+            {% if _core.theme.settings.footerShowSocial == 'yes' %}
+                {% for social in _core.theme.settings.social %}
+                    <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="Footer-social"><svg class="Icon"><use xlink:href="#icon-{{ social.icon }}" /></svg></a>
+                {% endfor %}
+            {% endif %}
         </div>
         <div class="Grid Grid--withGutter Grid--alignMiddle">
             <div class="Grid-cell u-size1of2 u-sm-sizeFull u-sm-margBottom2 u-textLeft u-sm-textCenter">
-                <div class="Footer-copyright">&copy; {{ _core.date.year }} My Company</div>
+                <div class="Footer-copyright">&copy; {{ _core.date.year }} {{ _core.theme.settings.company }}</div>
             </div>
             <div class="Grid-cell u-size1of2 u-sm-sizeFull u-textRight u-sm-textCenter">
                 <a href="https://www.aptuitiv.com" target="_blank" class="Footer-credit">Website by Aptuitiv</a>

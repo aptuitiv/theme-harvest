@@ -1,0 +1,17 @@
+/* =========================================================================== *\
+    SVG Icons
+\* =========================================================================== */
+
+
+.Icon {
+    display: inline-block;
+    fill: currentColor;
+    height: 1em;
+    line-height: 1em;
+    margin-left: .2em;
+    margin-right: .2em;
+    stroke: currentColor;
+    stroke-width: 0;
+    vertical-align: text-bottom;
+    width: 1em;
+}
