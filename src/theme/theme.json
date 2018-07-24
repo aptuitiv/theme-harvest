@@ -1,0 +1,1191 @@
+{
+    "name": "Custom",
+    "settings": {
+        "groups": [
+            {
+                "name": "Contact Information",
+                "description": "Contact information used in the header and footer",
+                "fields": [
+                    {
+                        "name": "company",
+                        "label": "Company Name",
+                        "type": "text",
+                        "default": "My Company"
+                    },
+                    {
+                        "name": "phone",
+                        "label": "Phone Number",
+                        "type": "text",
+                        "default": "111-222-3333"
+                    },
+                    {
+                        "name": "address",
+                        "label": "Address",
+                        "type": "text",
+                        "default": "1 Main St"
+                    },
+                    {
+                        "name": "city",
+                        "label": "City",
+                        "type": "text",
+                        "default": "My Town"
+                    },
+                    {
+                        "name": "state",
+                        "label": "State",
+                        "type": "text",
+                        "default": "ME"
+                    },
+                    {
+                        "name": "email",
+                        "label": "Email",
+                        "type": "text",
+                        "default": "me@mycompany.com"
+                    }
+                ]
+            },
+            {
+                "name": "Social Icons",
+                "description": "Set the links and icons to use for your social networks in the footer of each page.",
+                "fields": [
+                    {
+                        "name": "social",
+                        "label": "Social Networks",
+                        "type": "repeating",
+                        "itemName": "Social Network",
+                        "children": [
+                            {
+                                "name": "name",
+                                "label": "Social network name",
+                                "type": "text"
+                            },
+                            {
+                                "name": "url",
+                                "label": "URL to your page on this social network",
+                                "type": "text"
+                            },
+                            {
+                                "name": "icon",
+                                "label": "Icon",
+                                "type": "select",
+                                "options": {
+                                    "facebook": "Facebook",
+                                    "instagram": "Instagram",
+                                    "linkedin": "LinkedIn",
+                                    "pinterest": "Pinterest",
+                                    "twitter": "Twitter",
+                                    "youtube": "YouTube"
+                                }
+                            }
+                        ],
+                        "default": [
+                            {
+                                "name": "Facebook",
+                                "icon": "facebook"
+                            },
+                            {
+                                "name": "Instagram",
+                                "icon": "instagram"
+                            },
+                            {
+                                "name": "LinkedIn",
+                                "icon": "linkedin"
+                            },
+                            {
+                                "name": "Pinterest",
+                                "icon": "pinterest"
+                            },
+                            {
+                                "name": "Twitter",
+                                "icon": "twitter"
+                            },
+                            {
+                                "name": "YouTube",
+                                "icon": "youtube"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Header",
+                "description": "Content for the header that is used on all pages",
+                "fields": [
+                    {
+                        "name": "headerShowSocial",
+                        "label": "Show Social",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
+                        "name": "headerShowPhone",
+                        "label": "Show Phone Number",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
+                        "name": "headerShowAddress",
+                        "label": "Show Address",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
+                        "name": "headerShowPrimaryButton",
+                        "label": "Show Primary Button",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
+                        "name": "headerPrimaryButtonText",
+                        "label": "Primary Button Text",
+                        "type": "text",
+                        "default": "Donate"
+                    },
+                    {
+                        "name": "headerPrimaryButtonUrl",
+                        "label": "Primary Button URL",
+                        "type": "url"
+                    },
+                    {
+                        "name": "headerShowSecondaryButton",
+                        "label": "Show Secondary Button",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
+                        "name": "headerSecondaryButtonText",
+                        "label": "Secondary Button Text",
+                        "type": "text",
+                        "default": "Subscribe"
+                    },
+                    {
+                        "name": "headerSecondaryButtonUrl",
+                        "label": "Secondary Button URL",
+                        "type": "url"
+                    },
+                    {
+                        "name": "headerLogo",
+                        "label": "Logo",
+                        "type": "image",
+                        "path": "images",
+                        "default": "\/theme\/custom\/images\/logo.svg"
+                    },
+                    {
+                        "name": "headerLogoSize",
+                        "label": "Header Logo Size",
+                        "type": "radio",
+                        "options": {
+                            "auto": "Auto",
+                            "full": "Full Width",
+                            "1of3": "1\/3 Width",
+                            "1of2": "1\/2 Width",
+                            "2of3": "2\/3 Width",
+                            "3of4": "3\/4 Width"
+                        },
+                        "default": "auto",
+                        "description": "How much of the width of the header that the logo fills"
+                    }
+                ]
+            },
+            {
+                "name": "Footer",
+                "description": "Content for the footer that is used on all pages",
+                "fields": [
+                    {
+                        "name": "footerShowSocial",
+                        "label": "Show Social",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
+                        "name": "footerLogo",
+                        "label": "Logo",
+                        "type": "image",
+                        "path": "images",
+                        "default": "\/theme\/custom\/images\/logo.svg"
+                    },
+                    {
+                        "name": "footerLogoSize",
+                        "label": "Footer Logo Size",
+                        "type": "radio",
+                        "options": {
+                            "auto": "Auto",
+                            "full": "Full Width",
+                            "1of3": "1\/3 Width",
+                            "1of2": "1\/2 Width",
+                            "2of3": "2\/3 Width",
+                            "3of4": "3\/4 Width"
+                        },
+                        "default": "auto",
+                        "description": "How much of the width of the footer that the logo fills"
+                    }
+                ]
+            }
+        ]
+    },
+    "contentBuilder": {
+        "groups": [
+            {
+                "key": "_bd-simple-content-elements",
+                "name": "Content Elements",
+                "elements": [
+                    {
+                        "key": "columned-feature",
+                        "name": "Columned Feature",
+                        "type": "full",
+                        "template": "columned-feature",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "columns",
+                                "name": "Columns",
+                                "type": "repeating",
+                                "configuration": {
+                                    "collectionItemSort": "1",
+                                    "collectionItemDelete": "1",
+                                    "collectionMinNumItems": "",
+                                    "collectionMaxNumItems": "",
+                                    "collectionOrientation": "vertical",
+                                    "collectionItemName": "Column"
+                                },
+                                "value": "",
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "key": "text",
+                                        "name": "Text",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "image",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "configuration": {
+                                            "path": "\/images\/columned-feature",
+                                            "height": 300,
+                                            "width": 300
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "link",
+                                        "name": "Link",
+                                        "type": "url",
+                                        "value": "",
+                                        "description": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-content",
+                        "name": "Content",
+                        "type": "full",
+                        "template": "content",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "content",
+                                "name": "Content",
+                                "type": "richTextEditor",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "content-with-background",
+                        "name": "Content with Background",
+                        "type": "full",
+                        "template": "content-with-background",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "content",
+                                "name": "Content",
+                                "type": "richTextEditor",
+                                "value": "",
+                                "description": ""
+                            },
+                            {
+                                "key": "learnMoreLinkText",
+                                "name": "Learn more link text",
+                                "type": "text",
+                                "configuration": {
+                                    "allowCode": "no"
+                                },
+                                "value": "",
+                                "description": ""
+                            },
+                            {
+                                "key": "learnMoreLink",
+                                "name": "Learn more link",
+                                "type": "url",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-form",
+                        "name": "Form",
+                        "type": "full",
+                        "template": "form",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "form",
+                                "name": "Form",
+                                "type": "form",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-image-large",
+                        "name": "Full Width Image",
+                        "type": "full",
+                        "template": "large-image",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "image",
+                                "name": "Image",
+                                "type": "image",
+                                "configuration": {
+                                    "path": "\/images",
+                                    "width": 1200
+                                },
+                                "value": "",
+                                "description": ""
+                            },
+                            {
+                                "key": "caption",
+                                "name": "Caption",
+                                "type": "text",
+                                "configuration": {
+                                    "allowCode": "no"
+                                },
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-html-code",
+                        "name": "HTML Code",
+                        "type": "full",
+                        "template": "html-code",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "code",
+                                "name": "HTML Code",
+                                "type": "code",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "iframe-embed",
+                        "name": "Iframe Embed",
+                        "type": "full",
+                        "template": "iframe-embed",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "embedRatio",
+                                "name": "Embed Ratio",
+                                "type": "select",
+                                "value": "",
+                                "description": "",
+                                "options": [
+                                    {
+                                        "value": "4by3",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "3by2",
+                                        "default": "1"
+                                    },
+                                    {
+                                        "value": "5by3",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "2by1",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "1by1",
+                                        "default": "0"
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "iframeTag",
+                                "name": "Iframe Tag",
+                                "type": "iframeEmbed",
+                                "value": "",
+                                "description": "Use this to embed an iframe like a Google Map iframe. Use the Media Embed element for YouTube videos or other media."
+                            }
+                        ]
+                    },
+                    {
+                        "key": "media-embed",
+                        "name": "Media Embed",
+                        "type": "full",
+                        "template": "media-embed",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "embedRatio",
+                                "name": "Embed Ratio",
+                                "type": "select",
+                                "value": "",
+                                "description": "",
+                                "options": [
+                                    {
+                                        "value": "4by3",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "3by2",
+                                        "default": "1"
+                                    },
+                                    {
+                                        "value": "5by3",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "2by1",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "1by1",
+                                        "default": "0"
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "embedUrl",
+                                "name": "Embed URL",
+                                "type": "embedUrl",
+                                "value": "",
+                                "description": "Enter the URL of the media content. For example, for YouTube simply enter the URL to view the video on the YouTube website."
+                            }
+                        ]
+                    },
+                    {
+                        "key": "responsive-embed",
+                        "name": "Responsive Embed",
+                        "type": "full",
+                        "template": "responsive-embed",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-image-small",
+                        "name": "Small Image",
+                        "type": "full",
+                        "template": "small-image",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "image",
+                                "name": "Image",
+                                "type": "image",
+                                "configuration": {
+                                    "path": "\/images",
+                                    "height": 350,
+                                    "width": 350
+                                },
+                                "value": "",
+                                "description": ""
+                            },
+                            {
+                                "key": "alignment",
+                                "name": "Alignment",
+                                "type": "select",
+                                "value": "",
+                                "description": "",
+                                "options": [
+                                    {
+                                        "value": "Default",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "Center",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "Float Left",
+                                        "default": "0"
+                                    },
+                                    {
+                                        "value": "Float Right",
+                                        "default": "0"
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "caption",
+                                "name": "Caption",
+                                "type": "text",
+                                "configuration": {
+                                    "allowCode": "no"
+                                },
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "_bd-text-headings",
+                "name": "Text Headings",
+                "elements": [
+                    {
+                        "key": "_bd-heading1",
+                        "name": "Heading 1",
+                        "type": "full",
+                        "template": "heading-1",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "heading",
+                                "name": "Heading 1",
+                                "type": "text",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-heading2",
+                        "name": "Heading 2",
+                        "type": "full",
+                        "template": "heading-2",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "heading",
+                                "name": "Heading 2",
+                                "type": "text",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-heading3",
+                        "name": "Heading 3",
+                        "type": "full",
+                        "template": "heading-3",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "heading",
+                                "name": "Heading 3",
+                                "type": "text",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-heading4",
+                        "name": "Heading 4",
+                        "type": "full",
+                        "template": "heading-4",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "heading",
+                                "name": "Heading 4",
+                                "type": "text",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-heading5",
+                        "name": "Heading 5",
+                        "type": "full",
+                        "template": "heading-5",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "heading",
+                                "name": "Heading 5",
+                                "type": "text",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "_bd-heading6",
+                        "name": "Heading 6",
+                        "type": "full",
+                        "template": "heading-6",
+                        "enabled": "1",
+                        "parse": "1",
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "heading",
+                                "name": "Heading 6",
+                                "type": "text",
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "_bd-grids",
+                "name": "Column Layouts",
+                "elements": [
+                    {
+                        "key": "_bd-grid2-12-12",
+                        "name": "2 Columns (1\/2 - 1\/2)",
+                        "type": "grid",
+                        "template": "2-columns-1-2-1-2",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "2",
+                        "sizes": "6,6",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid2-13-23",
+                        "name": "2 Columns (1\/3 - 2\/3)",
+                        "type": "grid",
+                        "template": "2-columns-1-3-2-3",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "2",
+                        "sizes": "4,8",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid2-14-34",
+                        "name": "2 Columns (1\/4 - 3\/4)",
+                        "type": "grid",
+                        "template": "2-columns-1-4-3-4",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "2",
+                        "sizes": "3,9",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid2-23-13",
+                        "name": "2 Columns (2\/3 - 1\/3)",
+                        "type": "grid",
+                        "template": "2-columns-2-3-1-3",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "2",
+                        "sizes": "8,4",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid2-34-14",
+                        "name": "2 Columns (3\/4 - 1\/4)",
+                        "type": "grid",
+                        "template": "2-columns-3-4-1-4",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "2",
+                        "sizes": "9,3",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid3-12-14-14",
+                        "name": "3 Columns (1\/2 - 1\/4 - 1\/4)",
+                        "type": "grid",
+                        "template": "3-columns-1-2-1-4-1-4",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "3",
+                        "sizes": "6,3,3",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid3-13-13-13",
+                        "name": "3 Columns (1\/3 - 1\/3 - 1\/3)",
+                        "type": "grid",
+                        "template": "3-columns-1-3-1-3-1-3",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "3",
+                        "sizes": "4,4,4",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid3-14-12-14",
+                        "name": "3 Columns (1\/4 - 1\/2 - 1\/4)",
+                        "type": "grid",
+                        "template": "3-columns-1-4-1-2-1-4",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "3",
+                        "sizes": "3,6,3",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid3-14-14-12",
+                        "name": "3 Columns (1\/4 - 1\/4- 1\/2)",
+                        "type": "grid",
+                        "template": "3-columns-1-4-1-4-1-2",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "3",
+                        "sizes": "3,3,6",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid4-14-14-14-14",
+                        "name": "4 Columns (1\/4 - 1\/4 - 1\/4 - 1\/4)",
+                        "type": "grid",
+                        "template": "4-columns-1-4-1-4-1-4-1-4",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "4",
+                        "sizes": "3,3,3,3",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid5-15-15-15-15-15",
+                        "name": "5 Columns (1\/5 - 1\/5 - 1\/5 - 1\/5 - 1\/5)",
+                        "type": "grid",
+                        "template": "5-columns-1-5-1-5-1-5-1-5-1-5",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "5",
+                        "sizes": "1,1,1,1,1",
+                        "size": "5",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "_bd-grid6-16-16-16-16-16-16",
+                        "name": "6 Columns (1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6)",
+                        "type": "grid",
+                        "template": "6-columns-1-6-1-6-1-6-1-6-1-6-1-6",
+                        "enabled": "1",
+                        "parse": "1",
+                        "columns": "6",
+                        "sizes": "2,2,2,2,2,2",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    }
+                ]
+            }
+        ]
+    },
+    "templates": [
+        {
+            "key": "two-column",
+            "name": "Two Column",
+            "is_default": "1",
+            "admin_bar_enabled": "1"
+        },
+        {
+            "key": "one-column",
+            "name": "One Column",
+            "is_default": "0",
+            "admin_bar_enabled": "1"
+        },
+        {
+            "key": "one-column-full-width-header",
+            "name": "One Column Full Width Header",
+            "is_default": "0",
+            "admin_bar_enabled": "1"
+        },
+        {
+            "key": "snippets\/pagination",
+            "name": "pagination"
+        },
+        {
+            "key": "snippets\/header",
+            "name": "header"
+        },
+        {
+            "key": "snippets\/footer",
+            "name": "footer"
+        },
+        {
+            "key": "snippets\/svg-icons",
+            "name": "svg-icons"
+        },
+        {
+            "key": "navigation\/embeded-navigation",
+            "name": "embeded-navigation"
+        },
+        {
+            "key": "navigation\/sidebar",
+            "name": "sidebar"
+        },
+        {
+            "key": "navigation\/main",
+            "name": "main"
+        },
+        {
+            "key": "navigation\/footer",
+            "name": "footer"
+        },
+        {
+            "key": "content-builder\/heading-1",
+            "name": "Heading 1"
+        },
+        {
+            "key": "content-builder\/heading-2",
+            "name": "Heading 2"
+        },
+        {
+            "key": "content-builder\/heading-3",
+            "name": "Heading 3"
+        },
+        {
+            "key": "content-builder\/heading-4",
+            "name": "Heading 4"
+        },
+        {
+            "key": "content-builder\/heading-5",
+            "name": "Heading 5"
+        },
+        {
+            "key": "content-builder\/heading-6",
+            "name": "Heading 6"
+        },
+        {
+            "key": "content-builder\/html-code",
+            "name": "HTML Code"
+        },
+        {
+            "key": "content-builder\/content",
+            "name": "Content"
+        },
+        {
+            "key": "content-builder\/large-image",
+            "name": "Full Width Image"
+        },
+        {
+            "key": "content-builder\/small-image",
+            "name": "Small Image"
+        },
+        {
+            "key": "content-builder\/form",
+            "name": "Form"
+        },
+        {
+            "key": "content-builder\/2-columns-1-2-1-2",
+            "name": "2 Columns (1\/2 - 1\/2)"
+        },
+        {
+            "key": "content-builder\/2-columns-1-3-2-3",
+            "name": "2 Columns (1\/3 - 2\/3)"
+        },
+        {
+            "key": "content-builder\/2-columns-2-3-1-3",
+            "name": "2 Columns (2\/3 - 1\/3)"
+        },
+        {
+            "key": "content-builder\/2-columns-1-4-3-4",
+            "name": "2 Columns (1\/4 - 3\/4)"
+        },
+        {
+            "key": "content-builder\/2-columns-3-4-1-4",
+            "name": "2 Columns (3\/4 - 1\/4)"
+        },
+        {
+            "key": "content-builder\/3-columns-1-3-1-3-1-3",
+            "name": "3 Columns (1\/3 - 1\/3 - 1\/3)"
+        },
+        {
+            "key": "content-builder\/3-columns-1-2-1-4-1-4",
+            "name": "3 Columns (1\/2 - 1\/4 - 1\/4)"
+        },
+        {
+            "key": "content-builder\/3-columns-1-4-1-2-1-4",
+            "name": "3 Columns (1\/4 - 1\/2 - 1\/4)"
+        },
+        {
+            "key": "content-builder\/3-columns-1-4-1-4-1-2",
+            "name": "3 Columns (1\/4 - 1\/4- 1\/2)"
+        },
+        {
+            "key": "content-builder\/4-columns-1-4-1-4-1-4-1-4",
+            "name": "4 Columns (1\/4 - 1\/4 - 1\/4 - 1\/4)"
+        },
+        {
+            "key": "content-builder\/5-columns-1-5-1-5-1-5-1-5-1-5",
+            "name": "5 Columns (1\/5 - 1\/5 - 1\/5 - 1\/5 - 1\/5)"
+        },
+        {
+            "key": "content-builder\/6-columns-1-6-1-6-1-6-1-6-1-6-1-6",
+            "name": "6 Columns (1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6)"
+        },
+        {
+            "key": "content-builder\/responsive-embed",
+            "name": "Responsive Embed"
+        },
+        {
+            "key": "content-builder\/iframe-embed",
+            "name": "Iframe Embed"
+        },
+        {
+            "key": "content-builder\/media-embed",
+            "name": "Media Embed"
+        },
+        {
+            "key": "content-builder\/columned-feature",
+            "name": "Columned Feature"
+        },
+        {
+            "key": "content-builder\/content-with-background",
+            "name": "Content with Background"
+        },
+        {
+            "key": "content-layouts\/header",
+            "name": "Header"
+        },
+        {
+            "key": "content-layouts\/full-width-image",
+            "name": "Full Width Image"
+        },
+        {
+            "key": "forms\/grid",
+            "name": "grid"
+        },
+        {
+            "key": "forms\/label-above-field",
+            "name": "label-above-field"
+        }
+    ],
+    "siteSettings": {
+        "breadcrumb_active_template": "{{ item.text }}",
+        "breadcrumb_container_template": "<div class=\"breadcrumb\">{{ breadcrumb }}<\/div>",
+        "breadcrumb_custom_template": "<div class=\"Breadcrumb\">\n    {% for item in items %}\n        {% if item.isActive %}\n            {{ item.text }}\n        {% else %}\n            <a href=\"{{ item.link }}\" class=\"Breadcrumb-link\">{{ item.text }}<\/a> &gt;\n        {% endif %}\n    {% endfor %}\n<\/div>",
+        "breadcrumb_inactive_template": "<a href=\"{{ item.link }}\">{{ item.text }}<\/a>",
+        "breadcrumb_separator": " &gt; ",
+        "breadcrumb_template_type": "custom",
+        "customFavicon": "",
+        "doctype": "HTML5",
+        "navigationImagePath": "\/images\/navigation\/",
+        "public_admin_bar_enabled": "no",
+        "robotsText": "User-agent: *\nDisallow: \/",
+        "tinymce_allow_scripts": "0",
+        "tinymce_allow_unsafe_link_target_protection": "1",
+        "tinymce_block_classes": [],
+        "tinymce_css": "",
+        "tinymce_file_browser": "apBrowser",
+        "tinymce_font_family": [
+            {
+                "title": "Arial",
+                "name": "arial,helvetica,sans-serif"
+            },
+            {
+                "title": "Book Antiqua",
+                "name": "book antiqua,palatino,serif"
+            },
+            {
+                "title": "Comic Sans MS",
+                "name": "comic sans ms,sans-serif"
+            },
+            {
+                "title": "Courier New",
+                "name": "courier new,courier"
+            },
+            {
+                "title": "Georgia",
+                "name": "georgia,palatino,serif"
+            },
+            {
+                "title": "Helvetica",
+                "name": "helvetica,sans-serif"
+            },
+            {
+                "title": "Tahoma",
+                "name": "tahoma,arial,helvetica,sans-serif"
+            },
+            {
+                "title": "Times New Roman",
+                "name": "times new roman,times,serif"
+            },
+            {
+                "title": "Trebuchet MS",
+                "name": "trebuchet ms,geneva,sans-serif"
+            },
+            {
+                "title": "Verdana",
+                "name": "verdana,sans-serif"
+            }
+        ],
+        "tinymce_font_size": [
+            {
+                "size": "8px"
+            },
+            {
+                "size": "10px"
+            },
+            {
+                "size": "12px"
+            },
+            {
+                "size": "14px"
+            },
+            {
+                "size": "18px"
+            },
+            {
+                "size": "24px"
+            },
+            {
+                "size": "36px"
+            }
+        ],
+        "tinymce_force_br_newlines": "0",
+        "tinymce_force_p_newlines": "1",
+        "tinymce_image_advanced_tab": "1",
+        "tinymce_image_classes": [
+            {
+                "title": "Image Left",
+                "class": "Image Image--left"
+            },
+            {
+                "title": "Image Right",
+                "class": "Image Image--right"
+            }
+        ],
+        "tinymce_image_dimensions": "1",
+        "tinymce_image_title": "0",
+        "tinymce_import_stylesheets": [
+            {
+                "import_file": "\/theme\/custom\/css\/main.css"
+            }
+        ],
+        "tinymce_inline_classes": [],
+        "tinymce_link_classes": [],
+        "tinymce_link_rel": [
+            {
+                "title": "Lightbox",
+                "value": "lightbox"
+            }
+        ],
+        "tinymce_link_target": [
+            {
+                "title": "New window",
+                "value": "_blank"
+            }
+        ],
+        "tinymce_paste_as_text": "0",
+        "tinymce_show_contextmenu": "1",
+        "tinymce_table_cell_classes": [],
+        "tinymce_table_classes": [],
+        "tinymce_table_row_classes": [],
+        "tinymce_use_background_color": "0",
+        "tinymce_use_font": "0",
+        "tinymce_use_font_color": "0",
+        "tinymce_use_font_size": "0"
+    },
+    "navigationSettings": {
+        "active_item_class": "is-current",
+        "active_parent_item_class": "is-currentParent",
+        "first_active_parent_item_class": "is-firstParent",
+        "first_item_class": "is-first",
+        "inactive_item_class": "",
+        "last_item_class": "is-last"
+    },
+    "appSettings": []
+}
