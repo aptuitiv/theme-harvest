@@ -526,16 +526,6 @@
                         ]
                     },
                     {
-                        "key": "responsive-embed",
-                        "name": "Responsive Embed",
-                        "type": "full",
-                        "template": "responsive-embed",
-                        "enabled": "1",
-                        "parse": "1",
-                        "description": "",
-                        "fields": []
-                    },
-                    {
                         "key": "_bd-image-small",
                         "name": "Small Image",
                         "type": "full",
@@ -1015,10 +1005,6 @@
         {
             "key": "content-builder\/6-columns-1-6-1-6-1-6-1-6-1-6-1-6",
             "name": "6 Columns (1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6)"
-        },
-        {
-            "key": "content-builder\/responsive-embed",
-            "name": "Responsive Embed"
         },
         {
             "key": "content-builder\/iframe-embed",
