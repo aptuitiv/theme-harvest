@@ -30,12 +30,15 @@ function generateIconSprite() {
         .pipe(svgmin(function (file) {
             var prefix = path.basename(file.relative, path.extname(file.relative));
             return {
-                plugins: [{
-                    cleanupIDs: {
-                        prefix: prefix + '-',
-                        minify: true
-                    }
-                }]
+                plugins: [
+                    {
+                        cleanupIDs: {
+                            prefix: prefix + '-',
+                            minify: true
+                        }
+                    },
+                    {removeViewBox: false}
+                ]
             }
         }))
         .pipe(svgstore({ inlineSvg: true }))
