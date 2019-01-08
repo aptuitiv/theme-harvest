@@ -22,11 +22,8 @@ function watch(done) {
     // Copy static assets
     gulp.watch(config.copy.reduce(util.flatten, []), {events: 'all'}, copy.copy);
 
-    // SVG Icons
-    gulp.watch(config.paths.src.icon, svg.sprite);
-
-    // Theme configuration JSON
-    gulp.watch(config.paths.src.base + '/theme.json', theme.config);
+    // CSS
+    gulp.watch(config.paths.watch.css, {events: 'all'}, css.css);
 
     // Images
     gulp.watch(config.paths.src.img, {events: ['add', 'change']}, image.images)
@@ -37,14 +34,17 @@ function watch(done) {
     // Scripts
     gulp.watch(config.scripts.reduce(util.flatten, []), {events: 'all'}, js.scripts);
 
-    // CSS
-    gulp.watch(config.paths.watch.css, {events: 'all'}, css.css);
+    // SVG Icons
+    gulp.watch(config.paths.src.icon, svg.sprite);
 
     // Theme
     gulp.watch(config.paths.src.theme, {events: ['add', 'change']}, theme.theme)
         .on('unlink', function(file) {
             util.deleteFile(file, config.paths.src.img, config.paths.dist.img, 'image');
         });
+
+    // Theme configuration JSON
+    gulp.watch(config.paths.src.base + '/theme.json', theme.config);
 
     done();
 }
