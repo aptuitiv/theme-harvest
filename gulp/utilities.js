@@ -9,6 +9,7 @@ const fancyLog = require('fancy-log');
 const moment = require('moment');
 
 // Load node modules
+const del = require('del');
 const path = require('path');
 
 
@@ -30,14 +31,19 @@ const banner = [
  * @param {string} type The type of file. Used in the console message
  */
 function deleteFile(file, src, dest, type) {
-    // Output message of what is being deleted
-    $.fancyLog('Deleting ' + type, $.chalk.red(file));
+
     // Get the relative path to the file
     var srcPath = path.relative(path.resolve(src), file);
+
     // Remove "../" from the path as it causes the destination path to be incorrect
     srcPath = srcPath.replace(/(\.\.\/)+/, '');
+
+    // Output message of what is being deleted
+    log(dest + '/' + srcPath, 'Deleting ' + type);
+
     // Combine the destination path and the source path to get the full path to the destination file
-    var destPath = path.resolve(dest, srcPath);
+    let destPath = path.resolve(dest, srcPath);
+
     // Delete the file
     del.sync(destPath);
 }
