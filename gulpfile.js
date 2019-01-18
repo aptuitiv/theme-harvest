@@ -69,6 +69,7 @@ const build = gulp.series(
         image.images,
         js.scripts,
         svg.sprite,
+        theme.config,
         theme.theme
     ),
     theme.push
@@ -90,5 +91,6 @@ module.exports = {
     stylelint: css.stylelint,
     svgSprite: svg.sprite,
     theme: theme.theme,
+    themeConfig: theme.config,
     watch: watch
 };
