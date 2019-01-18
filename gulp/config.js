@@ -113,8 +113,8 @@ module.exports = {
                 dest: ''
             },
             {
-                src: 'config.js',
-                dest: ''
+                src: 'gulp/**/*',
+                dest: 'gulp'
             },
             {
                 src: 'gulpfile.js',
