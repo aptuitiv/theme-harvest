@@ -188,7 +188,7 @@
                         "label": "Logo",
                         "type": "image",
                         "path": "images",
-                        "default": "\/theme\/custom\/images\/logo.svg"
+                        "default": "/theme/custom/images/logo.svg"
                     },
                     {
                         "name": "headerLogoSize",
@@ -197,10 +197,10 @@
                         "options": {
                             "auto": "Auto",
                             "full": "Full Width",
-                            "1of3": "1\/3 Width",
-                            "1of2": "1\/2 Width",
-                            "2of3": "2\/3 Width",
-                            "3of4": "3\/4 Width"
+                            "1of3": "1/3 Width",
+                            "1of2": "1/2 Width",
+                            "2of3": "2/3 Width",
+                            "3of4": "3/4 Width"
                         },
                         "default": "auto",
                         "description": "How much of the width of the header that the logo fills"
@@ -226,7 +226,7 @@
                         "label": "Logo",
                         "type": "image",
                         "path": "images",
-                        "default": "\/theme\/custom\/images\/logo.svg"
+                        "default": "/theme/custom/images/logo.svg"
                     },
                     {
                         "name": "footerLogoSize",
@@ -235,10 +235,10 @@
                         "options": {
                             "auto": "Auto",
                             "full": "Full Width",
-                            "1of3": "1\/3 Width",
-                            "1of2": "1\/2 Width",
-                            "2of3": "2\/3 Width",
-                            "3of4": "3\/4 Width"
+                            "1of3": "1/3 Width",
+                            "1of2": "1/2 Width",
+                            "2of3": "2/3 Width",
+                            "3of4": "3/4 Width"
                         },
                         "default": "auto",
                         "description": "How much of the width of the footer that the logo fills"
@@ -292,7 +292,7 @@
                                         "name": "Image",
                                         "type": "image",
                                         "configuration": {
-                                            "path": "\/images\/columned-feature",
+                                            "path": "/images/columned-feature",
                                             "height": 300,
                                             "width": 300
                                         },
@@ -395,7 +395,7 @@
                                 "name": "Image",
                                 "type": "image",
                                 "configuration": {
-                                    "path": "\/images",
+                                    "path": "/images",
                                     "width": 1200
                                 },
                                 "value": "",
@@ -539,7 +539,7 @@
                                 "name": "Image",
                                 "type": "image",
                                 "configuration": {
-                                    "path": "\/images",
+                                    "path": "/images",
                                     "height": 350,
                                     "width": 350
                                 },
@@ -580,6 +580,487 @@
                                 },
                                 "value": "",
                                 "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "content-grid",
+                        "name": "Content Grid",
+                        "type": "full",
+                        "template": "content-grid",
+                        "enabled": true,
+                        "parse": true,
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "numberOfColumns",
+                                "name": "Number of columns per row",
+                                "type": "select",
+                                "value": "",
+                                "description": "Number of columns to display at the largest screen size.\n\"Auto\" will determine the number of columns based on the number of items.",
+                                "options": [
+                                    {
+                                        "value": "Auto",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "2",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "3",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "4",
+                                        "default": false
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "columns",
+                                "name": "Columns",
+                                "type": "repeating",
+                                "configuration": {
+                                    "collectionItemSort": "1",
+                                    "collectionItemDelete": "1",
+                                    "collectionMinNumItems": "",
+                                    "collectionMaxNumItems": "",
+                                    "collectionOrientation": "vertical",
+                                    "collectionItemName": "Column"
+                                },
+                                "value": "",
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "key": "title",
+                                        "name": "Title",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "link",
+                                        "name": "Link",
+                                        "type": "url",
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "linkText",
+                                        "name": "Link Text",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "Learn More",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "content",
+                                        "name": "Content",
+                                        "type": "richTextEditor",
+                                        "value": "",
+                                        "description": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "image-beside-content",
+                        "name": "Image Beside Content",
+                        "type": "full",
+                        "template": "image-beside-content",
+                        "enabled": true,
+                        "parse": true,
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "rows",
+                                "name": "Rows",
+                                "type": "repeating",
+                                "configuration": {
+                                    "collectionItemSort": "1",
+                                    "collectionItemDelete": "1",
+                                    "collectionMinNumItems": "",
+                                    "collectionMaxNumItems": "",
+                                    "collectionOrientation": "vertical",
+                                    "collectionItemName": "Row"
+                                },
+                                "value": "",
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "key": "heading",
+                                        "name": "Heading",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "image",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "configuration": {
+                                            "path": "/images/staff",
+                                            "height": 500,
+                                            "width": 500
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "alignImage",
+                                        "name": "Align Image",
+                                        "type": "select",
+                                        "value": "",
+                                        "description": "",
+                                        "options": [
+                                            {
+                                                "value": "Left",
+                                                "default": false
+                                            },
+                                            {
+                                                "value": "Right",
+                                                "default": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "key": "content",
+                                        "name": "Content",
+                                        "type": "richTextEditor",
+                                        "value": "",
+                                        "description": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "featured-content-wrapper",
+                        "name": "Featured Content Wrapper",
+                        "type": "grid",
+                        "template": "featured-content-wrapper",
+                        "enabled": true,
+                        "parse": true,
+                        "columns": "1",
+                        "sizes": "12",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "featured-text",
+                        "name": "Featured Text",
+                        "type": "full",
+                        "template": "featured-text",
+                        "enabled": true,
+                        "parse": false,
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "content",
+                                "name": "Content",
+                                "type": "textarea",
+                                "configuration": {
+                                    "allowCode": "no"
+                                },
+                                "value": "",
+                                "description": ""
+                            },
+                            {
+                                "key": "subTitle",
+                                "name": "Sub Title",
+                                "type": "text",
+                                "configuration": {
+                                    "allowCode": "no"
+                                },
+                                "value": "",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "staff",
+                        "name": "Staff",
+                        "type": "full",
+                        "template": "staff",
+                        "enabled": true,
+                        "parse": true,
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "alignImages",
+                                "name": "Align Images",
+                                "type": "select",
+                                "value": "",
+                                "description": "",
+                                "options": [
+                                    {
+                                        "value": "Left",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "Right",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "Center",
+                                        "default": false
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "people",
+                                "name": "People",
+                                "type": "repeating",
+                                "configuration": {
+                                    "collectionItemSort": "1",
+                                    "collectionItemDelete": "1",
+                                    "collectionMinNumItems": "",
+                                    "collectionMaxNumItems": "",
+                                    "collectionOrientation": "vertical",
+                                    "collectionItemName": "Person"
+                                },
+                                "value": "",
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "key": "name",
+                                        "name": "Name",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "title",
+                                        "name": "Title",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "email",
+                                        "name": "Email",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "phoneNumber",
+                                        "name": "Phone Number",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "image",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "configuration": {
+                                            "path": "/images/staff",
+                                            "height": 500,
+                                            "width": 500
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "bio",
+                                        "name": "Bio",
+                                        "type": "richTextEditor",
+                                        "value": "",
+                                        "description": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "image-grid",
+                        "name": "Image Grid",
+                        "type": "full",
+                        "template": "image-grid",
+                        "enabled": true,
+                        "parse": true,
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "numberOfColumns",
+                                "name": "Number of columns per row",
+                                "type": "select",
+                                "value": "",
+                                "description": "Number of columns to display at the largest screen size.\n\"Auto\" will determine the number of columns based on the number of items.",
+                                "options": [
+                                    {
+                                        "value": "Auto",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "2",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "3",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "4",
+                                        "default": false
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "displayTitle",
+                                "name": "Display title",
+                                "type": "select",
+                                "value": "",
+                                "description": "",
+                                "options": [
+                                    {
+                                        "value": "Above Image",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "Below Image",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "Top of Image",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "Centered on Image",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "Bottom of Image",
+                                        "default": false
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "columns",
+                                "name": "Columns",
+                                "type": "repeating",
+                                "configuration": {
+                                    "collectionItemSort": "1",
+                                    "collectionItemDelete": "1",
+                                    "collectionMinNumItems": "",
+                                    "collectionMaxNumItems": "",
+                                    "collectionOrientation": "vertical",
+                                    "collectionItemName": "Column"
+                                },
+                                "value": "",
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "key": "title",
+                                        "name": "Title",
+                                        "type": "text",
+                                        "configuration": {
+                                            "allowCode": "no"
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "image",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "configuration": {
+                                            "path": "/images/grid",
+                                            "height": 500,
+                                            "width": 500
+                                        },
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "link",
+                                        "name": "Link",
+                                        "type": "url",
+                                        "value": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "key": "displayImage",
+                                        "name": "How to Display Image",
+                                        "type": "select",
+                                        "value": "",
+                                        "description": "\"Scale to fit\" means that the image will be scaled to fit in a perfect square.\n\"Fit\" means that the image will be centered but will not be displayed as a perfect square",
+                                        "options": [
+                                            {
+                                                "value": "Scale to fit",
+                                                "default": false
+                                            },
+                                            {
+                                                "value": "Fit",
+                                                "default": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "spacer",
+                        "name": "Spacer",
+                        "type": "full",
+                        "template": "spacer",
+                        "enabled": true,
+                        "parse": true,
+                        "description": "",
+                        "fields": [
+                            {
+                                "key": "size",
+                                "name": "Size",
+                                "type": "select",
+                                "value": "",
+                                "description": "",
+                                "options": [
+                                    {
+                                        "value": "1",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "2",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "3",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "4",
+                                        "default": false
+                                    },
+                                    {
+                                        "value": "5",
+                                        "default": false
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -705,7 +1186,7 @@
                 "elements": [
                     {
                         "key": "_bd-grid2-12-12",
-                        "name": "2 Columns (1\/2 - 1\/2)",
+                        "name": "2 Columns (1/2 - 1/2)",
                         "type": "grid",
                         "template": "2-columns-1-2-1-2",
                         "enabled": true,
@@ -718,7 +1199,7 @@
                     },
                     {
                         "key": "_bd-grid2-13-23",
-                        "name": "2 Columns (1\/3 - 2\/3)",
+                        "name": "2 Columns (1/3 - 2/3)",
                         "type": "grid",
                         "template": "2-columns-1-3-2-3",
                         "enabled": true,
@@ -731,7 +1212,7 @@
                     },
                     {
                         "key": "_bd-grid2-14-34",
-                        "name": "2 Columns (1\/4 - 3\/4)",
+                        "name": "2 Columns (1/4 - 3/4)",
                         "type": "grid",
                         "template": "2-columns-1-4-3-4",
                         "enabled": true,
@@ -744,7 +1225,7 @@
                     },
                     {
                         "key": "_bd-grid2-23-13",
-                        "name": "2 Columns (2\/3 - 1\/3)",
+                        "name": "2 Columns (2/3 - 1/3)",
                         "type": "grid",
                         "template": "2-columns-2-3-1-3",
                         "enabled": true,
@@ -757,7 +1238,7 @@
                     },
                     {
                         "key": "_bd-grid2-34-14",
-                        "name": "2 Columns (3\/4 - 1\/4)",
+                        "name": "2 Columns (3/4 - 1/4)",
                         "type": "grid",
                         "template": "2-columns-3-4-1-4",
                         "enabled": true,
@@ -770,7 +1251,7 @@
                     },
                     {
                         "key": "_bd-grid3-12-14-14",
-                        "name": "3 Columns (1\/2 - 1\/4 - 1\/4)",
+                        "name": "3 Columns (1/2 - 1/4 - 1/4)",
                         "type": "grid",
                         "template": "3-columns-1-2-1-4-1-4",
                         "enabled": true,
@@ -783,7 +1264,7 @@
                     },
                     {
                         "key": "_bd-grid3-13-13-13",
-                        "name": "3 Columns (1\/3 - 1\/3 - 1\/3)",
+                        "name": "3 Columns (1/3 - 1/3 - 1/3)",
                         "type": "grid",
                         "template": "3-columns-1-3-1-3-1-3",
                         "enabled": true,
@@ -796,7 +1277,7 @@
                     },
                     {
                         "key": "_bd-grid3-14-12-14",
-                        "name": "3 Columns (1\/4 - 1\/2 - 1\/4)",
+                        "name": "3 Columns (1/4 - 1/2 - 1/4)",
                         "type": "grid",
                         "template": "3-columns-1-4-1-2-1-4",
                         "enabled": true,
@@ -809,7 +1290,7 @@
                     },
                     {
                         "key": "_bd-grid3-14-14-12",
-                        "name": "3 Columns (1\/4 - 1\/4- 1\/2)",
+                        "name": "3 Columns (1/4 - 1/4- 1/2)",
                         "type": "grid",
                         "template": "3-columns-1-4-1-4-1-2",
                         "enabled": true,
@@ -822,7 +1303,7 @@
                     },
                     {
                         "key": "_bd-grid4-14-14-14-14",
-                        "name": "4 Columns (1\/4 - 1\/4 - 1\/4 - 1\/4)",
+                        "name": "4 Columns (1/4 - 1/4 - 1/4 - 1/4)",
                         "type": "grid",
                         "template": "4-columns-1-4-1-4-1-4-1-4",
                         "enabled": true,
@@ -835,7 +1316,7 @@
                     },
                     {
                         "key": "_bd-grid5-15-15-15-15-15",
-                        "name": "5 Columns (1\/5 - 1\/5 - 1\/5 - 1\/5 - 1\/5)",
+                        "name": "5 Columns (1/5 - 1/5 - 1/5 - 1/5 - 1/5)",
                         "type": "grid",
                         "template": "5-columns-1-5-1-5-1-5-1-5-1-5",
                         "enabled": true,
@@ -848,13 +1329,39 @@
                     },
                     {
                         "key": "_bd-grid6-16-16-16-16-16-16",
-                        "name": "6 Columns (1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6)",
+                        "name": "6 Columns (1/6 - 1/6 - 1/6 - 1/6 - 1/6 - 1/6)",
                         "type": "grid",
                         "template": "6-columns-1-6-1-6-1-6-1-6-1-6-1-6",
                         "enabled": true,
                         "parse": true,
                         "columns": "6",
                         "sizes": "2,2,2,2,2,2",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "2-columns-1-2-1-2-bottom-align",
+                        "name": "2 Columns (1/2 - 1/2) Bottom Align",
+                        "type": "grid",
+                        "template": "2-columns-1-2-1-2-bottom-align",
+                        "enabled": true,
+                        "parse": true,
+                        "columns": "2",
+                        "sizes": "6,6",
+                        "size": "12",
+                        "description": "",
+                        "fields": []
+                    },
+                    {
+                        "key": "2-columns-1-2-1-2-center-align",
+                        "name": "2 Columns (1/2 - 1/2) Center Align",
+                        "type": "grid",
+                        "template": "2-columns-1-2-1-2-center-align",
+                        "enabled": true,
+                        "parse": true,
+                        "columns": "2",
+                        "sizes": "6,6",
                         "size": "12",
                         "description": "",
                         "fields": []
@@ -889,180 +1396,180 @@
             ]
         },
         {
-            "key": "snippets\/pagination",
+            "key": "snippets/pagination",
             "name": "Pagination"
         },
         {
-            "key": "snippets\/header",
+            "key": "snippets/header",
             "name": "Header"
         },
         {
-            "key": "snippets\/footer",
+            "key": "snippets/footer",
             "name": "Footer"
         },
         {
-            "key": "snippets\/svg-icons",
+            "key": "snippets/svg-icons",
             "name": "SVG Icons"
         },
         {
-            "key": "navigation\/embeded-navigation",
+            "key": "navigation/embeded-navigation",
             "name": "Embedded Navigation"
         },
         {
-            "key": "navigation\/sidebar",
+            "key": "navigation/sidebar",
             "name": "Sidebar"
         },
         {
-            "key": "navigation\/main",
+            "key": "navigation/main",
             "name": "Main"
         },
         {
-            "key": "navigation\/footer",
+            "key": "navigation/footer",
             "name": "Footer"
         },
         {
-            "key": "content-builder\/heading-1",
+            "key": "content-builder/heading-1",
             "name": "Heading 1"
         },
         {
-            "key": "content-builder\/heading-2",
+            "key": "content-builder/heading-2",
             "name": "Heading 2"
         },
         {
-            "key": "content-builder\/heading-3",
+            "key": "content-builder/heading-3",
             "name": "Heading 3"
         },
         {
-            "key": "content-builder\/heading-4",
+            "key": "content-builder/heading-4",
             "name": "Heading 4"
         },
         {
-            "key": "content-builder\/heading-5",
+            "key": "content-builder/heading-5",
             "name": "Heading 5"
         },
         {
-            "key": "content-builder\/heading-6",
+            "key": "content-builder/heading-6",
             "name": "Heading 6"
         },
         {
-            "key": "content-builder\/html-code",
+            "key": "content-builder/html-code",
             "name": "HTML Code"
         },
         {
-            "key": "content-builder\/content",
+            "key": "content-builder/content",
             "name": "Content"
         },
         {
-            "key": "content-builder\/large-image",
+            "key": "content-builder/large-image",
             "name": "Full Width Image"
         },
         {
-            "key": "content-builder\/small-image",
+            "key": "content-builder/small-image",
             "name": "Small Image"
         },
         {
-            "key": "content-builder\/form",
+            "key": "content-builder/form",
             "name": "Form"
         },
         {
-            "key": "content-builder\/2-columns-1-2-1-2",
-            "name": "2 Columns (1\/2 - 1\/2)"
+            "key": "content-builder/2-columns-1-2-1-2",
+            "name": "2 Columns (1/2 - 1/2)"
         },
         {
-            "key": "content-builder\/2-columns-1-3-2-3",
-            "name": "2 Columns (1\/3 - 2\/3)"
+            "key": "content-builder/2-columns-1-3-2-3",
+            "name": "2 Columns (1/3 - 2/3)"
         },
         {
-            "key": "content-builder\/2-columns-2-3-1-3",
-            "name": "2 Columns (2\/3 - 1\/3)"
+            "key": "content-builder/2-columns-2-3-1-3",
+            "name": "2 Columns (2/3 - 1/3)"
         },
         {
-            "key": "content-builder\/2-columns-1-4-3-4",
-            "name": "2 Columns (1\/4 - 3\/4)"
+            "key": "content-builder/2-columns-1-4-3-4",
+            "name": "2 Columns (1/4 - 3/4)"
         },
         {
-            "key": "content-builder\/2-columns-3-4-1-4",
-            "name": "2 Columns (3\/4 - 1\/4)"
+            "key": "content-builder/2-columns-3-4-1-4",
+            "name": "2 Columns (3/4 - 1/4)"
         },
         {
-            "key": "content-builder\/3-columns-1-3-1-3-1-3",
-            "name": "3 Columns (1\/3 - 1\/3 - 1\/3)"
+            "key": "content-builder/3-columns-1-3-1-3-1-3",
+            "name": "3 Columns (1/3 - 1/3 - 1/3)"
         },
         {
-            "key": "content-builder\/3-columns-1-2-1-4-1-4",
-            "name": "3 Columns (1\/2 - 1\/4 - 1\/4)"
+            "key": "content-builder/3-columns-1-2-1-4-1-4",
+            "name": "3 Columns (1/2 - 1/4 - 1/4)"
         },
         {
-            "key": "content-builder\/3-columns-1-4-1-2-1-4",
-            "name": "3 Columns (1\/4 - 1\/2 - 1\/4)"
+            "key": "content-builder/3-columns-1-4-1-2-1-4",
+            "name": "3 Columns (1/4 - 1/2 - 1/4)"
         },
         {
-            "key": "content-builder\/3-columns-1-4-1-4-1-2",
-            "name": "3 Columns (1\/4 - 1\/4- 1\/2)"
+            "key": "content-builder/3-columns-1-4-1-4-1-2",
+            "name": "3 Columns (1/4 - 1/4- 1/2)"
         },
         {
-            "key": "content-builder\/4-columns-1-4-1-4-1-4-1-4",
-            "name": "4 Columns (1\/4 - 1\/4 - 1\/4 - 1\/4)"
+            "key": "content-builder/4-columns-1-4-1-4-1-4-1-4",
+            "name": "4 Columns (1/4 - 1/4 - 1/4 - 1/4)"
         },
         {
-            "key": "content-builder\/5-columns-1-5-1-5-1-5-1-5-1-5",
-            "name": "5 Columns (1\/5 - 1\/5 - 1\/5 - 1\/5 - 1\/5)"
+            "key": "content-builder/5-columns-1-5-1-5-1-5-1-5-1-5",
+            "name": "5 Columns (1/5 - 1/5 - 1/5 - 1/5 - 1/5)"
         },
         {
-            "key": "content-builder\/6-columns-1-6-1-6-1-6-1-6-1-6-1-6",
-            "name": "6 Columns (1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6 - 1\/6)"
+            "key": "content-builder/6-columns-1-6-1-6-1-6-1-6-1-6-1-6",
+            "name": "6 Columns (1/6 - 1/6 - 1/6 - 1/6 - 1/6 - 1/6)"
         },
         {
-            "key": "content-builder\/iframe-embed",
+            "key": "content-builder/iframe-embed",
             "name": "Iframe Embed"
         },
         {
-            "key": "content-builder\/media-embed",
+            "key": "content-builder/media-embed",
             "name": "Media Embed"
         },
         {
-            "key": "content-builder\/columned-feature",
+            "key": "content-builder/columned-feature",
             "name": "Columned Feature"
         },
         {
-            "key": "content-builder\/content-with-background",
+            "key": "content-builder/content-with-background",
             "name": "Content with Background"
         },
         {
-            "key": "content-layouts\/header",
+            "key": "content-layouts/header",
             "name": "Header"
         },
         {
-            "key": "content-layouts\/full-width-image",
+            "key": "content-layouts/full-width-image",
             "name": "Full Width Image"
         },
         {
-            "key": "forms\/grid",
+            "key": "forms/grid",
             "name": "Grid"
         },
         {
-            "key": "forms\/label-above-field",
+            "key": "forms/label-above-field",
             "name": "Label Above Field"
         },
         {
-            "key": "search\/search-results",
+            "key": "search/search-results",
             "name": "Search Results",
             "type": "results"
         },
         {
-            "key": "search\/search-form",
+            "key": "search/search-form",
             "name": "Search Form",
             "type": "search"
         },
         {
-            "key": "search\/forms\/search",
+            "key": "search/forms/search",
             "name": "Default Template",
             "type": "form",
             "default": true,
             "formKey": "search"
         },
         {
-            "key": "search\/forms\/search-header",
+            "key": "search/forms/search-header",
             "name": "Default Template",
             "type": "form",
             "default": true,
@@ -1071,16 +1578,16 @@
     ],
     "siteSettings": {
         "breadcrumb_active_template": "{{ item.text }}",
-        "breadcrumb_container_template": "<div class=\"breadcrumb\">{{ breadcrumb }}<\/div>",
-        "breadcrumb_custom_template": "<div class=\"Breadcrumb\">\n    {% for item in items %}\n        {% if item.isActive %}\n            {{ item.text }}\n        {% else %}\n            <a href=\"{{ item.link }}\" class=\"Breadcrumb-link\">{{ item.text }}<\/a> &gt;\n        {% endif %}\n    {% endfor %}\n<\/div>",
-        "breadcrumb_inactive_template": "<a href=\"{{ item.link }}\">{{ item.text }}<\/a>",
+        "breadcrumb_container_template": "<div class=\"breadcrumb\">{{ breadcrumb }}</div>",
+        "breadcrumb_custom_template": "<div class=\"Breadcrumb\">\n    {% for item in items %}\n        {% if item.isActive %}\n            {{ item.text }}\n        {% else %}\n            <a href=\"{{ item.link }}\" class=\"Breadcrumb-link\">{{ item.text }}</a> &gt;\n        {% endif %}\n    {% endfor %}\n</div>",
+        "breadcrumb_inactive_template": "<a href=\"{{ item.link }}\">{{ item.text }}</a>",
         "breadcrumb_separator": " &gt; ",
         "breadcrumb_template_type": "custom",
         "customFavicon": "",
         "doctype": "HTML5",
-        "navigationImagePath": "\/images\/navigation\/",
+        "navigationImagePath": "/images/navigation/",
         "public_admin_bar_enabled": "no",
-        "robotsText": "User-agent: *\nDisallow: \/",
+        "robotsText": "User-agent: *\nDisallow: /",
         "tinymce_allow_scripts": "0",
         "tinymce_allow_unsafe_link_target_protection": "1",
         "tinymce_block_classes": [],
@@ -1168,7 +1675,7 @@
         "tinymce_image_title": "0",
         "tinymce_import_stylesheets": [
             {
-                "import_file": "\/theme\/custom\/css\/main.css"
+                "import_file": "/theme/custom/css/main.css"
             }
         ],
         "tinymce_inline_classes": [],
@@ -1243,7 +1750,7 @@
             "additional_breadcrumb_links": "",
             "additional_login_field": "",
             "avatar_height": "48",
-            "avatar_image_path": "\/images\/account\/avatar\/",
+            "avatar_image_path": "/images/account/avatar/",
             "avatar_width": "48",
             "breadcrumb_text": "My Account",
             "contacts_enabled": "1",
@@ -1276,7 +1783,7 @@
             "login_method": "username_password",
             "login_redirect_custom": "0",
             "login_redirect_referrer": "1",
-            "login_redirect_url": "\/account",
+            "login_redirect_url": "/account",
             "login_title": "Login",
             "myaccount_body_class": "",
             "myaccount_css_files": "",
@@ -1289,7 +1796,7 @@
             "myaccount_title": "My Account",
             "not_allowed_body_class": "",
             "not_allowed_breadcrumb": "Not Allowed",
-            "not_allowed_content": "<p>You are not allowed to access that page.<\/p>",
+            "not_allowed_content": "<p>You are not allowed to access that page.</p>",
             "not_allowed_css_files": "",
             "not_allowed_footer": "",
             "not_allowed_header": "",
@@ -1305,7 +1812,7 @@
             "password_reset_css_files": "",
             "password_reset_email_from_email": "hello@harvest-theme.branchcms.com",
             "password_reset_email_from_name": "harvest-theme.branchcms.com",
-            "password_reset_email_html": "<html>\r\n<head>\r\n\t<meta http-equiv=\"Content-Type\" content=\"text\/html; charset=utf-8\" \/>\r\n<\/head>\r\n<body>\r\n\t<p>Your request to reset your password has been processed. Your new password is: {#account.newPassword}<\/p>  \r\n\t<p>You can go to <a href=\"{#urls.login}\">{#urls.login}<\/a> to log in.<\/p>\r\n\t<p>Once you log in you can change your password.<\/p>\r\n<\/body>\r\n<\/html>",
+            "password_reset_email_html": "<html>\r\n<head>\r\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n</head>\r\n<body>\r\n\t<p>Your request to reset your password has been processed. Your new password is: {#account.newPassword}</p>  \r\n\t<p>You can go to <a href=\"{#urls.login}\">{#urls.login}</a> to log in.</p>\r\n\t<p>Once you log in you can change your password.</p>\r\n</body>\r\n</html>",
             "password_reset_email_subject": "Password Reset",
             "password_reset_email_text": "Your request to reset your password has been processed. Your new password is: {#account.newPassword}  \r\n\r\nYou can go to {#urls.login} to log in.\r\n\r\nOnce you log in you can change your password.",
             "password_reset_footer": "",
@@ -2004,7 +2511,7 @@
                             "description": "",
                             "type": "image",
                             "configuration": {
-                                "path": "\/images\/header",
+                                "path": "/images/header",
                                 "height": 833,
                                 "width": 2000
                             },
@@ -2017,7 +2524,7 @@
                             "description": "",
                             "type": "image",
                             "configuration": {
-                                "path": "\/images\/header",
+                                "path": "/images/header",
                                 "height": 500,
                                 "width": 1200
                             },
@@ -2030,7 +2537,7 @@
                             "description": "",
                             "type": "image",
                             "configuration": {
-                                "path": "\/images\/header",
+                                "path": "/images/header",
                                 "height": 250,
                                 "width": 600
                             },
@@ -2085,7 +2592,7 @@
                             "description": "Recommended size: 1200px by 400px",
                             "type": "image",
                             "configuration": {
-                                "path": "\/images\/header",
+                                "path": "/images/header",
                                 "width": 1200
                             },
                             "size": "medium",
@@ -2097,7 +2604,7 @@
                             "description": "",
                             "type": "image",
                             "configuration": {
-                                "path": "\/images\/header",
+                                "path": "/images/header",
                                 "width": 600
                             },
                             "size": "medium",

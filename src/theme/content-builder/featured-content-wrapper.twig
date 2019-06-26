@@ -1,0 +1,7 @@
+<div class="FeaturedContent">
+    {% for column in columns %}
+        {% for element in column.elements %}
+            {{ element.content }}
+        {% endfor %}
+    {% endfor %}
+</div>
