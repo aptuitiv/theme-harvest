@@ -63,6 +63,61 @@
     --theme-typography-fontFamily: var(--theme-typography-sans-serif);
 }
 
+/* Content Grid */
+
+:root {
+    --theme-content-grid-title-color: var(--theme-primary-color);
+    --theme-content-grid-title-hover-color: var(--theme-primary-color);
+}
+
+:root {
+    --theme-image-grid-title-background: var(--theme-primary-color);
+    --theme-image-grid-title-color: #fff;
+    --theme-image-grid-title-font-size: 1.2em;
+    --theme-image-grid-title-font-weight: 300;
+    --theme-image-grid-title-hover-background: color(var(--theme-primary-color) shade(40%));
+    --theme-image-grid-title-hover-color: #fff;
+    --theme-image-grid-hover-background: color(var(--theme-primary-color) shade(40%));
+    --theme-image-grid-hover-color: #fff;
+    --theme-image-grid-cover-background: color(var(--theme-primary-color) shade(40%));
+    --theme-image-grid-title-cover-color: #fff;
+}
+
+/* General Component Styles */
+
+:root {
+    --theme-component-top-margin: 20px;
+}
+
+/* Featured Content */
+
+:root {
+    --theme-feature-top-margin: 60px;
+}
+
+/* Featured Content */
+
+:root {
+    --theme-featured-content-background: var(--theme-primary-color);
+    --theme-featured-content-heading-color: #efdbd5;
+    --theme-featured-content-color: #fff;
+    --theme-featured-button-background: #fff;
+    --theme-featured-button-color: var(--theme-primary-color);
+    --theme-featured-button-background-hover: color(var(--theme-primary-color) shade(40%));
+    --theme-featured-button-color-hover: #fff;
+}
+
+/* Image Grid */
+
+:root {
+    --theme-image-grid-title-background: #008372;
+    --theme-image-grid-title-color: #fff;
+    --theme-image-grid-title-font-size: 1.2em;
+    --theme-image-grid-title-font-weight: 300;
+    --theme-image-grid-title-hover-background: #006a5c;
+    --theme-image-grid-title-hover-color: #fff;
+}
+
 /* Links & Buttons */
 
 :root {
