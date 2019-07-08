@@ -1,3 +1,5 @@
+{% import 'macros/macros' as macros %}
+
 {% if alignImages != 'Center' %}
     {% for person in people %}
         {% set size = 'u-sizeFull' %}
@@ -69,7 +71,7 @@
                         <div class="StaffGrid-text"><a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a></div>
                     {% endif %}
                     {% if person.email %}
-                        <div class="StaffGrid-iconWrap"><a href="mailto:{{ person.email }}"><svg class="Icon StaffGrid-icon"><use xlink:href="#icon-envelope" /></svg></a></div>
+                        <div class="StaffGrid-iconWrap"><a href="mailto:{{ person.email }}"> {{ macros.iconImg("envelope", "Mail to " ~ person.name, "Icon StaffGrid-icon") }} </a></div>
                     {% endif %}
                 </div>
             </div>
