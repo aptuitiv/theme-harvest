@@ -34,7 +34,7 @@
                     <div class="Grid-cell u-size1of3 u-md-hide">
                         {% if _core.theme.settings.headerShowSocial == 'yes' %}
                             {% for social in _core.theme.settings.social %}
-                                <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="TopBar-social"> {{ macros.iconImg(social.icon, social.name, "Icon") }} </a>
+                                <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="TopBar-social"> {{ macros.iconImg(social.icon, social.name) }} </a>
                             {% endfor %}
                         {% endif %}
                     </div>
