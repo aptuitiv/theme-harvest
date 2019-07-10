@@ -1,0 +1,40 @@
+{% if columns %}
+    {# Set the column classes based on the number of columns #}
+
+    {% set count = numberOfColumns == 'Auto' ? columns|length : numberOfColumns %}
+    {% if count == null %}
+        {% set count = columns|length %}
+    {% endif %}
+
+    {% if count % 4 == 0 %}
+        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count % 3 == 0 %}
+        {% set class = 'u-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count == 2 %}
+        {% set class = 'u-size1of2 u-sm-sizeFull' %}
+    {% elseif count > 4 %}
+        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count == 1 %}
+        {% set class = 'Grid-cell--center u-sm-sizeFull' %}
+    {% endif %}
+
+    <div class="Grid Grid--withGutterLg ContentGrid">
+        {% for column in columns %}
+            <div class="Grid-cell {{ class }} ContentGrid-cell">
+                <div class="ContentGrid-item">
+                    {% if column.title %}
+                        {% if column.link %}
+                            <div class="ContentGrid-title"><a href="{{ column.link }}" class="ContentGrid-link">{{ column.title }}</a></div>
+                        {% else %}
+                            <div class="ContentGrid-title">{{ column.title }}</div>
+                        {% endif %}
+                    {% endif %}
+                    <div class="ContentGrid-content">{{ column.content }}</div>
+                    {% if column.link %}
+                        <a href="{{ column.link }}" class="Button ContentGrid-button">{{ column.linkText ?: 'Learn More' }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

@@ -1,0 +1,24 @@
+{% for row in rows %}
+    {% set size = 'u-sizeFull' %}
+    {% if row.image %}
+        {% set size = 'u-size3of4 u-lg-size2of3 u-md-sizeFull' %}
+        {% if row.image.alt|length == 0 %}
+            {% set row.image.alt = row.name %}
+        {% endif %}
+        {% set row.image.class = 'u-sizeFull u-lg-sizeAuto u-sm-sizeFull' %}
+    {% endif %}
+    <div class="Grid Grid--withGutter u-margBottom3">
+        {% if row.image %}
+            <div class="Grid-cell u-size1of4 u-lg-size1of3 u-md-hide{% if row.alignImage == 'Right' %} u-push3of4 u-lg-push2of3 u-md-pushNone{% endif %}">
+                {{ row.image.tag }}
+            </div>
+        {% endif %}
+        <div class="Grid-cell {{ size }}{% if row.alignImage == 'Right' %} u-pull1of4 u-lg-pull1of3 u-md-pullNone{% endif %}">
+            <h2 class="u-margBottom1">{{ row.heading }}</h2>
+            {% if row.image %}
+                <div class="u-hidden u-md-show">{{ row.image.tag }}</div>
+            {% endif %}
+            {{ row.content }}
+        </div>
+    </div>
+{% endfor %}

@@ -1,3 +1,5 @@
+{% import 'macros/macros' as macros %}
+
 <!doctype html>
 <html>
 <head>
@@ -32,7 +34,7 @@
                     <div class="Grid-cell u-size1of3 u-md-hide">
                         {% if _core.theme.settings.headerShowSocial == 'yes' %}
                             {% for social in _core.theme.settings.social %}
-                                <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="TopBar-social"><svg class="Icon"><use xlink:href="#icon-{{ social.icon }}" /></svg></a>
+                                <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="TopBar-social"> {{ macros.iconImg(social.icon, social.name) }} </a>
                             {% endfor %}
                         {% endif %}
                     </div>

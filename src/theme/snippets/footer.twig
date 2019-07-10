@@ -1,3 +1,5 @@
+{% import 'macros/macros' as macros %}
+
 <div class="Footer">
     <div class="Container">
         {% if _core.theme.settings.footerLogo %}
@@ -11,7 +13,7 @@
         <div class="u-margBottom2">
             {% if _core.theme.settings.footerShowSocial == 'yes' %}
                 {% for social in _core.theme.settings.social %}
-                    <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="Footer-social"><svg class="Icon"><use xlink:href="#icon-{{ social.icon }}" /></svg></a>
+                    <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="Footer-social"> {{ macros.iconImg(social.icon, social.name) }} </a>
                 {% endfor %}
             {% endif %}
         </div>

@@ -1,29 +1,37 @@
 {# Macro that handles building sub navigation #}
-{% macro menu_sub_items(items) %}
-    <ul class="Dropdown-menu">
+{# Aria attributes based on https://stackoverflow.com/questions/12279113/recommended-wai-aria-implementation-for-navigation-bar-menu #}
+{% macro menu_sub_items(items, parentItemId) %}
+    <ul class="Dropdown-menu js-dropdownMenu" role="menu"{% if parentItemId %} aria-labelledby="{{ parentItemId }}"{% endif %} aria-expanded="false" aria-hidden="true">
         {% for item in items %}
             {% if item.parent %}
                 {% if item.link.href != item.parent.link.href %}
                     {# Duplicate the navigation item for the mobile menu #}
                     {% set item.parent.link.class = "Dropdown-link" %}
-                    <li class="Dropdown-item Dropdown-item--smallScreen">{{ item.parent.link.tag }}</li>
+                    {% set item.parent.link.id = '' %}
+                    <li class="Dropdown-item Dropdown-item--smallScreen js-skip" role="presentation">{{ item.parent.link.tag }}</li>
                 {% endif %}
             {% endif %}
             {# ASSIGN SUB MENU ITEM CLASS #}
             {% set class = "Dropdown-item " ~ item.link.class %}
-            <li class="{{ class|trim }}">
+            {% if item.subItems %}
+                {% set class = class ~ ' js-dropdownParent' %}
+            {% endif %}
+            <li class="{{ class|trim }}" role="presentation">
                 {# ASSIGN SUB MENU LINK CLASS #}
-                {% set item.link.class = item.link.class ~ " Dropdown-link" %}
+                {% set item.link.class = item.link.class ~ " Dropdown-link js-navLink" %}
                 {% if item.subItems %}
                     {% set item.link.class = item.link.class ~ " Dropdown-link--parent js-dropdown" %}
+                    {% do item.link.set('aria-haspopup', 'true') %}
+                    {% set item.link.id = random_string(8) %}
                 {% endif %}
+                {% set item.link.role = 'menuitem' %}
                 {{ item.link.tag }}
 
                 {% if item.subItems %}
                     {# Set the item as the first sub item's parent to be used to optionaly duplicate it as the first item in the dropdown #}
                     {% set item.subItems.0.parent = item %}
                     {% import _self as macros %}
-                    {{ macros.menu_sub_items(item.subItems) }}
+                    {{ macros.menu_sub_items(item.subItems, item.link.id) }}
                 {% endif %}
             </li>
         {% endfor %}
@@ -35,27 +43,29 @@
 
 
 {# ASSIGN MENU CLASS #}
-{% set menu.class = menu.class ~ ' MainNav js-mainNav' %}
-<ul{{menu.class.attr}}{{ menu.id.attr }}>
+{% set menu.class = menu.class ~ ' MainNav js-mainNav MainNav--' ~ _core.theme.settings.navigationStyle %}
+<ul{{menu.class.attr}}{{ menu.id.attr }} data-access-nav role="menubar">
     {% for item in items %}
         {# ASSIGN MENU ITEM CLASS #}
         {% set class = "MainNav-item " ~ item.link.class %}
         {% if item.subItems %}
-            {% set class = class ~ " Dropdown" %}
+            {% set class = class ~ " Dropdown js-dropdownParent" %}
         {% endif %}
-        <li class="{{ class|trim }}">
+        <li class="{{ class|trim }}" role="presentation">
             {# ASSIGN MENU LINK CLASS #}
-            {% set item.link.class = item.link.class ~ ' MainNav-link' %}
+            {% set item.link.class = item.link.class ~ ' MainNav-link js-navLink' %}
             {% if item.subItems %}
                 {% set item.link.class = item.link.class ~ ' is-dropdown js-dropdown' %}
+                {% do item.link.set('aria-haspopup', 'true') %}
+                {% set item.link.id = random_string(8) %}
             {% endif %}
+            {% set item.link.role = 'menuitem' %}
             {{ item.link.tag }}
 
             {% if item.subItems %}
                 {# Set the item as the first sub item's parent to be used to optionaly duplicate it as the first item in the dropdown #}
                 {% set item.subItems.0.parent = item %}
-
-                {{ macros.menu_sub_items(item.subItems) }}
+                {{ macros.menu_sub_items(item.subItems, item.link.id) }}
             {% endif %}
         </li>
     {% endfor %}

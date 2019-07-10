@@ -1,0 +1,97 @@
+{% import 'macros/macros' as macros %}
+
+{% if alignImages != 'Center' %}
+    {% for person in people %}
+        {% set size = 'u-sizeFull' %}
+        {% set pull = '' %}
+        {% if person.image %}
+            {% set size = 'u-size3of4 u-lg-size2of3 u-md-sizeFull' %}
+            {% set pull = 'u-pull1of4 u-lg-pull1of3 u-md-pullNone' %}
+            {% if person.image.alt|length == 0 %}
+                {% set person.image.alt = person.name %}
+            {% endif %}
+            {% set person.image.class = 'u-sizeFull u-lg-sizeAuto u-sm-sizeFull' %}
+        {% endif %}
+        <div class="Grid Grid--withGutter u-margBottom3">
+            {% if person.image %}
+                <div class="Grid-cell u-size1of4 u-lg-size1of3 u-md-hide{% if alignImages == 'Right' %} u-push3of4 u-lg-push2of3{% endif %}">
+                    {{ person.image.tag }}
+                </div>
+            {% endif %}
+            <div class="Grid-cell {{ size }}{% if alignImages == 'Right' %} {{ pull }}{% endif %}">
+                <h2 class="u-margBottom1">{{ person.name }}</h2>
+                {% if person.title %}
+                    <div class="u-fontSizeH4">{{ person.title }}</div>
+                {% endif %}
+                {% if person.email %}
+                    <div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>
+                {% endif %}
+                {% if person.phoneNumber %}
+                    <div><a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a></div>
+                {% endif %}
+                {% if person.image %}
+                    <div class="u-hidden u-md-show">{{ person.image.tag }}</div>
+                {% endif %}
+                {{ person.bio }}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    {# Set the column classes based on the number of columns #}
+    {% set count = people|length  %}
+
+    {% if count % 4 == 0 %}
+        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count % 3 == 0 %}
+        {% set class = 'u-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count == 2 %}
+        {% set class = 'u-size1of2 u-sm-sizeFull' %}
+    {% elseif count > 4 %}
+        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count == 1 %}
+        {% set class = 'Grid-cell--center u-sm-sizeFull' %}
+    {% endif %}
+
+    <div class="Grid Grid--withGutter Grid--equalHeight ImageGrid">
+        {% for person in people %}
+            {% if person.image %}
+                {% if person.image.alt|length == 0 %}
+                    {% set person.image.alt = person.name %}
+                {% endif %}
+                {% set person.image.class = 'ImageGrid-image' %}
+            {% endif %}
+            <div class="Grid-cell {{ class }} ImageGrid-col">
+                <div class="ImageGrid-item">
+                    <div class="StaffGrid-image">{{ person.image.tag }}</div>
+                    <div class="StaffGrid-text">{{ person.name }}</div>
+                    {% if person.title %}
+                        <div class="StaffGrid-text">{{ person.title }}</div>
+                    {% endif %}
+                    {% if person.phoneNumber %}
+                        <div class="StaffGrid-text"><a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a></div>
+                    {% endif %}
+                    {% if person.email %}
+                        <div class="StaffGrid-iconWrap"><a href="mailto:{{ person.email }}"> {{ macros.iconImg("envelope", "Mail to " ~ person.name, "StaffGrid-icon") }} </a></div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        {% for column in columns %}
+
+
+                {% if column.link %}
+                    <a href="{{ column.link }}" class="ImageGrid-item ImageGrid-link">
+                {% else %}
+                    <div class="ImageGrid-item">
+                {% endif %}
+                {% if column.title and displayTitle != 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
+                    {{ column.image.tag }}
+                {% if column.title and displayTitle == 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
+                {% if column.link %}
+                    </a>
+                {% else %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
