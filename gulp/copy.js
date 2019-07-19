@@ -19,17 +19,21 @@ const tap = require('gulp-tap');
 /**
  * Copy Static assets
  */
-function copy() {
-    let assets = config.copy.map(function (entry) {
-        return gulp.src(entry.src)
-            .pipe(newer(config.paths.dist.base + '/' + entry.dest))
-            .pipe(tap((file) => {
-                util.logFileTo('Copying', file, config.paths.dist.base + '/' + entry.dest);
-            }))
-            .pipe(plumber({errorHandler: util.onError}))
-            .pipe(gulp.dest(config.paths.dist.base + '/' + entry.dest));
-    });
-    return mergeStream(assets);
+function copy(cb) {
+    if (config.copy.length > 0) {
+        let assets = config.copy.map(function(entry) {
+            return gulp.src(entry.src)
+                .pipe(newer(config.paths.dist.base + '/' + entry.dest))
+                .pipe(tap((file) => {
+                    util.logFileTo('Copying', file, config.paths.dist.base + '/' + entry.dest);
+                }))
+                .pipe(plumber({errorHandler: util.onError}))
+                .pipe(gulp.dest(config.paths.dist.base + '/' + entry.dest));
+        });
+        return mergeStream(assets);
+    } else {
+        return cb();
+    }
 }
 
 // Set the display properties of the copy function
