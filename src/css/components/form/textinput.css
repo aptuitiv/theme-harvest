@@ -1,0 +1,10 @@
+/* =========================================================================== *\
+    REQUIRED MESSAGE
+\* =========================================================================== */
+
+/** @define IextInput */
+
+.TextInput:focus {
+    outline: 1px dotted #212121;
+    outline: auto 5px -webkit-focus-ring-color;
+}

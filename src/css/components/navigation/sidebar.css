@@ -52,7 +52,7 @@
 
 .SidebarNav-link--isParent.is-current,
 .SidebarNav-link--isParent.is-currentParent {
-    color: var(--theme-primary-color);
+    color: color(var(--theme-primary-color) shade(10%));
 }
 
 .SidebarNav-link--indent {
@@ -64,4 +64,3 @@
     float: left;
     padding-top: 4px;
 }
-

@@ -26,3 +26,7 @@
 .Content-shaded *:last-child {
     margin-bottom: 0;
 }
+
+.Content-shaded a {
+    color: color(var(--theme-primary-color) shade(10%));
+}
