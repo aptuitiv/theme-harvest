@@ -19,6 +19,7 @@
 <div class="u-hiddenVisually" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
     {% spaceless %}
     <header role="banner">
+        <a class="Header-skipToMain" href="#main">skip to main content {{ macros.iconAriaHidden("chevron-small-right") }}</a>
         {% if _core.theme.settings.headerLogo %}
             {% if _core.theme.settings.headerLogo.alt|length == 0 %}
                 {% set _core.theme.settings.headerLogo.alt = _core.theme.settings.company %}

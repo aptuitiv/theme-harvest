@@ -5,7 +5,7 @@
     {% endif %}
     <div class="Content">
         {{ _page.content('header') }}
-        {{ _page.content() }}
+        <main id="main">{{ _page.content() }}</main>
     </div>
 </div>
 {%  include 'snippets/footer' %}

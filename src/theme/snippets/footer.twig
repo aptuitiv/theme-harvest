@@ -1,6 +1,6 @@
 {% import 'macros/macros' as macros %}
 
-<div class="Footer">
+<footer class="Footer">
     <div class="Container">
         {% if _core.theme.settings.footerLogo %}
             {% if _core.theme.settings.footerLogo.alt|length == 0 %}
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-</div>
+</footer>
 <script src="{{ 'js/main.js'|theme_url }}"></script>
 {{ _page.js() }}
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>

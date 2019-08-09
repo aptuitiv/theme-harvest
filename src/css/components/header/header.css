@@ -15,3 +15,24 @@
         padding: 2rem var(--g-gutter-sm);
     }
 }
+
+.Header-skipToMain {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    width: 1px;
+    z-index: 100;
+}
+
+.Header-skipToMain:focus {
+    background-color: #fff;
+    color: var(--theme-primary-color);
+    font-weight: bold;
+    height: auto;
+    left: 10px;
+    padding: 5px 10px;
+    text-decoration: underline;
+    width: auto;
+}
