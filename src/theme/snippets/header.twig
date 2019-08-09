@@ -83,10 +83,10 @@
                     <a href="/" title="Back to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
                 </div>
             {% endif %}
-            <div class="NavBar">
+            <nav class="NavBar">
                 <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
                 {{ _api.navigation.get.key('main') }}
-            </div>
+            </nav>
         </div>
     </header>
     {% endspaceless %}
