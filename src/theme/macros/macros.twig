@@ -3,7 +3,7 @@
     {% spaceless %}
         {% set class = (class ~ ' Icon')|trim %}
         {% set id = 'iconTitle-' ~ random_string(6) %}
-        <svg class="{{ class }}" role="img" aria-labelledby="{{ id }}" focusable="false"><title id="{{ id }}">{{ title }}</title><use xlink:href="#icon-{{ icon }}" /></svg>
+        <svg class="{{ class }}" role="img" alt="{{ title }}" aria-labelledby="{{ id }}" focusable="false"><title id="{{ id }}">{{ title }}</title><use xlink:href="#icon-{{ icon }}" /></svg>
     {% endspaceless %}
 {% endmacro %}
 
