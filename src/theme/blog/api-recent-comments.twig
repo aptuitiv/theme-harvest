@@ -1,0 +1,12 @@
+{# RECENT COMMENTS API #}
+{% if comments %}
+    <div class="SidebarBox">
+        <div class="SidebarBox-heading">Recent Comments</div>
+        {% for comment in comments %}
+            <div class="SidebarBox-item">
+                <div class="SidebarBox-secondary">{{ comment.createdOnDate }} at {{ comment.createdOnTime }}</div>
+                <a href="{{ comment.url }}">{{ comment.postTitle }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

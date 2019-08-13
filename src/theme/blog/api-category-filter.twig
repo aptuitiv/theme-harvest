@@ -1,0 +1,12 @@
+{# CATEGORY FILTER API #}
+{% if categories %}
+    <div class="SidebarBox">
+        <div class="SidebarBox-heading">Categories</div>
+        {% for category in categories %}
+            <div class="SidebarBox-item">
+                <a href="{{ category.url }}">{{ category.categoryName }}</a>
+                <span class="SidebarBox-secondary"> - {{ category.postCount }} post{% if category.postCount > 1 %}s{% endif %}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

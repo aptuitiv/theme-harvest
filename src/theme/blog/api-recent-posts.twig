@@ -1,0 +1,12 @@
+{# RECENT POSTS API #}
+{% if postCount > 0 %}
+    <div class="SidebarBox">
+        <div class="SidebarBox-heading">Recent Posts</div>
+        {% for post in posts %}
+            <div class="SidebarBox-item">
+                <div class="SidebarBox-secondary">{{ post.publishedOnDate }}</div>
+                <a href="{{ post.url }}">{{ post.postTitle }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

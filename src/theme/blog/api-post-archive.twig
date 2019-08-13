@@ -1,0 +1,12 @@
+{# POST ARCHIVE API #}
+{% if years %}
+    <div class="SidebarBox">
+        <div class="SidebarBox-heading">Archives</div>
+        {% for year in years %}
+            <div class="SidebarBox-item">
+                <a href="{{ year.url }}">{{ year.year }} </a>
+                <span class="SidebarBox-secondary">({{ year.postCount }})</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

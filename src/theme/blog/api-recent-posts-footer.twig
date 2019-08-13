@@ -1,0 +1,20 @@
+{# RECENT POSTS API #}
+{% if posts %}
+    <div class="BlogFeed">
+        <div class="Container">
+            <div class="BlogFeed-header">News</div>
+            {% for post in posts %}
+                <div class="BlogFeed-item">
+                    <div class="Grid Grid--withGutter">
+                        <div class="Grid-cell u-size1of5 u-lg-size1of4 u-md-size1of3 u-sm-sizeFull">
+                            <div class="BlogFeed-date">{{ post.publishedOnDate }}</div>
+                        </div>
+                        <div class="Grid-cell u-size4of5 u-lg-size3of4 u-md-size2of3 u-sm-sizeFull">
+                            <a href="{{ post.url }}">{{ post.postTitle }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
