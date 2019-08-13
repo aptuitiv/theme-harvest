@@ -49,7 +49,9 @@
 {% endif %}
 
 <div class="js-pageForm">
+    {#  Disabled form action
     {{ form.openTag }}
+    #}
 
     {# Show form errors if there are any #}
     <div id="errorContainer" class="FormError {% if form.errors is empty %} u-hidden{% endif %}">
@@ -84,7 +86,9 @@
             <p><button type="submit" class="Button Button--lg">Submit My Comments</button></p>
         </div>
     </div>
+    {#  Disabled form action
     {{ form.closeTag }}
+    #}
 </div>
 
 {# JAVASCRIPT FILES #}
