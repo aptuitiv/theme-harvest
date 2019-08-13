@@ -7,10 +7,10 @@
         {{ _page.content('header') }}
         <div class="Grid Grid--withGutterXlg">
             <div class="Grid-cell u-size3of4 u-lg-size2of3 u-md-sizeFull">
-                <main id="main">{{ _page.content() }}</main>
+                <main id="main">{% block main %}{{ _page.content() }}{% endblock %}</main>
             </div>
             <div class="Grid-cell u-size1of4 u-lg-size1of3 u-md-sizeFull">
-                <aside>{{ _api.navigation.getSubNavigationByUrl.key('main').getParentItem('yes').showSubNav('yes').template('sidebar') }}</aside>
+                <aside>{% block sidebar %}{{ _api.navigation.getSubNavigationByUrl.key('main').getParentItem('yes').showSubNav('yes').template('sidebar') }}{% endblock %}</aside>
             </div>
         </div>
     </div>

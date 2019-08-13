@@ -5,7 +5,7 @@
         {{ _page.breadcrumb }}
     {% endif %}
     <div class="Content{% if _page.isHome == true %} u-padTop0{% endif %}">
-        <main id="main">{{ _page.content() }}</main>
+        <main id="main">{% block main %}{{ _page.content() }}{% endblock %}</main>
     </div>
 </div>
 {%  include 'snippets/footer' %}
