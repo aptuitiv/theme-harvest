@@ -32,7 +32,17 @@
 
 .ImageGrid-image {
     height: auto;
+    margin: auto;
+}
+
+.ImageGrid-image--scale {
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    right: 0;
     width: 100%;
+    z-index: 0;
 }
 
 @supports (object-fit: cover) {
@@ -73,6 +83,7 @@
     text-align: center;
     text-transform: uppercase;
     width: 100%;
+    z-index: 1;
 }
 
 @media (--c-bp-lg) {
@@ -122,8 +133,8 @@
 .ImageGrid-link:active .ImageGrid-title--top,
 .ImageGrid-link:focus .ImageGrid-title--top,
 .ImageGrid-link:hover .ImageGrid-title--top {
-    background: var(--theme-image-grid-title-hover-background);
-    color: var(--theme-image-grid-title-hover-color);
+    background: var(--theme-image-grid-hover-background);
+    color: var(--theme-image-grid-hover-color);
 }
 
 /* ------------------------------------ *\

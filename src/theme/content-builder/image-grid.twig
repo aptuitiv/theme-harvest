@@ -40,6 +40,8 @@
                 {% set column.image.class = 'ImageGrid-image' %}
                 {% if column.displayImage == 'Fit' %}
                     {% set column.image.class = column.image.class ~ ' ImageGrid-image--fit' %}
+                {% else %}
+                    {% set column.image.class = column.image.class ~ ' ImageGrid-image--scale' %}
                 {% endif %}
             {% endif %}
             <div class="Grid-cell {{ class }} ImageGrid-col">
@@ -49,7 +51,9 @@
                     <div class="ImageGrid-item ImageGrid-item--cover">
                 {% endif %}
                 {% if column.title and displayTitle != 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
-                    {{ column.image.tag }}
+                        {% if column.displayImage != 'Fit' %}<div class="Constrain u-posRelative">{% endif %}
+                        {{ column.image.tag }}
+                        {% if column.displayImage != 'Fit' %}</div>{% endif %}
                 {% if column.title and displayTitle == 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
                 {% if column.link %}
                     </a>

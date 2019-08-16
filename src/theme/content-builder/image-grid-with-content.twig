@@ -1,0 +1,94 @@
+{% if columns %}
+    {# Set the column classes based on the number of columns #}
+    {% set count = numberOfColumns == 'Auto' ? columns|length : numberOfColumns %}
+    {% if count == null %}
+        {% set count = columns|length %}
+    {% endif %}
+
+    {% if count % 4 == 0 %}
+        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count % 3 == 0 %}
+        {% set class = 'u-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count == 2 %}
+        {% set class = 'u-size1of2 u-sm-sizeFull' %}
+    {% elseif count > 4 %}
+        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+    {% elseif count == 1 %}
+        {% set class = 'Grid-cell--center u-sm-sizeFull' %}
+    {% endif %}
+
+    {# Set the title text position class #}
+    {% set titleClass = 'ImageGrid-title--center' %}
+    {% if displayTitle == 'Above Image' %}
+        {% set titleClass = 'ImageGrid-title--above' %}
+    {% elseif displayTitle == 'Below Image' %}
+        {% set titleClass = 'ImageGrid-title--below' %}
+    {% elseif displayTitle == 'Top of Image' %}
+        {% set titleClass = 'ImageGrid-title--top' %}
+    {% elseif displayTitle == 'Centered on Image' %}
+        {% set titleClass = 'ImageGrid-title--center' %}
+    {% elseif displayTitle == 'Bottom of Image' %}
+        {% set titleClass = 'ImageGrid-title--bottom' %}
+    {% endif %}
+
+    <div class="Grid Grid--withGutter {% if displayContent == 'Behind Image' %}Grid--equalHeight {% endif %}Grid--alignCenter ImageGrid">
+        {% for column in columns %}
+            {% if column.image %}
+                {% if column.image.alt|length == 0 %}
+                    {% set column.image.alt = column.title %}
+                {% endif %}
+                {% set column.image.class = 'ImageGrid-image' %}
+                {% if column.displayImage == 'Fit' %}
+                    {% set column.image.class = column.image.class ~ ' ImageGrid-image--fit' %}
+                {% else %}
+                    {% set column.image.class = column.image.class ~ ' ImageGrid-image--scale' %}
+                {% endif %}
+            {% endif %}
+            <div class="Grid-cell {{ class }} ImageGrid-col">
+                <div class="ImageGrid-item{% if displayContent == 'Behind Image' %} ImageGrid-hover{% elseif displayContent == 'Over Image' %} ImageGrid-cover{% else %} ImageGrid-withContent{% endif %}">
+                    {% if column.link %}
+                    <a href="{{ column.link }}" class="ImageGrid-link{% if displayContent == 'Behind Image' %} ImageGrid-hover{% endif %}">
+                        {% endif %}
+                        {% if displayContent != 'Over Image' %}
+                            {% if column.title and displayTitle != 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
+                            {% if column.displayImage != 'Fit' %}<div class="Constrain u-posRelative">{% endif %}
+                            {{ column.image.tag }}
+                            {% if column.displayImage != 'Fit' %}</div>{% endif %}
+                            {% if column.title and displayTitle == 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
+                        {% else %}
+                            {# Displaying the content over the image #}
+                            {% if column.displayImage != 'Fit' %}<div class="Constrain u-posRelative">{% endif %}
+                            {{ column.image.tag }}
+                            {% if column.displayImage != 'Fit' %}</div>{% endif %}
+                            <span class="ImageGrid-coverContent">
+                            <span class="ImageGrid-coverContentInner">
+                                {% if column.title %}
+                                    <span class="ImageGrid-coverContentHeading">{{ column.title }}</span>
+                                {% endif %}
+                                <span class="ImageGrid-coverContentWrap">{{ column.content }}</span>
+                            </span>
+                        </span>
+                        {% endif %}
+
+                        {% if column.content %}
+                            {% if displayContent == 'Below Image' %}
+                                <div class="ImageGrid-content">{{ column.content }}</div>
+                            {% elseif displayContent == 'Behind Image' %}
+                                <div class="ImageGrid-hoverContent">
+                                    <div class="ImageGrid-hoverContentInner">
+                                        {% if column.title %}
+                                            <div class="ImageGrid-hoverContentHeading">{{ column.title }}</div>
+                                        {% endif %}
+                                        <div class="ImageGrid-hoverContentWrap">{{ column.content }}</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        {% if column.link %}
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
