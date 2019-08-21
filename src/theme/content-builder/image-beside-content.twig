@@ -1,24 +1,47 @@
-{% for row in rows %}
-    {% set size = 'u-sizeFull' %}
-    {% if row.image %}
-        {% set size = 'u-size3of4 u-lg-size2of3 u-md-sizeFull' %}
-        {% if row.image.alt|length == 0 %}
-            {% set row.image.alt = row.name %}
-        {% endif %}
-        {% set row.image.class = 'u-sizeFull u-lg-sizeAuto u-sm-sizeFull' %}
+{% set contentCol = 'u-sizeFull' %}
+{% set imageCol = 'u-sizeFull' %}
+{% set imagePush = '' %}
+{% set contentPull = '' %}
+
+{% if image %}
+    {% if imageSize == '1/4' %}
+        {% set contentCol = 'u-size3of4 u-lg-size2of3 u-md-sizeFull' %}
+        {% set imageCol = 'u-size1of4 u-lg-size1of3 u-md-sizeFull' %}
+        {% set imagePush = 'u-push3of4 u-lg-push2of3 u-md-pushNone' %}
+        {% set contentPull = 'u-pull1of4 u-lg-pull1of3 u-md-pullNone' %}
+    {% elseif imageSize == '1/3' %}
+        {% set contentCol = 'u-size2of3 u-md-sizeFull' %}
+        {% set imageCol = 'u-size1of3 u-md-sizeFull' %}
+        {% set imagePush = 'u-push2of3 u-md-pushNone' %}
+        {% set contentPull = 'u-pull1of3 u-md-pullNone' %}
+    {% elseif imageSize == '2/5' %}
+        {% set contentCol = 'u-size3of5 u-md-sizeFull' %}
+        {% set imageCol = 'u-size2of5 u-md-sizeFull' %}
+        {% set imagePush = 'u-push3of5 u-md-pushNone' %}
+        {% set contentPull = 'u-pull2of5 u-md-pullNone' %}
+    {% elseif imageSize == '1/2' %}
+        {% set contentCol = 'u-size1of2 u-md-sizeFull' %}
+        {% set imageCol = 'u-size1of2 u-md-sizeFull' %}
+        {% set imagePush = 'u-push1of2 u-md-pushNone' %}
+        {% set contentPull = 'u-pull1of2 u-md-pullNone' %}
     {% endif %}
-    <div class="Grid Grid--withGutter u-margBottom3">
-        {% if row.image %}
-            <div class="Grid-cell u-size1of4 u-lg-size1of3 u-md-hide{% if row.alignImage == 'Right' %} u-push3of4 u-lg-push2of3 u-md-pushNone{% endif %}">
-                {{ row.image.tag }}
-            </div>
+
+    {% if image.alt|length == 0 %}
+        {% set image.alt = heading %}
+    {% endif %}
+{% endif %}
+<div class="Grid Grid--withGutter u-margBottom3">
+    {% if image %}
+        <div class="Grid-cell {{ imageCol }}{% if alignImage == 'Right' %} {{ imagePush }}{% endif %}"><div class="u-md-hide">{% if link %}<a href="{{ link }}">{% endif %}{{ image.tag }}{% if link %}</a>{% endif %}</div></div>
+    {% endif %}
+    <div class="Grid-cell {{ contentCol }}{% if alignImage == 'Right' %} {{ contentPull }}{% endif %}">
+        <h2 class="u-margBottom1">{% if link %}<a href="{{ link }}" class="u-linkSubtle">{% endif %}{{ heading }}{% if link %}</a>{% endif %}</h2>
+        {% if image %}
+            <div class="u-hidden u-md-show">{% if link %}<a href="{{ link }}">{% endif %}{{ image.tag }}{% if link %}</a>{% endif %}</div>
         {% endif %}
-        <div class="Grid-cell {{ size }}{% if row.alignImage == 'Right' %} u-pull1of4 u-lg-pull1of3 u-md-pullNone{% endif %}">
-            <h2 class="u-margBottom1">{{ row.heading }}</h2>
-            {% if row.image %}
-                <div class="u-hidden u-md-show">{{ row.image.tag }}</div>
-            {% endif %}
-            {{ row.content }}
-        </div>
+        {{ content }}
+        {% if link %}
+            <a href="{{ link }}" class="Button">{{ buttonText }}</a>
+        {% endif %}
     </div>
-{% endfor %}
+</div>
