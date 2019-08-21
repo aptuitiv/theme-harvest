@@ -1,5 +1,6 @@
 {%  include 'snippets/header' %}
 <div class="Container">
+    {% block header %}{% endblock %}
     {% if _page.isHome == false %}
         {{ _page.breadcrumb }}
     {% endif %}
