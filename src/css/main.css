@@ -27,6 +27,7 @@
 @import './config.css';
 @import './base';
 @import './components';
+@import './util';
 
 /**
  * Theme configuration

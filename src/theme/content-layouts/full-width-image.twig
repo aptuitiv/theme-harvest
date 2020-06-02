@@ -5,5 +5,14 @@
     {% set image.medium.class = 'u-sizeFull' %}
     {% set image.medium.srcset = image.large.src ~ ' 2000w, ' ~ image.medium.src ~ ' 1200w, ' ~ image.small.src ~ ' 600w' %}
     {% set image.medium.sizes = '100vw' %}
-    <div class="u-margBottom3">{{ image.medium.tag }}</div>
+    {% if imageEffect == 'Blur Small' %}
+        {% set image.medium.class = image.medium.class ~ ' u-imageBlurSm' %}
+    {% elseif imageEffect == 'Blur Medium' %}
+        {% set image.medium.class = image.medium.class ~ ' u-imageBlurMd' %}
+    {% elseif imageEffect == 'Blur Large' %}
+        {% set image.medium.class = image.medium.class ~ ' u-imageBlurLg' %}
+    {% elseif imageEffect == 'Grayscale' %}
+        {% set image.medium.class = image.medium.class ~ ' u-imageGrayscale' %}
+    {% endif %}
+    <div class="u-margBottom3 HeaderImage">{{ image.medium.tag }}</div>
 {% endif %}

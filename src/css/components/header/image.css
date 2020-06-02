@@ -1,0 +1,14 @@
+/* =========================================================================== *\
+    Header image
+\* =========================================================================== */
+
+
+/* @define HeaderImage */
+
+/**
+ * Applies a fix to the overflow of image effects
+ */
+
+.HeaderImage {
+    overflow: hidden;
+}
