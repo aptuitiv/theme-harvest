@@ -1,4 +1,5 @@
 {% extends 'one-column' %}
+{% import 'macros/macros' as macros %}
 
 {% block header %}
     <div class="ContentHeader">
@@ -47,8 +48,7 @@
                         </a>
                     {% endif %}
 
-                    {% do _page.addCss('/magnific/magnific-popup.css'|theme_url) %}
-                    {% do _page.addJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
+                    {{ macros.altLoadMagnific() }}
 
                     {% inlinejs %}
                         $(function() {

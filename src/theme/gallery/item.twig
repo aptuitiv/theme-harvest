@@ -1,5 +1,4 @@
 {% extends 'one-column' %}
-
 {% import 'macros/macros' as macros %}
 
 {% block header %}
@@ -23,7 +22,6 @@
 {# Image Macro #}
 {% macro image(item) %}
 
-
     {% import 'macros/macros' as macros %}
     <div class="Slider js-slider u-margBottom1">
         {% for image in item.images %}
@@ -41,19 +39,8 @@
         {% endfor %}
     </div>
     {% if item.images|length > 1 %}
-        {# Mulitple Images #}
-        {# Load the Slick Slider library #}
-        {% do _page.addCss('/slick/slick.css'|theme_url, {'preload': true}) %}
 
-        {% inlinejs %}
-            loadjs.ready('main', {
-                success: function() {
-                    loadjs(['{{ 'slick/slick.min.js'|theme_url }}'], 'slickheader');
-                }
-            });
-        {% endinlinejs %}
-        {% do _page.registerJs('slick/slick.min.js'|theme_url) %}
-
+        {{ macros.loadSlick() }}
 
         {% inlinejs %}
         loadjs.ready('slickheader', {
@@ -87,16 +74,7 @@
         {% endinlinejs %}
     {% endif %}
 
-    {# Load lightbox library #}
-    {% do _page.addCss('/magnific/magnific-popup.css'|theme_url, {'preload': true}) %}
-    {% inlinejs %}
-        loadjs.ready('main', {
-            success: function() {
-                loadjs(['{{ 'magnific/jquery.magnific-popup.min.js'|theme_url }}'], 'magnific');
-            }
-        });
-    {% endinlinejs %}
-    {% do _page.registerJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
+    {{ macros.loadMagnific() }}
 
     {% inlinejs %}
     loadjs.ready('magnific', {

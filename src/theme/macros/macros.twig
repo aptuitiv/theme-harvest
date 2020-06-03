@@ -14,3 +14,36 @@
         <svg class="{{ class }}" aria-hidden="true" focusable="false"><use xlink:href="#icon-{{ icon }}" /></svg>
     {% endspaceless %}
 {% endmacro %}
+
+{# Macro to load Slick Slider #}
+{% macro loadSlick() %}
+    {% do _page.addCss('/slick/slick.css'|theme_url, {'preload': true}) %}
+
+    {% inlinejs %}
+        loadjs.ready('main', {
+        success: function() {
+        loadjs(['{{ 'slick/slick.min.js'|theme_url }}'], 'slickheader');
+        }
+        });
+    {% endinlinejs %}
+    {% do _page.registerJs('slick/slick.min.js'|theme_url) %}
+{% endmacro %}
+
+{# Macro to load Magnific Popup #}
+{% macro loadMagnific() %}
+    {% do _page.addCss('/magnific/magnific-popup.css'|theme_url, {'preload': true}) %}
+    {% inlinejs %}
+        loadjs.ready('main', {
+        success: function() {
+        loadjs(['{{ 'magnific/jquery.magnific-popup.min.js'|theme_url }}'], 'magnific');
+        }
+        });
+    {% endinlinejs %}
+    {% do _page.registerJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
+{% endmacro %}
+
+{# Alternative Macro to load Magnific Popup #}
+{% macro altLoadMagnific() %}
+    {% do _page.addCss('/magnific/magnific-popup.css'|theme_url) %}
+    {% do _page.addJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
+{% endmacro %}
