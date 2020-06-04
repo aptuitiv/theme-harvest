@@ -52,17 +52,21 @@
         </div>
         {% endspaceless %}
 
-        {{ macros.altLoadMagnific() }}
+        {{ macros.loadMagnific() }}
 
         {% inlinejs %}
-            $(function() {
-                $('.js-lightbox').magnificPopup({
-                    disableOn: 700,
-                    gallery:{
-                        enabled:true
-                    }
+        loadjs.ready('magnific', {
+            success: function() {
+                $(function() {
+                    $('.js-lightbox').magnificPopup({
+                        disableOn: 700,
+                        gallery:{
+                            enabled:true
+                        }
+                    });
                 });
-            });
+            }
+        });
         {% endinlinejs %}
 
         {% include 'snippets/pagination' %}

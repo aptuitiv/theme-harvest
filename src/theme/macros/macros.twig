@@ -32,6 +32,7 @@
 {# Macro to load Magnific Popup #}
 {% macro loadMagnific() %}
     {% do _page.addCss('/magnific/magnific-popup.css'|theme_url, {'preload': true}) %}
+
     {% inlinejs %}
         loadjs.ready('main', {
         success: function() {
@@ -42,8 +43,3 @@
     {% do _page.registerJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
 {% endmacro %}
 
-{# Alternative Macro to load Magnific Popup #}
-{% macro altLoadMagnific() %}
-    {% do _page.addCss('/magnific/magnific-popup.css'|theme_url) %}
-    {% do _page.addJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
-{% endmacro %}
