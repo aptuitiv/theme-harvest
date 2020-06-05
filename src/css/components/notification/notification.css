@@ -6,8 +6,8 @@
 /* @define Notification */
 
 .Notification {
-    background: var(--theme-primary-color);
-    color: #fff;
+    background: var(--theme-secondary-color);
+    color: var(--theme-typography-color);
     font-size: 1.18em; /* 26px */
     line-height: 1.2;
     padding: 25px 0;
@@ -20,7 +20,7 @@
 
 /* postcss-bem-linter: ignore */
 .Notification a {
-    color: #fff;
+    color: var(--theme-typography-link-color);
     text-decoration: underline;
 }
 
