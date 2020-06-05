@@ -1,0 +1,55 @@
+/* =========================================================================== *\
+    Notification banner at the top of pages
+\* =========================================================================== */
+
+
+/* @define Notification */
+
+.Notification {
+    background: var(--theme-primary-color);
+    color: #fff;
+    font-size: 1.18em; /* 26px */
+    line-height: 1.2;
+    padding: 25px 0;
+}
+
+/* postcss-bem-linter: ignore */
+.Notification p:last-child {
+    margin: 0;
+}
+
+/* postcss-bem-linter: ignore */
+.Notification a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.Notification-content {
+    text-align: center;
+    width: 100%;
+}
+
+.Notification-message {
+    display: inline-block;
+    padding-left: 46px;
+    position: relative;
+}
+
+.Notification-message--noIcon {
+    padding-left: 0;
+}
+
+.Notification-icon {
+    font-size: 1.6em;
+    left: 0;
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+}
+
+.Notification-close {
+    margin-left: 20px;
+}
+
+.Notification-closeIcon {
+}

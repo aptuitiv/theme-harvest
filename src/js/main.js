@@ -6,6 +6,7 @@
 $(function() {
     smallScreenNav.init();
     navAccess.init();
+    setupNotifications();
 });
 
 /**
@@ -283,3 +284,30 @@ var navAccess = {
         return el ? el.querySelector('a.js-navLink') : null;
     },
 };
+
+/**
+ * Set a cookie
+ * @param {string} cname Cookie name
+ * @param {string} cvalue Cookie value
+ * @param {number} exdays Number of days to set cookie for
+ */
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date(),
+        existing = getCookieValue(cname);
+    if (existing.length > 0) {
+        cvalue = existing + '-' + cvalue;
+    }
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires + ';path=/';
+}
+
+/**
+ * Get a cookie value
+ * @param {string} cname Cookie name
+ * @returns string
+ */
+function getCookieValue(cname) {
+    var b = document.cookie.match('(^|;)\\s*' + cname + '\\s*=\\s*([^;]+)');
+    return b ? b.pop() : '';
+}
