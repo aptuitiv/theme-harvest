@@ -286,6 +286,20 @@ var navAccess = {
 };
 
 /**
+ * Set up the notifications bar functionality
+ */
+function setupNotifications() {
+    var id, parent;
+    $('.js-notificationClose').on('click', function(e) {
+        e.preventDefault();
+        parent = $(this).parents('.js-notification:first');
+        parent.hide();
+        id = this.getAttribute('data-id');
+        setCookie('notificationMsgHide', id, 10);
+    });
+}
+
+/**
  * Set a cookie
  * @param {string} cname Cookie name
  * @param {string} cvalue Cookie value
