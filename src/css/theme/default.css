@@ -159,6 +159,28 @@
     --theme-nav-dropdown-color-hover: var(--theme-nav-color);
 }
 
+/* Full page slider */
+
+:root {
+    --theme-slider-caption-small-screen-background: var(--theme-primary-color);
+}
+
+/* Image Slider */
+:root {
+    --theme-image-slider-background: #f2f2f2;
+    --theme-image-slider-color: var(--theme-typography-color);
+    --theme-image-slider-title-background: var(--theme-primary-color);
+    --theme-image-slider-title-color: #fff;
+    --theme-image-slider-title-background-hover: #7a0504;
+    --theme-image-slider-title-color-hover: #fff;
+    --theme-image-slider-title-font-size: 1.2em;
+    --theme-image-slider-title-font-weight: 300;
+    --theme-image-slider-hover-background: #7a0504;
+    --theme-image-slider-hover-color: #fff;
+    --theme-image-slider-cover-background: rgba(162, 21, 20, .5);
+    --theme-image-slider-cover-color: #fff;
+}
+
 /* Footer */
 
 :root {

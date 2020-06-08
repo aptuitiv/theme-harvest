@@ -1,0 +1,299 @@
+/* =========================================================================== *\
+    SLIDER
+\* =========================================================================== */
+
+
+/** @define Slider */
+
+.Slider {
+    clear: both;
+    position: relative;
+}
+
+.Slider-slide {
+    position: relative;
+}
+
+.Slider-slide--hidden {
+    display: none;
+}
+
+.Slider-link,
+.Slider-link:active,
+.Slider-link:focus,
+.Slider-link:hover {
+    color: inherit;
+    display: block;
+    overflow: hidden; /* Done to prevent a scaled blurred image (with .u-imageBlur) from overflowing */
+    text-decoration: none;
+}
+
+.Slider-image {
+    height: auto;
+    width: 100%;
+}
+
+.Slider-itemNav {
+    cursor: pointer;
+}
+
+/* postcss-bem-linter: ignore */
+
+.Slider-itemNav.slick-current {
+    outline: 2px solid #6b6b6b;
+}
+
+.Slider-nav {
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    height: 2.5em;
+    mix-blend-mode: luminosity;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 2.5em;
+    z-index: 10;
+}
+
+.Slider-nav--dark {
+    background: rgba(0, 0, 0, .5);
+}
+
+.Slider-nav:active,
+.Slider-nav:focus,
+.Slider-nav:hover {
+    background: rgba(50, 50, 50, .5);
+}
+
+.Slider-nav--dark:active,
+.Slider-nav--dark:focus,
+.Slider-nav--dark:hover {
+    background: rgba(0, 0, 0, .8);
+}
+
+.Slider-navIcon {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2em;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.Slider-nav:active .Slider-navIcon,
+.Slider-nav:focus .Slider-navIcon,
+.Slider-nav:hover .Slider-navIcon {
+
+}
+
+.Slider-navPrev {
+    left: 20px;
+}
+
+.Slider-navPrev .Slider-navIcon {
+    left: 35%;
+}
+
+.Slider-navNext {
+    right: 20px;
+}
+
+.Slider-navNext .Slider-navIcon {
+    left: 45%;
+}
+
+.Slider-navCircle {
+    font-size: .9em !important;
+}
+
+@media (--c-bp-md) {
+    .Slider-nav {
+        display: none !important;
+    }
+}
+
+/* ------------------------------------ *\
+    Slider dots
+\* ------------------------------------ */
+
+.Slider-dots {
+    bottom: 15px;
+    box-sizing: border-box;
+    display: block;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.Slider-dots--left {
+    text-align: left;
+}
+
+.Slider-dots--right {
+    text-align: right;
+}
+
+/* postcss-bem-linter: ignore */
+.Slider-dots li {
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    margin: 0 5px;
+    padding: 0;
+    position: relative;
+    width: 15px;
+}
+
+/* postcss-bem-linter: ignore */
+.Slider-dots li button {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, .9);
+    border-radius: 20px;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 20px;
+    line-height: 0;
+    outline: none;
+    padding: 5px;
+    width: 20px;
+}
+
+/* postcss-bem-linter: ignore */
+.Slider-dots li.slick-active button,
+.Slider-dots li button:focus {
+    background: rgba(255, 255, 255, .9);
+}
+
+/* postcss-bem-linter: ignore */
+.Slider-dots li button:hover {
+    background: rgba(255, 255, 255, .3);
+    border: 1px solid rgba(255, 255, 255, .3);
+    outline: none;
+}
+
+@media (--c-bp-md) {
+    .Slider-dots {
+        display: none !important;
+    }
+}
+
+
+/* ------------------------------------ *\
+    #SLIDER CONTENT
+\* ------------------------------------ */
+
+.Slider-content {
+    box-sizing: border-box;
+    left: 0;
+    padding: 0 100px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Slider-content--bottomLeft,
+.Slider-content--bottomCenter,
+.Slider-content--bottomRight {
+    bottom: 5%;
+    top: auto;
+    transform: none;
+}
+
+.Slider-content--center,
+.Slider-content--bottomCenter {
+    text-align: center;
+    width: 100%;
+}
+
+.Slider-content--centerRight,
+.Slider-content--bottomRight {
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+.Slider-captionTitle {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-family: var(--theme-typography-heading-fontFamily);
+    font-size: 2.6em;
+    line-height: 1.1;
+    max-width: 45vw;
+    text-shadow: 0 0 5px rgba(0, 0, 0, .6);
+    text-transform: uppercase;
+}
+
+.Slider-caption {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.2;
+    max-width: 30vw;
+    text-shadow: 0 0 2px rgba(0, 0, 0, .6);
+}
+
+.Slider-content--center .Slider-captionTitle,
+.Slider-content--center .Slider-caption,
+.Slider-content--bottomCenter .Slider-captionTitle,
+.Slider-content--bottomCenter .Slider-caption {
+    max-width: 100%;
+}
+
+@media (--c-bp-lg) {
+    .Slider-captionTitle {
+        font-size: 2em;
+        max-width: 50vw;
+    }
+
+    .Slider-caption {
+        max-width: 40vw;
+    }
+}
+
+@media (--c-bp-md) {
+    .Slider-content {
+        background: var(--theme-slider-caption-small-screen-background);
+        bottom: auto;
+        display: block;
+        left: auto;
+        padding: 8px;
+        position: relative;
+        right: auto;
+        text-align: center;
+        text-shadow: none;
+        top: auto;
+        transform: none;
+    }
+
+    .Slider-captionTitle {
+        font-size: var(--base-typography-h1-fontSize);
+        line-height: var(--base-typography-h1-lineHeight);
+        margin-bottom: 6px;
+        max-width: 100%;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    }
+
+    .Slider-caption {
+        max-width: 100%;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+    }
+}
+
+@media (--c-bp-sm) {
+    .Slider-captionTitle {
+        font-size: var(--base-typography-h2-fontSize);
+        line-height: var(--base-typography-h2-lineHeight);
+        text-transform: none;
+    }
+}

@@ -1,18 +1,85 @@
-{% if image %}
-    {% if imageAltText %}
-        {% set image.medium.alt = imageAltText %}
+{% import 'macros/macros' as macros %}
+
+{% macro slide(slide) %}
+    {% if slide.altText %}
+        {% set slide.images.large.alt = slide.altText %}
     {% endif %}
-    {% set image.medium.class = 'u-sizeFull' %}
-    {% set image.medium.srcset = image.large.src ~ ' 2000w, ' ~ image.medium.src ~ ' 1200w, ' ~ image.small.src ~ ' 600w' %}
-    {% set image.medium.sizes = '100vw' %}
-    {% if imageEffect == 'Blur Small' %}
-        {% set image.medium.class = image.medium.class ~ ' u-imageBlurSm' %}
-    {% elseif imageEffect == 'Blur Medium' %}
-        {% set image.medium.class = image.medium.class ~ ' u-imageBlurMd' %}
-    {% elseif imageEffect == 'Blur Large' %}
-        {% set image.medium.class = image.medium.class ~ ' u-imageBlurLg' %}
-    {% elseif imageEffect == 'Grayscale' %}
-        {% set image.medium.class = image.medium.class ~ ' u-imageGrayscale' %}
+    {% set slide.images.large.class = 'Slider-image' %}
+    {% set slide.images.large.srcset = slide.images.large.src ~ ' 1200w, ' ~ slide.images.small.src ~ ' 600w' %}
+    {% set slide.images.large.sizes = '100vw' %}
+    {% if slide.imageEffect == 'Blur Small' %}
+        {% set slide.images.large.class = slide.images.large.class ~ ' u-imageBlurSm' %}
+    {% elseif slide.imageEffect == 'Blur Medium' %}
+        {% set slide.images.large.class = slide.images.large.class ~ ' u-imageBlurMd' %}
+    {% elseif slide.imageEffect == 'Blur Large' %}
+        {% set slide.images.large.class = slide.images.large.class ~ ' u-imageBlurLg' %}
+    {% elseif slide.imageEffect == 'Grayscale' %}
+        {% set slide.images.large.class = slide.images.large.class ~ ' u-imageGrayscale' %}
     {% endif %}
-    <div class="u-margBottom3 HeaderImage">{{ image.medium.tag }}</div>
+    {% if slide.link %}<a href="{{ slide.link }}" class="Slider-link">{% endif %}
+    {{ slide.images.large.tag }}
+    {% if slide.captionTitle or slide.caption  %}
+        <span class="Slider-content Slider-content--{{ slide.captionPosition|camel }}">
+            {% if slide.captionTitle %}<span class="Slider-captionTitle">{{ slide.captionTitle }}</span>{% endif %}
+            {% if slide.caption %}<span class="Slider-caption">{{ slide.caption }}</span>{% endif %}
+        </span>
+    {% endif %}
+    {% if slide.link %}</a>{% endif %}
+{% endmacro %}
+
+{% if spacingAfterHeader != 'None' %}
+    <div class="u-margBottom3">
+{% endif %}
+{% if slides and displayType != 'Hide' %}
+    {% import _self as slide_macros %}
+    {% if slides|length == 1 and displayType == 'Slideshow' %}
+        {% set displayType = 'Single slide' %}
+    {% endif %}
+    {% if displayType == 'Single slide' || displayType == 'Random slide' %}
+        {% if displayType == 'Single slide' %}
+            {% set slide = slides|first %}
+        {% else %}
+            {% set slide = random(slides) %}
+        {% endif %}
+        <div class="Slider">
+            <div class="Slider-slide">
+                {{ slide_macros.slide(slide) }}
+            </div>
+        </div>
+    {% elseif displayType == 'Slideshow' %}
+        <div class="Slider js-slider">
+            {% for slide in slides %}
+                <div class="Slider-slide{% if loop.index > 1 %} Slider-slide--hidden{% endif %}">
+                    {{ slide_macros.slide(slide) }}
+                </div>
+            {% endfor %}
+        </div>
+
+        {{ macros.loadSlick() }}
+
+        {% inlinejs %}
+            loadjs.ready('slickheader', {
+                success: function() {
+                    $(function() {
+                        $('.js-slider').slick({
+                            adaptiveHeight: true,
+                            arrows: {{ showArrows ? 'true' : 'false' }},
+                            autoplay: {{ autoPlaySlides ? 'true' : 'false' }},
+                            autoplaySpeed: {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
+                            dots: {{ showDots ? 'true' : 'false' }},
+                            dotsClass: 'Slider-dots Slider-dots--{{ dotPosition|lower }}',
+                            fade: {{ slideTransition == 'Fade' ? 'true' : 'false' }},
+                            prevArrow: '<a href="#" class="Slider-nav Slider-navPrev"> {{ macros.iconImg("chevron-thin-left", "Slide Left", "Slider-navIcon") }} </a>',
+                            nextArrow: '<a href="#" class="Slider-nav Slider-navNext">{{ macros.iconImg("chevron-thin-right", "Slide Right", "Slider-navIcon") }}</a>',
+                            speed: 500
+                        });
+                    });
+                }
+            });
+
+        {% endinlinejs %}
+    {% endif %}
+{% endif %}
+    {% if spacingAfterHeader != 'None' %}
+</div>
 {% endif %}
