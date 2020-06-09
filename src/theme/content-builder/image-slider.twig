@@ -1,0 +1,189 @@
+{% import 'macros/macros' as macros %}
+
+{% if slides %}
+    {% macro slideImage(slide) %}
+        {% if slide.image %}
+            {% set slide.image.class = 'ImageSlider-image' %}
+            {% set slide.image.alt = slide.title ?: 'Slider Image' %}
+            {% if slide.link %}
+                <a href="{{ slide.link }}" class="ImageSlider-imageWrap">{{ slide.image.tag }}</a>
+            {% else %}
+                <div class="ImageSlider-imageWrap">{{ slide.image.tag }}</div>
+            {% endif %}
+        {% endif %}
+    {% endmacro %}
+
+    {% macro slideContent(slide, titleClass, contentClass) %}
+        {% if slide.title %}
+            {% if slide.link %}
+                <a href="{{ slide.link }}" class="ImageSlider-title ImageSlider-link {{ titleClass }}">{{ slide.title }}</a>
+            {% else %}
+                <div class="ImageSlider-title {{ titleClass }}">{{ slide.title }}</div>
+            {% endif %}
+        {% endif %}
+        {% if slide.content %}
+            <div class="ImageSlider-content {{ contentClass }}">{{ slide.content }}</div>
+        {% endif %}
+    {% endmacro %}
+
+    {% import _self as slide_macros %}
+
+    {% set class = 'js-imageSlider' ~ random_string(8)|upper %}
+    {% set slideGridClass = class ~ 'Grid' %}
+    {% set numSlides = 4 %}
+    {% set mdNumSlides = 3 %}
+    {% set smNumSlides = 2 %}
+    <div class="ImageSlider">
+        <div class="ImageSlider-inner {{ class }}">
+            {% for slide in slides %}
+                {% set slideClass = '' %}
+                {% if displayContent in ['Below Image', 'Over Image', 'Behind Image', 'Hide'] %}
+                    {% set slideClass = slideClass ~ ' ImageSlider-slide--spaced' %}
+                {% endif %}
+                {% if displayContent == 'Over Image' %}
+                    {% set slideClass = slideClass ~ ' ImageSlider-cover' %}
+                {% elseif displayContent == 'Behind Image' %}
+                    {% set slideClass = slideClass ~ ' ImageSlider-hover' %}
+                {% endif %}
+                <div class="ImageSlider-slide{{ slideClass }}">
+                    {% if displayContent == 'Below Image' %}
+                        {% set numSlides = 3 %}
+                        {% set mdNumSlides = 2 %}
+                        {% set smNumSlides = 2 %}
+                        {{ slide_macros.slideImage(slide) }}
+                        <div class="ImageSlider-contentWrap">
+                            {{ slide_macros.slideContent(slide) }}
+                        </div>
+                    {% elseif displayContent == 'Right of Image' %}
+                        {% set numSlides = 2 %}
+                        {% set mdNumSlides = 1 %}
+                        {% set smNumSlides = 1 %}
+                        <div class="Grid Grid--equalHeight ImageSlider-grid {{ slideGridClass }}">
+                            <div class="Grid-cell u-size1of2 u-sm-sizeFull  u-flexCol">{{ slide_macros.slideImage(slide) }}</div>
+                            <div class="Grid-cell u-size1of2 u-sm-sizeFull ImageSlider-gridContent">
+                                {{ slide_macros.slideContent(slide) }}
+                            </div>
+                        </div>
+                    {% elseif displayContent == 'Left of Image' %}
+                        {% set numSlides = 2 %}
+                        {% set mdNumSlides = 1 %}
+                        {% set smNumSlides = 1 %}
+                        <div class="Grid Grid--equalHeight ImageSlider-grid {{ slideGridClass }}">
+                            <div class="Grid-cell u-size1of2 u-sm-sizeFull ImageSlider-gridContent">
+                                {{ slide_macros.slideContent(slide) }}
+                            </div>
+                            <div class="Grid-cell u-size1of2 u-sm-sizeFull u-flexCol">{{ slide_macros.slideImage(slide) }}</div>
+                        </div>
+                    {% elseif displayContent == 'Over Image' %}
+                        {% if slide.link %}
+                            {% set link = slide.link %}
+                            {% set slide.link = null %}
+                        {% endif %}
+                        {% set numSlides = 3 %}
+                        {% set mdNumSlides = 2 %}
+                        {% set smNumSlides = 2 %}
+                        {{ slide_macros.slideImage(slide) }}
+                        {% if link %}
+                            <a href="{{ link }}" class="ImageSlider-coverContent ImageSlider-coverLink">
+                                <div class="ImageSlider-coverContentInner">
+                                    {{ slide_macros.slideContent(slide, 'ImageSlider-coverContentHeading', 'ImageSlider-coverContentWrap') }}
+                                </div>
+                            </a>
+                        {% else %}
+                            <div class="ImageSlider-coverContent">
+                                <div class="ImageSlider-coverContentInner">
+                                    {{ slide_macros.slideContent(slide, 'ImageSlider-coverContentHeading', 'ImageSlider-coverContentWrap') }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% elseif displayContent == 'Behind Image' %}
+                        {% if slide.link %}
+                            {% set link = slide.link %}
+                            {% set slide.link = null %}
+                        {% endif %}
+                        {% set numSlides = 3 %}
+                        {% set mdNumSlides = 2 %}
+                        {% set smNumSlides = 2 %}
+                        {{ slide_macros.slideImage(slide) }}
+                        {% if link %}
+                            <a href="{{ link }}" class="ImageSlider-hoverContent ImageSlider-hoverLink">
+                                <div class="ImageSlider-hoverContentInner">
+                                    {{ slide_macros.slideContent(slide, 'ImageSlider-hoverContentHeading', 'ImageSlider-hoverContentWrap') }}
+                                </div>
+                            </a>
+                        {% else %}
+                            <div class="ImageSlider-hoverContent">
+                                <div class="ImageSlider-hoverContentInner">
+                                    {{ slide_macros.slideContent(slide, 'ImageSlider-hoverContentHeading', 'ImageSlider-c\hoverContentWrap') }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        {{ slide_macros.slideImage(slide) }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {{ macros.loadSlick() }}
+
+    {% inlinejs %}
+    loadjs.ready('slickheader', {
+        success: function() {
+            $(function() {
+                {% if displayContent == 'Left of Image' or displayContent == 'Right of Image' %}
+                    $('.{{ class }}').on('init', function() {
+                        if ($(window).width() <= 450 || ($(window).width() <= 700 && 1 == {{ smNumSlides }}) || ($(window).width() <= 900 && 1 == {{ mdNumSlides }})) {
+                        } else {
+                            equalSize($('.{{ slideGridClass }}'));
+                        }
+                    });
+                    $(window).on('resize', function() {
+                        if ($(window).width() <= 450 || ($(window).width() <= 700 && 1 == {{ smNumSlides }}) || ($(window).width() <= 900 && 1 == {{ mdNumSlides }})) {
+                            $('.{{ slideGridClass }}').css('height', '');
+                        } else {
+                            equalSize($('.{{ slideGridClass }}'));
+                        }
+                    });
+                {% endif %}
+                $('.{{ class }}').slick({
+                    adaptiveHeight: true,
+                    arrows: true,
+                    autoplay: {{ autoPlaySlides ? 'true' : 'false' }},
+                    autoplaySpeed: {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
+                    dots: false,
+                    dotsClass: 'ImageSlider-dots',
+                    fade: false,
+                    prevArrow: '<a href="#" class="ImageSlider-nav ImageSlider-navPrev"> {{ macros.iconImg("chevron-thin-left", "Slide Left", "ImageSlider-navIcon") }} </a>',
+                    nextArrow: '<a href="#" class="ImageSlider-nav ImageSlider-navNext">{{ macros.iconImg("chevron-thin-right", "Slide Right", "ImageSlider-navIcon") }} </a>',
+                    speed: 500,
+                    slidesToShow: {{ numSlides }},
+                    slidesToScroll: 1,
+                    responsive: [
+                        {
+                            breakpoint: 900,
+                            settings: {
+                                slidesToShow: {{ mdNumSlides }},
+                            }
+                        },
+                        {
+                            breakpoint: 700,
+                            settings: {
+                                slidesToShow: {{ smNumSlides }},
+                            }
+                        },
+                        {
+                            breakpoint: 450,
+                            settings: {
+                                slidesToShow: 1,
+                            }
+                        }
+                    ]
+                });
+            });
+        }
+    });
+
+    {% endinlinejs %}
+{% endif %}

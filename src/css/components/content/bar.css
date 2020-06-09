@@ -1,0 +1,80 @@
+/* =========================================================================== *\
+    Content bar that goes around content displayed full width
+\* =========================================================================== */
+
+
+/* @define ContentBar */
+
+.ContentBar {
+    background: #fff;
+    padding: 20px 0;
+}
+
+.ContentBar--spaceSmall {
+    padding: 20px 0;
+}
+
+.ContentBar--spaceMedium {
+    padding: 50px 0;
+}
+
+.ContentBar--spaceLarge {
+    padding: 80px 0;
+}
+
+.ContentBar--light {
+    background: #f7f9fc;
+}
+
+.ContentBar--dark {
+    background: var(--theme-content-bar-background);
+    color: var(--theme-content-bar-color);
+}
+
+/* postcss-bem-linter: ignore */
+
+.ContentBar--dark h1,
+.ContentBar--dark h2,
+.ContentBar--dark h3,
+.ContentBar--dark h4,
+.ContentBar--dark h5,
+.ContentBar--dark h6,
+.ContentBar--dark .ContentGrid-title {
+    color: var(--theme-content-bar-heading-color);
+}
+
+/* postcss-bem-linter: ignore */
+
+.ContentBar--dark a {
+    color: var(--theme-content-bar-link-color);
+}
+
+/* postcss-bem-linter: ignore */
+
+.ContentBar--dark a:active,
+.ContentBar--dark a:focus,
+.ContentBar--dark a:hover {
+    color: var(--theme-content-bar-link-color-hover);
+}
+
+/* postcss-bem-linter: ignore */
+
+.ContentBar--dark .Button {
+    background: var(--theme-content-bar-button-background);
+    color: var(--theme-content-bar-button-color);
+}
+
+/* postcss-bem-linter: ignore */
+
+.ContentBar--dark .Button:active,
+.ContentBar--dark .Button:focus,
+.ContentBar--dark .Button:hover {
+    background: var(--theme-content-bar-button-background-hover);
+    color: var(--theme-content-bar-button-color-hover);
+}
+
+/* postcss-bem-linter: ignore */
+
+.ContentBar--dark .u-headingCentered:after {
+    background: #fff;
+}

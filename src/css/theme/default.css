@@ -181,6 +181,20 @@
     --theme-image-slider-cover-color: #fff;
 }
 
+/* Content Bar */
+
+:root {
+    --theme-content-bar-background: #225110;
+    --theme-content-bar-heading-color: #fcfdfe;
+    --theme-content-bar-color: #fcfdfe;
+    --theme-content-bar-button-background: #fcfdfe;
+    --theme-content-bar-button-color: var(--theme-content-bar-background);
+    --theme-content-bar-button-background-hover: #cfdff1;
+    --theme-content-bar-button-color-hover: var(--theme-content-bar-background);
+    --theme-content-bar-link-color: #fcfdfe;
+    --theme-content-bar-link-color-hover: #fcfdfe;
+}
+
 /* Footer */
 
 :root {
