@@ -49,6 +49,7 @@
         "jquery-form": "^4.2.2",
         "jquery-validation": "^1.19.1",
         "magnific-popup": "^1.1.0",
+        "masonry-layout": "^4.2.2",
         "slick-carousel": "^1.8.1"
     },
     "scripts": {

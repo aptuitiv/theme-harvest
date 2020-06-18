@@ -75,6 +75,10 @@ module.exports = {
         {
             src: ['node_modules/slick-carousel/slick/fonts/*'],
             dest: 'slick/fonts'
+        },
+        {
+            src: ['node_modules/masonry-layout/dist/*.{pkgd.min.js, min.js}'],
+            dest: 'masonry'
         }
     ],
 

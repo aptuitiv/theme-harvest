@@ -13,61 +13,58 @@
 {% block main %}
     <div class="u-margBottom3 u-textCenter">
         <a href="{{ appUrls.home }}">Main view</a>
-        {% for category in _app.categories %}
-            | <a href="{{ category.url }}">{{ category.categoryName }}</a>
-        {% endfor %}
+        | <a href="{{ appUrls.categoryList }}">Categories</a>
     </div>
     {% if items %}
         {% spaceless %}
-        <div class="Masonry Masonry--tight">
-            {% for item in items %}
-                {% set image = attribute(item.images|first, 'image') %}
-                {% set image.small.alt = item.itemName %}
-                {% set image.small.class = 'Masonry-image' %}
-                <div class="Masonry-item">
-                    {# Link directly to the large image instead of the item detail page #}
-                    {% if item.video.urlInfo %}
-                        {% set video = item.video.urlInfo|first %}
-                        {% if image.small.src|length > 0 %}
-                            {% set videoImage = image.small %}
+            <div class="Gallery Grid Grid--withGutterSm">
+                {% for item in items %}
+                    {% set image = attribute(item.images|first, 'image') %}
+                    {% set image.small.alt = item.itemName %}
+                    {% set image.small.class = 'Gallery-image' %}
+                    <div class="Gallery-item Grid-cell u-size1of3 u-xl-size1of3 u-md-size1of2 u-sm-sizeFull">
+                        {# Link directly to the large image instead of the item detail page #}
+                        {% if item.video.urlInfo %}
+                            {% set video = item.video.urlInfo|first %}
+                            {% if image.small.src|length > 0 %}
+                                {% set videoImage = image.small %}
+                            {% else %}
+                                {% set videoImage = video.thumbnail %}
+                                {% set videoImage.src = videoImage.src|replace('hqdefault', 'mqdefault') %}
+                                {% set videoImage.alt = item.itemName %}
+                                {% set videoImage.class = 'Gallery-image' %}
+                            {% endif %}
+                            <a href="{{ video.url }}" class="Gallery-link Constrain Constrain--4by3 js-lightbox mfp-iframe" title="View video: {{ item.itemName }}">
+                                <div class="Gallery-imageWrap">{{ videoImage.tag }}</div>
+                                <div class="Gallery-play"></div>
+                                <div class="Gallery-title Gallery-title--overlay">{{ item.itemName }}</div>
+                            </a>
                         {% else %}
-                            {% set videoImage = video.thumbnail %}
-                            {% set videoImage.src = videoImage.src|replace('hqdefault', 'mqdefault') %}
-                            {% set videoImage.alt = item.itemName %}
-                            {% set videoImage.class = 'Masonry-image' %}
+                            <a href="{{ image.large.src }}" class="Gallery-link Constrain Constrain--4by3 js-lightbox mfp-image" title="View larger image for {{ item.itemName }}">
+                                <div class="Gallery-imageWrap">{{ image.small.tag }}</div>
+                                <div class="Gallery-title Gallery-title--overlay u-textCenter">{{ item.itemName }}</div>
+                            </a>
                         {% endif %}
-                        <a href="{{ video.url }}" class="Masonry-link js-lightbox mfp-iframe" title="View video: {{ item.itemName }}">
-                            <div class="Masonry-imageWrap">{{ videoImage.tag }}</div>
-                            <div class="Masonry-play"></div>
-                            <div class="Masonry-title Masonry-title--overlay">{{ item.itemName }}</div>
-                        </a>
-                    {% else %}
-                        <a href="{{ image.large.src }}" class="Masonry-link js-lightbox mfp-image" title="View larger image for {{ item.itemName }}">
-                            <div class="Masonry-imageWrap">{{ image.small.tag }}</div>
-                            <div class="Masonry-title Masonry-title--overlay">{{ item.itemName }}</div>
-                        </a>
-                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
 
-                    {{ macros.loadMagnific() }}
+            {{ macros.loadMagnific() }}
 
-                    {% inlinejs %}
-                    loadjs.ready('magnific', {
-                        success: function() {
-                            $(function() {
-                                $('.js-lightbox').magnificPopup({
-                                    disableOn: 700,
-                                    gallery:{
-                                        enabled:true
-                                    }
-                                });
-                            });
-                        }
+            {% inlinejs %}
+            loadjs.ready('magnific', {
+                success: function() {
+                    $(function() {
+                        $('.js-lightbox').magnificPopup({
+                        disableOn: 700,
+                            gallery:{
+                                enabled:true
+                            }
+                        });
                     });
-                    {% endinlinejs %}
-
-                </div>
-            {% endfor %}
-        </div>
+                }
+            });
+            {% endinlinejs %}
         {% endspaceless %}
         {% include 'snippets/pagination' %}
     {% endif %}

@@ -1,0 +1,73 @@
+/* =========================================================================== *\
+    Masonry Grid
+    Based on https://masonry.desandro.com/
+\* =========================================================================== */
+
+/* @define MasonryGrid */
+
+.MasonryGrid-item {
+    margin-bottom: 2%;
+    width: 32%;
+}
+
+.MasonryGrid-item--noGutter {
+    width: 33.333%;
+}
+
+.MasonryGrid-image {
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+}
+
+/* Not to be used for layout: for changing column size in masonry-layout.js
+Three column size */
+.MasonryGrid-columnWidth {
+    width: 32%;
+}
+
+.MasonryGrid-columnWidth--noGutter {
+    width: 33.333%;
+}
+
+/* Not to be used for layout: for changing column size in masonry-layout.js
+Three column gutter width */
+.MasonryGrid-gutterWidth {
+    width: 2%;
+}
+
+/* Two column size */
+@media (--c-bp-md) {
+    .MasonryGrid-columnWidth {
+        width: 48%;
+    }
+
+    .MasonryGrid-item {
+        width: 48%;
+    }
+
+    .MasonryGrid-columnWidth--noGutter {
+        width: 50%;
+    }
+
+    .MasonryGrid-item--noGutter {
+        width: 50%;
+    }
+}
+
+/* Single column size with full width images */
+@media (--c-bp-sm) {
+    .MasonryGrid-item {
+        margin-bottom: 4.5%;
+        width: 100%;
+    }
+
+    .MasonryGrid-columnWidth--noGutter {
+        width: 100%;
+    }
+
+    .MasonryGrid-item--noGutter {
+        width: 100%;
+    }
+}

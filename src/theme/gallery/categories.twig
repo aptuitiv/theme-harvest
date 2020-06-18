@@ -1,1 +1,30 @@
 {% extends 'one-column' %}
+{% import 'macros/macros' as macros %}
+
+{% block header %}
+    <div class="ContentHeader">
+        <div class="Container">
+            <h1 class="ContentHeader-title">View By Category</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <div class="u-margBottom3 u-textCenter">
+        <a href="{{ appUrls.home }}">Gallery home</a>
+    </div>
+
+    <div class="Gallery Grid Grid--withGutterSm">
+        {% for category in _app.categories %}
+            {% set image = category.image %}
+            {% set image.alt = category.categoryName %}
+            {% set image.class = 'Gallery-image' %}
+            <div class="Gallery-item Grid-cell u-size1of3 u-xl-size1of3 u-md-size1of2 u-sm-sizeFull">
+                <a href="{{ category.url }}" class="Gallery-link Constrain Constrain--4by3" title="{{ category.categoryName }}">
+                    <div class="Gallery-imageWrap">{{ image.tag }}</div>
+                    <div class="Gallery-title Gallery-title--overlay u-textCenter">{{ category.categoryName }}</div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
