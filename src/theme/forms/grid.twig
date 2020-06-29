@@ -1,7 +1,6 @@
 {# Display regular form fields #}
-{% macro buildField(field) %}
+{% macro buildFieldRow(field) %}
     {% if field.fieldType != "hidden" %}
-
         {% set field.class = field.class|replace({"error": "is-invalid"}) %}
         <div class="Grid Grid--withGutter u-margBottom2">
             <div class="Grid-cell u-size1of4 u-md-sizeFull">
@@ -13,35 +12,74 @@
                 {{ field.label.tag }}
             </div>
             <div class="Grid-cell u-size3of4 u-md-sizeFull">
-                {% if field.fieldType in ['email', 'text', 'url'] %}
-                    {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
-                    {{ field.tag }}
-                {%  elseif field.fieldType in ['date'] %}
-                    {% set field.class = field.class ~ ' TextInput' %}
-                    {{ field.tag }}
-                {% elseif field.fieldType == 'textarea' %}
-                    {% if field.size == 'small' %}
-                        {% set field.rows = 2 %}
-                    {% elseif field.size == 'medium' %}
-                        {% set field.rows = 5 %}
-                    {% elseif field.size == 'large' %}
-                        {% set field.rows = 10 %}
-                    {% endif %}
-                    {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
-                    {{ field.tag }}
-                {% elseif field.fieldType == 'select' %}
-                    <div class="SelectField u-sizeFull">
-                        {{ field.tag }}
-                    </div>
-                {% else %}
-                    {{ field.tag|replace({"error": "is-invalid"}) }}
-                {% endif %}
-                {% if field.description %}<p class="u-margBottom0 u-fontSize2">{{ field.description }}</p>{% endif %}
+                {{ _self.buildField(field) }}
             </div>
         </div>
     {% else %}
         {{ field.tag }}
     {% endif %}
+{% endmacro %}
+
+{# Build out each field #}
+{% macro buildField(field) %}
+    {% if field.fieldType in ['email', 'number', 'text', 'url'] %}
+        {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
+        {{ field.tag }}
+    {%  elseif field.fieldType in ['date','time','month'] %}
+        {% set field.class = field.class ~ ' TextInput' %}
+        {{ field.tag }}
+    {% elseif field.fieldType == 'button' %}
+        {% set field.class = field.class ~ ' Button' %}
+        {{ field.tag }}
+    {% elseif field.fieldType == 'textarea' %}
+        {% if field.size == 'small' %}
+            {% set field.rows = 2 %}
+        {% elseif field.size == 'medium' %}
+            {% set field.rows = 5 %}
+        {% elseif field.size == 'large' %}
+            {% set field.rows = 10 %}
+        {% endif %}
+        {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
+        {{ field.tag }}
+    {% elseif field.fieldType == 'select' %}
+        <div class="SelectInput u-sizeFull">
+            {{ field.tag }}
+        </div>
+    {% elseif field.fieldType == 'radio' %}
+        {% if field.config.separator == 'space' %}
+            {% for option in field.options %}
+                <label class="u-padRight2">{{ option.tagNoLabel }} {{ option.label }}</label>
+            {% endfor %}
+        {% else %}
+            {{ field.tag|replace({"error": "is-invalid"}) }}
+        {% endif %}
+    {% elseif field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
+        <div class="Grid Grid--withGutter">
+            {% for column in field.columns %}
+                {% set class = 'u-size1of' ~ loop.length  %}
+                {% if column.class %}
+                    {% if 'u-size' in column.class %}
+                        {% set class = column.class %}
+                    {% else %}
+                        {% set class = class ~ ' ' ~ column.class %}
+                    {% endif %}
+                {% endif %}
+                {% set class = class ~ ' u-md-sizeFull' %}
+                <div class="Grid-cell {{ class }}">
+                    {% for child in column.childFields %}
+                        <div class="u-margBottom2">
+                            {% set child.label.class = child.label.class ~ ' FormLabel FormLabel--block' %}
+                            {{ child.label.tag }}
+                            {{ _self.buildField(child) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ field.tag|replace({"error": "is-invalid"}) }}
+    {% endif %}
+    {% if field.description %}<p class="u-margBottom0 u-fontSize2">{{ field.description }}</p>{% endif %}
 {% endmacro %}
 
 {% import _self as macros %}
@@ -67,13 +105,13 @@
     <div class="js-fieldsContainer">
         {% for field in form.fields %}
             {% if field.isFormField %}
-                {{ macros.buildField(field) }}
+                {{ macros.buildFieldRow(field) }}
             {% else %}
                 {# Handle field groups separately as they have child fields to loop through #}
                 {% if field.fieldType == "fieldGroup" %}
                     {% for child in field.childFields %}
                         {% if child.isFormField %}
-                            {{ macros.buildField(child) }}
+                            {{ macros.buildFieldRow(field) }}
                         {% else %}
                             {# The child field is not an actual form field or a field group. It could be an HTML, Content or Section Heading field. Just output the tag. #}
                             {{ child.tag }}
@@ -122,56 +160,68 @@
     {{ form.closeTag }}
 </div>
 
-{# JAVASCRIPT FILES #}
-
-{% do _page.addJs('js/forms.js'|theme_url) %}
-
 {#  START INLINE JAVASCRIPT #}
 
-{% inlinejs %}
-$(document).ready(function(){
-    $('.js-pageForm form').validate({
-        rules: {
-            'email': {
-                email: true
+{% if _page.hasJs('js/forms.js'|theme_url) == false %}
+    {% inlinejs %}
+        loadjs.ready('main', {
+            success: function() {
+                loadjs('{{ 'js/forms.js'|theme_url }}', 'form');
             }
-        },
-        messages: {
-            {% set i = 0 %}
-            {% for field in form.fields %}
-                {% if field.isFormField %}{% for rule in field.rules %}{% if rule.type == 'required' %}{% set i = i + 1 %}{% if i > 1 %},{% endif %}'{{ field.name }}': '{{ rule.message|escape }}'
-                {% endif %}{% endfor %}{% else %}{% if field.fieldType == "fieldGroup" %}{% for child in field.childFields %}{% if child.isFormField %}{% for rule in child.rules %}{% if rule.type == 'required' %}{% set i = i + 1 %}{% if i > 1 %},{% endif %}'{{ child.name }}': '{{ rule.message|escape }}'
-                {% endif %}{% endfor %}{% endif %}{% endfor %}{% endif %}{% endif %}
-            {% endfor %}
-        },
-        errorClass: 'is-invalid',
-        errorElement: "li",
-        errorLabelContainer: "#errorContainer > ul",
-        showErrors: function(errorMap, errorList) {
-            $('.js-successContainer').hide();
-            if (this.numberOfInvalids() > 0) {
-                $('#errorContainer').removeClass('u-hidden');
-            } else {
-                $('#errorContainer').addClass('u-hidden');
-            }
-            $('.js-serverError').remove();
-            this.defaultShowErrors();
-            $('#errorContainer li').addClass('FormError-listItem');
-        }
-    });
-
-    {% if form.captcha.type == 'image' %}
-        $('.js-pageForm form .js-captchaReload').on('click', function(e) {
-            e.preventDefault();
-            $.getJSON(this.href, function(data) {
-                try {
-                    $('.js-pageForm form input[name="ap-form-captcha[id]"]').val(data.captchaId);
-                    $('.js-pageForm form .captcha-img').attr('src', data.src);
-                } catch(e) {
-                    alert('There was a problem refreshing the captcha image. ' + e);
-                }
-            });
         });
-    {% endif %}
+    {% endinlinejs %}
+    {% do _page.registerJs('js/forms.js'|theme_url) %}
+{% endif %}
+
+{% inlinejs %}
+
+loadjs.ready('form', {
+    success: function() {
+        $(function(){
+            $('.js-pageForm form').validate({
+                rules: {
+                    'email': {
+                        email: true
+                    }
+                },
+                messages: {
+                {% set i = 0 %}
+                {% for field in form.fields %}
+                    {% if field.isFormField %}{% for rule in field.rules %}{% if rule.type == 'required' %}{% set i = i + 1 %}{% if i > 1 %},{% endif %}'{{ field.name }}': '{{ rule.message|escape }}'
+                    {% endif %}{% endfor %}{% else %}{% if field.fieldType == "fieldGroup" %}{% for child in field.childFields %}{% if child.isFormField %}{% for rule in child.rules %}{% if rule.type == 'required' %}{% set i = i + 1 %}{% if i > 1 %},{% endif %}'{{ child.name }}': '{{ rule.message|escape }}'
+                    {% endif %}{% endfor %}{% endif %}{% endfor %}{% endif %}{% endif %}
+                {% endfor %}
+                },
+                errorClass: 'is-invalid',
+                errorElement: "li",
+                errorLabelContainer: "#errorContainer > ul",
+                showErrors: function(errorMap, errorList) {
+                    $('.js-successContainer').hide();
+                    if (this.numberOfInvalids() > 0) {
+                        $('#errorContainer').removeClass('u-hidden');
+                    } else {
+                        $('#errorContainer').addClass('u-hidden');
+                    }
+                    $('.js-serverError').remove();
+                    this.defaultShowErrors();
+                    $('#errorContainer li').addClass('FormError-listItem');
+                    }
+                });
+
+                {% if form.captcha.type == 'image' %}
+                    $('.js-pageForm form .js-captchaReload').on('click', function(e) {
+                    e.preventDefault();
+                    $.getJSON(this.href, function(data) {
+                        try {
+                            $('.js-pageForm form input[name="ap-form-captcha[id]"]').val(data.captchaId);
+                            $('.js-pageForm form .captcha-img').attr('src', data.src);
+                        } catch(e) {
+                            alert('There was a problem refreshing the captcha image. ' + e);
+                        }
+                    });
+                });
+            {% endif %}
+        });
+    }
 });
 {% endinlinejs %}

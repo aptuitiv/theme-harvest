@@ -1,8 +1,54 @@
-/* =========================================================================== *\
-    REQUIRED MESSAGE
-\* =========================================================================== */
+/* ==========================================================================
+   TextInput
+   ========================================================================== */
 
-/** @define IextInput */
+/** @define TextInput */
+
+/**
+ * Provides custom styling for text input fields and textareas
+ */
+
+:root {
+    --TextInput-background: #fff;
+    --TextInput-border: 1px solid var(--theme-primary-color);
+    --TextInput-padding: .25em .5em;
+    --TextInput-color: inherit;
+    --TextInput-errorColor: #f00;
+    --TextInput-successColor: #0f0;
+}
+
+.TextInput {
+    background: var(--TextInput-background);
+    border: var(--TextInput-border);
+    border-radius: var(--Button-border-radius);
+    box-sizing: border-box;
+    color: var(--TextInput-color);
+    outline: none;
+    padding: var(--TextInput-padding);
+}
+
+/**
+ * UI states
+ */
+
+.TextInput.is-invalid {
+    color: var(--TextInput-errorColor);
+    outline: 1px solid var(--TextInput-errorColor);
+}
+
+.TextInput.is-valid {
+    color: var(--TextInput-successColor);
+    outline: 1px solid var(--TextInput-successColor);
+}
+
+/**
+ * Input inline with a button beside it.
+ * Trying to get the heights to match cross-browser
+ */
+
+.TextInput--inline {
+    height: 38px;
+}
 
 .TextInput:focus {
     outline: 1px dotted #212121;
