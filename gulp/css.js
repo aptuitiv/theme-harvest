@@ -23,9 +23,8 @@ const penthouse = require('penthouse');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
-const postcssBemLinter = require('postcss-bem-linter');
 const postcssCssNext = require('postcss-cssnext');
-const stylelint = require('stylelint');
+const gulpStylelint = require('gulp-stylelint');
 const tap = require('gulp-tap');
 
 
@@ -43,13 +42,17 @@ function runStylelint() {
             util.logFile(file, 'Linting');
         }))
         .pipe(plumber({errorHandler: util.onError}))
-        .pipe(postcss([
-            postcssBemLinter({
-                preset: 'suit',
-                utilitySelectors: /^\.u-(xl-|xs-|sm-|md-|lg-)?(?:[a-z0-9][a-zA-Z0-9]*)+$/
-            }),
-            stylelint()
-        ]));
+        .pipe(gulpStylelint({
+            failAfterError: false,
+            fix: true,
+            reporters: [
+                {
+                    formatter: 'string',
+                    console: true
+                }
+            ]
+        }))
+        .pipe(gulp.dest(config.paths.src.cssBase));
 }
 
 // Set the display properties of the stylelint function

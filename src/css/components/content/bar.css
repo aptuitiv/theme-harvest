@@ -75,6 +75,6 @@
 
 /* postcss-bem-linter: ignore */
 
-.ContentBar--dark .u-headingCentered:after {
+.ContentBar--dark .u-headingCentered::after {
     background: #fff;
 }

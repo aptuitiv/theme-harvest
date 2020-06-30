@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.u-headingCentered:after {
+.u-headingCentered::after {
     background: #38871a;
     bottom: -12px;
     content: '';

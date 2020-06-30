@@ -32,6 +32,7 @@ module.exports = {
                 src + '/css/calendar.css',
                 src + '/css/store.css'
             ],
+            cssBase: src + '/css',
             font: src + '/fonts/**/*.{eot,ttf,woff,woff2}',
             icon: src + '/icons/**/*.svg',
             img: src + '/images/**/*.{gif,jpg,jpeg,png,svg,webp}',
