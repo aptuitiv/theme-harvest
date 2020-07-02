@@ -41,7 +41,13 @@
                             </a>
                         {% else %}
                             <a href="{{ image.large.src }}" class="Gallery-link Constrain Constrain--4by3 js-lightbox mfp-image" title="View larger image for {{ item.itemName }}">
-                                <div class="Gallery-imageWrap">{{ image.small.tag }}</div>
+                                <div class="Gallery-imageWrap">
+                                    {% if loop.index < 12 %}
+                                        <img src="{{ image.small.src }}" class="Gallery-image" alt="{{ item.itemName }}">
+                                    {% else %}
+                                        <img data-src="{{ image.small.src }}" src="{{ "/images/placeholderImage.png" }}" class="js-lazy Gallery-image" alt="{{ item.itemName }}">
+                                    {% endif %}
+                                </div>
                                 <div class="Gallery-title Gallery-title--overlay u-textCenter">{{ item.itemName }}</div>
                             </a>
                         {% endif %}
@@ -50,21 +56,31 @@
             </div>
 
             {{ macros.loadMagnific() }}
+            {{ macros.loadLazy() }}
 
             {% inlinejs %}
             loadjs.ready('magnific', {
                 success: function() {
                     $(function() {
-                        $('.js-lightbox').magnificPopup({
-                        disableOn: 700,
-                            gallery:{
-                                enabled:true
-                            }
-                        });
+                    $('.js-lightbox').magnificPopup({
+                    disableOn: 700,
+                        gallery:{
+                            enabled:true
+                        }
+                    });
+                });
+            }
+            }).ready('loadlazy', {
+                success: function() {
+                    $('.js-lazy').Lazy({
+                        scrollDirection: 'vertical',
+                        effect: 'fadeIn',
+                        visibleOnly: true,
                     });
                 }
             });
             {% endinlinejs %}
+
         {% endspaceless %}
         {% include 'snippets/pagination' %}
     {% endif %}

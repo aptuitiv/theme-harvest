@@ -80,6 +80,10 @@ module.exports = {
         {
             src: ['node_modules/masonry-layout/dist/*.{pkgd.min.js, min.js}'],
             dest: 'masonry'
+        },
+        {
+            src: ['node_modules/jquery-lazy/*.{lazy.min.js, min.js}'],
+            dest: 'lazy'
         }
     ],
 
