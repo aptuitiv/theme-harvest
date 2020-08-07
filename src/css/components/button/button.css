@@ -36,7 +36,8 @@
  * 2. Prevent button text from being selectable.
  */
 
-.Button {
+.Button,
+.Button[href^=tel] {
     background: var(--Button-background);
     border: var(--Button-border);
     border-radius: var(--Button-border-radius);
@@ -61,8 +62,11 @@
  */
 
 .Button:hover,
+.Button[href^=tel]:hover,
 .Button:focus,
-.Button:active {
+.Button[href^=tel]:focus,
+.Button:active,
+.Button[href^=tel]:active {
     background: var(--Button-backgroundHover);
     color: var(--Button-colorHover);
     text-decoration: none;
@@ -72,12 +76,14 @@
  * Size modifiers
  */
 
-.Button--lg {
+.Button--lg,
+.Button--lg[href^=tel] {
     font-size: calc(var(--base-typography-fontSize) + 3px);
     padding: var(--Button-paddingLg);
 }
 
-.Button--sm {
+.Button--sm,
+.Button--sm[href^=tel] {
     font-size: var(--base-typography-fontSize);
     font-weight: 300;
     padding: var(--Button-paddingSm);
@@ -86,14 +92,18 @@
 /**
  * Color modifiers
  */
-.Button--secondary {
+.Button--secondary,
+.Button--secondary[href^=tel] {
     background: var(--theme-button-background-alt);
     color: var(--theme-button-color-alt);
 }
 
 .Button--secondary:active,
+.Button--secondary[href^=tel]:active,
 .Button--secondary:focus,
-.Button--secondary:hover {
+.Button--secondary[href^=tel]:focus,
+.Button--secondary:hover,
+.Button--secondary[href^=tel]:hover {
     background: var(--theme-button-background-hover-alt);
     color: var(--theme-button-color-hover-alt);
 }
@@ -101,6 +111,7 @@
 /**
  * Border modifiers
  */
-.Button--square {
+.Button--square,
+.Button--square[href^=tel] {
     border-radius: 0;
 }
