@@ -9,7 +9,10 @@ $(function() {
     setupNotifications();
 
     if (document.documentElement.clientWidth > 800) {
-        observeSticky(document.querySelector('.js-header'));
+        var header = document.querySelector('.js-header');
+        if (header !== null) {
+            observeSticky(header);
+        }
     }
 });
 /**
