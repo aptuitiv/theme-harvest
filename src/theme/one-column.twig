@@ -1,8 +1,4 @@
-{% if _page.request.get.new == "yes" %}
-    {%  include 'snippets/header-new' %}
-{% else %}
-    {%  include 'snippets/header' %}
-{% endif %}
+{%  include 'snippets/header' %}
 <div class="Container">
     {% block header %}{% endblock %}
     {% if _page.isHome == false %}
