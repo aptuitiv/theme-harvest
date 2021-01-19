@@ -7,7 +7,67 @@ $(function() {
     smallScreenNav.init();
     navAccess.init();
     setupNotifications();
+
+    if (document.documentElement.clientWidth > 800) {
+        observeSticky(document.querySelector('.js-header'));
+    }
 });
+/**
+ * Watches a DOM element and adds a class to it if it's sticky or not.
+ * Depends on certain browser features so this will only work in modern browsers.
+ * Inspired by https://developers.google.com/web/updates/2017/09/sticky-headers
+ * @param {Element} el The DOM element to mark as sticky
+ */
+function observeSticky(el, options) {
+    /**
+     * Test to see if the required features exist before doing anything else.
+     * Browsers that don't support all this either won't have the sticky element (becuase it doesn't support the CSS)
+     * or it won't have the notification that the element is sticky because it doesn't support the following Javascript features.
+     */
+    if ('IntersectionObserver' in window && typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('position', 'sticky')) {
+        var config = {
+            offset: 0,
+            lowThreshold: .25,
+            highThreshold: .75
+        };
+        if (isObject(options)) {
+            config = extend(config, options);
+        }
+        /**
+         * Create an element before the sticky element to watch.
+         * Because styles could be changing on the sticky element (like height) it's important
+         * for this sentinel element to be at least half the height of the sticky element. That way
+         * the sticky element won't be changed to quickly. If you're scrolling really slowly then it would
+         * be possible to trigger the sticky/unsticky event rapidly, which looks bad. This sentinel element
+         * prevents that.
+         */
+        var sentinel = document.createElement('div'),
+            style = 'position: absolute; z-index: -1; width: 1px; height: ' + el.clientHeight / 2 + 'px;';
+        if (isNumber(config.offset)) {
+            style += ' top: -' + config.offset + 'px;';
+        }
+        sentinel.style = style;
+        el.parentNode.insertBefore(sentinel, el);
+
+        // Setup the observer
+        var observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                // Check for stickyness by checking how much of the element is visible
+                if (entry.intersectionRatio <= config.lowThreshold) {
+                    // Less than the low threshold percentage of the sentinel is visible so mark the element as sticky
+                    el.classList.add('is-sticky');
+                } else if (entry.intersectionRatio >= config.highThreshold) {
+                    // More than this high threshold of the sentinel is visible, almost to the top of the element so mark it as not sticky
+                    el.classList.remove('is-sticky');
+                }
+            });
+        }, {
+            threshold: [config.lowThreshold, config.highThreshold]
+        });
+        // Observe the visibility of the sentinel
+        observer.observe(sentinel);
+    }
+}
 
 /**
  * Small screen navigation
@@ -344,3 +404,44 @@ function getCookieValue(cname) {
     var b = document.cookie.match('(^|;)\\s*' + cname + '\\s*=\\s*([^;]+)');
     return b ? b.pop() : '';
 }
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+    var type = typeof value;
+    return !!value && (type == 'object' || type == 'function');
+}
+
+
+/**
+ * Tests to see if the thing is a number
+ *
+ * @param {number} thing
+ * @returns {boolean}
+ */
+function isNumber(thing) {
+    return typeof thing === 'number';
+};

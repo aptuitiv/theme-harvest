@@ -10,6 +10,23 @@
     text-align: center;
 }
 
+.Header--outer {
+    padding: 0;
+}
+
+@media (--c-bp-largeScreenNav) {
+    .Header {
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 4;
+    }
+
+    .Header.is-sticky {
+        box-shadow: 1px 1px 3px rgba(43, 26, 35, .4);
+    }
+}
+
 @media (--c-bp-sm) {
     .Header {
         padding: 2rem var(--g-gutter-sm);
