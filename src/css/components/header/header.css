@@ -31,6 +31,10 @@
     .Header {
         padding: 2rem var(--g-gutter-sm);
     }
+
+    .Header--outer {
+        padding: 0;
+    }
 }
 
 .Header-skipToMain {

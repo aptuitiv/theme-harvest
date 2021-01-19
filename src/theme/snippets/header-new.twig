@@ -24,7 +24,7 @@
 <body>
 <div class="u-hiddenVisually" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
 {% spaceless %}
-    <header role="banner" class="Header Header--outer js-header">
+    <header role="banner" class="Header {% if _core.theme.settings.enableStickyHeader == 'yes' %}Header--outer js-header{% endif %}">
         {{ _api.widgets.collection.get('notification-bar') }}
         <a class="Header-skipToMain" href="#main">skip to main content {{ macros.iconAriaHidden("chevron-small-right") }}</a>
         {% if _core.theme.settings.headerLogo %}

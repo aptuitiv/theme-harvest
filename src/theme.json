@@ -112,6 +112,16 @@
                 "description": "Content for the header that is used on all pages",
                 "fields": [
                     {
+                        "name": "enableStickyHeader",
+                        "label": "Enable 'sticky' Header",
+                        "type": "radio",
+                        "options": {
+                            "yes": "Yes",
+                            "no": "No"
+                        },
+                        "default": "yes"
+                    },
+                    {
                         "name": "headerShowSocial",
                         "label": "Show Social",
                         "type": "radio",
