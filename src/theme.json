@@ -2503,69 +2503,344 @@
             "key": "full-width-image",
             "name": "Full Width Image",
             "description": "",
-            "attributes": [
+            "availableOnSnippets": true,
+            "availableOnContentAreas": "specific",
+            "parseOnRequest": true,
+            "contentAreas": [
+                "header"
+            ],
+            "fields": [
                 {
-                    "key": "image",
-                    "name": "Image",
-                    "description": "",
-                    "type": "imageSet",
-                    "configuration": {
-                        "imgSetSingleUpload": "single"
-                    },
+                    "key": "spacingAfterHeader",
+                    "name": "Spacing after header",
+                    "description": "How much whitespace to be between the header image and the content that follows it.",
+                    "type": "select",
                     "size": "medium",
                     "value": "",
-                    "attributes": [
+                    "values": [
                         {
-                            "key": "large",
-                            "name": "Large",
-                            "description": "",
-                            "type": "image",
-                            "configuration": {
-                                "path": "/images/header",
-                                "height": 833,
-                                "width": 2000
-                            },
-                            "size": "medium",
-                            "value": ""
+                            "value": "Default",
+                            "default": false
                         },
                         {
-                            "key": "medium",
-                            "name": "Medium",
-                            "description": "",
-                            "type": "image",
-                            "configuration": {
-                                "path": "/images/header",
-                                "height": 500,
-                                "width": 1200
-                            },
-                            "size": "medium",
-                            "value": ""
-                        },
-                        {
-                            "key": "small",
-                            "name": "Small",
-                            "description": "",
-                            "type": "image",
-                            "configuration": {
-                                "path": "/images/header",
-                                "height": 250,
-                                "width": 600
-                            },
-                            "size": "medium",
-                            "value": ""
+                            "value": "None",
+                            "default": false
                         }
                     ]
                 },
                 {
-                    "key": "imageAltText",
-                    "name": "Image Alt Text",
-                    "description": "",
-                    "type": "text",
-                    "configuration": {
-                        "allowCode": "no"
-                    },
+                    "key": "displayType",
+                    "name": "Display Type",
+                    "description": "\u201cSingle slide\u201d will display only the first slide content",
+                    "type": "select",
                     "size": "medium",
-                    "value": ""
+                    "value": "",
+                    "values": [
+                        {
+                            "value": "Slideshow",
+                            "default": false
+                        },
+                        {
+                            "value": "Single slide",
+                            "default": false
+                        },
+                        {
+                            "value": "Random slide",
+                            "default": false
+                        },
+                        {
+                            "value": "Hide",
+                            "default": false
+                        }
+                    ]
+                },
+                {
+                    "key": "autoPlaySlides",
+                    "name": "Auto play slides",
+                    "description": "",
+                    "type": "selectYesNo",
+                    "size": "medium",
+                    "value": "yes",
+                    "configuration": {
+                        "optionLabel": "yesNo"
+                    }
+                },
+                {
+                    "key": "showDots",
+                    "name": "Show dots",
+                    "description": "",
+                    "type": "selectYesNo",
+                    "size": "medium",
+                    "value": "yes",
+                    "configuration": {
+                        "optionLabel": "yesNo"
+                    }
+                },
+                {
+                    "key": "dotPosition",
+                    "name": "Dot position",
+                    "description": "",
+                    "type": "select",
+                    "size": "medium",
+                    "value": "",
+                    "values": [
+                        {
+                            "value": "Left",
+                            "default": false
+                        },
+                        {
+                            "value": "Center",
+                            "default": false
+                        },
+                        {
+                            "value": "Right",
+                            "default": false
+                        }
+                    ]
+                },
+                {
+                    "key": "showArrows",
+                    "name": "Show arrows",
+                    "description": "",
+                    "type": "selectYesNo",
+                    "size": "medium",
+                    "value": "yes",
+                    "configuration": {
+                        "optionLabel": "yesNo"
+                    }
+                },
+                {
+                    "key": "sliderSpeed",
+                    "name": "Slider speed",
+                    "description": "",
+                    "type": "select",
+                    "size": "medium",
+                    "value": "",
+                    "configuration": {
+                        "0": "",
+                        "after": "seconds"
+                    },
+                    "values": [
+                        {
+                            "value": "3",
+                            "default": false
+                        },
+                        {
+                            "value": "4",
+                            "default": false
+                        },
+                        {
+                            "value": "5",
+                            "default": false
+                        },
+                        {
+                            "value": "6",
+                            "default": false
+                        },
+                        {
+                            "value": "7",
+                            "default": false
+                        },
+                        {
+                            "value": "8",
+                            "default": false
+                        }
+                    ]
+                },
+                {
+                    "key": "slideTransition",
+                    "name": "Slide transition",
+                    "description": "",
+                    "type": "select",
+                    "size": "medium",
+                    "value": "",
+                    "values": [
+                        {
+                            "value": "Fade",
+                            "default": false
+                        },
+                        {
+                            "value": "Slide",
+                            "default": false
+                        }
+                    ]
+                },
+                {
+                    "key": "slides",
+                    "name": "Slides",
+                    "description": "",
+                    "type": "repeating",
+                    "size": "medium",
+                    "value": "",
+                    "configuration": {
+                        "collectionAllowMaxNumItems": "none",
+                        "collectionAllowMinNumItems": "none",
+                        "collectionItemDelete": "1",
+                        "collectionItemName": "Slide",
+                        "collectionItemSort": "1",
+                        "collectionMaxNumItems": "",
+                        "collectionMinNumItems": "",
+                        "collectionOrientation": "vertical"
+                    },
+                    "children": [
+                        {
+                            "key": "images",
+                            "name": "Image",
+                            "description": "",
+                            "type": "imageSet",
+                            "size": "medium",
+                            "value": "",
+                            "configuration": {
+                                "imgSetSingleUpload": "single"
+                            },
+                            "children": [
+                                {
+                                    "key": "large",
+                                    "name": "Large",
+                                    "description": "",
+                                    "type": "image",
+                                    "size": "medium",
+                                    "value": "",
+                                    "configuration": {
+                                        "height": 833,
+                                        "path": "/images/header",
+                                        "width": 2000
+                                    }
+                                },
+                                {
+                                    "key": "medium",
+                                    "name": "Medium",
+                                    "description": "",
+                                    "type": "image",
+                                    "size": "medium",
+                                    "value": "",
+                                    "configuration": {
+                                        "height": 500,
+                                        "path": "/images/header",
+                                        "width": 1200
+                                    }
+                                },
+                                {
+                                    "key": "small",
+                                    "name": "Small",
+                                    "description": "",
+                                    "type": "image",
+                                    "size": "medium",
+                                    "value": "",
+                                    "configuration": {
+                                        "height": 250,
+                                        "path": "/images/header",
+                                        "width": 600
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "imageEffect",
+                            "name": "Image Effect",
+                            "description": "",
+                            "type": "select",
+                            "size": "medium",
+                            "value": "",
+                            "values": [
+                                {
+                                    "value": "None",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Blur Small",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Blur Medium",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Blur Large",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Grayscale",
+                                    "default": false
+                                }
+                            ]
+                        },
+                        {
+                            "key": "altText",
+                            "name": "Image Alt Text",
+                            "description": "",
+                            "type": "text",
+                            "size": "medium",
+                            "value": "",
+                            "configuration": {
+                                "allowCode": "no"
+                            }
+                        },
+                        {
+                            "key": "link",
+                            "name": "Link",
+                            "description": "",
+                            "type": "url",
+                            "size": "medium",
+                            "value": ""
+                        },
+                        {
+                            "key": "captionPosition",
+                            "name": "Caption Position",
+                            "description": "",
+                            "type": "select",
+                            "size": "medium",
+                            "value": "",
+                            "values": [
+                                {
+                                    "value": "Center Left",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Center",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Center Right",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Bottom Left",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Bottom Center",
+                                    "default": false
+                                },
+                                {
+                                    "value": "Bottom Right",
+                                    "default": false
+                                }
+                            ]
+                        },
+                        {
+                            "key": "captionTitle",
+                            "name": "Caption Title",
+                            "description": "",
+                            "type": "text",
+                            "size": "medium",
+                            "value": "",
+                            "configuration": {
+                                "allowCode": "no"
+                            }
+                        },
+                        {
+                            "key": "caption",
+                            "name": "Caption",
+                            "description": "",
+                            "type": "textarea",
+                            "size": "medium",
+                            "value": "",
+                            "configuration": {
+                                "allowCode": "no"
+                            }
+                        }
+                    ]
                 }
             ]
         },
