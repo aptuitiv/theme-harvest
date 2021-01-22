@@ -36,9 +36,8 @@
 }
 
 .ImageGrid-image--scale {
+    height: 100%;
     left: 0;
-    min-height: 100%;
-    min-width: 100%;
     position: absolute;
     right: 0;
     width: 100%;
