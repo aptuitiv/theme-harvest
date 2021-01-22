@@ -37,5 +37,15 @@
             }
         });
     </script>
+{% if _core.service.recaptchaV3.isUsable %}
+    {% if _page.hasJs('recaptchaV3') == false %}
+        {% do _page.registerJs('recaptchaV3') %}
+        {{ _core.service.recaptchaV3.js.tag }}
+        {{ _core.service.recaptchaV3.script.tag }}
+    {% endif %}
+    {% inlinecss %}
+        .grecaptcha-badge { visibility: hidden; }
+    {% endinlinecss %}
+{% endif %}
 </body>
 </html>

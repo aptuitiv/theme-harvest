@@ -133,6 +133,16 @@
                 {{ form.captcha.tag }}
             </div>
         </div>
+    {% elseif form.captcha.type == 'recaptchaV3' %}
+        {# Recaptcha V3 #}
+        {% if _page.hasJs('recaptchaV3') == false %}
+            {# Include the hidden input tag, reCAPTCHA Javascript file and the Javascript promise function #}
+            {{ form.captcha.tag }}
+            {% do _page.registerJs('recaptchaV3') %}
+        {% else %}
+            {# Only output the hidden input tag as the reCAPTCHA Javascript file and the Javascript promise function have already been included on the page. #}
+            {{ form.captcha.input.tag }}
+        {% endif %}
     {% elseif form.captcha.type == 'image' %}
         <div class="Grid Grid--withGutter u-margBottom2">
             <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
@@ -205,8 +215,18 @@ loadjs.ready('form', {
                     $('.js-serverError').remove();
                     this.defaultShowErrors();
                     $('#errorContainer li').addClass('FormError-listItem');
-                    }
-                });
+                },
+                submitHandler: function(form) {
+                    {% if form.captcha.type == 'recaptchaV3' %}
+                        {# Call the Javascript Promise function to execute the reCAPTCHA #}
+                        {{ form.captcha.script.function }}(grecaptcha).then(function() {
+                            form.submit();
+                        });
+                    {% else %}
+                        $(form).submit();
+                    {% endif %}
+                }
+            });
 
                 {% if form.captcha.type == 'image' %}
                     $('.js-pageForm form .js-captchaReload').on('click', function(e) {
