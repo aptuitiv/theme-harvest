@@ -24,18 +24,17 @@ module.exports = {
     /**
      * Paths for different asset sources and their distribution path
      */
-    paths: {
+     paths: {
         src: {
             base: src,
             css: [
                 src + '/css/main.css',
-                src + '/css/calendar.css',
-                src + '/css/store.css'
             ],
-            cssBase: src + '/css',
             font: src + '/fonts/**/*.{eot,ttf,woff,woff2}',
             icon: src + '/icons/**/*.svg',
             img: src + '/images/**/*.{gif,jpg,jpeg,png,svg,webp}',
+            js: src + '/js',
+            jslint: src + '/js/**/*.js',
             stylelint: [src + '/css/**/*.css'],
             theme: src + '/theme/**/*.twig',
             themeFolder: src + '/theme'
@@ -43,6 +42,9 @@ module.exports = {
         build: {
             base: build,
             css: build + '/css'
+        },
+        criticalCss: {
+            src: dist + '/css/main.css'
         },
         dist: {
             base: dist,

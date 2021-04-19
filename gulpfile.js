@@ -92,5 +92,6 @@ module.exports = {
     svgSprite: svg.sprite,
     theme: theme.theme,
     themeConfig: theme.config,
+    jslint: js.jslint,
     watch: watch
 };

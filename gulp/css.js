@@ -23,9 +23,12 @@ const penthouse = require('penthouse');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
-const postcssCssNext = require('postcss-cssnext');
+const autoprefixer = require('autoprefixer');
 const gulpStylelint = require('gulp-stylelint');
+const rename = require('gulp-rename');
 const tap = require('gulp-tap');
+
+
 
 
 /**
@@ -36,7 +39,7 @@ const tap = require('gulp-tap');
  * but with "xs-" added in.
  */
 function runStylelint() {
-    return gulp.src(config.paths.src.stylelint)
+    return gulp.src(config.paths.src.stylelint, {base: './'})
         .pipe(cached('Stylelint'))
         .pipe(tap((file) => {
             util.logFile(file, 'Linting');
@@ -52,7 +55,7 @@ function runStylelint() {
                 }
             ]
         }))
-        .pipe(gulp.dest(config.paths.src.cssBase));
+        .pipe(gulp.dest('./'));
 }
 
 // Set the display properties of the stylelint function
@@ -66,7 +69,7 @@ runStylelint.description = 'Runs the CSS linter';
  */
 const processors = [
     postcssImport,
-    postcssCssNext()
+    autoprefixer()
 ];
 
 /**
@@ -121,7 +124,7 @@ function generateCriticalCSS(data, i, callback) {
 
     penthouse({
         url: src,
-        css: config.paths.dist.css  + '/' + config.cssName,
+        css: config.paths.criticalCss.src,
         renderWaitTime: 500,
         width: 1200,
         height: 1200
@@ -144,4 +147,3 @@ function generateCriticalCSS(data, i, callback) {
 exports.criticalCss = criticalCss
 exports.css = gulp.series(runStylelint, processCss);
 exports.stylelint = runStylelint;
-
