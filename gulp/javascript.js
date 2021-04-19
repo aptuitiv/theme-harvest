@@ -20,7 +20,7 @@ const newer = require('gulp-newer');
 const plumber = require('gulp-plumber');
 const remember = require('gulp-remember');
 const tap = require('gulp-tap');
-const gulpEsbuild = require('gulp-esbuild');
+const terser = require('gulp-terser');
 
 /**
  * Check to see if the file has been fixed by eslint
@@ -80,10 +80,11 @@ function scripts() {
                 util.logFileTo('Merging script', file, config.paths.dist.js + '/' + entry.name);
             }))
             .pipe(plumber({errorHandler: util.onError}))
-            .pipe(gulpEsbuild({
-                outdir: config.paths.dist.js,
-                bundle: true,
-                minify: true
+            .pipe(terser({
+                mangle: false,
+                compress: {
+                    defaults: false
+                }
             }))
             .pipe(remember('scripts' + index))
             .pipe(concat(entry.name))
