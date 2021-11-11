@@ -3915,8 +3915,8 @@
     ],
     "contentLayouts": [
         {
-            "key": "full-width-image",
-            "name": "Full Width Image",
+            "key": "full-width-banner",
+            "name": "Full Width Banner",
             "description": "",
             "availableOnSnippets": true,
             "availableOnContentAreas": "specific",
@@ -4254,8 +4254,8 @@
             ]
         },
         {
-            "key": "header",
-            "name": "Header",
+            "key": "interior-banner",
+            "name": "Interior Banner",
             "description": "",
             "availableOnSnippets": true,
             "availableOnContentAreas": "specific",
