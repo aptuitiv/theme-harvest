@@ -1,0 +1,24 @@
+/* =========================================================================== *\
+    Aspect ratio enforcement
+\* =========================================================================== */
+
+.ImageConstrain {
+    display: block;
+    padding-bottom: 100%;
+    position: relative;
+}
+
+.ImageConstrain--banner {
+    padding-bottom: 36%;
+}
+
+/* postcss-bem-linter: ignore */
+.ImageConstrain img {
+    height: 100%;
+    image-orientation: none;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
