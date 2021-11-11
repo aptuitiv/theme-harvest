@@ -2080,8 +2080,8 @@
             "name": "Content Wrap"
         },
         {
-            "key": "content-layouts/header",
-            "name": "Header"
+            "key": "content-layouts/interior-banner",
+            "name": "Interior Banner"
         },
         {
             "key": "content-layouts/full-width-banner",
