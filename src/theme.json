@@ -3909,8 +3909,8 @@
     },
     "contentAreas": [
         {
-            "key": "header",
-            "name": "Header"
+            "key": "banner",
+            "name": "Banner"
         }
     ],
     "contentLayouts": [
