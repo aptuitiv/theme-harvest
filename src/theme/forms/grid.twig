@@ -1,164 +1,17 @@
-{# Display regular form fields #}
-{% macro buildFieldRow(field) %}
-    {% if field.fieldType != "hidden" %}
-        {% set field.class = field.class|replace({"error": "is-invalid"}) %}
-        <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size1of4 u-md-sizeFull">
-                {% set field.label.class = field.label.class ~ ' FormLabel' %}
-                {% if field.isRequired %}
-                    {% set field.required = true %}
-                    {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
-                {% endif %}
-                {{ field.label.tag }}
-            </div>
-            <div class="Grid-cell u-size3of4 u-md-sizeFull">
-                {{ _self.buildField(field) }}
-            </div>
-        </div>
-    {% else %}
-        {{ field.tag }}
-    {% endif %}
-{% endmacro %}
 
-{# Build out each field #}
-{% macro buildField(field) %}
-    {% if field.fieldType in ['email', 'number', 'text', 'url'] %}
-        {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
-        {{ field.tag }}
-    {%  elseif field.fieldType in ['date','time','month'] %}
-        {% set field.class = field.class ~ ' TextInput' %}
-        {{ field.tag }}
-    {% elseif field.fieldType == 'button' %}
-        {% set field.class = field.class ~ ' Button' %}
-        {{ field.tag }}
-    {% elseif field.fieldType == 'textarea' %}
-        {% if field.size == 'small' %}
-            {% set field.rows = 2 %}
-        {% elseif field.size == 'medium' %}
-            {% set field.rows = 5 %}
-        {% elseif field.size == 'large' %}
-            {% set field.rows = 10 %}
-        {% endif %}
-        {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
-        {{ field.tag }}
-    {% elseif field.fieldType == 'select' %}
-        <div class="SelectInput u-sizeFull">
-            {{ field.tag }}
-        </div>
-    {% elseif field.fieldType == 'radio' %}
-        {% if field.config.separator == 'space' %}
-            {% for option in field.options %}
-                <label class="u-padRight2">{{ option.tagNoLabel }} {{ option.label }}</label>
-            {% endfor %}
-        {% else %}
-            {{ field.tag|replace({"error": "is-invalid"}) }}
-        {% endif %}
-    {% elseif field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
-        <div class="Grid Grid--withGutter">
-            {% for column in field.columns %}
-                {% set class = 'u-size1of' ~ loop.length  %}
-                {% if column.class %}
-                    {% if 'u-size' in column.class %}
-                        {% set class = column.class %}
-                    {% else %}
-                        {% set class = class ~ ' ' ~ column.class %}
-                    {% endif %}
-                {% endif %}
-                {% set class = class ~ ' u-md-sizeFull' %}
-                <div class="Grid-cell {{ class }}">
-                    {% for child in column.childFields %}
-                        <div class="u-margBottom2">
-                            {% set child.label.class = child.label.class ~ ' FormLabel FormLabel--block' %}
-                            {{ child.label.tag }}
-                            {{ _self.buildField(child) }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        {{ field.tag|replace({"error": "is-invalid"}) }}
-    {% endif %}
-    {% if field.description %}<p class="u-margBottom0 u-fontSize2">{{ field.description }}</p>{% endif %}
-{% endmacro %}
+{% import 'macros/form-macros.twig' as macros %}
 
-{% import _self as macros %}
+{{ macros.formSuccessMessage(form) }}
 
-{# form.success only used if you don't redirect to another page after a successful submission #}
-{% if form.success %}
-    <p class="Message Message--success js-successContainer">Success!</p>
-{% endif %}
-<div class="js-pageForm">
-    {{ form.openTag }}
+{% set form.class = 'js-form' ~ random_string() %}
+{{ form.openTag }}
 
-    {# Show form errors if there are any #}
-    <div id="errorContainer" class="FormError {% if form.errors is empty %} u-hidden{% endif %}">
-        <p>There was a problem with your submission. Please correct the issues below</p>
-        <ul class="FormError-list">
-            {% for error in form.errors %}
-                <li class="FormError-listItem js-serverError">{{ error.message }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+    {% set errorContainerId = 'errorContainer' ~ random_string() %}
+    {{ macros.formErrorContainer(errorContainerId, form) }}
 
-    {# Loop through and show each form field #}
-    <div class="js-fieldsContainer">
-        {% for field in form.fields %}
-            {% if field.isFormField %}
-                {{ macros.buildFieldRow(field) }}
-            {% else %}
-                {# Handle field groups separately as they have child fields to loop through #}
-                {% if field.fieldType == "fieldGroup" %}
-                    {% for child in field.childFields %}
-                        {% if child.isFormField %}
-                            {{ macros.buildFieldRow(field) }}
-                        {% else %}
-                            {# The child field is not an actual form field or a field group. It could be an HTML, Content or Section Heading field. Just output the tag. #}
-                            {{ child.tag }}
-                        {% endif %}
-                    {% endfor %}
-                {% else %}
-                    {# The field is not an actual form field or a field group. It could be an HTML, Content or Section Heading field. Just output the tag. #}
-                    {{ field.tag }}
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
+    {{ macros.buildGridFormFields(form) }}
 
-    {# Show the CAPTCHA field if necessary #}
-    {% if form.captcha.type == 'recaptcha' %}
-        <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
-                <strong>Please check the box below before submitting.</strong>
-                {{ form.captcha.tag }}
-            </div>
-        </div>
-    {% elseif form.captcha.type == 'recaptchaV3' %}
-        {# Recaptcha V3 #}
-        {% if _page.hasJs('recaptchaV3') == false %}
-            {# Include the hidden input tag, reCAPTCHA Javascript file and the Javascript promise function #}
-            {{ form.captcha.tag }}
-            {% do _page.registerJs('recaptchaV3') %}
-        {% else %}
-            {# Only output the hidden input tag as the reCAPTCHA Javascript file and the Javascript promise function have already been included on the page. #}
-            {{ form.captcha.input.tag }}
-        {% endif %}
-    {% elseif form.captcha.type == 'image' %}
-        <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
-                {{ form.captcha.image.tag }}
-            </div>
-        </div>
-        <div class="Grid Grid--withGutter u-margBottom2">
-            <div class="Grid-cell u-size1of4 u-md-sizeFull">
-                <label for="ap-form-captcha-input" class="FormLabel">Captcha Text <span class="FormRequired">*</span>:</label>
-                <a class="js-captchaReload" href="{{ form.captcha.reloadUrl }}" rel="nofollow">reload</a>
-            </div>
-            <div class="Grid-cell u-size3of4 u-md-sizeFull">
-                {{ form.captcha.tag|replace({'id="ap-form-captcha-input"': 'class="TextInput u-size1of2 u-sm-size3of4 required" title="Captcha value is wrong" id="ap-form-captcha-input"'}) }}
-            </div>
-        </div>
-    {% endif %}
+    {{ macros.captcha(form) }}
 
     <div class="Grid Grid--withGutter u-margBottom2">
         <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
@@ -167,81 +20,7 @@
             <p><button type="submit" class="Button Button--lg u-sm-sizeFull">{{ form.submitButtonText }}</button></p>
         </div>
     </div>
-    {{ form.closeTag }}
-</div>
 
-{#  START INLINE JAVASCRIPT #}
+{{ form.closeTag }}
 
-{% if _page.hasJs('js/forms.js'|theme_url) == false %}
-    {% inlinejs %}
-        loadjs.ready('main', {
-            success: function() {
-                loadjs('{{ 'js/forms.js'|theme_url }}', 'form');
-            }
-        });
-    {% endinlinejs %}
-    {% do _page.registerJs('js/forms.js'|theme_url) %}
-{% endif %}
-
-{% inlinejs %}
-
-loadjs.ready('form', {
-    success: function() {
-        $(function(){
-            $('.js-pageForm form').validate({
-                rules: {
-                    'email': {
-                        email: true
-                    }
-                },
-                messages: {
-                {% set i = 0 %}
-                {% for field in form.fields %}
-                    {% if field.isFormField %}{% for rule in field.rules %}{% if rule.type == 'required' %}{% set i = i + 1 %}{% if i > 1 %},{% endif %}'{{ field.name }}': '{{ rule.message|escape }}'
-                    {% endif %}{% endfor %}{% else %}{% if field.fieldType == "fieldGroup" %}{% for child in field.childFields %}{% if child.isFormField %}{% for rule in child.rules %}{% if rule.type == 'required' %}{% set i = i + 1 %}{% if i > 1 %},{% endif %}'{{ child.name }}': '{{ rule.message|escape }}'
-                    {% endif %}{% endfor %}{% endif %}{% endfor %}{% endif %}{% endif %}
-                {% endfor %}
-                },
-                errorClass: 'is-invalid',
-                errorElement: "li",
-                errorLabelContainer: "#errorContainer > ul",
-                showErrors: function(errorMap, errorList) {
-                    $('.js-successContainer').hide();
-                    if (this.numberOfInvalids() > 0) {
-                        $('#errorContainer').removeClass('u-hidden');
-                    } else {
-                        $('#errorContainer').addClass('u-hidden');
-                    }
-                    $('.js-serverError').remove();
-                    this.defaultShowErrors();
-                    $('#errorContainer li').addClass('FormError-listItem');
-                },
-                submitHandler: function(form) {
-                    {% if form.captcha.type == 'recaptchaV3' %}
-                        {# Call the Javascript Promise function to execute the reCAPTCHA #}
-                        {{ form.captcha.script.function }}(grecaptcha).then(function() {
-                            form.submit();
-                        });
-                    {% else %}
-                        $(form).submit();
-                    {% endif %}
-                }
-            });
-
-                {% if form.captcha.type == 'image' %}
-                    $('.js-pageForm form .js-captchaReload').on('click', function(e) {
-                    e.preventDefault();
-                    $.getJSON(this.href, function(data) {
-                        try {
-                            $('.js-pageForm form input[name="ap-form-captcha[id]"]').val(data.captchaId);
-                            $('.js-pageForm form .captcha-img').attr('src', data.src);
-                        } catch(e) {
-                            alert('There was a problem refreshing the captcha image. ' + e);
-                        }
-                    });
-                });
-            {% endif %}
-        });
-    }
-});
-{% endinlinejs %}
+{{ macros.formValidateHandlerJs(form, errorContainerId) }}
