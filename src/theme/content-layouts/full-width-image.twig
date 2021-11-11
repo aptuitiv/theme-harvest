@@ -17,7 +17,9 @@
         {% set slide.images.large.class = slide.images.large.class ~ ' u-imageGrayscale' %}
     {% endif %}
     {% if slide.link %}<a href="{{ slide.link }}" class="Slider-link">{% endif %}
-    {{ slide.images.large.tag }}
+    <div class="ImageConstrain ImageConstrain--banner">
+        {{ slide.images.large.tag }}
+    </div>
     {% if slide.captionTitle or slide.caption  %}
         <span class="Slider-content Slider-content--{{ slide.captionPosition|camel }}">
             {% if slide.captionTitle %}<span class="Slider-captionTitle">{{ slide.captionTitle }}</span>{% endif %}
