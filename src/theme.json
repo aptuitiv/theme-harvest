@@ -2084,8 +2084,8 @@
             "name": "Header"
         },
         {
-            "key": "content-layouts/full-width-image",
-            "name": "Full Width Image"
+            "key": "content-layouts/full-width-banner",
+            "name": "Full Width Banner"
         },
         {
             "key": "forms/grid",
