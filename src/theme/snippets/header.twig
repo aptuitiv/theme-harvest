@@ -22,6 +22,7 @@
     {{ _page.head() }}
 </head>
 <body>
+{{ _page.bodyStartCode() }}
 <div class="u-hiddenVisually" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
 {% spaceless %}
     <header role="banner" class="Header{% if _core.theme.settings.enableStickyHeader == 'yes' %} Header--outer js-header{% endif %}">
