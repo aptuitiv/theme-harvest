@@ -30,7 +30,7 @@
         <a class="Header-skipToMain" href="#main">skip to main content {{ macros.iconAriaHidden("chevron-small-right") }}</a>
         {% if _core.theme.settings.headerLogo %}
             {% if _core.theme.settings.headerLogo.alt|length == 0 %}
-                {% set _core.theme.settings.headerLogo.alt = _core.theme.settings.company %}
+                {% set _core.theme.settings.headerLogo.alt = _core.settings.companyName %}
             {% endif %}
             {% set _core.theme.settings.headerLogo.class = 'u-size' ~ _core.theme.settings.headerLogoSize|capitalize %}
             <div class="Header u-hidden u-md-show">
@@ -50,20 +50,20 @@
                     <div class="Grid-cell u-size1of3 u-md-sizeFull">
                         {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
                             <div class="TopBar-contact" itemscope itemtype="http://schema.org/Organization">
-                                {% if _core.theme.settings.headerShowPhone == 'yes' and _core.theme.settings.phone|length > 0 %}
-                                    <span class="TopBar-contactItem u-md-hide" itemprop="telephone"><a href="tel:{{ _core.theme.settings.phone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.theme.settings.phone }}">{{ _core.theme.settings.phone }}</a></span>
-                                    <a href="tel:{{ _core.theme.settings.phone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button u-hidden u-md-show u-margBottom2" aria-label="Call {{ _core.theme.settings.phone }}">Call Now</a>
+                                {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
+                                    <span class="TopBar-contactItem u-md-hide" itemprop="telephone"><a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a></span>
+                                    <a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button u-hidden u-md-show u-margBottom2" aria-label="Call {{ _core.settings.companyPhone }}">Call Now</a>
                                 {% endif %}
                                 {% if _core.theme.settings.headerShowAddress == 'yes' %}
                                     <span class="TopBar-contactItem" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                        {% if _core.theme.settings.address %}
-                                            <span itemprop="streetAddress">{{ _core.theme.settings.address }}</span>,
+                                        {% if _core.settings.companyAddressStreet %}
+                                            <span itemprop="streetAddress">{{ _core.settings.companyAddressStreet }}</span>,
                                         {% endif %}
-                                        {% if _core.theme.settings.city %}
-                                            <span itemprop="addressLocality">{{ _core.theme.settings.city }}</span>,
+                                        {% if _core.settings.companyAddressCity %}
+                                            <span itemprop="addressLocality">{{ _core.settings.companyAddressCity }}</span>,
                                         {% endif %}
-                                        {% if _core.theme.settings.state %}
-                                            <span itemprop="addressRegion">{{ _core.theme.settings.state }}</span>
+                                        {% if _core.settings.companyAddressState %}
+                                            <span itemprop="addressRegion">{{ _core.settings.companyAddressState }}</span>
                                         {% endif %}
                                     </span>
                                 {% endif %}

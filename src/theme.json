@@ -3,48 +3,6 @@
     "settings": {
         "groups": [
             {
-                "name": "Contact Information",
-                "description": "Contact information used in the header and footer",
-                "fields": [
-                    {
-                        "name": "company",
-                        "label": "Company Name",
-                        "type": "text",
-                        "default": "My Company"
-                    },
-                    {
-                        "name": "phone",
-                        "label": "Phone Number",
-                        "type": "text",
-                        "default": "111-222-3333"
-                    },
-                    {
-                        "name": "address",
-                        "label": "Address",
-                        "type": "text",
-                        "default": "1 Main St"
-                    },
-                    {
-                        "name": "city",
-                        "label": "City",
-                        "type": "text",
-                        "default": "My Town"
-                    },
-                    {
-                        "name": "state",
-                        "label": "State",
-                        "type": "text",
-                        "default": "ME"
-                    },
-                    {
-                        "name": "email",
-                        "label": "Email",
-                        "type": "text",
-                        "default": "me@mycompany.com"
-                    }
-                ]
-            },
-            {
                 "name": "Social Icons",
                 "description": "Set the links and icons to use for your social networks in the footer of each page.",
                 "fields": [

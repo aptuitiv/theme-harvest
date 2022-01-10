@@ -4,7 +4,7 @@
     <div class="Container">
         {% if _core.theme.settings.footerLogo %}
             {% if _core.theme.settings.footerLogo.alt|length == 0 %}
-                {% set _core.theme.settings.footerLogo.alt = _core.theme.settings.company %}
+                {% set _core.theme.settings.footerLogo.alt = _core.settings.companyName %}
             {% endif %}
             {% set _core.theme.settings.footerLogo.class = 'u-size' ~ _core.theme.settings.footerLogoSize|capitalize %}
             <div class="u-textCenter"><a href="/" title="Back to home page">{{ _core.theme.settings.footerLogo.tag }}</a></div>
@@ -19,7 +19,7 @@
         </div>
         <div class="Grid Grid--withGutter Grid--alignMiddle">
             <div class="Grid-cell u-size1of2 u-sm-sizeFull u-sm-margBottom2 u-textLeft u-sm-textCenter">
-                <div class="Footer-copyright">&copy; {{ _core.date.year }} {{ _core.theme.settings.company }}</div>
+                <div class="Footer-copyright">&copy; {{ _core.date.year }} {{ _core.settings.companyName }}</div>
             </div>
             <div class="Grid-cell u-size1of2 u-sm-sizeFull u-textRight u-sm-textCenter">
                 <a href="https://www.aptuitiv.com" target="_blank" class="Footer-credit">Website by Aptuitiv</a>
