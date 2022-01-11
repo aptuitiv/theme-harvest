@@ -49,21 +49,21 @@
                     </div>
                     <div class="Grid-cell u-size1of3 u-md-sizeFull">
                         {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
-                            <div class="TopBar-contact" itemscope itemtype="http://schema.org/Organization">
+                            <div class="TopBar-contact">
                                 {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
-                                    <span class="TopBar-contactItem u-md-hide" itemprop="telephone"><a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a></span>
+                                    <span class="TopBar-contactItem u-md-hide"><a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a></span>
                                     <a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button u-hidden u-md-show u-margBottom2" aria-label="Call {{ _core.settings.companyPhone }}">Call Now</a>
                                 {% endif %}
                                 {% if _core.theme.settings.headerShowAddress == 'yes' %}
-                                    <span class="TopBar-contactItem" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <span class="TopBar-contactItem">
                                         {% if _core.settings.companyAddressStreet %}
-                                            <span itemprop="streetAddress">{{ _core.settings.companyAddressStreet }}</span>,
+                                            {{ _core.settings.companyAddressStreet }},
                                         {% endif %}
                                         {% if _core.settings.companyAddressCity %}
-                                            <span itemprop="addressLocality">{{ _core.settings.companyAddressCity }}</span>,
+                                            {{ _core.settings.companyAddressCity }},
                                         {% endif %}
                                         {% if _core.settings.companyAddressState %}
-                                            <span itemprop="addressRegion">{{ _core.settings.companyAddressState }}</span>
+                                            {{ _core.settings.companyAddressState }}
                                         {% endif %}
                                     </span>
                                 {% endif %}
