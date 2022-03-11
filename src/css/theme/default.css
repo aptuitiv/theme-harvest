@@ -6,6 +6,7 @@
 
 :root {
     --theme-primary-color: #38871a;
+    --theme-primary-color-hover: #2a6614;
     --theme-secondary-color: #e0f3d8;
 }
 
@@ -75,11 +76,11 @@
     --theme-image-grid-title-color: #fff;
     --theme-image-grid-title-font-size: 1.2em;
     --theme-image-grid-title-font-weight: 300;
-    --theme-image-grid-title-hover-background: color(var(--theme-primary-color) shade(40%));
+    --theme-image-grid-title-hover-background: var(--theme-primary-color-hover);
     --theme-image-grid-title-hover-color: #fff;
-    --theme-image-grid-hover-background: color(var(--theme-primary-color) shade(40%));
+    --theme-image-grid-hover-background: var(--theme-primary-color-hover);
     --theme-image-grid-hover-color: #fff;
-    --theme-image-grid-cover-background: color(var(--theme-primary-color) shade(40%));
+    --theme-image-grid-cover-background: var(--theme-primary-color-hover);
     --theme-image-grid-title-cover-color: #fff;
 }
 
@@ -103,7 +104,7 @@
     --theme-featured-content-color: #fff;
     --theme-featured-button-background: #fff;
     --theme-featured-button-color: var(--theme-primary-color);
-    --theme-featured-button-background-hover: color(var(--theme-primary-color) shade(40%));
+    --theme-featured-button-background-hover: var(--theme-primary-color-hover);
     --theme-featured-button-color-hover: #fff;
 }
 
@@ -116,9 +117,9 @@
     --theme-image-grid-title-font-weight: 300;
     --theme-image-grid-title-hover-background: var(--theme-primary-color);
     --theme-image-grid-title-hover-color: #fff;
-    --theme-image-grid-hover-background: color(var(--theme-primary-color) shade(20%));
+    --theme-image-grid-hover-background: var(--theme-primary-color-hover);
     --theme-image-grid-hover-color: #fff;
-    --theme-image-grid-cover-background: color(var(--theme-primary-color) a(50%));
+    --theme-image-grid-cover-background: var(--theme-primary-color-hover);
     --theme-image-grid-title-cover-color: #fff;
 }
 
@@ -126,12 +127,12 @@
 
 :root {
     --theme-typography-link-color: var(--theme-primary-color);
-    --theme-typography-link-colorHover: color(var(--theme-primary-color) shade(40%));
+    --theme-typography-link-colorHover: var(--theme-primary-color-hover);
     --theme-button-background: var(--theme-primary-color);
     --theme-button-background-alt: #fff;
     --theme-button-color: #fff;
     --theme-button-color-alt: var(--theme-primary-color);
-    --theme-button-background-hover: color(var(--theme-primary-color) shade(40%));
+    --theme-button-background-hover: var(--theme-primary-color-hover);
     --theme-button-background-hover-alt: var(--theme-primary-color);
     --theme-button-color-hover: #fff;
     --theme-button-color-hover-alt: #fff;

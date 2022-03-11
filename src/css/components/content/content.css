@@ -29,5 +29,5 @@
 
 /* postcss-bem-linter: ignore */
 .Content-shaded a {
-    color: color(var(--theme-primary-color) shade(10%));
+    color: var(--theme-primary-color-hover);
 }

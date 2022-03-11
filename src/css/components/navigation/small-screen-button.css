@@ -25,7 +25,7 @@
 
 @media (--c-bp-md) {
     .SmScBtn {
-        background: color(var(--theme-primary-color) shade(30%));
+        background: var(--theme-primary-color-hover);
         display: block;
         width: 100%;
     }

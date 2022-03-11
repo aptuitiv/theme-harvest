@@ -52,7 +52,7 @@
 
 .SidebarNav-link--isParent.is-current,
 .SidebarNav-link--isParent.is-currentParent {
-    color: color(var(--theme-primary-color) shade(10%));
+    color: var(--theme-primary-color-hover);
 }
 
 .SidebarNav-link--indent {
@@ -60,7 +60,7 @@
 }
 
 .SidebarNav-linkIcon {
-    color: color(var(--theme-typography-color) tint(25%));
+    color: var(--theme-primary-color-hover);
     float: left;
     padding-top: 4px;
 }

@@ -79,7 +79,7 @@
 .TopBar-link:active,
 .TopBar-link:focus,
 .TopBar-link:hover {
-    background: color(var(--theme-primary-color) shade(40%));
+    background: var(--theme-primary-color-hover);
     color: #fff;
     text-decoration: none;
 }
@@ -101,7 +101,7 @@ a[href^=tel].TopBar-button {
 a[href^=tel].TopBar-button:active,
 a[href^=tel].TopBar-button:focus,
 a[href^=tel].TopBar-button:hover {
-    background: color(var(--theme-primary-color) shade(40%));
+    background: var(--theme-primary-color-hover);
     color: #fff;
 }
 
