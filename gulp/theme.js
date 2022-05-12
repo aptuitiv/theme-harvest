@@ -4,38 +4,16 @@
 
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 // Require plugins
-const changed = require('gulp-changed');
-const mergeStream = require('merge-stream');
-const newer = require('gulp-newer');
-const plumber = require('gulp-plumber');
-const tap = require('gulp-tap');
-
-/**
- * Exports the theme files to be used in another website
- * @returns {PassThrough}
- */
-function exportTheme() {
-    var assets = config.export.src.map(function (entry) {
-        return gulp.src(entry.src)
-            .pipe(newer(config.export.dist + '/' + entry.src))
-            .pipe(tap((file) => {
-                util.logFileTo('Exporting the file', file, config.export.dest + '/' + entry.dest);
-            }))
-            .pipe(plumber({errorHandler: util.onError}))
-            .pipe(gulp.dest(config.export.dest + '/' + entry.dest));
-    });
-    return mergeStream(assets);
-}
-
-// Set the display properties of the theme export function
-exportTheme.description = 'Exports the theme files into the _export folder to be used in another website';
+// Importing the default export from commonJs modules.
+import changed from 'gulp-changed';
+import tap from 'gulp-tap';
 
 /**
  * Process the theme files
@@ -89,10 +67,9 @@ function pullTheme() {
 pullTheme.description = 'Copies all the theme files from the dist theme directory to the src directory';
 
 // Export
-module.exports = {
-    config: processThemeConfig,
-    exportTheme: exportTheme,
-    pull: pullTheme,
-    push: pushTheme,
-    theme: processTheme
-};
+export {
+    processThemeConfig,
+    pullTheme,
+    pushTheme,
+    processTheme
+}

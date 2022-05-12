@@ -3,20 +3,23 @@
 \* =========================================================================== */
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 // Require plugins
-const rename = require('gulp-rename');
-const svgmin = require('gulp-svgmin');
-const svgstore = require('gulp-svgstore');
-const tap = require('gulp-tap');
+// Importing the default export from commonJs modules.
+import rename from 'gulp-rename';
+import svgstore from 'gulp-svgstore';
+import tap from 'gulp-tap';
+
+// ES modules
+import svgmin from 'gulp-svgmin';
 
 // Load node packages
-const path = require('path');
+import path from 'path';
 
 /**
  * Processes the SVG icons and creates a single svg sprite
@@ -53,4 +56,6 @@ function generateIconSprite() {
 generateIconSprite.displayName = 'svgSprite';
 generateIconSprite.description = 'Combines SVG icons into a sprite snippet';
 
-exports.sprite = generateIconSprite;
+export {
+    generateIconSprite as sprite
+}

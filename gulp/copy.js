@@ -4,26 +4,31 @@
 
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
+// import gulp from 'gulp';
 
 // Require plugins
-const mergeStream = require('merge-stream');
-const newer = require('gulp-newer');
-const plumber = require('gulp-plumber');
-const tap = require('gulp-tap');
+// Importing the default export from commonJs modules
+import mergeStream from 'merge-stream';
+import plumber from 'gulp-plumber';
+import tap from 'gulp-tap';
+
+// Importing objects from commonJs modules
+import Newer from 'gulp-newer';
 
 /**
  * Copy Static assets
+ * @param {function} cb Gulp callback function
  */
 function copy(cb) {
     if (config.copy.length > 0) {
         let assets = config.copy.map(function(entry) {
             return gulp.src(entry.src)
-                .pipe(newer(config.paths.dist.base + '/' + entry.dest))
+                .pipe(Newer(config.paths.dist.base + '/' + entry.dest))
                 .pipe(tap((file) => {
                     util.logFileTo('Copying', file, config.paths.dist.base + '/' + entry.dest);
                 }))
@@ -40,4 +45,4 @@ function copy(cb) {
 copy.description = 'Copies assets from the node_modules folder to the dist directory';
 
 // Export module
-exports.copy = copy;
+export default copy;

@@ -4,30 +4,31 @@
 
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 // Require node packages
-const fs = require('fs');
+import fs from 'fs';
+//const fs = require('fs');
 
 // Require plugins
-const cached = require('gulp-cached');
-const changedInPlace = require('gulp-changed-in-place');
-const cleanCss = require('gulp-clean-css');
-const header = require('gulp-header');
-const mergeStream = require('merge-stream');
-const penthouse = require('penthouse');
-const plumber = require('gulp-plumber');
-const postcss = require('gulp-postcss');
-const postcssImport = require('postcss-import');
-const postcssCustomMedia = require('postcss-custom-media');
-const autoprefixer = require('autoprefixer');
-const gulpStylelint = require('gulp-stylelint');
-const rename = require('gulp-rename');
-const tap = require('gulp-tap');
+// Importing the default export from commonJs modules.
+import autoprefixer from 'autoprefixer';
+import cached from 'gulp-cached';
+import changedInPlace from 'gulp-changed-in-place';
+import cleanCss from 'gulp-clean-css';
+import gulpStylelint from '@ronilaukkarinen/gulp-stylelint';
+import header from 'gulp-header';
+import mergeStream from 'merge-stream';
+import penthouse from 'penthouse';
+import plumber from 'gulp-plumber';
+import postcss from 'gulp-postcss';
+import postcssImport from 'postcss-import';
+import postcssCustomMedia from 'postcss-custom-media';
+import tap from 'gulp-tap';
 
 /**
  * Run the stylelint
@@ -142,7 +143,12 @@ function generateCriticalCSS(data, i, callback) {
     });
 }
 
+// Process the CSS
+const css = gulp.series(runStylelint, processCss);
+
 // Export
-exports.criticalCss = criticalCss
-exports.css = gulp.series(runStylelint, processCss);
-exports.stylelint = runStylelint;
+export {
+    criticalCss,
+    css,
+    runStylelint as stylelint
+};

@@ -4,23 +4,37 @@
 
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 // Require plugins
-const concat = require('gulp-concat');
-const eslint = require('gulp-eslint');
-const gulpIf = require('gulp-if');
-const header = require('gulp-header');
-const mergeStream = require('merge-stream');
-const newer = require('gulp-newer');
-const plumber = require('gulp-plumber');
-const remember = require('gulp-remember');
-const tap = require('gulp-tap');
-const terser = require('gulp-terser');
+// Importing the default export from commonJs modules.
+import concat from 'gulp-concat';
+import eslint from 'gulp-eslint';
+import gulpIf from 'gulp-if';
+import header from 'gulp-header';
+import mergeStream from 'merge-stream';
+import plumber from 'gulp-plumber';
+import remember from 'gulp-remember';
+import tap from 'gulp-tap';
+import terser from 'gulp-terser';
+
+// Importing objects from commonJs modules
+import Newer from 'gulp-newer';
+
+// const concat = require('gulp-concat');
+// const eslint = require('gulp-eslint');
+//const gulpIf = require('gulp-if');
+// const header = require('gulp-header');
+// const mergeStream = require('merge-stream');
+// import Newer from 'gulp-newer';
+// import plumber from 'gulp-plumber';
+// const remember = require('gulp-remember');
+// const tap = require('gulp-tap');
+// const terser = require('gulp-terser');
 
 /**
  * Check to see if the file has been fixed by eslint
@@ -65,8 +79,8 @@ lintJs.description = 'Lint Javascript files with eslint';
  */
 function scripts() {
     let tasks = config.scripts.map(function (entry, index) {
-        return gulp.src(entry.src, { base: 'src' })
-            .pipe(newer(config.paths.dist.js + '/' + entry.name))
+        return gulp.src(entry.src)
+            .pipe(Newer(config.paths.dist.js + '/' + entry.name))
             // Lint the script using eslint
             .pipe(tap((file) => {
                 util.logFile(file, 'JS Linting');
@@ -97,6 +111,7 @@ function scripts() {
 // Set the display properties of the javascript function
 scripts.description = 'Concatenates and minifies Javascript files';
 
-
-exports.jslint = lintJs
-exports.scripts = scripts;
+export {
+    lintJs as jslint,
+    scripts
+}

@@ -8,7 +8,7 @@ var dist = 'dist/theme/custom';
 /**
  * Data that is set to the config variable in gulpfile.js
  */
-module.exports = {
+const config = {
     /**
      * Holds the name of the CSS file to be generated
      */
@@ -162,3 +162,5 @@ module.exports = {
         }
     ]
 };
+
+export {config};

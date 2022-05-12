@@ -5,16 +5,20 @@
 
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 // Require plugins
-const image = require('gulp-image');
-const newer = require('gulp-newer');
-const plumber = require('gulp-plumber');
+// Importing the default export from commonJs modules.
+import plumber from 'gulp-plumber';
+// Importing objects from commonJs modules
+import Newer from 'gulp-newer';
+// ES modules
+import image from 'gulp-image';
+
 
 /**
  * Minify images
@@ -25,7 +29,7 @@ const plumber = require('gulp-plumber');
  */
 function images() {
     return gulp.src(config.paths.src.img)
-        .pipe(newer(config.paths.dist.img))
+        .pipe(Newer(config.paths.dist.img))
         .pipe(plumber({errorHandler: util.onError}))
         .pipe(image())
         .pipe(gulp.dest(config.paths.dist.img));
@@ -33,4 +37,4 @@ function images() {
 // Set the display properties of the images function
 images.description = 'Minifies the images and moves them to the dist folder';
 
-exports.images = images;
+export {images}

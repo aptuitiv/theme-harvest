@@ -1,10 +1,9 @@
 .DS_Store
 .idea/
-.vscode
+.vscode/
 /_build/
 /_export/
 /dist/
 /node_modules/
-package-lock.json
 yarn-error.log
 yarn.lock

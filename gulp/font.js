@@ -4,15 +4,17 @@
 
 
 // Configuration and utilities
-const config = require('./config.js');
-const util = require('./utilities.js');
+import {config} from './config.js';
+import * as util from './utilities.js';
 
 // Require gulp
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 // Require plugins
-const changed = require('gulp-changed');
-const tap = require('gulp-tap');
+// Importing the default export from commonJs modules
+import changed from 'gulp-changed';
+import tap from 'gulp-tap';
+
 
 /**
  * Processes the font files
@@ -30,6 +32,6 @@ function processFonts() {
 processFonts.description = 'Copies the font files from the src directory to the dist font directory when they are changed';
 
 // Export
-module.exports = {
-    font: processFonts,
-};
+export {
+    processFonts as font
+}

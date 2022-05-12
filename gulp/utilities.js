@@ -4,14 +4,16 @@
 
 
 // Require plugins
-const chalk = require('chalk');
-const fancyLog = require('fancy-log');
-const moment = require('moment');
+// esModules
+import chalk from 'chalk';
+import moment from 'moment';
+
+// Import the default module from a commonJs module
+import fancyLog from 'fancy-log'
 
 // Load node modules
-const del = require('del');
-const path = require('path');
-
+import * as del from 'del';
+import * as path from 'path';
 
 // Banner to add to the top of files
 const banner = [
@@ -46,6 +48,7 @@ function deleteFile(file, src, dest, type) {
 
     // Delete the file
     del.sync(destPath);
+    log(dest + '/' + srcPath, 'Finished Deleting ' + type);
 }
 
 
@@ -130,7 +133,7 @@ function logFileTo(message, file, dest) {
  * Error Handler
  * @param err
  */
-const onError = (err) => {
+const onError = function(err) {
     console.log(err);
     if (typeof this.emit === 'function') {
         this.emit('end');
@@ -138,13 +141,13 @@ const onError = (err) => {
 };
 
 // Export module
-module.exports = {
-    banner: banner,
-    deleteFile: deleteFile,
-    flatten: flatten,
-    log: log,
-    logFile: logFile,
-    logFileTo: logFileTo,
-    onError: onError,
-    synchLoop: doSynchronousLoop
-};
+export {
+    banner,
+    deleteFile,
+    flatten,
+    log,
+    logFile,
+    logFileTo,
+    onError,
+    doSynchronousLoop as synchLoop
+}
