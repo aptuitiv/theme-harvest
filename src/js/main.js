@@ -48,14 +48,16 @@ function setupNotifications() {
 }
 
 document.onreadystatechange = function () {
-    smallScreenNav.init();
-    navAccess.init();
-    setupNotifications();
+    if (document.readyState !== 'loading') {
+        smallScreenNav.init();
+        navAccess.init();
+        setupNotifications();
 
-    if (document.documentElement.clientWidth > 800) {
-        const header = document.querySelector('.js-header');
-        if (header !== null) {
-            observeSticky(header);
+        if (document.documentElement.clientWidth > 800) {
+            const header = document.querySelector('.js-header');
+            if (header !== null) {
+                observeSticky(header);
+            }
         }
     }
 };
