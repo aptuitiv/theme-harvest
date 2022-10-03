@@ -47,17 +47,22 @@ function setupNotifications() {
     });
 }
 
-document.onreadystatechange = function () {
-    if (document.readyState !== 'loading') {
-        smallScreenNav.init();
-        navAccess.init();
-        setupNotifications();
+// Handle the document load event
+const init = () => {
+    smallScreenNav.init();
+    navAccess.init();
+    setupNotifications();
 
-        if (document.documentElement.clientWidth > 800) {
-            const header = document.querySelector('.js-header');
-            if (header !== null) {
-                observeSticky(header);
-            }
+    if (document.documentElement.clientWidth > 800) {
+        const header = document.querySelector('.js-header');
+        if (header !== null) {
+            observeSticky(header);
         }
     }
 };
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
