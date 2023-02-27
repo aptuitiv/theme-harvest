@@ -1089,7 +1089,7 @@
                     },
                     {
                         "key": "image-slider",
-                        "name": "Image slider",
+                        "name": "Image Slider",
                         "type": "full",
                         "template": "image-slider",
                         "enabled": true,
@@ -1170,7 +1170,7 @@
                                 "key": "autoPlaySlides",
                                 "name": "Auto play slides",
                                 "type": "selectYesNo",
-                                "value": "no",
+                                "value": "yes",
                                 "description": "",
                                 "configuration": {
                                     "optionLabel": "yesNo"
@@ -1813,7 +1813,7 @@
             "default": true,
             "adminBar": true,
             "contentAreas": [
-                "header"
+                "banner"
             ]
         },
         {
@@ -1828,7 +1828,7 @@
             "default": false,
             "adminBar": true,
             "contentAreas": [
-                "header"
+                "banner"
             ]
         },
         {
@@ -2031,7 +2031,7 @@
         },
         {
             "key": "content-builder/image-slider",
-            "name": "Image slider"
+            "name": "Image Slider"
         },
         {
             "key": "content-builder/content-wrap",
@@ -2729,6 +2729,27 @@
             "archive_inline_js": "",
             "archive_js_files": "",
             "archive_title": "Blog Archive",
+            "author_body_class": "",
+            "author_breadcrumb": "{{ firstName }} {{ lastName }}",
+            "author_css_files": "",
+            "author_footer": "",
+            "author_header": "",
+            "author_head_content": "",
+            "author_inline_css": "",
+            "author_inline_js": "",
+            "author_js_files": "",
+            "author_list_body_class": "",
+            "author_list_breadcrumb": "Authors",
+            "author_list_css_files": "",
+            "author_list_footer": "",
+            "author_list_header": "",
+            "author_list_head_content": "",
+            "author_list_inline_css": "",
+            "author_list_inline_js": "",
+            "author_list_js_files": "",
+            "author_list_title": "Authors",
+            "author_social_og_type": "",
+            "author_title": "{{ firstName }} {{ lastName }}",
             "breadcrumb_text": "Blog",
             "category_body_class": "",
             "category_breadcrumb": "{{ categoryName }}",
@@ -2826,6 +2847,7 @@
             "search_results_js_files": "",
             "search_results_title": "Search Results",
             "search_title": "Search",
+            "search_wildcard_term": "0",
             "tag_body_class": "",
             "tag_breadcrumb": "{{ tagName }}",
             "tag_cloud_data_max_weight": "20",
@@ -3069,6 +3091,7 @@
             "search_results_title": "Search Results",
             "search_sort": "relevance",
             "search_title": "Search",
+            "search_wildcard_term": "0",
             "tag_body_class": "",
             "tag_breadcrumb": "{{ tagName }}",
             "tag_cloud_data_max_weight": "20",
@@ -3211,6 +3234,7 @@
             "search_results_js_files": "",
             "search_results_title": "Search Results",
             "search_title": "Search",
+            "search_wildcard_term": "0",
             "tag_body_class": "",
             "tag_breadcrumb": "{{ tagName }}",
             "tag_cloud_data_max_weight": "20",
@@ -3259,13 +3283,13 @@
             "date_format": "F j, Y",
             "description_highlight": "bold",
             "description_length": "250",
-            "elasticsearch_index_name": "harvest-theme_branchcms_com",
+            "elasticsearch_index_name": "harvest_branchcmsthemes_com",
             "enabled": "1",
             "force_wildcard_search": "no",
             "index_directory": "ap-search-index",
             "index_url": "0",
             "last_manual_update": "",
-            "last_updated": "1537533010",
+            "last_updated": "1639578604",
             "log_add_document": "no",
             "log_queries": "no",
             "num_results_per_page": "10",
@@ -3880,7 +3904,7 @@
             "availableOnContentAreas": "specific",
             "parseOnRequest": true,
             "contentAreas": [
-                "header"
+                "banner"
             ],
             "fields": [
                 {
@@ -4219,7 +4243,7 @@
             "availableOnContentAreas": "specific",
             "parseOnRequest": true,
             "contentAreas": [
-                "header"
+                "banner"
             ],
             "fields": [
                 {
