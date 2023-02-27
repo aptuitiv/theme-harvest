@@ -3,16 +3,14 @@
         <a href="{{ slide.link }}" class="Slider-link">
     {% endif %}
     
-    <div class="ImageConstrain ImageConstrain--banner">
-        <picture class="Slider-image">
-            <source media="(max-width: 600px)" srcset="{{ slide.images.small.src }}">
-            <source media="(max-width: 1200px)" srcset="{{ slide.images.medium.src }}">
-            {% if slide.altText %}
-                {% set slide.images.large.alt = slide.altText %}
-            {% endif %}
-            {{ slide.images.large.tag }}
-        </picture>
-    </div>
+    <picture class="Slider-image">
+        <source media="(max-width: 600px)" srcset="{{ slide.images.small.src }}">
+        <source media="(max-width: 1200px)" srcset="{{ slide.images.medium.src }}">
+        {% if slide.altText %}
+            {% set slide.images.large.alt = slide.altText %}
+        {% endif %}
+        {{ slide.images.large.tag }}
+    </picture>
     
     {% if slide.captionTitle or slide.caption  %}
         <span class="Slider-content Slider-content--{{ slide.captionPosition|camel }}">
@@ -32,69 +30,69 @@
     {% endif %}
 {% endmacro %}
 
-{% if spacingAfterHeader != 'None' %}
-    <div class="u-margBottom3">
-{% endif %}
-
-{% if slides and displayType != 'Hide' %}
-    {% import _self as macros %}
-    
-    {% if slides|length == 1 and displayType == 'Slideshow' %}
-        {% set displayType = 'Single slide' %}
-    {% endif %}
-    
-    {# Build a single slide #}
-    {% if displayType == 'Single slide' || displayType == 'Random slide' %}
-        {% if displayType == 'Single slide' %}
-            {% set slide = slides|first %}
-        {% else %}
-            {% set slide = random(slides) %}
-        {% endif %}
-        <div class="Slider">
-            <div class="Slider-slide">
-                {{ macros.slide(slide) }}
-            </div>
-        </div>
-    
-    {# Build multiple slides #}
-    {% elseif displayType == 'Slideshow' || displayType == 'Random slideshow' %}
-        {% import "macros/macros" as siteMacros %}
+<div class="u-md-margBottom4 {{ spacingAfterHeader != 'None' ? 'u-margBottom3' }}">
+    {% if slides and displayType != 'Hide' %}
+        {% import _self as macros %}
         
-        {% if displayType == 'Random slideshow' %}
-            {% set slides = slides|shuffle %}
+        {% if slides|length == 1 and displayType == 'Slideshow' %}
+            {% set displayType = 'Single slide' %}
         {% endif %}
         
-        {% set sliderId = 'js-splide' ~ random_number() %}
-        <section class="splide splide__dots--{{ dotPosition|camel }} {{ sliderId }}" aria-label="Banner">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    {% for slide in slides %}
-                        <li class="splide__slide">
-                            {{ macros.slide(slide) }}
-                        </li>
-                    {% endfor %}
-                </ul>
+        {# Build a single slide #}
+        {% if displayType == 'Single slide' || displayType == 'Random slide' %}
+            {% if displayType == 'Single slide' %}
+                {% set slide = slides|first %}
+            {% else %}
+                {% set slide = random(slides) %}
+            {% endif %}
+            <div class="Slider">
+                <div class="Slider-slide">
+                    {{ macros.slide(slide) }}
+                </div>
             </div>
-        </section>
         
-        {{ siteMacros.loadSplide() }}
-        {% inlinejs %}
-            loadjs.ready('splide', {
-                success: function() {
-                    new Splide('.{{ sliderId }}', {
-                        arrows     : {{ showArrows ? 'true' : 'false' }},
-                        pagination : {{ showDots ? 'true' : 'false' }},
-                        autoplay   : {{ autoPlaySlides ? 'true' : 'false' }},
-                        interval   : {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
-                        type       : '{{ slideTransition == 'Fade' ? 'fade' : 'slide' }}',
-                        rewind     : true
-                    }).mount();
-                }
-            });
-        {% endinlinejs %}
+        {# Build multiple slides #}
+        {% elseif displayType == 'Slideshow' || displayType == 'Random slideshow' %}
+            {% import "macros/macros" as siteMacros %}
+            
+            {% if displayType == 'Random slideshow' %}
+                {% set slides = slides|shuffle %}
+            {% endif %}
+            
+            {% set sliderId = 'js-splide' ~ random_number() %}
+            <section class="splide splide__dots--{{ dotPosition|camel }} {{ sliderId }}" aria-label="Banner">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for slide in slides %}
+                            <li class="splide__slide">
+                                {{ macros.slide(slide) }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+            
+            {{ siteMacros.loadSplide() }}
+            {% inlinejs %}
+                loadjs.ready('splide', {
+                    success: function() {
+                        new Splide('.{{ sliderId }}', {
+                            arrows      : {{ showArrows ? 'true' : 'false' }},
+                            pagination  : {{ showDots ? 'true' : 'false' }},
+                            autoplay    : {{ autoPlaySlides ? 'true' : 'false' }},
+                            interval    : {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
+                            type        : '{{ slideTransition == 'Fade' ? 'fade' : 'slide' }}',
+                            rewind      : true,
+                            breakpoints : {
+                                800: {
+                                    autoHeight : true,
+                                    arrows     : false
+                                }
+                            }
+                        }).mount();
+                    }
+                });
+            {% endinlinejs %}
+        {% endif %}
     {% endif %}
-{% endif %}
-
-{% if spacingAfterHeader != 'None' %}
-    </div>
-{% endif %}
+</div>
