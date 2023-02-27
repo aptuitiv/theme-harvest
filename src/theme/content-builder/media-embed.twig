@@ -2,7 +2,7 @@
     {% for url in embedUrl.urlInfo %}
         <div class="FlexEmbed u-margBottom2">
             <div class="FlexEmbed-ratio FlexEmbed-ratio--{{ embedRatio }}"></div>
-            <iframe class="FlexEmbed-content" title="{{ url.title }}" frameborder="0" allowfullscreen src="{{ url.iframeEmbed.src }}"></iframe>
+            <iframe class="FlexEmbed-content" title="{{ url.title }}" frameborder="0" allowfullscreen src="{{ url.iframeEmbed.src }}" loading="lazy"></iframe>
         </div>
     {% endfor %}
 {% else %}

@@ -15,7 +15,7 @@
     {% set video = item.video.urlInfo|first %}
     <div class="FlexEmbed u-margBottom2">
         <div class="FlexEmbed-ratio FlexEmbed-ratio--8by5"></div>
-        <iframe class="FlexEmbed-content" frameborder="0" title="{{ video.title }}" allowfullscreen src="{{ video.iframeEmbed.src }}"></iframe>
+        <iframe class="FlexEmbed-content" frameborder="0" title="{{ video.title }}" allowfullscreen src="{{ video.iframeEmbed.src }}" loading="lazy"></iframe>
     </div>
 {% endmacro %}
 
