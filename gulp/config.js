@@ -76,6 +76,10 @@ const config = {
             dest: 'splide'
         },
         {
+            src: 'node_modules/just-validate/dist/just-validate.production.min.js',
+            dest: 'just-validate'
+        },
+        {
             src: ['node_modules/masonry-layout/dist/*.{pkgd.min.js, min.js}'],
             dest: 'masonry'
         },
@@ -151,8 +155,6 @@ const config = {
         {
             name: 'forms.js',
             src: [
-                'node_modules/jquery-validation/dist/jquery.validate.js',
-                'node_modules/jquery-form/src/jquery.form.js',
                 src + '/js/forms.js'
             ]
         }

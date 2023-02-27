@@ -1,4 +1,3 @@
-
 {# Show a success message if necessary #}
 {# form.success only used if you don't redirect to another page after a successful submission #}
 {% macro formSuccessMessage(form, message) %}
@@ -57,7 +56,7 @@
 
 {# Build out each field #}
 {% macro buildGridField(field) %}
-    {% if field.fieldType in ['email', 'number', 'password', 'text', 'url'] %}
+    {% if field.fieldType in ['email', 'number', 'password', 'text', 'url', 'tel'] %}
         {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
         {{ field.tag }}
     {%  elseif field.fieldType in ['date','time','month'] %}
@@ -175,7 +174,7 @@
                 {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
             {% endif %}
             {{ field.label.tag }}
-            {% if field.fieldType in ['email', 'number', 'password', 'text', 'url'] %}
+            {% if field.fieldType in ['email', 'number', 'password', 'text', 'url', 'tel'] %}
                 {% set field.class = field.class ~ ' TextInput u-sizeFull' %}
                 {{ field.tag }}
             {%  elseif field.fieldType in ['date','time','month'] %}
@@ -218,12 +217,11 @@
 
 {#
     Sets the error container
-    errorContainerId: (string) The unique ID for the error container div
     form: (object) The Twig form variable
     message: (string) OPTIONAL A custom message to show above the error list.
 #}
-{% macro formErrorContainer(errorContainerId, form, message) %}
-    <div id="{{ errorContainerId }}" class="FormError {% if form.errors is empty and form.paymentErrors is empty %} u-hidden{% endif %}">
+{% macro formErrorContainer(form, message) %}
+    <div class="FormError {% if form.errors is empty and form.paymentErrors is empty %} u-hidden{% endif %}">
         {% set errorMessage = form.paymentErrors is empty ? 'There was a problem with your submission. Please correct the issues below' : 'Could not process your payment' %}
         {% set errorMessage = message ? message : errorMessage %}
         <p>{{ errorMessage }}</p>
@@ -235,20 +233,6 @@
                 <li class="FormError-listItem js-serverError">{{ error.message }}</li>
             {% endfor %}
         </ul>
-    </div>
-{% endmacro %}
-
-{#
-    Sets the error container to show only a single message. This will not loop through errors.
-    Instead, it simply outputs a single error message. Useful for a login page.
-
-    errorContainerId: (string) The unique ID for the error container div
-    form: (object) The Twig form variable
-    message: (string) The error message to show
-#}
-{% macro formErrorContainerSingleMessage(errorContainerId, form, message) %}
-    <div id="{{ errorContainerId }}" class="FormError {% if form.errors is empty and form.paymentErrors is empty %} u-hidden{% endif %}">
-        {{ message }}
     </div>
 {% endmacro %}
 
@@ -272,7 +256,6 @@
 {#
     Form validation and submit handler Javascript
     form: (array) The form data
-    errorContainerId: (string) The ID of the div where errors are placed
     formOverlayClass: (string) The class to use for the form overlay div
     filesToLoad: (array) Array of additional Javascript files to load
     submitHandler: (string) (optional) Name of a function to call after the form is validated and captcha has run.
@@ -280,131 +263,132 @@
 
     Examples:
     Basic:
-    {{ macros.formValidateHandlerJs(form, errorContainerId) }}
+    {{ macros.formValidateHandlerJs(form) }}
     All parameters:
-    {{ macros.formValidateHandlerJs(form, errorContainerId, formOverlayClass, ['js/stripe.js'|theme_url], 'stripePayment.prepareToken') }}
+    {{ macros.formValidateHandlerJs(form, formOverlayClass, ['js/stripe.js'|theme_url], 'stripePayment.prepareToken') }}
     Skip filesToLoad
-    {{ macros.formValidateHandlerJs(form, errorContainerId, formOverlayClass, '', 'prepareStripe') }}
+    {{ macros.formValidateHandlerJs(form, formOverlayClass, '', 'prepareStripe') }}
 #}
-{% macro formValidateHandlerJs(form, errorContainerId, formOverlayClass, filesToLoad, submitHandler) %}
+{% macro formValidateHandlerJs(form, formOverlayClass, filesToLoad, submitHandler) %}
+    {% import _self as macros %}
+    
     {% set formOverlayClass = formOverlayClass ?: 'js-formOverlay' ~ random_string() %}
     <div class="FormOverlay {{ formOverlayClass }}"><div class="FormOverlay-text">Please wait&hellip;</div></div>
 
     {# Load for form Javascript if necessary. This holds the form validation library. #}
-    {% if _page.hasJs('js/forms.js'|theme_url) == false %}
+    {% if _page.hasJs('just-validate/just-validate.production.min.js'|theme_url) == false %}
         {% inlinejs %}
             loadjs.ready('main', {
                 success: function() {
-                    loadjs('{{ 'js/forms.js'|theme_url }}', 'forms');
+                    loadjs('{{ 'just-validate/just-validate.production.min.js'|theme_url }}', 'validate');
                 }
             });
         {% endinlinejs %}
-        {% do _page.registerJs('js/forms.js'|theme_url) %}
+        {% do _page.registerJs('just-validate/just-validate.production.min.js'|theme_url) %}
     {% endif %}
 
     {% inlinejs %}
-    {% if filesToLoad is iterable and filesToLoad|length > 0 %}
-        loadjs.ready('forms', {
+        {% if filesToLoad is iterable and filesToLoad|length > 0 %}
+            loadjs.ready('validate', {
+                success: function() {
+                    loadjs([{% for file in filesToLoad %}{% if loop.first == false and loop.lsat == false %},{% endif %}'{{ file }}'{% endfor %}], 'formExtraFiles');
+                }
+            });
+            loadjs.ready('formExtraFiles', {
+        {% else %}
+            loadjs.ready('validate', {
+        {% endif %}
             success: function() {
-                loadjs([{% for file in filesToLoad %}{% if loop.first == false and loop.lsat == false %},{% endif %}'{{ file }}'{% endfor %}], 'formExtraFiles');
-            }
-        });
-        loadjs.ready('formExtraFiles', {
-    {% else %}
-        loadjs.ready('forms', {
-    {% endif %}
-        success: function() {
-            $('.{{ form.class }}').validate({
-                rules: {
-                    'email': {
-                        email: true
-                    }
-                },
-                messages: {
-                    {% apply spaceless %}
-                        {% set i = 0 %}
-                        {% for field in form.fields %}
-                            {% if field.isFormField %}
-                                {% for rule in field.rules %}
-                                    {% if rule.type == 'required' %}
-                                        {% set i = i + 1 %}
-                                        {% if i > 1 %}
-                                            ,
-                                        {% endif %}
-                                        '{{ field.name }}': '{{ rule.message|escape }}'
-                                    {% endif %}
-                                {% endfor %}
-                                {% if field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
-                                    {% for column in field.columns %}
-                                        {% for child in column.childFields %}
-                                            {% for rule in child.rules %}
-                                                {% if rule.type == 'required' %}
-                                                    {% set i = i + 1 %}
-                                                    {% if i > 1 %}
-                                                        ,
-                                                    {% endif %}
-                                                    '{{ child.name }}': '{{ rule.message|escape }}'
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% endfor %}
-                                    {% endfor %}
-                                {% endif %}
-                            {% else %}
-                                {% if field.fieldType == "fieldGroup" %}
-                                    {% for child in field.childFields %}
-                                        {% if child.isFormField %}
-                                            {% for rule in child.rules %}
-                                                {% if rule.type == 'required' %}
-                                                    {% set i = i + 1 %}
-                                                    {% if i > 1 %}
-                                                        ,
-                                                    {% endif %}
-                                                    '{{ child.name }}': '{{ rule.message|escape }}'
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endapply %}
-                },
-                errorClass: 'is-invalid',
-                errorElement: "li",
-                errorLabelContainer: "#{{ errorContainerId }} > ul",
-                showErrors: function(errorMap, errorList) {
-                    document.querySelector('.{{ formOverlayClass }}').style.display = 'none';
-                    $('.js-successContainer').hide();
-                    if (this.numberOfInvalids() > 0) {
-                        $('#{{ errorContainerId }}').removeClass('u-hidden');
-                    } else {
-                        $('#{{ errorContainerId }}').addClass('u-hidden');
-                    }
-                    $('.js-serverError').remove();
-                    this.defaultShowErrors();
-                    $('#{{ errorContainerId }} li').addClass('FormError-listItem');
-                },
-                submitHandler: function(form) {
+                {# Handle event listener to revalidate fields when they've been previously invalidated. #}
+                const inputListener = (e) => {
+                    validator.revalidateField(`#${e.target.id}`).then(isValid => {
+                        if (isValid) {
+                            e.target.removeEventListener('input', inputListener);
+                        }
+                    });
+                }
+                
+                {# Create validator instance #}
+                const validator = new JustValidate('.{{ form.class }}');
+                
+                {# Add validation rules #}
+                {% for field in form.fields %}
+                    {{ macros.addValidationRule(field) }}
+                {% endfor %}
+                
+                {# Add event listener to handle reCAPTCHA #}
+                validator.onSuccess(e => {
+                    {# Show the submission overlay #}
                     document.querySelector('.{{ formOverlayClass }}').style.display = 'block';
+                    
+                    {# Disable the submit button #}
+                    document.querySelector('.{{ form.class }} [type="submit"]').disabled = true;
+                    
+                    {# Handle submission via either reCAPTCHA v3, a custom handler, or just a regular submission. #}
                     {% if form.captcha.type == 'recaptchaV3' %}
-                        {# Call the Javascript Promise function to execute the reCAPTCHA #}
-                        {{ form.captcha.script.function }}(grecaptcha, {inputSelector: '.{{ form.captcha.input.class }}'}).then(function() {
+                        {{ form.captcha.script.function }}(grecaptcha, {
+                            inputSelector: '.{{ form.captcha.input.class }}'
+                        }).then(function() {
                             {% if submitHandler %}
                                 {{ submitHandler }}(form);
                             {% else %}
-                                form.submit();
+                                console.log("Submitting...");
+                                {# document.querySelector('.{{ form.class }}').submit(); #}
                             {% endif %}
                         });
                     {% else %}
                         {% if submitHandler %}
                             {{ submitHandler }}(form);
                         {% else %}
-                            form.submit();
+                            document.querySelector('.{{ form.class }}').submit();
                         {% endif %}
                     {% endif %}
+                });
+            }
+        });
+    {% endinlinejs %}
+{% endmacro %}
+
+{% macro addValidationRule(field) %}
+    {# Handle rules for field #}
+    {% if field.rules|length > 0 %}
+        {# Add rules for field to validator #}
+        validator.addField('#{{ field.id }}', [
+            {% for rule in field.rules %}
+                {
+                    rule: '{{ rule.type|camel }}',
+                    errorMessage: '{{ rule.message }}',
+                    {% if rule.type == 'min_length' %}
+                        value: {{ rule.rule }}
+                    {% endif %}
+                },
+            {% endfor %}
+        ]);
+        
+        {# Validate field on blur #}
+        document.querySelector('#{{ field.id }}').addEventListener('blur', () => {
+            validator.revalidateField('#{{ field.id }}').then(isValid => {
+                if (!isValid) {
+                    document.querySelector('#{{ field.id }}').addEventListener('input', inputListener);
                 }
             });
-        }
-    });
-    {% endinlinejs %}
+        });
+    {% endif %}
+    
+    {# Handle child fields #}
+    {% if field.columns|length > 0 %}
+        {% import _self as macros %}
+        {% for column in field.columns %}
+            {% if column.childFields|length > 0 %}
+                {% for field in column.childFields %}
+                    {{ macros.addValidationRule(field)}}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% elseif field.childFields|length > 0 %}
+        {% import _self as macros %}
+        {% for field in field.childFields %}
+            {{ macros.addValidationRule(field)}}
+        {% endfor %}
+    {% endif %}
 {% endmacro %}

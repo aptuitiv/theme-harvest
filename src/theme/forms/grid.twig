@@ -1,26 +1,19 @@
-
 {% import 'macros/form-macros.twig' as macros %}
 
 {{ macros.formSuccessMessage(form) }}
 
 {% set form.class = 'js-form' ~ random_string() %}
 {{ form.openTag }}
-
-    {% set errorContainerId = 'errorContainer' ~ random_string() %}
-    {{ macros.formErrorContainer(errorContainerId, form) }}
-
+    {{ macros.formErrorContainer(form) }}
     {{ macros.buildGridFormFields(form) }}
-
     {{ macros.captcha(form) }}
-
+    
     <div class="Grid Grid--withGutter u-margBottom2">
         <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
             <p class="u-margBottom1"><em>* Required Fields</em></p>
-
             <p><button type="submit" class="Button Button--lg u-sm-sizeFull">{{ form.submitButtonText }}</button></p>
         </div>
     </div>
-
 {{ form.closeTag }}
 
 {{ macros.formValidateHandlerJs(form, errorContainerId) }}
