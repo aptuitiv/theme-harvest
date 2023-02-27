@@ -51,14 +51,14 @@
         "stylelint-selector-bem-pattern": "^2.1.1"
     },
     "dependencies": {
+        "@splidejs/splide": "^4.1.4",
         "cacao-css": "^3.16.0",
         "jquery": "^3.5.1",
         "jquery-form": "^4.3.0",
         "jquery-lazy": "^1.7.10",
         "jquery-validation": "^1.19.2",
         "magnific-popup": "^1.1.0",
-        "masonry-layout": "^4.2.2",
-        "slick-carousel": "^1.8.1"
+        "masonry-layout": "^4.2.2"
     },
     "engines": {
         "node": "^12.20.0 || ^14.13.1 || >=16.0.0"

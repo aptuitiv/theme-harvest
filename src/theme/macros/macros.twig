@@ -15,18 +15,19 @@
     {% endspaceless %}
 {% endmacro %}
 
-{# Macro to load Slick Slider #}
-{% macro loadSlick() %}
-    {% do _page.addCss('/slick/slick.css'|theme_url, {'preload': true}) %}
-
-    {% inlinejs %}
-        loadjs.ready('main', {
-        success: function() {
-        loadjs(['{{ 'slick/slick.min.js'|theme_url }}'], 'slickheader');
-        }
-        });
-    {% endinlinejs %}
-    {% do _page.registerJs('slick/slick.min.js'|theme_url) %}
+{# Macro to load Splide #}
+{% macro loadSplide() %}
+    {% do _page.addCss('splide/css/splide.min.css'|theme_url, {'preload': true}) %}
+    {% if _page.hasJs('splide/js/splide.min.js'|theme_url) == false %}
+        {% inlinejs %}
+            loadjs.ready('main', {
+                success: function() {
+                    loadjs(['{{ 'splide/js/splide.min.js'|theme_url }}'], 'splide');
+                }
+            });
+        {% endinlinejs %}
+        {% do _page.registerJs('splide/js/splide.min.js'|theme_url) %}
+    {% endif %}
 {% endmacro %}
 
 {# Macro to load Magnific Popup #}

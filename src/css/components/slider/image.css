@@ -2,9 +2,7 @@
     Image Slider
 \* =========================================================================== */
 
-
 /* @define ImageSlider */
-
 .ImageSlider {
     background: var(--theme-image-slider-background);
     color: var(--theme-image-slider-color);
@@ -28,35 +26,14 @@
 }
 
 .ImageSlider-image {
-    height: 250px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     width: 100%;
-}
-
-@supports (object-fit: cover) {
-    .ImageSlider-slide {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .ImageSlider-imageWrap {
-        display: flex;
-        flex: 1 0 auto;
-        flex-direction: column;
-    }
-
-    .ImageSlider-image {
-        flex: 1 1 auto;
-        object-fit: cover;
-    }
 }
 
 /* ------------------------------------ *\
     Slider Content
 \* ------------------------------------ */
-
-.ImageSlider-contentWrap {
-
-}
 
 .ImageSlider-title {
     background: var(--theme-image-slider-title-background);
@@ -276,70 +253,49 @@
 }
 
 /* ------------------------------------ *\
-    Arrow Navigation
+    Splide Overrides
 \* ------------------------------------ */
 
-
-.ImageSlider-nav {
-    cursor: pointer;
-    display: block;
+/* postcss-bem-linter: ignore */
+.ImageSlider .splide__arrow {
+    background-color: #fff;
+    border-radius: 0;
     height: 100%;
-    mix-blend-mode: luminosity;
-    outline: none;
-    position: absolute;
-    top: 0;
-    width: 50px;
-    z-index: 10;
+    opacity: 1;
 }
 
-.ImageSlider-nav--dark {
-    background: rgba(0, 0, 0, .5);
+/* postcss-bem-linter: ignore */
+.ImageSlider .splide__arrow:hover {
+    background: var(--theme-image-slider-hover-background);
+    opacity: 1 !important;
 }
 
-.ImageSlider-nav:active,
-.ImageSlider-nav:focus,
-.ImageSlider-nav:hover {
-    background: rgba(50, 50, 50, .5);
+/* postcss-bem-linter: ignore */
+.ImageSlider .splide__arrow:hover svg {
+    fill: var(--theme-image-slider-hover-color);
 }
 
-.ImageSlider-nav--dark:active,
-.ImageSlider-nav--dark:focus,
-.ImageSlider-nav--dark:hover {
-    background: rgba(0, 0, 0, .8);
-}
-
-.ImageSlider-navIcon {
-    color: rgba(0, 0, 0, .5);
-    cursor: pointer;
-    font-size: 2em;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-}
-
-.ImageSlider-nav:active .ImageSlider-navIcon,
-.ImageSlider-nav:focus .ImageSlider-navIcon,
-.ImageSlider-nav:hover .ImageSlider-navIcon {
-    color: #fff;
-}
-
-.ImageSlider-navPrev {
+/* postcss-bem-linter: ignore */
+.ImageSlider .splide__arrow--prev {
     left: 0;
 }
 
-.ImageSlider-navPrev .ImageSlider-navIcon {
-    left: 35%;
-}
-
-.ImageSlider-navNext {
+/* postcss-bem-linter: ignore */
+.ImageSlider .splide__arrow--next {
     right: 0;
 }
 
-.ImageSlider-navNext .ImageSlider-navIcon {
-    left: 45%;
+/* postcss-bem-linter: ignore */
+.splide__dots--left .splide__pagination {
+    justify-content: flex-start !important;
 }
 
-.ImageSlider-navCircle {
-    font-size: .9em !important;
+/* postcss-bem-linter: ignore */
+.splide__dots--right .splide__pagination {
+    justify-content: flex-end !important;
+}
+
+/* postcss-bem-linter: ignore */
+.splide__track--nav > .splide__list > .splide__slide.is-active {
+    border-color: var(--theme-image-slider-hover-background) !important;
 }
