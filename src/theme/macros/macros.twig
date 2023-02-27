@@ -30,18 +30,16 @@
     {% endif %}
 {% endmacro %}
 
-{# Macro to load Magnific Popup #}
-{% macro loadMagnific() %}
-    {% do _page.addCss('/magnific/magnific-popup.css'|theme_url, {'preload': true}) %}
-
+{# Macro to load fslightbox #}
+{% macro loadLightbox() %}
     {% inlinejs %}
         loadjs.ready('main', {
-        success: function() {
-        loadjs(['{{ 'magnific/jquery.magnific-popup.min.js'|theme_url }}'], 'magnific');
-        }
+            success: function() {
+                loadjs(['{{ 'fslightbox/index.js'|theme_url }}'], 'lightbox');
+            }
         });
     {% endinlinejs %}
-    {% do _page.registerJs('magnific/jquery.magnific-popup.min.js'|theme_url) %}
+    {% do _page.registerJs('fslightbox/index.js'|theme_url) %}
 {% endmacro %}
 
 {# Macro to load Masonry Layout #}
@@ -49,25 +47,11 @@
     {% if _page.hasJs('masonry/masonry.pkgd.min.js'|theme_url) == false %}
         {% inlinejs %}
             loadjs.ready('main', {
-            success: function() {
-            loadjs(['{{ 'masonry/masonry.pkgd.min.js'|theme_url }}'], 'masonry');
-            }
+                success: function() {
+                    loadjs(['{{ 'masonry/masonry.pkgd.min.js'|theme_url }}'], 'masonry');
+                }
             });
         {% endinlinejs %}
         {% do _page.registerJs('masonry/masonry.pkgd.min.js'|theme_url) %}
-    {% endif %}
-{% endmacro %}
-
-{# Macro to load Lazy Load #}
-{% macro loadLazy() %}
-    {% if _page.hasJs('lazy/jquery.lazy.min.js'|theme_url) == false %}
-        {% inlinejs %}
-            loadjs.ready('main', {
-            success: function() {
-            loadjs(['{{ 'lazy/jquery.lazy.min.js'|theme_url }}'], 'loadlazy');
-            }
-            });
-        {% endinlinejs %}
-        {% do _page.registerJs('lazy/jquery.lazy.min.js'|theme_url) %}
     {% endif %}
 {% endmacro %}

@@ -1,11 +1,12 @@
 {% extends 'one-column' %}
+
 {% import 'macros/macros' as macros %}
 
 {% block header %}
     <div class="ContentHeader">
-        <div class="Container u-textCenter">
+        <div class="Container">
             <h1 class="ContentHeader-title">{{ item.itemName }}</h1>
-            <div class="ContentHeader-content"><a href="{{ item.goBackUrl }}"> {{ macros.iconImg("caret-left", "Go Back") }} Back </a></div>
+            <div class="ContentHeader-content"><a href="{{ item.goBackUrl }}"> {{ macros.iconImg("caret-left", "Go Back") }} Back</a></div>
         </div>
     </div>
 {% endblock %}
@@ -19,127 +20,101 @@
     </div>
 {% endmacro %}
 
-{# Image Macro #}
-{% macro image(item) %}
-
-    {% import 'macros/macros' as macros %}
-    <div class="Slider js-slider u-margBottom1">
-        {% for image in item.images %}
-            {% if image.altText %}
-                {% set image.image.large.alt = image.altText %}
-            {% else %}
-                {% set image.image.large.alt = item.itemName %}
-            {% endif %}
-            {% if item.description|length == 0 %}
-                {% set image.image.large.class = 'Image--fit' %}
-            {% else %}
-                {% set image.image.large.class = 'u-sizeFull' %}
-            {% endif %}
-            <a href="{{ image.image.large.src }}" class="Image--zoom js-lightbox">{{ image.image.large.tag }}</a>
-        {% endfor %}
-    </div>
-    {% if item.images|length > 1 %}
-
-        {{ macros.loadSlick() }}
-
-        {% inlinejs %}
-        loadjs.ready('slickheader', {
-            success: function() {
-                $(function() {
-                    $('.js-slider').slick({
-                        adaptiveHeight: true,
-                        autoplay: true,
-                        autoplaySpeed: {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
-                        dots: false,
-                        dotsClass: 'Slider-dots',
-                        fade: true,
-                        prevArrow: '<a href="#" class="Slider-nav Slider-navPrev"> {{ macros.iconImg("chevron-thin-left", "Slide Left", "Slider-navIcon") }} </a>',
-                        nextArrow: '<a href="#" class="Slider-nav Slider-navNext"> {{ macros.iconImg("chevron-thin-right", "Slide Right", "Slider-navIcon") }} </a>',
-                        speed: 500
-                    });
-                    $('.js-thumb:first').addClass('Image--outline');
-                    $('.js-slider').on('afterChange', function(e, slick, currentSlide) {
-                        $('.js-thumb').removeClass('Image--outline');
-                        $($('.js-thumb').get(currentSlide)).addClass('Image--outline');
-                    });
-                    $('.js-thumb').on('click', function(e) {
-                        e.preventDefault();
-                        $('.js-slider').slick('slickGoTo', this.getAttribute('data-index'));
-                        $('.js-thumb').removeClass('Image--outline');
-                        $(this).addClass('Image--outline');
-                    });
-                });
-            }
-        });
-        {% endinlinejs %}
-    {% endif %}
-
-    {{ macros.loadMagnific() }}
-
-    {% inlinejs %}
-    loadjs.ready('magnific', {
-        success: function() {
-            $(function() {
-                $('.js-lightbox').magnificPopup({
-                    disableOn: 700,
-                    type:'image',
-                    gallery:{
-                        enabled:true
-                    }
-                });
-            });
-        }
-    });
-    {% endinlinejs %}
-{% endmacro %}
-
-{# Thumbnails macro #}
-{% macro thumbnails(item, size) %}
-    {% if item.images|length > 1 %}
-        <div class="Grid Grid--withGutterSm">
-            {% for image in item.images %}
-                <div class="Grid-cell u-size1of{{ size }} u-sm-size1of3 u-xs-size1of2 u-margBottom1"><a href="#" class="js-thumb Constrain Constrain--4by3" aria-label="{{ image.image.large.alt }}" data-index="{{ loop.index0 }}" style="background-image: url('{{ image.image.small.src }}')"></a></div>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endmacro %}
-
-{% import _self as item_macros %}
+{% import _self as itemMacros %}
 
 {% block main %}
     {% if item.video %}
         {# Displaying the video #}
         {% if item.description %}
             <div class="Grid Grid--withGutterLg">
-                <div class="Grid-cell u-size2of3 u-lg-size1of2 u-md-sizeFull u-md-margBottom2">{{ item_macros.video(item) }}</div>
+                <div class="Grid-cell u-size2of3 u-lg-size1of2 u-md-sizeFull u-md-margBottom2">{{ itemMacros.video(item) }}</div>
                 <div class="Grid-cell u-size1of3 u-lg-size1of2 u-md-sizeFull">{{ item.description }}</div>
             </div>
         {% else %}
-            <div class="u-push1of6 u-size2of3 u-md-sizeFull u-md-pushNone">{{ item_macros.video(item) }}</div>
+            <div class="u-push1of6 u-size2of3 u-md-sizeFull u-md-pushNone">{{ itemMacros.video(item) }}</div>
         {% endif %}
     {% else %}
-        {# Displaying images #}
-        {% if item.description %}
-            <div class="Grid Grid--withGutterLg">
-                <div class="Grid-cell u-size1of2 u-md-sizeFull u-md-margBottom2">
-                    {{ item_macros.image(item) }}
-                    {{ item_macros.thumbnails(item, 5) }}
-                </div>
-                <div class="Grid-cell u-size1of2 u-md-sizeFull">
-                    {{ item.description }}
-                </div>
-            </div>
-        {% elseif item.images|length > 1 %}
-            <div class="Grid Grid--withGutterLg">
-                <div class="Grid-cell u-size1of2 u-md-sizeFull u-md-margBottom2">
-                    {{ item_macros.image(item) }}
-                </div>
-                <div class="Grid-cell u-size1of2 u-md-sizeFull">
-                    {{ item_macros.thumbnails(item, 4) }}
+        {% if item.images|length > 1 %}
+            <div id="main-slider" role="group" class="splide" aria-label="Image Slider">
+                <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for image in item.images %}
+                                <li class="splide__slide">
+                                    {% set image.image.large.alt = image.altText|default(item.itemName) %}
+                                    {% set image.image.large.class = 'u-widthFull' %}
+                                    {% set image.image.large.style = 'object-fit: cover;' %}
+                                    {{ image.image.large.tag }}
+                                </li>
+                            {% endfor %}
+                        </ul>
                 </div>
             </div>
+            
+            <div id="thumbnail-slider" role="group" class="splide u-margTop1" aria-label="Thumbnail Slider">
+                <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for image in item.images %}
+                                <li class="splide__slide">
+                                    {% set image.image.small.alt = image.altText|default(item.itemName) %}
+                                    {{ image.image.small.tag }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+            </div>
+            
+            {% import 'macros/macros' as macros %}
+            {{ macros.loadSplide() }}
+            
+            {% inlinejs %}
+                loadjs.ready('splide', {
+                    success: function() {
+                        {# Create main slider #}
+                        var main = new Splide('#main-slider', {
+                            type       : 'fade',
+                            pagination : false
+                        });
+                        
+                        {# Create thumbnail slider #}
+                        var thumbnails = new Splide('#thumbnail-slider', {
+                            rewind          : true,
+                            fixedWidth      : 150,
+                            fixedHeight     : 100,
+                            isNavigation    : true,
+                            gap             : 10,
+                            focus           : 'center',
+                            pagination      : false,
+                            arrows          : false,
+                            cover           : true,
+                            dragMinThreshold: {
+                                mouse: 4,
+                                touch: 10,
+                            },
+                            breakpoints : {
+                                640: {
+                                    fixedWidth  : 66,
+                                    fixedHeight : 38,
+                                },
+                            },
+                        });
+                        
+                        {# Link and start the sliders #}
+                        main.sync(thumbnails);
+                        main.mount();
+                        thumbnails.mount();
+                    }
+                });
+            {% endinlinejs %}
         {% else %}
-            <div class="u-push1of6 u-size2of3 u-md-sizeFull u-md-pushNone">{{ item_macros.image(item) }}</div>
+            {% for image in item.images %}
+                {% set image.image.large.alt = image.altText|default(item.itemName) %}
+                {% set image.image.large.class = 'u-widthFull' %}
+                {{ image.image.large.tag }}
+            {% endfor %}
+        {% endif %}
+        
+        {% if item.description %}
+            <div class="u-margTop2">{{ item.description }}</div>
         {% endif %}
     {% endif %}
 {% endblock %}

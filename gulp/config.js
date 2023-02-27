@@ -68,10 +68,6 @@ const config = {
      */
     copy: [
         {
-            src: ['node_modules/magnific-popup/dist/**/*.{css,min.js}'],
-            dest: 'magnific'
-        },
-        {
             src: 'node_modules/@splidejs/splide/dist/**/*',
             dest: 'splide'
         },
@@ -84,8 +80,8 @@ const config = {
             dest: 'masonry'
         },
         {
-            src: ['node_modules/jquery-lazy/*.{lazy.min.js, min.js}'],
-            dest: 'lazy'
+            src: 'node_modules/fslightbox/index.js',
+            dest: 'fslightbox'
         }
     ],
 

@@ -14,10 +14,13 @@
         <a href="{{ appUrls.itemList }}">Alternate view</a>
         | <a href="{{ appUrls.categoryList }}">Categories</a>
     </div>
-    {% spaceless %}
+    {% apply spaceless %}
         <div class="js-masonryGrid">
             <div class="MasonryGrid-columnWidth"></div>
             <div class="MasonryGrid-gutterWidth"></div>
+            {% if category.items %}
+                {% set items = category.items %}
+            {% endif %}
             {% for item in items %}
                 {% set image = attribute(item.images|first, 'image') %}
                 {% set image.small.alt = item.itemName %}
@@ -34,75 +37,39 @@
                             {% set videoImage.alt = item.itemName %}
                             {% set videoImage.class = 'MasonryGrid-image' %}
                         {% endif %}
-                        <a href="{{ video.url }}" class="js-lightbox mfp-iframe" title="View video: {{ item.itemName }}">
+                        <a data-fslightbox href="{{ video.url }}">
                             <div class="Masonry-title Masonry-title--overlay u-textCenter">{{ item.itemName }}</div>
-                            {% if items.loop.index < 12 %}
-                                <div class="Masonry-play"></div>
-                                <div>{{ videoImage.tag }}</div>
-                            {% else %}
-                                <img data-src="{{ image.large.src }}" src="{{ "images/placeholderImage.png" }}" class="js-lazy" alt="{{ item.itemName }}">
-                            {% endif %}
+                            <div class="Masonry-play"></div>
+                            <div>{{ videoImage.tag }}</div>
                         </a>
                     {% else %}
-                        {% set image.large.class = "u-sizeFull" %}
-                        <a href="{{ image.large.src }}" class="js-lightbox mfp-image" title="{{ item.itemName }}">
+                        {% set modalId = 'Modal_' ~ random_string() %}
+                        <a data-fslightbox data-type="image" href="{{ image.large.src }}">
                             <div class="Masonry-title Masonry-title--overlay u-textCenter">{{ item.itemName }}</div>
-                            {% if loop.index < 12 %}
-                                <img src="{{ image.large.src }}" alt="{{ item.itemName }}">
-                            {% else %}
-                                <img data-src="{{ image.large.src }}" src="{{ "images/placeholderImage.png" }}" class="js-lazy" alt="{{ item.itemName }}">
-                            {% endif %}
+                            {% set image.large.class = "u-sizeFull" %}
+                            <img src="{{ image.large.src }}" alt="{{ item.itemName }}" {{ loop.index > 12 ? 'loading="lazy"' }}>
                         </a>
                     {% endif %}
                 </div>
             {% endfor %}
         </div>
-
-        {{ macros.loadMagnific() }}
+        
         {{ macros.loadMasonry() }}
-        {{ macros.loadLazy() }}
-
+        {{ macros.loadLightbox() }}
+        
         {% inlinejs %}
-        var msnry;
-
-        loadjs.ready('magnific', {
-            success: function() {
-                $(function() {
-                    $('.js-lightbox').magnificPopup({
-                    disableOn: 700,
-                        gallery:{
-                            enabled:true
-                        }
+            loadjs.ready('masonry', {
+                success: function() {
+                    new Masonry(document.querySelector('.js-masonryGrid'), {
+                        columnWidth: '.MasonryGrid-columnWidth',
+                        gutter: '.MasonryGrid-gutterWidth',
+                        itemSelector: '.js-masonryItem',
+                        percentPosition: true
                     });
-                });
-            }
-        });
-
-        loadjs.ready('masonry', {
-            success: function() {
-            msnry = $('.js-masonryGrid').masonry({
-                columnWidth: '.MasonryGrid-columnWidth',
-                gutter: '.MasonryGrid-gutterWidth',
-                itemSelector: '.js-masonryItem',
-                percentPosition: true
+                }
             });
-        }
-        }).ready('loadlazy', {
-            success: function() {
-                $('.js-lazy').Lazy({
-                    scrollDirection: 'vertical',
-                    effect: 'fadeIn',
-                    visibleOnly: true,
-                    afterLoad: function(element) {
-                        msnry.masonry('layout');
-                    }
-                });
-            }
-        });
         {% endinlinejs %}
-
-    {% endspaceless %}
+    {% endapply %}
+    
     {% include 'snippets/pagination' %}
-
 {% endblock %}
-

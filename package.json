@@ -53,10 +53,8 @@
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
         "cacao-css": "^3.16.0",
-        "jquery": "^3.5.1",
-        "jquery-lazy": "^1.7.10",
+        "fslightbox": "^3.4.1",
         "just-validate": "^4.2.0",
-        "magnific-popup": "^1.1.0",
         "masonry-layout": "^4.2.2"
     },
     "engines": {
