@@ -5,7 +5,12 @@
 export default {
     copy: [
         {
-            src: 'node_modules/@splidejs/splide/dist/**/*',
+            src: [
+                'node_modules/@splidejs/splide/dist/css/splide.min.css',
+                'node_modules/@splidejs/splide/dist/js/splide.min.js',
+                'node_modules/@splidejs/splide-extension-video/dist/js/splide-extension-video.min.js',
+                'node_modules/@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css'
+            ],
             dest: 'splide'
         },
         {

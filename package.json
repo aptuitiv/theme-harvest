@@ -41,6 +41,7 @@
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
         "cacao-css": "^3.16.0",
+        "@splidejs/splide-extension-video": "^0.8.0",
         "fslightbox": "^3.4.2",
         "just-validate": "^4.3.0",
         "masonry-layout": "^4.2.2"
