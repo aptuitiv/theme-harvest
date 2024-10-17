@@ -20,14 +20,13 @@ export default {
         {
             src: 'node_modules/masonry-layout/dist/*.{pkgd.min.js, min.js}',
             dest: 'masonry'
-        },
-        {
-            src: 'node_modules/fslightbox/index.js',
-            dest: 'fslightbox'
         }
     ],
     css: {
         buildFiles: 'main.css'
+    },
+    eslint: {
+        ignores: ['fslightbox.js']
     },
     javascript: {
         bundles: [
@@ -35,10 +34,15 @@ export default {
                 build: 'main.js',
                 nodeModules: [
                     'jquery/dist/jquery.js'
-                ],
-                src: [
+                ],                src: [
                     'navigation.js',
                     'main.js'
+                ]
+            },
+            {
+                build: 'lightbox.js',
+                src: [
+                    'fslightbox.js'
                 ]
             }
         ],

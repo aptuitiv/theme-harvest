@@ -35,11 +35,11 @@
     {% inlinejs %}
         loadjs.ready('main', {
             success: function() {
-                loadjs(['{{ 'fslightbox/index.js'|theme_url }}'], 'lightbox');
+                loadjs(['{{ 'js/lightbox.js'|theme_url }}'], 'lightbox');
             }
         });
     {% endinlinejs %}
-    {% do _page.registerJs('fslightbox/index.js'|theme_url) %}
+    {% do _page.registerJs('js/lightbox.js'|theme_url) %}
 {% endmacro %}
 
 {# Macro to load Masonry Layout #}
