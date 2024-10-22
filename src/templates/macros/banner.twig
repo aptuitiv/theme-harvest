@@ -1,0 +1,217 @@
+{# Macros for the Banner Bar and large banners #}
+
+{##
+ # Banner Image Macro
+ # - image: The image to display
+ # - imageCrop: The crop orientation for the image
+ # - bannerImageSizes: The image sizes to use for the aspect ratios from theme settings.
+ # - bannerMinImageRatio: The minimum aspect ratio for the banner image. From theme settings.
+ # - bannerImageRatio: The default aspect ratio for the banner image. From theme settings.
+ # - bannerImageCropStrategy: The crop strategy for the banner image. From theme settings.
+ # - bannerImageCropOrientation: The crop orientation for the banner image. From theme settings.
+ # - doCss: Whether to output the CSS for the aspect ratios
+ #}
+{% macro bannerImage(
+    image,
+    imageCrop,
+    bannerImageSizes,
+    bannerMinImageRatio,
+    bannerImageRatio,
+    bannerImageCropStrategy,
+    bannerImageCropOrientation,
+    hasContent,
+    doCss
+) %}
+    {% set css = [] %}
+    {# The minimum aspect ratio for the banner image. This prevents the image from being too tall. #}
+    {% set minimumRatio = bannerMinImageRatio.number ?? (4/9) %}
+
+    {# Set the default aspect ratio to use with the image cropping and in the CSS for the Banner tag #}
+    {% set defaultCropAspectRatio = bannerImageRatio.ratioX ?? '120x9' %}
+    {% set defaultCssAspectRatio = bannerImageRatio.ratioSlash ?? '20/99' %}
+
+    {# Get the aspect ratio of the image #}
+    {% set imageCropAspectRatio = defaultCropAspectRatio %}
+    {% set imageCssAspectRatio = defaultCssAspectRatio %}
+    {% set imageRatio = 1 %}
+    {% if image.width && image.height %}
+        {# Set the crop ratios to come from the image size #}
+        {% set imageCropAspectRatio = image.width ~ 'x' ~ image.height %}
+        {% set imageCssAspectRatio = image.width ~ '/' ~ image.height %}
+        {% set imageRatio = image.width.get() / image.height.get() %}
+
+        {# If the banner crop stragegy is to always crop, or if the image is too tall then set the
+            # crop aspect ratio to the default aspect ratio and the CSS aspect ratio to the default aspect ratio
+            #}
+        {% if bannerImageCropStrategy == 'crop' or (imageRatio < minimumRatio) %}
+            {% set imageCropAspectRatio = defaultCropAspectRatio %}
+            {% set imageCssAspectRatio = defaultCssAspectRatio %}
+        {% endif %}
+    {% endif %}
+
+    {# Set the crop orientation #}
+    {% set cropOrientation = bannerImageCropOrientation %}
+    {% if imageCrop && imageCrop != 'Site default' %}
+        {% set cropOrientation = imageCrop %}
+    {% endif %}
+
+    {# Extract the image sizes from the settings and sort them by width #}
+    {% set sizes = [] %}
+    {% for imageSize in bannerImageSizes %}
+        {% set sizes = sizes|merge([{width: imageSize.size.x, height: imageSize.size.y, ratio: imageSize.size.number}]) %}
+    {% endfor %}
+    {% set sizes = sizes|sort_by_key("width") %}
+
+    {% if sizes|length > 0 %}
+        {% set maxWidth = 0 %}
+        {% for size in sizes %}
+            {# Set up the aspect ratio to use with the image cropping and in the CSS for the Banner tag #}
+            {% set cropAspectRatio = imageCropAspectRatio %}
+            {% set cssAspectRatio = imageCssAspectRatio %}
+            {% set cssMinWidth = loop.first ? 1 : size.width %}
+            {% if bannerImageCropStrategy == 'crop' or (imageRatio < minimumRatio && size.ratio > imageRatio) %}
+                {% set cropAspectRatio = size.width ~ 'x' ~ size.height %}
+                {% set cssAspectRatio = size.width ~ '/' ~ size.height %}
+            {% endif %}
+            {% set css = css|merge([{
+                minWidth: cssMinWidth,
+                cssAspectRatio: cssAspectRatio,
+                image: image.crop({width: size.width, ar: cropAspectRatio, crop: cropOrientation|lower}).src
+            }]) %}
+
+            {# Add the image sources and preload media queries #}
+            {% do image.addSource("(max-width: " ~ size.width ~ "px)")
+                .crop({
+                    width: size.width,
+                    ar: cropAspectRatio,
+                    crop: cropOrientation|lower
+                })
+                .preloadMedia(
+                    loop.first ?
+                    "(max-width: "  ~ size.width ~"px)" :
+                    "(min-width: " ~ (maxWidth + 1) ~ "px) and (max-width: "  ~ size.width ~"px)"
+                )
+            %}
+            {% set maxWidth = size.width %}
+        {% endfor %}
+    {% else %}
+        {# The image sizes are not set, so set the CSS using the image's crop aspect ratio #}
+        {% inlinecss %}
+            .Banner {aspect-ratio: {{ imageCssAspectRatio }}; }
+        {% endinlinecss %}
+    {% endif %}
+
+    {# Set the inline CSS for the banner aspect ratios #}
+    {% if doCss %}
+        {% inlinecss %}
+        {% for cssOption in css %}
+            @media (min-width: {{ cssOption.minWidth }}px) {
+                .Banner {aspect-ratio: {{ cssOption.cssAspectRatio }}; }
+            }
+        {% endfor %}
+        {% endinlinecss %}
+    {% endif %}
+
+    {% if !hasContent %}
+        {# Output the image #}
+        {# Set the cropping for the image #}
+        {% do image.crop({
+            ar: imageCropAspectRatio,
+            crop: cropOrientation|lower
+        }) %}
+
+        {# Output the banner image #}
+        {% set image.picture.class = "Banner-picture" %}
+        {% set image.class = "Banner-image Banner-image--" ~ cropOrientation|lower %}
+        {% do image.prioritize({ media: "(min-width: " ~ (maxWidth + 1) ~ "px)" }) %}
+        <div class="Banner-bg">{{ image.tag }}</div>
+    {% else %}
+        {# Set the image as a background image. This is done so that the banner will properly grow with the content if the content is tall #}
+        {% set uniqueClass = 'Banner-bg' ~random_string() %}
+        {% inlinecss %}
+            {% for cssOption in css %}
+            @media (min-width: {{ cssOption.minWidth }}px) {
+                .{{ uniqueClass}} {background-image: url({{ cssOption.image }}); }
+            }
+            {% endfor %}
+        {% endinlinecss %}
+        <div class="Banner-bg {{ uniqueClass }}"></div>
+    {% endif %}
+{% endmacro %}
+
+
+{##
+ # Banner Video Macro
+ # - video: The video to display
+ # - bannerImageSizes: The image sizes to use for the aspect ratios from theme settings
+ # - doCss: Whether to output the CSS for the aspect ratios
+#}
+{% macro bannerVideo(video, bannerImageSizes, doCss) %}
+    <div class="Banner-bg">
+        <video class="Banner-video" autoplay muted loop playsinline src="{{ video.src }}"></video>
+    </div>
+    {% if doCss %}
+        {# Set the aspect ratio on the Banner to make this visible #}
+        {# First set a default value #}
+        {% set aspectRatio = '16/9' %}
+        {# Now try and get the aspect ratio from the largest banner image size #}
+        {% if bannerImageSizes|length > 0 %}
+            {% set sizes = [] %}
+            {% for imageSize in bannerImageSizes %}
+                {% set sizes = sizes|merge([{width: imageSize.size.x, ratio: imageSize.size.ratioSlash}]) %}
+            {% endfor %}
+            {% set sizes = sizes|sort_by_key("width") %}
+            {% set aspectRatio = sizes|last.ratio %}
+        {% endif %}
+        {% inlinecss %}
+            .Banner {aspect-ratio: {{ aspectRatio }}; }
+        {% endinlinecss %}
+    {% endif %}
+{% endmacro %}
+
+{##
+ # Content for the large banner
+ # - content: The content to display
+ # - overlayImage: The image to display over the background image and beside the content
+ #}
+{% macro largeBannerContent(content, overlayImage) %}
+    <div class="Banner-fg"></div>
+    {% if overlayImage %}
+        <div class="Banner-contentImageWrap">
+            <div class="Banner-content">
+                <div class="Banner-contentInner first-child-st-0 last-child-sb-0">{{ content }}</div>
+            </div>
+            {# Extract the image sizes from the settings and sort them by width #}
+            {% set sizes = [] %}
+            {% for imageSize in _core.theme.settings.bannerOverlayImageSizes %}
+                {% set sizes = sizes|merge([{width: imageSize.size.x, height: imageSize.size.y, ratio: imageSize.size.number}]) %}
+            {% endfor %}
+            {% set sizes = sizes|sort_by_key("width") %}
+            {% if sizes|length > 1 %}
+                {% for size in sizes %}
+                    {# Add the image sources and preload media queries #}
+                    {% do overlayImage.addSrcSet(size.width ~ 'px')
+                        .resize({
+                            width: size.width,
+                            height: size.height
+                        })
+                    %}
+                {% endfor %}
+            {% endif %}
+            {% if sizes|length > 0 %}
+                {# Get the last size to resize the image to #}
+                {% set lastSize = sizes|last %}
+                {% do overlayImage.resize({
+                    width: lastSize.width,
+                    height: lastSize.height
+                }) %}
+            {% endif %}
+            {% set overlayImage.class = 'Banner-overlayImage' %}
+            {{ overlayImage.tag }}
+        </div>
+    {% else %}
+        <div class="Banner-content">
+            <div class="Banner-contentInner first-child-st-0 last-child-sb-0">{{ content }}</div>
+        </div>
+    {% endif %}
+{% endmacro %}

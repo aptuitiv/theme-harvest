@@ -1,0 +1,74 @@
+{% nevercache %}
+    {% verbatim %}
+        {% if items|length > 0 %}
+            {# Get notification cookie IDs #}
+            {% set cookieIds = [] %}
+            {% for cookieName in _page.cookies|keys %}
+                {% if cookieName starts with "notificationMsgHide" %}
+                    {% set cookieId = cookieName|split('notificationMsgHide')|last %}
+                    {% set cookieIds = cookieIds|merge([cookieId]) %}
+                {% endif %}
+            {% endfor %}
+            
+            {# Get notification #}
+            {% set notification = items|first %}
+            
+            {# Check if notification cookie is not present #}
+            {% if notification.id not in cookieIds or not notification.closable %}
+                <div class="Notification js-notification" data-id="{{ notification.id }}">
+                    <div class="Container">
+                        <div class="flex align-center gx-2 {{ notification.closable ? 'justify-between' : 'justify-center' }}">
+                            {% if notification.closable %}
+                                <div class="Notification-placeholder"></div>
+                            {% endif %}
+                            <div class="Notification-title">
+                                {% if notification.icon != "None" %}
+                                    <svg class="Notification-alert Icon"><use xlink:href="#icon-{{ notification.icon|camel }}" /></svg>
+                                {% endif %}
+                                <div class="Notification-titleContent">
+                                    {{ notification.itemName }}
+                                    {% if notification.message and notification.linkType == "Message popup" %}
+                                        <button class="Notification-more" data-micromodal-trigger="notification-modal" aria-label="open more info popup">
+                                            {{ notification.linkText }}
+                                        </button>
+                                    {% elseif notification.link and notification.linkType == "Link to a page" %}
+                                        <a href="{{ notification.link }}" class="Notification-more">
+                                            {{ notification.linkText }}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if notification.closable %}
+                                <button class="Notification-close js-notificationClose" aria-label="close">
+                                    <svg class="Icon Notification-icon"><use xlink:href="#icon-close" /></svg>
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if notification.message %}
+                    <div class="Modal Modal-slide" id="notification-modal" aria-hidden="true">
+                        <div class="Modal-overlay" tabindex="-1" data-micromodal-close>
+                            <div class="Modal-container" role="dialog" aria-modal="true">
+                                <div class="Modal-header justify-between">
+                                    <div class="Modal-title">
+                                        {% if notification.icon != "None" %}
+                                            <svg class="Modal-alert Icon"><use xlink:href="#icon-{{ notification.icon|camel }}" /></svg>
+                                        {% endif %}
+                                        {{ notification.itemName }}
+                                    </div>
+                                    <button class="Modal-close" data-micromodal-close></button>
+                                </div>
+                                <div class="Modal-content last-child-sb-0">
+                                    {{ notification.message }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <div class="Banner-border"></div>
+        {% endif %}
+    {% endverbatim %}
+{% endnevercache %}

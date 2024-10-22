@@ -2,7 +2,7 @@
     {% if slide.link %}
         <a href="{{ slide.link }}" class="Slider-link">
     {% endif %}
-    
+
     <picture class="Slider-image">
         <source media="(max-width: 600px)" srcset="{{ slide.images.small.src }}">
         <source media="(max-width: 1200px)" srcset="{{ slide.images.medium.src }}">
@@ -11,7 +11,7 @@
         {% endif %}
         {{ slide.images.large.tag }}
     </picture>
-    
+
     {% if slide.captionTitle or slide.caption  %}
         <span class="Slider-content Slider-content--{{ slide.captionPosition|camel }}">
             {% if slide.captionTitle %}
@@ -24,20 +24,20 @@
             {% if slide.caption %}<span class="Slider-caption">{{ slide.caption }}</span>{% endif %}
         </span>
     {% endif %}
-    
+
     {% if slide.link %}
         </a>
     {% endif %}
 {% endmacro %}
 
-<div class="u-md-margBottom4 {{ spacingAfterHeader != 'None' ? 'u-margBottom3' }}">
+<div class="mb-0-md {{ spacingAfterHeader != 'None' ? 'mb-3' }}">
     {% if slides and displayType != 'Hide' %}
         {% import _self as macros %}
-        
+
         {% if slides|length == 1 and displayType == 'Slideshow' %}
             {% set displayType = 'Single slide' %}
         {% endif %}
-        
+
         {# Build a single slide #}
         {% if displayType == 'Single slide' || displayType == 'Random slide' %}
             {% if displayType == 'Single slide' %}
@@ -50,15 +50,15 @@
                     {{ macros.slide(slide) }}
                 </div>
             </div>
-        
+
         {# Build multiple slides #}
         {% elseif displayType == 'Slideshow' || displayType == 'Random slideshow' %}
             {% import "macros/macros" as siteMacros %}
-            
+
             {% if displayType == 'Random slideshow' %}
                 {% set slides = slides|shuffle %}
             {% endif %}
-            
+
             {% set sliderId = 'js-splide' ~ random_number() %}
             <section class="splide splide__dots--{{ dotPosition|camel }} {{ sliderId }}" aria-label="Banner">
                 <div class="splide__track">
@@ -71,7 +71,7 @@
                     </ul>
                 </div>
             </section>
-            
+
             {{ siteMacros.loadSplide() }}
             {% inlinejs %}
                 loadjs.ready('splide', {

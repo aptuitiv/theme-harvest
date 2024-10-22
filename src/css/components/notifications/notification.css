@@ -1,0 +1,85 @@
+/* =========================================================================== *\
+    Notifications
+\* =========================================================================== */
+
+/* @define Notification */
+.Notification {
+    background-color: var(--Notification-background);
+    color: var(--Notification-color);
+    padding: var(--Notification-padding, 10px);
+    text-align: center;
+}
+
+.Notification-more {
+    background-color: transparent;
+    border: none;
+    color: var(--Notification-color);
+    margin-left: 20px;
+    text-decoration: underline;
+    text-transform: var(--Notification-title-text-transform);
+}
+
+.Notification-more:focus-visible {
+    color: var(--Notification-color);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .Notification-more:hover {
+        color: var(--Notification-color);
+    }
+}
+
+.Notification-title {
+    align-items: center;
+    color: var(--Notification-title-color, var(--Notification-color));
+    display: flex;
+    font-family: var(--Notification-title-font-family);
+    font-size: var(--Notification-title-font-size-sm, 1.7rem);
+    font-weight: var(--Notification-title-font-weight);
+    letter-spacing: var(--Notification-title-letter-spacing);
+    line-height: var(--Notification-title-line-height);
+    text-transform: var(--Notification-title-text-transform);
+}
+
+.Notification-titleContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+}
+
+.Notification-alert {
+    font-size: var(--Notification-icon-font-size);
+    margin-right: 20px;
+}
+
+.Notification-close {
+    background-color: transparent;
+    border: none;
+    color: var(--Notification-color);
+    display: flex;
+    font-size: var(--Notification-close-font-size);
+    padding: 0;
+}
+
+.Notification-icon {
+    margin: 0 !important;
+}
+
+.Notification-placeholder {
+    display: none;
+    width: var(--Notification-close-font-size);
+}
+
+@media (--m-md) {
+    .Notification {
+        text-align: center;
+    }
+
+    .Notification-placeholder {
+        display: block;
+    }
+
+    .Notification-title {
+        font-size: var(--Notification-title-font-size);
+    }
+}

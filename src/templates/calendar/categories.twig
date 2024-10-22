@@ -1,0 +1,15 @@
+
+{% extends "one-column.twig" %}
+
+{% block main %}
+    <h1>Calendar Categories</h1>
+    {% if categoryCount > 0 %}
+        <ul>
+            {% for category in categories %}
+                <li><a href="{{ category.url }}">{{ category.categoryName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% do _page.addCss('calendar.css') %}

@@ -1,0 +1,71 @@
+/* ===========================================================================
+    Table styles
+=========================================================================== */
+
+/* @define Table */
+
+.Table {
+    border: var(--Table-border-size, 0) solid var(--Table-border-color, #333);
+    border-spacing: 0;
+    display: block;
+    height: auto !important;
+    overflow-x: scroll;
+    width: 100% !important;
+}
+
+.Table::after {
+    content: 'Scroll/swipe sideways to view the full table if necessary';
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+@media (--m-md) {
+    .Table {
+        display: table;
+        overflow-x: auto;
+    }
+
+    .Table::after {
+        display: none;
+    }
+}
+
+/* postcss-bem-linter: ignore */
+.Table th {
+    background: var(--Table-header-background, none);
+    border-bottom: var(--Table-header-border-bottom-size, 0) solid var(--Table-header-border-color);
+    border-left: var(--Table-header-border-left-size, 0) solid var(--Table-header-border-color);
+    border-right: var(--Table-header-border-right-size, 0) solid var(--Table-header-border-color);
+    border-top: var(--Table-header-border-top-size, 0) solid var(--Table-header-border-color);
+    color: var(--Table-header-color);
+    font-family: inherit;
+    font-weight: var(--Table-header-font-weight);
+    padding: var(--Table-padding, 8px 15px);
+}
+
+/* postcss-bem-linter: ignore */
+.Table td {
+    border-bottom: var(--Table-cell-border-bottom-size, 0) solid var(--Table-cell-border-color);
+    border-left: var(--Table-cell-border-left-size, 0) solid var(--Table-cell-border-color);
+    border-right: var(--Table-cell-border-right-size, 0) solid var(--Table-cell-border-color);
+    border-top: var(--Table-cell-border-top-size, 0) solid var(--Table-cell-border-color);
+    padding: var(--Table-padding, 8px 15px);
+}
+
+/* postcss-bem-linter: ignore */
+.Table tr:nth-child(even) {
+    background: var(--Table-cell-even-background, none);
+    color: var(--Table-cell-even-color, inherit);
+}
+
+/* postcss-bem-linter: ignore */
+.Table tr:nth-child(odd) {
+    background: var(--Table-cell-odd-background, none);
+    color: var(--Table-cell-odd-color, inherit);
+}
+
+/* postcss-bem-linter: ignore */
+.Table ul {
+    margin: 0;
+    padding-left: 15px;
+}

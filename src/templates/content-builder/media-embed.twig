@@ -1,10 +1,15 @@
-{% if embedUrl.errors|length == 0 %}
+{% set id = "js-iframe--" ~ random_string() %}
+<div class="Container Container--pad">
     {% for url in embedUrl.urlInfo %}
-        <div class="FlexEmbed u-margBottom2">
-            <div class="FlexEmbed-ratio FlexEmbed-ratio--{{ embedRatio }}"></div>
-            <iframe class="FlexEmbed-content" title="{{ url.title }}" frameborder="0" allowfullscreen src="{{ url.iframeEmbed.src }}" loading="lazy"></iframe>
+        <div class="embed my-5 aspect-{{ embedRatio|replace(':', '-') }} {{ id }}">
+            {% inlinejs %}
+                loadjs.ready('main', {
+                    success: function() {
+                        const element = document.querySelector(".{{ id }}");
+                        loadIframeOnObserve(element, "{{ url.iframeEmbed.src }}", "{{ url.title ?: "Embedded Media" }}");
+                    }
+                });
+            {% endinlinejs %}
         </div>
     {% endfor %}
-{% else %}
-    {{ embedUrl.errors|join('<br>') }}
-{% endif %}
+</div>

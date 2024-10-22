@@ -2,7 +2,7 @@
 
 <div class="BlogList-item">
     {% set link = ' <a href="' ~ post.url ~ '">Read more' ~ macros.iconAriaHidden("chevron-thin-right") ~ '</a>' %}
-    <h2 class="BlogList-heading"><a href="{{ post.url }}" class="u-linkSubtle">{{ post.postTitle }}</a></h2>
+    <h2 class="BlogList-heading"><a href="{{ post.url }}" class="link-subtle">{{ post.postTitle }}</a></h2>
     <div class="BlogList-date">{{ post.publishedOnDate }}</div>
     {% if post.abstract %}
         {{ post.abstract|inject_html(link) }}

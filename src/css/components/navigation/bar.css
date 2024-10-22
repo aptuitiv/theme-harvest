@@ -1,18 +1,17 @@
 /* =========================================================================== *\
-    MAIN NAVIGATION BAR
+    Navigation Bar
 \* =========================================================================== */
 
-
-/** @define NavBar */
-
+/* @define NavBar */
 .NavBar {
-    background: var(--theme-navbar-bg);
-    color: var(--theme-nav-color);
+    background-color: var(--NavBar-background);
+    display: none;
+    padding: var(--NavBar-padding-sm, 0);
 }
 
-@media (--c-bp-smallScreenNav) {
+@media (--m-lg) {
     .NavBar {
-        margin-bottom: 1em;
-        text-align: center;
+        display: block;
+        padding: var(--NavBar-padding, 0);
     }
 }

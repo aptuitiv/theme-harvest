@@ -1,16 +1,15 @@
 {% extends 'one-column' %}
 {% import 'macros/macros' as macros %}
 
-{% block header %}
-    <div class="ContentHeader">
-        <div class="Container">
-            <h1 class="ContentHeader-title">Gallery</h1>
-        </div>
-    </div>
+{% block banner %}
+    {% set content %}
+        <h1>Gallery</h1>
+    {% endset %}
+    {% include('content-builder/banner-bar') %}
 {% endblock %}
 
 {% block main %}
-    <div class="u-margBottom3 u-textCenter">
+    <div class="mb-3 text-center">
         <a href="{{ appUrls.itemList }}">Alternate view</a>
         | <a href="{{ appUrls.categoryList }}">Categories</a>
     </div>
@@ -38,25 +37,25 @@
                             {% set videoImage.class = 'MasonryGrid-image' %}
                         {% endif %}
                         <a data-fslightbox href="{{ video.url }}">
-                            <div class="Masonry-title Masonry-title--overlay u-textCenter">{{ item.itemName }}</div>
+                            <div class="Masonry-title Masonry-title--overlay text-center">{{ item.itemName }}</div>
                             <div class="Masonry-play"></div>
                             <div>{{ videoImage.tag }}</div>
                         </a>
                     {% else %}
                         {% set modalId = 'Modal_' ~ random_string() %}
                         <a data-fslightbox data-type="image" href="{{ image.large.src }}">
-                            <div class="Masonry-title Masonry-title--overlay u-textCenter">{{ item.itemName }}</div>
-                            {% set image.large.class = "u-sizeFull" %}
+                            <div class="Masonry-title Masonry-title--overlay text-center">{{ item.itemName }}</div>
+                            {% set image.large.class = "w-1-1" %}
                             <img src="{{ image.large.src }}" alt="{{ item.itemName }}" {{ loop.index > 12 ? 'loading="lazy"' }}>
                         </a>
                     {% endif %}
                 </div>
             {% endfor %}
         </div>
-        
+
         {{ macros.loadMasonry() }}
         {{ macros.loadLightbox() }}
-        
+
         {% inlinejs %}
             loadjs.ready('masonry', {
                 success: function() {
@@ -70,6 +69,8 @@
             });
         {% endinlinejs %}
     {% endapply %}
-    
+
     {% include 'snippets/pagination' %}
 {% endblock %}
+
+{% do _page.addCss('gallery.css'|theme_url) %}

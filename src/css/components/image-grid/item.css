@@ -1,0 +1,193 @@
+/* ===========================================================================
+    Image grid item
+=========================================================================== */
+
+/* @define ImageGridItem */
+
+.ImageGridItem {
+    text-decoration: none;
+}
+
+.ImageGridItem:hover {
+    text-decoration: none;
+}
+
+.ImageGridItem-image {
+    position: relative;
+}
+
+/* ------------------------------------ *\
+    Title text
+\* ------------------------------------ */
+
+.ImageGridItem-titleAbove {
+    color: var(--ImageGridItem-title-above-color, var(--base-typography-color));
+    display: block;
+    font-family: var(--ImageGridItem-title-above-font-family);
+    font-size: var(--ImageGridItem-title-above-font-size, inherit);
+    font-style: var(--ImageGridItem-title-above-font-style);
+    font-weight: var(--ImageGridItem-title-above-font-weight, 700);
+    letter-spacing: var(--ImageGridItem-title-above-letter-spacing);
+    line-height: var(--ImageGridItem-title-above-line-height, inherit);
+    margin: var(--ImageGridItem-title-above-margin, 0);
+    padding: var(--ImageGridItem-title-above-padding, 0);
+    text-align: var(--ImageGridItem-title-above-text-align);
+    text-decoration: var(--ImageGridItem-title-above-text-decoration);
+    text-transform: var(--ImageGridItem-title-above-text-transform);
+}
+
+.ImageGridItem-titleBelow {
+    color: var(--ImageGridItem-title-below-color, var(--base-typography-color));
+    display: block;
+    font-family: var(--ImageGridItem-title-below-font-family);
+    font-size: var(--ImageGridItem-title-below-font-size, inherit);
+    font-style: var(--ImageGridItem-title-below-font-style);
+    font-weight: var(--ImageGridItem-title-below-font-weight, 700);
+    letter-spacing: var(--ImageGridItem-title-below-letter-spacing);
+    line-height: var(--ImageGridItem-title-below-line-height, inherit);
+    margin: var(--ImageGridItem-title-below-margin, 0);
+    padding: var(--ImageGridItem-title-below-padding, 0);
+    text-align: var(--ImageGridItem-title-below-text-align);
+    text-decoration: var(--ImageGridItem-title-below-text-decoration, none);
+    text-transform: var(--ImageGridItem-title-below-text-transform);
+}
+
+.ImageGridItem-titleBottom {
+    color: var(--ImageGridItem-title-bottom-color, var(--base-typography-color));
+    display: block;
+    font-family: var(--ImageGridItem-title-bottom-font-family);
+    font-size: var(--ImageGridItem-title-bottom-font-size, inherit);
+    font-style: var(--ImageGridItem-title-bottom-font-style);
+    font-weight: var(--ImageGridItem-title-bottom-font-weight, 700);
+    letter-spacing: var(--ImageGridItem-title-bottom-letter-spacing);
+    line-height: var(--ImageGridItem-title-bottom-line-height, inherit);
+    margin: var(--ImageGridItem-title-bottom-margin, 0);
+    text-align: var(--ImageGridItem-title-bottom-text-align);
+    text-decoration: var(--ImageGridItem-title-bottom-text-decoration);
+    text-shadow: var(--ImageGridItem-title-bottom-text-shadow);
+    text-transform: var(--ImageGridItem-title-bottom-text-transform);
+}
+
+.ImageGridItem:hover .ImageGridItem-titleBottom {
+    color: var(--ImageGridItem-title-bottom-color-hover);
+    font-style: var(--ImageGridItem-title-bottom-font-style-hover);
+    text-decoration: var(--ImageGridItem-title-bottom-text-decoration-hover);
+}
+
+.ImageGridItem-titleCenter {
+    color: var(--ImageGridItem-title-center-color, var(--base-typography-color));
+    display: block;
+    font-family: var(--ImageGridItem-title-center-font-family);
+    font-size: var(--ImageGridItem-title-center-font-size, inherit);
+    font-style: var(--ImageGridItem-title-center-font-style);
+    font-weight: var(--ImageGridItem-title-center-font-weight, 700);
+    letter-spacing: var(--ImageGridItem-title-center-letter-spacing);
+    line-height: var(--ImageGridItem-title-center-line-height, inherit);
+    margin: var(--ImageGridItem-title-center-margin, 0);
+    padding: var(--ImageGridItem-title-center-padding, 0);
+    text-align: var(--ImageGridItem-title-center-text-align);
+    text-decoration: var(--ImageGridItem-title-center-text-decoration);
+    text-shadow: var(--ImageGridItem-title-center-text-shadow);
+    text-transform: var(--ImageGridItem-title-center-text-transform);
+}
+
+/* ------------------------------------ *\
+    Image overlay
+\* ------------------------------------ */
+
+.ImageGridItem-overlay {
+    background: var(--ImageGridItem-overlay-background, transparent);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    z-index: 1;
+}
+
+.ImageGridItem:hover .ImageGridItem-overlay {
+    background: var(--ImageGridItem-overlay-background-hover, var(--ImageGridItem-overlay-background));
+}
+
+/* ------------------------------------ *\
+    CONTENT ON IMAGE
+\* ------------------------------------ */
+
+.ImageGridItem-overlayContent {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    z-index: 2;
+}
+
+.ImageGridItem-overlayContent--bottom {
+    background: var(--ImageGridItem-title-bottom-background, transparent);
+    height: var(--ImageGridItem-overlay-title-bottom-height, auto);
+    padding: var(--ImageGridItem-title-bottom-padding, 0);
+}
+
+.ImageGridItem:hover .ImageGridItem-overlayContent--bottom {
+    background: var(--ImageGridItem-title-bottom-background-hover, transparent);
+    height: var(--ImageGridItem-title-bottom-height-hover, auto);
+}
+
+.ImageGridItem-overlayContent--center {
+    height: 100%;
+    top: 0;
+}
+
+.ImageGridItem-hoverText {
+    color: var(--ImageGridItem-hover-text-color, inherit);
+    display: inline-block;
+    font-family: var(--ImageGridItem-hover-text-font-family);
+    font-size: var(--ImageGridItem-hover-text-font-size, inherit);
+    font-style: var(--ImageGridItem-hover-text-font-style);
+    font-weight: var(--ImageGridItem-hover-text-font-weight, 700);
+    height: 0;
+    letter-spacing: var(--ImageGridItem-hover-text-letter-spacing);
+    line-height: var(--ImageGridItem-hover-text-line-height, inherit);
+    margin: var(--ImageGridItem-hover-text-margin, 0);
+    opacity: 0;
+    padding: var(--ImageGridItem-hover-text-padding, 0);
+    text-align: var(--ImageGridItem-hover-text-text-align);
+    text-decoration: var(--ImageGridItem-hover-text-text-decoration);
+    text-transform: var(--ImageGridItem-hover-text-text-transform);
+    transition: all 0.3s ease-in-out;
+}
+
+.ImageGridItem:hover .ImageGridItem-hoverText {
+    height: auto;
+    opacity: 1;
+}
+
+/* ------------------------------------ *\
+    Content below image
+\* ------------------------------------ */
+
+.ImageGridItem-content {
+    color: var(--ImageGridItem-content-color, var(--base-typography-color));
+    font-family: var(--ImageGridItem-content-font-family);
+    font-size: var(--ImageGridItem-content-font-size, inherit);
+    font-style: var(--ImageGridItem-content-font-style);
+    font-weight: var(--ImageGridItem-content-font-weight, 700);
+    letter-spacing: var(--ImageGridItem-content-letter-spacing);
+    line-height: var(--ImageGridItem-content-line-height, inherit);
+    margin: var(--ImageGridItem-content-margin, 0);
+    padding: var(--ImageGridItem-content-padding, 0);
+    text-align: var(--ImageGridItem-content-text-align);
+    text-decoration: var(--ImageGridItem-content-text-decoration, none);
+    text-transform: var(--ImageGridItem-content-text-transform);
+}
+
+.ImageGridItem:hover .ImageGridItem-content {
+    color: var(--ImageGridItem-content-color-hover);
+    font-style: var(--ImageGridItem-content-font-style-hover);
+    text-decoration: var(--ImageGridItem-content-text-decoration-hover);
+}

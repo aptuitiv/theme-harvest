@@ -1,16 +1,12 @@
 /* =========================================================================== *\
-    SIDEBAR NAVIGATION
+    Sidebar Navigation
 \* =========================================================================== */
 
-
-/** @define SidebarNav */
-
+/* @define SidebarNav */
 .SidebarNav {
-    background: var(--theme-secondary-color);
-    font-size: 1.6rem;
     list-style: none;
     margin: 0;
-    padding: 8px;
+    padding: 0;
 }
 
 .SidebarNav-item {
@@ -19,7 +15,7 @@
 }
 
 .SidebarNav-link {
-    color: var(--theme-typography-color);
+    color: #333;
     display: block;
     font-weight: 300;
     padding: 4px 8px;
@@ -28,39 +24,20 @@
 }
 
 .SidebarNav-link--isParent {
-    color: var(--theme-primary-color);
-    font-family: var(--theme-typography-serif);
-    font-size: 1.2em;
-    font-weight: 400;
-    margin-bottom: 4px;
-    text-align: center;
-    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
 }
 
 .SidebarNav-link:active,
 .SidebarNav-link:focus,
 .SidebarNav-link:hover {
-    color: var(--theme-typography-color);
-    text-decoration: underline;
+    color: #333;
+    text-decoration: none;
 }
 
 .SidebarNav-link.is-current,
 .SidebarNav-link.is-currentParent {
-    color: var(--theme-typography-color);
+    color: #333;
     text-decoration: none;
-}
-
-.SidebarNav-link--isParent.is-current,
-.SidebarNav-link--isParent.is-currentParent {
-    color: var(--theme-primary-color-hover);
-}
-
-.SidebarNav-link--indent {
-    margin-left: 20px;
-}
-
-.SidebarNav-linkIcon {
-    color: var(--theme-primary-color-hover);
-    float: left;
-    padding-top: 4px;
 }

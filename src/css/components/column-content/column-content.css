@@ -1,0 +1,11 @@
+/* ===========================================================================
+    Columned content
+=========================================================================== */
+
+/* @define ColumnContent */
+
+.ColumnContent {
+    --gap: var(--ColumnContent-gap, 20px); /* set the --gap variable that is used by the Cacao grid utility */
+
+    gap: var(--gap);
+}

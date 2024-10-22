@@ -6,15 +6,15 @@
     {% endif %}
 
     {% if count % 4 == 0 %}
-        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm col-1-3-md col-1-4-lg' %}
     {% elseif count % 3 == 0 %}
-        {% set class = 'u-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm col-1-3-md' %}
     {% elseif count == 2 %}
-        {% set class = 'u-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm' %}
     {% elseif count > 4 %}
-        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm col-1-3-md col-1-4-lg' %}
     {% elseif count == 1 %}
-        {% set class = 'Grid-cell--center u-sm-sizeFull' %}
+        {% set class = 'col-1-1' %}
     {% endif %}
 
     {# Set the title text position class #}
@@ -31,7 +31,7 @@
         {% set titleClass = 'ImageGrid-title--bottom' %}
     {% endif %}
 
-    <div class="Grid Grid--withGutter {% if displayContent == 'Behind Image' %}Grid--equalHeight {% endif %}Grid--alignCenter ImageGrid">
+    <div class="grid g-2 {% if displayContent == 'Behind Image' %}Grid--equalHeight {% endif %}justify-center ImageGrid">
         {% for column in columns %}
             {% if column.image %}
                 {% if column.image.alt|length == 0 %}
@@ -44,20 +44,20 @@
                     {% set column.image.class = column.image.class ~ ' ImageGrid-image--scale' %}
                 {% endif %}
             {% endif %}
-            <div class="Grid-cell {{ class }} ImageGrid-col">
+            <div class="{{ class }} ImageGrid-col">
                 <div class="ImageGrid-item{% if displayContent == 'Behind Image' %} ImageGrid-hover{% elseif displayContent == 'Over Image' %} ImageGrid-cover{% else %} ImageGrid-withContent{% endif %}">
                     {% if column.link %}
                     <a href="{{ column.link }}" class="ImageGrid-link{% if displayContent == 'Behind Image' %} ImageGrid-hover{% endif %}">
                         {% endif %}
                         {% if displayContent != 'Over Image' %}
                             {% if column.title and displayTitle != 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
-                            {% if column.displayImage != 'Fit' %}<div class="Constrain u-posRelative">{% endif %}
+                            {% if column.displayImage != 'Fit' %}<div class="Constrain relative">{% endif %}
                             {{ column.image.tag }}
                             {% if column.displayImage != 'Fit' %}</div>{% endif %}
                             {% if column.title and displayTitle == 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
                         {% else %}
                             {# Displaying the content over the image #}
-                            {% if column.displayImage != 'Fit' %}<div class="Constrain u-posRelative">{% endif %}
+                            {% if column.displayImage != 'Fit' %}<div class="Constrain relative">{% endif %}
                             {{ column.image.tag }}
                             {% if column.displayImage != 'Fit' %}</div>{% endif %}
                             <span class="ImageGrid-coverContent">

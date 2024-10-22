@@ -1,0 +1,34 @@
+/* ===========================================================================
+    Image bar styles
+=========================================================================== */
+
+/* @define ImageBar */
+
+.ImageBar {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--ImageBar-gap-sm, 10px);
+    justify-content: center;
+    margin: var(--ImageBar-margin, 20px 0);
+    padding: var(--ImageBar-padding, 0 20px);
+}
+
+.ImageBar-image {
+    max-height: var(--ImageBar-image-max-height, auto);
+    width: auto;
+}
+
+.ImageBar--grayscale .ImageBar-image {
+    filter: grayscale(1);
+}
+
+.ImageBar--grayscale .ImageBar-image:hover {
+    filter: grayscale(0);
+}
+
+@media (--m-md) {
+    .ImageBar {
+        gap: var(--ImageBar-gap, 30px);
+    }
+}

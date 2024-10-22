@@ -14,47 +14,35 @@
  */
 
 :root {
-    --Button-background: var(--theme-button-background);
-    --Button-backgroundHover: var(--theme-button-background-hover);
-    --Button-border: 0;
-    --Button-border-radius: 0;
-    --Button-color: var(--theme-button-color);
-    --Button-colorHover: var(--theme-button-color-hover);
-    --Button-disabled-opacity: .6;
-    --Button-fontFamily: var(--theme-button-font);
-    --Button-fontSize: inherit;
-    --Button-letterSpacing: inherit;
-    --Button-lineHeight: 1.4;
-    --Button-padding: .35em 1.5em;
-    --Button-paddingLg: .7em 2em;
-    --Button-paddingSm: .2em .75em;
+    --Button-disabled-opacity: 0.6;
 }
 
 /**
- * 1. Normalize `box-sizing` across all elements that this component could be
- *    applied to.
- * 2. Prevent button text from being selectable.
+ * 1. Prevent button text from being selectable.
  */
 
 .Button,
-.Button[href^=tel] {
+.Button[href^='tel'] {
+    align-items: center;
     background: var(--Button-background);
-    border: var(--Button-border);
+    border: var(--Button-border-width) solid var(--Button-border-color);
     border-radius: var(--Button-border-radius);
-    box-sizing: border-box; /* 1 */
-    color: var(--Button-color);
+    color: var(--Button-typography-color);
     cursor: pointer;
-    display: inline-block;
-    font-family: var(--Button-fontFamily);
-    font-size: var(--Button-fontSize);
-    letter-spacing: var(--Button-letterSpacing);
-    line-height: var(--Button-lineHeight);
+    display: inline-flex;
+    font-family: var(--Button-typography-font-family);
+    font-size: var(--Button-typography-font-size);
+    font-style: var(--Button-typography-font-style);
+    font-weight: var(--Button-typography-font-weight);
+    letter-spacing: var(--Button-typography-letter-spacing);
+    line-height: var(--Button-typography-line-height);
     margin: 0;
     padding: var(--Button-padding);
     text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    user-select: none; /* 2 */
+    text-decoration: var(--Button-typography-text-decoration);
+    text-shadow: none; /* Done in case this is within another element that has text-shadow applied to it */
+    text-transform: var(--Button-typography-text-transform);
+    user-select: none; /* 1 */
 }
 
 /**
@@ -62,14 +50,87 @@
  */
 
 .Button:hover,
-.Button[href^=tel]:hover,
+.Button[href^='tel']:hover,
 .Button:focus,
-.Button[href^=tel]:focus,
+.Button[href^='tel']:focus,
 .Button:active,
-.Button[href^=tel]:active {
-    background: var(--Button-backgroundHover);
-    color: var(--Button-colorHover);
-    text-decoration: none;
+.Button[href^='tel']:active {
+    background: var(--Button-background-hover);
+    border-color: var(--Button-border-color-hover);
+    color: var(--Button-typography-color-hover);
+    font-style: var(--Button-typography-font-style-hover);
+    text-decoration: var(--Button-typography-text-decoration-hover);
+}
+
+/**
+ * Color variants
+ */
+
+.Button--alt,
+.Button--alt[href^='tel'] {
+    background: var(--Button-alt-background, var(--Button-background));
+    border: var(--Button-alt-border-width, var(--Button-border-width)) solid
+        var(--Button-alt-border-color, var(--Button-border-color));
+    border-radius: var(--Button-alt-border-radius, var(--Button-border-radius));
+    color: var(--Button-alt-typography-color, var(--Button-typography-color));
+    font-family: var(--Button-alt-typography-font-family, var(--Button-typography-font-family));
+    font-size: var(--Button-alt-typography-font-size, var(--Button-typography-font-size));
+    font-style: var(--Button-alt-typography-font-style, var(--Button-typography-font-style));
+    font-weight: var(--Button-alt-typography-font-weight, var(--Button-typography-font-weight));
+    letter-spacing: var(--Button-alt-typography-letter-spacing, var(--Button-typography-letter-spacing));
+    line-height: var(--Button-alt-typography-line-height, var(--Button-typography-line-height));
+    padding: var(--Button-alt-padding, var(--Button-padding));
+    text-decoration: var(--Button-alt-typography-text-decoration, var(--Button-typography-text-decoration));
+    text-shadow: none; /* Done in case this is within another element that has text-shadow applied to it */
+    text-transform: var(--Button-alt-typography-text-transform, var(--Button-typography-text-transform));
+}
+
+.Button--alt:hover,
+.Button--alt[href^='tel']:hover,
+.Button--alt:focus,
+.Button--alt[href^='tel']:focus,
+.Button--alt:active,
+.Button--alt[href^='tel']:active {
+    background: var(--Button-alt-background-hover, var(--Button-background-hover));
+    border-color: var(--Button-alt-border-color-hover, var(--Button-border-color-hover));
+    color: var(--Button-alt-typography-color-hover, var(--Button-typography-color-hover));
+    font-style: var(--Button-alt-typography-font-style-hover, var(--Button-typography-font-style-hover));
+    text-decoration: var(--Button-alt-typography-text-decoration-hover, var(--Button-typography-text-decoration-hover));
+}
+
+.Button--alt2,
+.Button--alt2[href^='tel'] {
+    background: var(--Button-alt2-background, var(--Button-background));
+    border: var(--Button-alt2-border-width, var(--Button-border-width)) solid
+        var(--Button-alt2-border-color, var(--Button-border-color));
+    border-radius: var(--Button-alt2-border-radius, var(--Button-border-radius));
+    color: var(--Button-alt2-typography-color, var(--Button-typography-color));
+    font-family: var(--Button-alt2-typography-font-family, var(--Button-typography-font-family));
+    font-size: var(--Button-alt2-typography-font-size, var(--Button-typography-font-size));
+    font-style: var(--Button-alt2-typography-font-style, var(--Button-typography-font-style));
+    font-weight: var(--Button-alt2-typography-font-weight, var(--Button-typography-font-weight));
+    letter-spacing: var(--Button-alt2-typography-letter-spacing, var(--Button-typography-letter-spacing));
+    line-height: var(--Button-alt2-typography-line-height, var(--Button-typography-line-height));
+    padding: var(--Button-alt2-padding, var(--Button-padding));
+    text-decoration: var(--Button-alt2-typography-text-decoration, var(--Button-typography-text-decoration));
+    text-shadow: none; /* Done in case this is within another element that has text-shadow applied to it */
+    text-transform: var(--Button-alt2-typography-text-transform, var(--Button-typography-text-transform));
+}
+
+.Button--alt2:hover,
+.Button--alt2[href^='tel']:hover,
+.Button--alt2:focus,
+.Button--alt2[href^='tel']:focus,
+.Button--alt2:active,
+.Button--alt2[href^='tel']:active {
+    background: var(--Button-alt2-background-hover, var(--Button-background-hover));
+    border-color: var(--Button-alt2-border-color-hover, var(--Button-border-color-hover));
+    color: var(--Button-alt2-typography-color-hover, var(--Button-typography-color-hover));
+    font-style: var(--Button-alt2-typography-font-style-hover, var(--Button-typography-font-style-hover));
+    text-decoration: var(
+        --Button-alt2-typography-text-decoration-hover,
+        var(--Button-typography-text-decoration-hover)
+    );
 }
 
 /**
@@ -77,41 +138,32 @@
  */
 
 .Button--lg,
-.Button--lg[href^=tel] {
-    font-size: calc(var(--base-typography-fontSize) + 3px);
-    padding: var(--Button-paddingLg);
+.Button--lg[href^='tel'] {
+    font-size: var(--Button-lg-font-size, 2.4rem);
+    padding: var(--Button-lg-padding);
 }
 
 .Button--sm,
-.Button--sm[href^=tel] {
-    font-size: var(--base-typography-fontSize);
-    font-weight: 300;
-    padding: var(--Button-paddingSm);
+.Button--sm[href^='tel'] {
+    font-size: var(--Button-sm-font-size);
+    padding: var(--Button-sm-padding);
 }
 
-/**
- * Color modifiers
- */
-.Button--secondary,
-.Button--secondary[href^=tel] {
-    background: var(--theme-button-background-alt);
-    color: var(--theme-button-color-alt);
+.Button--smFull {
+    width: 100%;
 }
 
-.Button--secondary:active,
-.Button--secondary[href^=tel]:active,
-.Button--secondary:focus,
-.Button--secondary[href^=tel]:focus,
-.Button--secondary:hover,
-.Button--secondary[href^=tel]:hover {
-    background: var(--theme-button-background-hover-alt);
-    color: var(--theme-button-color-hover-alt);
+@media (--m-sm) {
+    .Button--smFull {
+        width: auto;
+    }
 }
 
-/**
- * Border modifiers
- */
-.Button--square,
-.Button--square[href^=tel] {
-    border-radius: 0;
+/** Button styles for when the button has an icon beside the text */
+
+.Button--withIcon {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 5px;
 }

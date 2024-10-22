@@ -1,0 +1,70 @@
+{% import 'macros/macros' as macros %}
+
+{% if videos %}
+    {% set mainSliderClass = 'js-imageSlider' ~ random_string(8)|upper %}
+    <div class="Container Container--pad">
+        <div class="splide {{ mainSliderClass }}" role="group" aria-label="Video Slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for video in videos %}
+                        {% if video.video %}
+                            <li class="splide__slide" data-splide-youtube="{{ video.video.urlInfo|first.resourceId }}">
+                                {% set thumbnail = video.video.urlInfo|first.largeThumbnail %}
+                                <img src="{{ thumbnail.src }}" alt="{{ thumbnail.alt }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" class="w-100">
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% set thumbSliderClass = 'js-imageSlider' ~ random_string(8)|upper %}
+        <div class="splide mt-4 mt-1-lg {{ thumbSliderClass }}" role="group" aria-label="Thumbnail Slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for video in videos %}
+                        {% if video.video %}
+                            <li class="splide__slide">
+                                {{ video.video.urlInfo|first.thumbnail.tag }}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{ macros.loadSplide() }}
+    {% inlinejs %}
+        loadjs.ready('splidevideo', {
+            success: function() {
+                const main = new Splide('.{{ mainSliderClass }}', {
+                    perPage: 1,
+                    breakpoints: {
+                        800: {
+                            arrows: false
+                        }
+                    }
+                });
+                
+                const thumbnails = new Splide('.{{ thumbSliderClass }}', {
+                    fixedWidth: 240,
+                    fixedHeight: 180,
+                    gap: 10,
+                    rewind: true,
+                    pagination: false,
+                    isNavigation: true,
+                    breakpoints: {
+                        800: {
+                            fixedWidth: 120,
+                            fixedHeight: 90,
+                            arrows: false
+                        }
+                    }
+                });
+                
+                main.sync(thumbnails);
+                main.mount(window.splide.Extensions);
+                thumbnails.mount();
+            }
+        });
+    {% endinlinejs %}
+{% endif %}

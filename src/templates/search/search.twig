@@ -1,0 +1,12 @@
+{% extends "one-column" %}
+
+{% block banner %}
+    {% set content = '<h1>Search</h1>' %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
+
+{% block main %}
+    <div class="Container Container--pad">
+        {{ form.content }}
+    </div>
+{% endblock %}

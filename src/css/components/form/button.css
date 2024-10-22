@@ -1,0 +1,10 @@
+/* ===========================================================================
+    Form button styles
+=========================================================================== */
+
+/** @define FormButton */
+
+.FormButton {
+    margin: var(--FormButton-margin, 0);
+    text-align: var(--FormButton-text-align);
+}

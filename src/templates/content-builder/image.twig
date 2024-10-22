@@ -1,0 +1,23 @@
+{% if image %}
+    {% set imageSizes = _core.theme.settings.blockFullWidthImageSizes|sort_by_key("maxWidth") %}
+    {% for imageOption in imageSizes %}
+        {% do image.addSource("(max-width: " ~ imageOption.maxWidth ~ "px)").resize(imageOption.maxWidth) %}
+    {% endfor %}
+    {# {% set image.picture.class = "Banner-picture" %} #}
+    {% set largestSize = imageSizes|last %}
+    {% if largestSize|length > 0 %}
+        {% do image.resize(largestSize.maxWidth ) %}
+    {% endif %}
+
+    {% do image.alt.default(caption) %}
+    {% set image.class = 'FullWidthImage' %}
+    {% do image.lazy() %}
+    {% if _core.theme.settings.fullWidthImageWidth == 'contained' %}
+        <div class="Container Container--pad">
+    {% endif %}
+        {{ image.tag }}
+        {% if caption %}<div class="FullWidthImage-caption">{{ caption }}</div>{% endif %}
+    {% if _core.theme.settings.fullWidthImageWidth == 'contained' %}
+        </div>
+    {% endif %}
+{% endif %}

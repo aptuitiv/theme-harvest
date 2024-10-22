@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+td,
+th {
+    padding: 6px;
+    vertical-align: top;
+}
+
+th {
+    color: inherit;
+}
+
+/**
+ * Keep text alignment consistent, reset default centered text
+ */
+
+caption,
+th {
+    text-align: left;
+}
+
+caption {
+    caption-side: bottom;
+    margin-top: 20px;
+}

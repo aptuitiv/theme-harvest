@@ -2,14 +2,13 @@
     Typography utilities
 \* =========================================================================== */
 
-
-.u-headingCentered {
+.heading-centered {
     margin-bottom: 35px;
     position: relative;
     text-align: center;
 }
 
-.u-headingCentered::after {
+.heading-centered::after {
     background: #38871a;
     bottom: -12px;
     content: '';
@@ -18,47 +17,4 @@
     position: absolute;
     transform: translateX(-50%);
     width: 100px;
-}
-
-.u-textXLarge {
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.u-textH1,
-.u-textH2,
-.u-textH3 {
-    font-family: var(--base-typography-heading-fontFamily);
-    font-weight: var(--base-typography-heading-fontWeight);
-    letter-spacing: var(--base-typography-heading-letterSpacing);
-    margin: calc(var(--base-typography-spacing) * 1.2) 0 calc(var(--base-typography-spacing) / 3);
-}
-
-.u-textH1:first-child,
-.u-textH2:first-child,
-.u-textH3:first-child,
-.u-textH4:first-child {
-    margin-top: 0;
-}
-
-.u-textH1 {
-    font-size: var(--base-typography-h1-fontSize);
-    line-height: var(--base-typography-h1-lineHeight);
-    margin-top: 0;
-}
-
-.u-textH2 {
-    font-size: var(--base-typography-h2-fontSize);
-    line-height: var(--base-typography-h2-lineHeight);
-}
-
-.u-textH3 {
-    font-size: var(--base-typography-h3-fontSize);
-    line-height: var(--base-typography-h3-lineHeight);
-}
-
-.u-textH4 {
-    font-size: var(--base-typography-h4-fontSize);
-    line-height: var(--base-typography-h4-lineHeight);
 }

@@ -1,0 +1,94 @@
+/* =========================================================================== *\
+    Gallery
+    Based on http://w3bits.com/css-Gallery/
+\* =========================================================================== */
+
+
+/* @define Gallery */
+
+.Gallery {
+    line-height: 1;
+}
+
+.Gallery-item {
+    box-sizing: border-box;
+    break-inside: avoid;
+    display: inline-block;
+    margin-bottom: 10px;
+    overflow: hidden;
+    page-break-inside: avoid;
+}
+
+.Gallery-image {
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+}
+
+.Gallery-imageWrap {
+    display: inline-block;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.Gallery-play {
+    background: url('../images/play-button.png');
+    height: 58px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 58px;
+    z-index: 1;
+}
+
+.Gallery-imageWrap::after {
+    background: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 30%) 50%, rgb(0 0 0 / 0%) 100%);
+    inset: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+}
+
+.Gallery-link {
+    color: inherit;
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.Gallery-link:hover .Gallery-play {
+    background: url('../images/play-button.png');
+    height: 58px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 58px;
+    z-index: 1;
+}
+
+
+.Gallery-title {
+    box-sizing: border-box;
+    font-size: .9em;
+    padding: 4px 8px;
+}
+
+/* ------------------------------------ *\
+    Title Overlay Option
+\* ------------------------------------ */
+
+.Gallery-title--overlay {
+    background-image: linear-gradient(transparent, rgb(20 20 20 / 60%));
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    padding: 10px 8px;
+    position: absolute;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+    width: 100%;
+}

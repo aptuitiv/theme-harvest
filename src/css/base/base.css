@@ -3,12 +3,20 @@
    ========================================================================== */
 
 /**
+ * Sticky header anchor fix
+ * https://getpublii.com/blog/one-line-css-solution-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header.html
+ */
+html.has-sticky-header {
+    scroll-padding-top: var(--Header-sticky-height, 200px);
+}
+
+/**
  * 1. By default, `<body>` has no `background-color` so we set one
  *    as a best practice.
  */
 
 body {
-    background: var(--theme-body-background); /* 1 */
+    background: var(--body-background, #fff); /* 1 */
 }
 
 /**
@@ -90,9 +98,7 @@ textarea {
 
 button:focus {
     outline: 1px dotted;
-    /* stylelint-disable */
     outline: 5px auto -webkit-focus-ring-color;
-    /* stylelint-enable */
 }
 
 /**

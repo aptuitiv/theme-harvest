@@ -1,7 +1,7 @@
 {% import 'macros/macros' as macros %}
 
 <!doctype html>
-<html lang="en">
+<html lang="en"{% if _core.theme.settings.headerStickyEnabled == 'yes' %} class="has-sticky-header"{% endif %}>
 <head>
     <meta charset="utf-8">
     <link rel="dns-prefetch preconnect" href="//www.google-analytics.com">
@@ -20,39 +20,44 @@
     <script>!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){function e(){t.media=a}var a=t.media||"all";t.addEventListener?t.addEventListener("load",e):t.attachEvent&&t.attachEvent("onload",e),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(e,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);</script>
     {{ _page.js('head') }}
     {{ _page.head() }}
+    {{ _page.themeStyles() }}
 </head>
-<body>
-{{ _page.bodyStartCode() }}
-<div class="u-hiddenVisually" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
-{% spaceless %}
-    <header role="banner" class="Header{% if _core.theme.settings.enableStickyHeader == 'yes' %} Header--outer js-header{% endif %}">
-        {{ _api.widgets.collection.get('notification-bar') }}
+<body{{ _page.body.attributes() }}>
+    {{ _page.bodyStartCode() }}
+    <div class="visually-hidden" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
+    <header role="banner" class="Header{% if _core.theme.settings.headerStickyEnabled == 'yes' %} Header--outer js-header{% endif %}">
+        {{ _api.widgets.collection.get('notifications') }}
         <a class="Header-skipToMain" href="#main">skip to main content {{ macros.iconAriaHidden("chevron-small-right") }}</a>
-        {% if _core.theme.settings.headerLogo %}
-            {% if _core.theme.settings.headerLogo.alt|length == 0 %}
-                {% set _core.theme.settings.headerLogo.alt = _core.settings.companyName %}
+        {# Logo for small screens #}
+        <div class="Header hidden-md">
+            {% if _core.theme.settings.headerLogo %}
+                {% set _core.theme.settings.headerLogo.class = "Header-logo" %}
+                {% do _core.theme.settings.headerLogo.resize(_core.theme.settings.headerLogoWidth + 100) %}
+                {% do _core.theme.settings.headerLogo.alt.default(_core.settings.companyName) %}
+                <a href="/" title="return to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
+            {% elseif _core.theme.settings.headerTextLogo %}
+                <a href="/" title="return to home page"><span class="Header-textLogo">{{ _core.theme.settings.headerTextLogo }}</span></a>
             {% endif %}
-            {% set _core.theme.settings.headerLogo.class = 'u-size' ~ _core.theme.settings.headerLogoSize|capitalize %}
-            <div class="Header u-hidden u-md-show">
-                <a href="/" title="Back to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
-            </div>
-        {% endif %}
+        </div>
         <div class="TopBar">
             <div class="Container Container--pad">
-                <div class="Grid Grid--withGutter Grid--alignMiddle">
-                    <div class="Grid-cell u-size1of3 u-md-hide">
-                        {% if _core.theme.settings.headerShowSocial == 'yes' %}
+                <div class="grid g-2 align-center">
+                    <div class="col-1-3 hidden block-md">
+                        {% if _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
+                            {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', twitter: 'Twitter', youtube: 'YouTube'} %}
                             {% for social in _core.theme.settings.social %}
-                                <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="TopBar-social"> {{ macros.iconImg(social.icon, social.name) }} </a>
+                                <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="TopBar-social">
+                                    {{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "Header-icon") }}
+                                </a>
                             {% endfor %}
                         {% endif %}
                     </div>
-                    <div class="Grid-cell u-size1of3 u-md-sizeFull">
+                    <div class="col-1-1 col-1-3-md">
                         {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
                             <div class="TopBar-contact">
                                 {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
-                                    <span class="TopBar-contactItem u-md-hide"><a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a></span>
-                                    <a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button u-hidden u-md-show u-margBottom2" aria-label="Call {{ _core.settings.companyPhone }}">Call Now</a>
+                                    <span class="TopBar-contactItem hidden inline-md"><a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a></span>
+                                    <a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button hidden-md mb-2" aria-label="Call {{ _core.settings.companyPhone }}">Call Now</a>
                                 {% endif %}
                                 {% if _core.theme.settings.headerShowAddress == 'yes' %}
                                     <span class="TopBar-contactItem">
@@ -70,15 +75,17 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="Grid-cell u-size1of3 u-md-sizeFull">
-                        {% if _core.theme.settings.headerShowPrimaryButton == 'yes' or _core.theme.settings.headerShowSecondaryButton == 'yes' %}
+                    <div class="col-1-1 col-1-3-md">
+                        {% if _core.theme.settings.headerButtons|first.button and _core.theme.settings.headerShowButtons == 'yes' %}
                             <div class="TopBar-nav">
-                                {% if _core.theme.settings.headerShowSecondaryButton == 'yes' %}
-                                    <div class="TopBar-navItem"><a href="{{ _core.theme.settings.headerSecondaryButtonUrl }}" class="TopBar-link">{{ _core.theme.settings.headerSecondaryButtonText }}</a></div>
-                                {% endif  %}
-                                {% if _core.theme.settings.headerShowPrimaryButton == 'yes' %}
-                                    <div class="TopBar-navItem"><a href="{{ _core.theme.settings.headerPrimaryButtonUrl }}" class="Button TopBar-button">{{ _core.theme.settings.headerPrimaryButtonText }}</a></div>
-                                {% endif  %}
+                                {% for button in _core.theme.settings.headerButtons %}
+                                    {% if button.style == 'primary' %}
+                                        {% set button.button.class = "Button TopBar-button" %}
+                                    {% elseif button.style == 'secondary' %}
+                                        {% set button.button.class = "TopBar-link" %}
+                                    {% endif %}
+                                    <div class="TopBar-navItem">{{ button.button.tag }}</div>
+                                {% endfor %}
                             </div>
                         {% endif %}
                     </div>
@@ -86,15 +93,21 @@
             </div>
         </div>
         <div class="Container">
-            {% if _core.theme.settings.headerLogo %}
-                <div class="Header u-md-hide">
-                    <a href="/" title="Back to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
-                </div>
-            {% endif %}
+            {# Logo for desktop #}
+            <div class="Header hidden block-md" id="header-logo">{# ID is used for live theme preview. #}
+                {% if _core.theme.settings.headerLogo %}
+                    {% set _core.theme.settings.headerLogo.class = "Header-logo" %}
+                    {% do _core.theme.settings.headerLogo.resize(_core.theme.settings.headerLogoWidth + 100) %}
+                    {% do _core.theme.settings.headerLogo.alt.default(_core.settings.companyName) %}
+                    <a href="/" title="return to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
+                {% elseif _core.theme.settings.headerTextLogo %}
+                    <a href="/" title="return to home page"><span class="Header-textLogo">{{ _core.theme.settings.headerTextLogo }}</span></a>
+                {% endif %}
+            </div>
+
             <nav class="NavBar">
                 <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
                 {{ _api.navigation.get.key('main') }}
             </nav>
         </div>
     </header>
-{% endspaceless %}

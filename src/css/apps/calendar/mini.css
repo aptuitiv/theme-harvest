@@ -1,0 +1,74 @@
+/* =========================================================================== *\
+    CALENDAR MINI GRID
+\* =========================================================================== */
+
+/** @define CalendarMiniGrid */
+.CalendarMiniGrid {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.CalendarMiniGrid-navPrev,
+.CalendarMiniGrid-navPrev:active,
+.CalendarMiniGrid-navPrev:focus,
+.CalendarMiniGrid-navPrev:hover,
+.CalendarMiniGrid-navNext,
+.CalendarMiniGrid-navNext:active,
+.CalendarMiniGrid-navNext:focus,
+.CalendarMiniGrid-navNext:hover {
+    text-decoration: none;
+}
+
+.CalendarMiniGrid-navPrev {
+    margin-right: 10px;
+}
+
+.CalendarMiniGrid-navNext {
+    margin-left: 10px;
+}
+
+/* ------------------------------------ *\
+    Cells
+\* ------------------------------------ */
+
+.CalendarMiniGrid-cell,
+.CalendarMiniGrid-headCell {
+    border: 1px solid var(--CalendarMiniGrid-cell-borderColor);
+    padding: 0;
+    text-align: center;
+}
+
+.CalendarMiniGrid-cell--isEmpty {
+    background: var(--CalendarMiniGrid-cell-background--empty);
+}
+
+.CalendarMiniGrid-cell--isEnd {
+    background: var(--CalendarMiniGrid-cell-background--end);
+    color: var(--CalendarMiniGrid-cell-color--end);
+}
+
+.CalendarMiniGrid-cell--isToday {
+    background: var(--CalendarMiniGrid-cell-background--today);
+    color: var(--CalendarMiniGrid-cell-color--today);
+}
+
+/* ------------------------------------ *\
+    #DATE LINKS
+\* ------------------------------------ */
+
+.CalendarMiniGrid-dateLink {
+    color: var(--CalendarMiniGrid-dateLink-color);
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+}
+
+.CalendarMiniGrid-dateLink--isCurrentDay,
+.CalendarMiniGrid-dateLink--isToday,
+.CalendarMiniGrid-dateLink:active,
+.CalendarMiniGrid-dateLink:focus,
+.CalendarMiniGrid-dateLink:hover {
+    background: var(--CalendarMiniGrid-dateLink-background--hover);
+    color: var(--CalendarMiniGrid-dateLink-color--hover);
+    text-decoration: none;
+}

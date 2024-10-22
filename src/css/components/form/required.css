@@ -1,9 +1,14 @@
 /* =========================================================================== *\
-    REQUIRED MESSAGE
+    Required Asterisk
 \* =========================================================================== */
 
-/** @define FormRequired */
+/* @define FormRequired */
 
 .FormRequired {
-    color: #b2130c;
+    color: var(--FormRequired-color, #b2130c);
+    display: var(--FormRequiredMessage-asterisk-display, inline);
+}
+
+.FormRequired-message {
+    display: var(--FormRequiredMessage-display, block);
 }

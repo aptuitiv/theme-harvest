@@ -178,7 +178,7 @@
     --theme-image-slider-title-font-weight: 300;
     --theme-image-slider-hover-background: var(--theme-primary-color);
     --theme-image-slider-hover-color: #fff;
-    --theme-image-slider-cover-background: rgba(162, 21, 20, .5);
+    --theme-image-slider-cover-background: rgb(162 21 20 / 50%);
     --theme-image-slider-cover-color: #fff;
 }
 

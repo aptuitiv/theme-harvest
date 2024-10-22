@@ -1,0 +1,129 @@
+{# Build the larger banner with oneo or more slides containing an image or video #}
+{% import 'macros/macros' as macros %}
+{% import 'macros/banner' as bannerMacros %}
+
+{##
+ # Build the slide
+ # - slide: the slide to build
+ # - doCss: Whether to output the CSS for the aspect ratios
+ # - pagination: Any pagination links to output
+ #}
+{% macro buildSlide(slide, doCss, pagination, paginationClass) %}
+    {% if slide.image or slide.video or slide.content %}
+        <div class="Banner{% if not slide.image && not slide.video %} Banner--noMedia{% endif %}" role="group" aria-label="Banner">
+            {% if slide.image %}
+                {{ bannerMacros.bannerImage(
+                    slide.image,
+                    slide.imageCrop,
+                    _core.theme.settings.bannerImageSizes,
+                    _core.theme.settings.bannerMinImageRatio,
+                    _core.theme.settings.bannerImageRatio,
+                    _core.theme.settings.bannerImageCropStrategy,
+                    _core.theme.settings.bannerImageCropOrientation,
+                    slide.content|length > 0,
+                    doCss
+                ) }}
+            {% elseif slide.video %}
+                {{ bannerMacros.bannerVideo(slide.video, core.theme.settings.bannerImageSizes, true) }}
+            {% endif %}
+             {% if pagination is iterable || slide.content|length > 0 %}
+                <div class="Banner-fg"></div>
+                <div class="Banner-content">
+                    <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
+                        {% if pagination is iterable %}
+                            <ul class="BannerSlider-pagination">
+                                {% for text in pagination %}
+                                    <li class="BannerSlider-paginationItem"><button class="BannerSlider-paginationButton js-slidePagination{{ paginationClass }}" data-slide="{{ loop.index0 }}">{{ text }}</button></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {{ slide.content }}
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    {% endif %}
+{% endmacro %}
+
+
+{% if slides %}
+    {# There are no slides #}
+    {% if slides|length == 0 %}
+        <div class="Banner Banner--noMedia" role="group" aria-label="Banner">
+            {{ bannerMacros.largeBannerContent(content) }}
+        </div>
+    {% endif %}
+
+    {# There is only one slide #}
+    {% if slides|length == 1 %}
+        {# There is only one slide #}
+        {% set slide = slides|first %}
+        {{ _self.buildSlide(slide, true) }}
+    {% else %}
+        {# There are mulitple slides. #}
+        {% set slidePagination = [] %}
+        {% for slide in slides %}
+            {% if slide.slidePaginationText %}
+                {% set slidePagination = slidePagination|merge([slide.slidePaginationText]) %}
+            {% endif %}
+        {% endfor %}
+        {% set randomString = random_string() %}
+        {% set class = 'js-bannerSlider--' ~ randomString %}
+        <div class="BannerSlider splide {{ class }}" role="group" aria-label="Banner Slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for slide in slides %}
+                        <li class="splide__slide">
+                            {{ _self.buildSlide(slide, loop.first, slidePagination, randomString) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {{ macros.loadSplide() }}
+        {% inlinejs %}
+            loadjs.ready('splide', {
+                success: function() {
+                    const splide{{ randomString }} = new Splide('.{{ class }}', {
+                        {% if slidePagination|length > 0 %}
+                            pagination: false,
+                            breakpoints: {
+                                    768: {
+                                        pagination: true,
+                                    },
+                            },
+                        {% else %}
+                            pagination: true,
+                        {% endif %}
+                        arrows: false,
+                        rewind: true,
+                        type: 'fade',
+                        speed: 1000
+                    });
+                    {% if slidePagination|length > 0 %}
+                        const pagination = document.querySelectorAll('.js-slidePagination{{ randomString }}');
+                        splide{{ randomString }}.on('ready', function(variable) {
+                            pagination[splide{{ randomString }}.index].classList.add('is-active');
+                        });
+                        splide{{ randomString }}.on('move', function(newIndex, prevIndex, destIndex) {
+                            pagination.forEach(function(button) {
+                                button.classList.remove('is-active');
+                                if (button.getAttribute('data-slide') == newIndex) {
+                                    button.classList.add('is-active');
+                                }
+                            });
+                        });
+                        pagination.forEach(function(button) {
+                            button.addEventListener('click', function() {
+                                splide{{ randomString }}.go(Number(button.getAttribute('data-slide')));
+                            });
+                        });
+                    {% endif %}
+                    splide{{ randomString }}.mount();
+                }
+            });
+        {% endinlinejs %}
+    {% endif %}
+{% endif %}
+

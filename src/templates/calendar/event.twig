@@ -1,0 +1,49 @@
+
+{% extends 'one-column.twig' %}
+
+{% import 'macros/macros' as macros %}
+
+{% block banner %}
+    {% set content %}
+     <h1>{{ event.title }}</h1>
+    {% endset %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
+{% block main %}
+    <div class="Container Container--narrow">
+        <div class="h2 flex align-center g-1">
+            {{ macros.iconImg('calendar', 'Date') }}
+            {{ event.date }}
+        </div>
+        {% if event.time.type != 'notime' %}
+
+                {% if event.time.type == 'timed' %}
+                    {{ event.time.start }} to {{ event.time.end }}
+                {% elseif event.time.type == 'start' %}
+                    {{ event.time.start }}
+                {% elseif event.time.type == 'allday' %}
+                    All Day
+                {% elseif event.time.type == 'tba' %}
+                    TBA
+                {% endif %}
+
+        {% endif %}
+        {% if event.location %}
+            {{ event.location }}
+        {% endif %}
+        {% if event.phone %}
+           Call <a href="tel:{{ event.phone }}">{{ event.phone }}</a> for more information
+        {% endif %}
+
+
+        <div class="mt-2">{{ event.description }}</div>
+
+        <div class="mt-2">
+            <a href="{{ goBackUrl }}" class="flex align-center">
+                {{ macros.iconAriaHidden('caret-left') }} Back to Events List
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% do _page.addCss('calendar.css') %}

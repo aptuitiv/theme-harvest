@@ -3,111 +3,20 @@
 \* =========================================================================== */
 
 /**
- * Tests to see if the thing is a number
- *
- * @param {number} thing
- * @returns {boolean}
- */
-function isNumber(thing) {
-    return typeof thing === 'number';
-}
-
-/**
- * Watches a DOM element and adds a class to it if it's sticky or not.
- * Depends on certain browser features so this will only work in modern browsers.
- * Inspired by https://developers.google.com/web/updates/2017/09/sticky-headers
- * @param {Element} el The DOM element to mark as sticky
- */
-// eslint-disable-next-line
-function observeSticky(el) {
-    /**
-     * Test to see if the required features exist before doing anything else.
-     * Browsers that don't support all this either won't have the sticky element
-     * (becuase it doesn't support the CSS)
-     * or it won't have the notification that the element is sticky
-     * because it doesn't support the following Javascript features.
-     */
-    if ('IntersectionObserver' in window && typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('position', 'sticky')) {
-        const config = {
-            offset: 0,
-            lowThreshold: 0.25,
-            highThreshold: 0.75,
-        };
-        /**
-         * Create an element before the sticky element to watch.
-         * Because styles could be changing on the sticky element (like height) it's important
-         * for this sentinel element to be at least half the height of the sticky element. That way
-         * the sticky element won't be changed to quickly.
-         * If you're scrolling really slowly then it would
-         * be possible to trigger the sticky/unsticky event rapidly, which looks bad.
-         * This sentinel element prevents that.
-         */
-        const sentinel = document.createElement('div');
-        let style = `position: absolute; z-index: -1; width: 1px; height: ${el.clientHeight / 2}px;`;
-        if (isNumber(config.offset)) {
-            style += ` top: -${config.offset}px;`;
-        }
-        sentinel.style = style;
-        el.parentNode.insertBefore(sentinel, el);
-
-        // Setup the observer
-        const observer = new IntersectionObserver(((entries) => {
-            entries.forEach((entry) => {
-                // Check for stickyness by checking how much of the element is visible
-                if (entry.intersectionRatio <= config.lowThreshold) {
-                    // Less than the low threshold percentage of the
-                    // sentinel is visible so mark the element as sticky
-                    el.classList.add('is-sticky');
-                } else if (entry.intersectionRatio >= config.highThreshold) {
-                    // More than this high threshold of the sentinel is visible,
-                    // almost to the top of the element so mark it as not sticky
-                    el.classList.remove('is-sticky');
-                }
-            });
-        }), {
-            threshold: [config.lowThreshold, config.highThreshold],
-        });
-        // Observe the visibility of the sentinel
-        observer.observe(sentinel);
-    }
-}
-
-/* =========================================================================== *\
-    JavaScript for navigation menus
-\* =========================================================================== */
-
-/**
  * Small screen navigation
  */
 
 // eslint-disable-next-line
 const smallScreenNav = {
-    button: null,
-    /**
-     * Holds the navigation object
-     * @type jQuery
-     * @private
-     */
-    nav: null,
-
-    /**
-     * The max window width where the small screen navigation is shown
-     * @type number
-     * @private
-     */
-    width: 1050,
-
     /**
      * Initialization
      */
     init() {
-        // The max window width where the small screen navigation is shown
-        const width = 1050;
+        const width = 768;
 
         // Select elements
         const button = document.querySelector('.js-ssNavBtn');
-        const nav = document.querySelector('.js-mainNav');
-        const navLinks = document.querySelectorAll('.js-navLink');
+        const nav = document.querySelector('.js-navBar');
         const dropdowns = document.querySelectorAll('.js-dropdown');
 
         // Make sure that the navigation gets displayed if the window resizes.
@@ -123,7 +32,9 @@ const smallScreenNav = {
             }
         });
 
-        // Function to toggle showing and hiding the small screen navigation
+        /**
+         * Function to toggle showing and hiding the small screen navigation
+         */
         function toggleNav() {
             button.classList.toggle('is-active');
             if (nav.style.display === 'block') {
@@ -191,7 +102,8 @@ const navAccess = {
 
     /**
      * Sets up the menu for accessibility
-     * @param {Element} menu
+     *
+     * @param {Element} menu The menu to work with
      */
     setupMenu(menu) {
         const nav = menu.querySelectorAll('.js-navLink');
@@ -243,9 +155,11 @@ const navAccess = {
 
     /**
      * Move the focus to the next/previous element
+     *
      * @param {object} event The event that triggered the focus
      * @param {Element} el The target of the keydown event
      * @param {boolean} [next] Whether or not moving to the next item
+     * @param {boolean} jumping Whether or not jumping to the next top level navigation link
      */
     focus(event, el, next, jumping) {
         let focusEl = null;
@@ -303,7 +217,8 @@ const navAccess = {
 
     /**
      * Activates a drop down
-     * @param {Element} el
+     *
+     * @param {Element} el The element to activate
      */
     activate(el) {
         if (el.classList.contains('js-dropdownParent')) {
@@ -315,7 +230,8 @@ const navAccess = {
 
     /**
      * Deactivates a drop down
-     * @param {Element} el
+     *
+     * @param {Element} el The element to deactivate
      */
     deactivateParent(el) {
         const parent = this.getParent(el);
@@ -324,7 +240,12 @@ const navAccess = {
         parent.setAttribute('aria-expanded', 'false');
     },
 
-    // Returns returns true is the first element of a dropdown list
+    /**
+     * Returns returns true is the first element of a dropdown list
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     isDropdownFirst(el) {
         const dropdownNavs = Array.prototype.slice.call(
             this.getParent(el).parentNode.querySelectorAll('.js-navLink'),
@@ -333,14 +254,25 @@ const navAccess = {
         return dropdownNavs.indexOf(el) === 1;
     },
 
-    // Returns true if the last element of a dropdown
+    /**
+     * Returns true if the last element of a dropdown
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     isDropdownLast(el) {
         const dropdownNavs = Array.prototype.slice.call(
             this.getParent(el).parentNode.querySelectorAll('.js-navLink'),
         ); // get all children links in dropdown
         return dropdownNavs.indexOf(el) === dropdownNavs.length - 1; // if it is the last link
     },
-    // Returns the index of this link out of all other navLinks
+
+    /**
+     * Returns the index of this link out of all other navLinks
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getLinkIndex(el) {
         const list = Array.prototype.slice.call(
             document.querySelectorAll('.js-navLink'),
@@ -348,13 +280,23 @@ const navAccess = {
         return list.indexOf(el);
     },
 
-    // Returns the index of the parent top level navigation
+    /**
+     * Returns the index of the parent top level navigation
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getParentIndex(el) {
         const list = Array.prototype.slice.call(el.parentNode.children);
         return list.indexOf(el);
     },
 
-    // Returns the previous navLink
+    /**
+     * Returns the previous navLink
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getPrevLink(el) {
         const list = Array.prototype.slice.call(
             document.querySelectorAll('.js-navLink'),
@@ -362,7 +304,12 @@ const navAccess = {
         return list[this.getLinkIndex(el) - 1];
     },
 
-    // Returns the next navLink
+    /**
+     * Returns the next navLink
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getNextLink(el) {
         const list = Array.prototype.slice.call(
             document.querySelectorAll('.js-navLink'),
@@ -370,7 +317,12 @@ const navAccess = {
         return list[this.getLinkIndex(el) + 1];
     },
 
-    // Returns the parent navigation link
+    /**
+     * Returns the parent navigation link
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getParent(el) {
         let node = el;
         while (node !== document.body) {
@@ -385,19 +337,30 @@ const navAccess = {
         return this.getLink(node);
     },
 
-    // Returns the direct sibling navigation link before the active one
+    /**
+     * Returns the direct sibling navigation link before the active one
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getPrevInLevel(el) {
         return this.getLink(el.parentNode.previousElementSibling);
     },
 
-    // Returns the direct sibling navigation link after the active one
+    /**
+     * Returns the direct sibling navigation link after the active one
+     *
+     * @param {Element} el The element to work with
+     * @returns {Element}
+     */
     getNextInLevel(el) {
         return this.getLink(el.parentNode.nextElementSibling);
     },
 
     /**
      * Gets the first navigation in the element
-     * @param {Element} el
+     *
+     * @param {Element} el The element to get the link for
      * @returns {Element}
      */
     getLink(el) {

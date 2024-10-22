@@ -1,0 +1,21 @@
+/* =========================================================================== *\
+    Global Variable Configurations
+\* =========================================================================== */
+
+@custom-media --m-xl (max-width: 1200px);
+@custom-media --m-lg (max-width: 1050px);
+@custom-media --m-md (max-width: 800px);
+@custom-media --m-sm (max-width: 600px);
+@custom-media --m-xs (max-width: 425px);
+
+/* Primary navigation breakpoints */
+
+@custom-media --m-smallScreenNav (max-width: 1050px);
+@custom-media --c-bp-largeScreenNav (min-width: 1051px);
+
+/* Core variables */
+
+:root {
+    --g-gutter: 20px;
+    --g-gutter-sm: 10px;
+}

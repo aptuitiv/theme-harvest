@@ -1,0 +1,30 @@
+{
+    "preview": {
+        "enabled": true,
+        "viewports": [
+            {
+                "label": "Phones",
+                "height": 800,
+                "width": 576
+            },
+            {
+                "label": "Tablets",
+                "height": 800,
+                "width": 768
+            },
+            {
+                "label": "Large Tablets",
+                "height": 800,
+                "width": 1024
+            },
+            {
+                "label": "Desktops",
+                "height": 800,
+                "width": 1280
+            },
+            {
+                "label": "Large Desktops"
+            }
+        ]
+    }
+}

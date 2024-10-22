@@ -1,12 +1,14 @@
 {% extends 'two-column' %}
 
+{% block banner %}
+    {% set content %}
+        <h1>Blog</h1>
+    {% endset %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
+
 {% block main %}
-    <div class="ContentHeader">
-        <div class="Container">
-            <h1 class="ContentHeader-title">Blog</h1>
-            {{ header }}
-        </div>
-    </div>
+    {{ header }}
     {% if posts %}
         {% for post in posts %}
             {% include 'blog/post-list-item-simple' %}
@@ -14,7 +16,7 @@
         {% include 'snippets/pagination' %}
     {% endif %}
     {% if footer %}
-        <div class="u-margTop2">{{ footer }}</div>
+        <div class="mt-2">{{ footer }}</div>
     {% endif %}
 {% endblock %}
 

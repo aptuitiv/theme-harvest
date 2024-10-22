@@ -7,13 +7,13 @@
     {{ macros.formErrorContainer(form) }}
     {{ macros.buildGridFormFields(form) }}
     {{ macros.captcha(form) }}
-    
-    <div class="Grid Grid--withGutter u-margBottom2">
-        <div class="Grid-cell u-size3of4 u-md-sizeFull u-push1of4 u-md-pushNone">
-            <p class="u-margBottom1"><em>* Required Fields</em></p>
-            <p><button type="submit" class="Button Button--lg u-sm-sizeFull">{{ form.submitButtonText }}</button></p>
+
+    <div class="grid mb-2 justify-end-md">
+        <div class="col-1-1 col-3-4-lg">
+            {{ macros.requiredMessage() }}
+            {{ macros.formButton(form.submitButtonText) }}
         </div>
     </div>
 {{ form.closeTag }}
 
-{{ macros.formValidateHandlerJs(form, errorContainerId) }}
+{{ macros.formValidateHandlerJs(form) }}

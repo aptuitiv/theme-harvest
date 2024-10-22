@@ -1,0 +1,27 @@
+/* ===========================================================================
+    Wrapper block around content
+=========================================================================== */
+
+/* @define Wrapper */
+
+.Wrapper {
+    margin: var(--Wrapper-margin);
+    padding: var(--Wrapper-padding);
+}
+
+.Wrapper--noPad {
+    padding: 0;
+}
+
+.Wrapper--bgGray {
+    background-color: var(--Wrapper-background-grey);
+}
+
+.Wrapper--bgDark {
+    background-color: var(--Wrapper-background-dark);
+}
+
+/* postcss-bem-linter: ignore */
+.Wrapper--bgDark *:not(.Button, input, select, textarea) {
+    color: var(--Wrapper-background-dark-color, #fff);
+}

@@ -3,8 +3,8 @@
 {% block main %}
 
     {% for category in categories %}
-        <div class="BlogList-item u-margBottom5">
-            <h2 class="BlogList-heading"><a href="{{ category.url }}" class="u-linkSubtle">{{ category.name }}</a></h2>
+        <div class="BlogList-item mb-5">
+            <h2 class="BlogList-heading"><a href="{{ category.url }}" class="link-subtle">{{ category.name }}</a></h2>
         {{ category.postCount ~ " post" ~ (category.postCount > 1 ? "s") }}
             <p>{{ category.description }}</p>
         </div>

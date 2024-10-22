@@ -8,7 +8,9 @@
                     {# Duplicate the navigation item for the mobile menu #}
                     {% set item.parent.link.class = "Dropdown-link" %}
                     {% set item.parent.link.id = '' %}
-                    <li class="Dropdown-item Dropdown-item--smallScreen js-skip" role="presentation">{{ item.parent.link.tag }}</li>
+                    {% if item.parent.link.href != '#' %}
+                        <li class="Dropdown-item Dropdown-item--smallScreen js-skip" role="presentation">{{ item.parent.link.tag }}</li>
+                    {% endif %}
                 {% endif %}
             {% endif %}
             {# ASSIGN SUB MENU ITEM CLASS #}
@@ -41,7 +43,6 @@
 {# Import the macro so that it can be used #}
 {% import _self as macros %}
 
-
 {# ASSIGN MENU CLASS #}
 {% set menu.class = menu.class ~ ' MainNav js-mainNav MainNav--' ~ _core.theme.settings.navigationStyle %}
 <ul{{menu.class.attr}}{{ menu.id.attr }} data-access-nav role="menubar">
@@ -60,8 +61,13 @@
                 {% set item.link.id = random_string(8) %}
             {% endif %}
             {% set item.link.role = 'menuitem' %}
-            {{ item.link.tag }}
-
+            
+            {% if item.link.href == '#' %}
+                <span class="{{ item.link.class }}">{{ item.link.text }}</span>
+            {% else %}
+                {{ item.link.tag }}
+            {% endif %}
+            
             {% if item.subItems %}
                 {# Set the item as the first sub item's parent to be used to optionaly duplicate it as the first item in the dropdown #}
                 {% set item.subItems.0.parent = item %}

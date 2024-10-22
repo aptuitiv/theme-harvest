@@ -1,157 +1,117 @@
 /* =========================================================================== *\
-    SLIDER
+    Image Slider Block
 \* =========================================================================== */
 
-/** @define Slider */
+/* :root {
+    --Slider-content-paddingVertical: 20px;
+    --Slider-content-paddingHorizontal: 20px;
+    --Slider-content-fontSize: 2rem;
+    --Slider-content-fontWeight: 700;
+    --Slider-content-lineHeight: 1.2;
+    --Slider-content-textTransform: none;
+    --Slider-content-background: #fff;
+    --Slider-content-color: #333;
+    --Slider-content-background-hover: #333;
+    --Slider-content-color-hover: #fff;
+
+    --Slider-arrow-background: #fff;
+    --Slider-arrow-color: #333;
+    --Slider-arrow-background-hover: #333;
+    --Slider-arrow-color-hover: #fff;
+} */
+
+/* @define Slider */
 .Slider {
-    clear: both;
-    position: relative;
+    padding: 0 50px;
 }
 
-.Slider-slide {
-    position: relative;
-}
-
-.Slider-slide--hidden {
-    display: none;
-}
-
-.Slider-link,
-.Slider-link:active,
-.Slider-link:focus,
-.Slider-link:hover {
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden; /* Done to prevent a scaled blurred image (with .u-imageBlur) from overflowing */
+.Slider-wrapper,
+.Slider-wrapper:focus-visible {
     text-decoration: none;
 }
 
-.Slider-image {
-    height: auto;
-    height: 100%;
-    width: 100%;
+.Slider-content {
+    background-color: var(--Slider-content-background);
+    color: var(--Slider-content-color);
+    font-size: var(--Slider-content-font-size);
+    font-weight: var(--Slider-content-font-weight);
+    line-height: var(--Slider-content-line-height);
+    padding: var(--Slider-content-padding, 20px);
+    text-align: center;
+    text-transform: var(--Slider-content-text-transform);
+    transition: all 250ms;
 }
 
-/* postcss-bem-linter: ignore */
-.Slider-image > img {
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
+.Slider-wrapper:focus-visible .Slider-content {
+    background-color: var(--Slider-content-background-hover);
+    color: var(--Slider-content-color-hover);
 }
 
-.Slider-itemNav {
-    cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+    .Slider-wrapper:hover {
+        text-decoration: none;
+    }
+
+    .Slider-wrapper:hover .Slider-content {
+        background-color: var(--Slider-content-background-hover);
+        color: var(--Slider-content-color-hover);
+    }
 }
 
 /* ------------------------------------ *\
-    #SLIDER CONTENT
+    Overrides
 \* ------------------------------------ */
 
-.Slider-content {
-    box-sizing: border-box;
+/* postcss-bem-linter: ignore */
+.Slider .splide__arrow {
+    background: var(--Slider-arrow-background);
+    border-radius: 0;
+    height: 100%;
+    opacity: 1 !important;
+    transition: all 250ms;
+    width: 50px;
+}
+
+/* postcss-bem-linter: ignore */
+.Slider .splide__arrow svg {
+    fill: var(--Slider-arrow-color);
+}
+
+/* postcss-bem-linter: ignore */
+.Slider .splide__arrow:focus-visible {
+    background: var(--Slider-arrow-background-hover);
+}
+
+/* postcss-bem-linter: ignore */
+.Slider .splide__arrow:focus-visible svg {
+    fill: var(--Slider-arrow-color-hover);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    /* postcss-bem-linter: ignore */
+    .Slider .splide__arrow:hover {
+        background: var(--Slider-arrow-background-hover);
+    }
+
+    /* postcss-bem-linter: ignore */
+    .Slider .splide__arrow:hover svg {
+        fill: var(--Slider-arrow-color-hover);
+    }
+}
+
+/* postcss-bem-linter: ignore */
+.Slider .splide__arrow--prev {
     left: 0;
-    padding: 0 100px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
-.Slider-content--bottomLeft,
-.Slider-content--bottomCenter,
-.Slider-content--bottomRight {
-    bottom: 5%;
-    top: auto;
-    transform: none;
-}
-
-.Slider-content--center,
-.Slider-content--bottomCenter {
-    text-align: center;
-    width: 100%;
-}
-
-.Slider-content--centerRight,
-.Slider-content--bottomRight {
-    left: auto;
+/* postcss-bem-linter: ignore */
+.Slider .splide__arrow--next {
     right: 0;
-    text-align: right;
 }
 
-.Slider-captionTitle {
-    box-sizing: border-box;
-    color: #fff;
-    display: block;
-    font-family: var(--theme-typography-heading-fontFamily);
-    font-size: 2.6em;
-    line-height: 1.1;
-    max-width: 45vw;
-    text-shadow: 0 0 5px rgba(0, 0, 0, .6);
-    text-transform: uppercase;
-}
+/* Hide arrows when there is no overflow. https://splidejs.com/guides/overflow/  */
 
-.Slider-caption {
-    box-sizing: border-box;
-    color: #fff;
-    display: block;
-    font-size: 1.2em;
-    line-height: 1.2;
-    max-width: 30vw;
-    text-shadow: 0 0 2px rgba(0, 0, 0, .6);
-}
-
-.Slider-content--center .Slider-captionTitle,
-.Slider-content--center .Slider-caption,
-.Slider-content--bottomCenter .Slider-captionTitle,
-.Slider-content--bottomCenter .Slider-caption {
-    max-width: 100%;
-}
-
-@media (--c-bp-lg) {
-    .Slider-captionTitle {
-        font-size: 2em;
-        max-width: 50vw;
-    }
-
-    .Slider-caption {
-        max-width: 40vw;
-    }
-}
-
-@media (--c-bp-md) {
-    .Slider-content {
-        background: var(--theme-slider-caption-small-screen-background);
-        bottom: auto;
-        display: block;
-        left: auto;
-        padding: 8px;
-        position: relative;
-        right: auto;
-        text-align: center;
-        text-shadow: none;
-        top: auto;
-        transform: none;
-    }
-
-    .Slider-captionTitle {
-        font-size: var(--base-typography-h1-fontSize);
-        line-height: var(--base-typography-h1-lineHeight);
-        margin-bottom: 6px;
-        max-width: 100%;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
-    }
-
-    .Slider-caption {
-        max-width: 100%;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
-    }
-}
-
-@media (--c-bp-sm) {
-    .Slider-captionTitle {
-        font-size: var(--base-typography-h2-fontSize);
-        line-height: var(--base-typography-h2-lineHeight);
-        text-transform: none;
-    }
+/* postcss-bem-linter: ignore */
+.Slider .splide:not(.is-overflow) .splide__arrows {
+    display: none;
 }

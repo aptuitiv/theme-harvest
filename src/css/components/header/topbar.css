@@ -51,7 +51,7 @@
     border-left: none;
 }
 
-@media (--c-bp-lg) {
+@media (--m-lg) {
     .TopBar-contactItem {
         border-left: none;
         display: block;
@@ -87,7 +87,7 @@
 /* postcss-bem-linter: ignore */
 
 .TopBar-button,
-a[href^=tel].TopBar-button {
+a[href^="tel"].TopBar-button {
     background: #fff;
     color: var(--theme-primary-color);
     text-transform: uppercase;
@@ -98,9 +98,9 @@ a[href^=tel].TopBar-button {
 .TopBar-button:active,
 .TopBar-button:focus,
 .TopBar-button:hover,
-a[href^=tel].TopBar-button:active,
-a[href^=tel].TopBar-button:focus,
-a[href^=tel].TopBar-button:hover {
+a[href^="tel"].TopBar-button:active,
+a[href^="tel"].TopBar-button:focus,
+a[href^="tel"].TopBar-button:hover {
     background: var(--theme-primary-color-hover);
     color: #fff;
 }
@@ -113,7 +113,7 @@ a[href^=tel].TopBar-button:hover {
     display: inline-block;
 }
 
-@media (min-width: 801px) and (max-width: 850px) {
+@media (width >= 801px) and (width <= 850px) {
     .TopBar-navItem {
         display: block;
         margin-bottom: 10px;
@@ -129,7 +129,7 @@ a[href^=tel].TopBar-button:hover {
     }
 }
 
-@media (--c-bp-md) {
+@media (--m-md) {
     .TopBar {
         padding: 12px 0;
     }
@@ -149,7 +149,7 @@ a[href^=tel].TopBar-button:hover {
     }
 }
 
-@media (min-width: 281px) and (max-width: 400px) {
+@media (width >= 281px) and (width <= 400px) {
     .TopBar-nav {
         display: flex;
     }
@@ -175,7 +175,7 @@ a[href^=tel].TopBar-button:hover {
     }
 }
 
-@media (max-width: 280px) {
+@media (width <= 280px) {
     .TopBar-navItem {
         display: block;
         margin-bottom: 10px;

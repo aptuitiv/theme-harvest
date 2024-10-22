@@ -1,0 +1,50 @@
+{% import 'macros/macros' as macros %}
+<div class="GoogleRatingsBar">
+    <div class="Container Container--pad">
+        <span class="GoogleRatingsBar-company">{{ _core.settings.companyName }}</span>
+        received an average rating of
+        <span class="GoogleRatingsBar-rating">{{ _core.settings.companyAggregateRatingValue }}</span>
+        out of
+        <span class="GoogleRatingsBar-rating">5 stars</span>
+        from
+        <span class="GoogleRatingsBar-rating">{{ _core.settings.companyAggregateRatingReviewCount }} reviews</span>.
+        <span class="block inline-lg">
+            <span class="GoogleRatingsBar-stars">
+                <span class="GoogleRatingsBar-starsNumber">{{ _core.settings.companyAggregateRatingValue }}</span>
+                {# Get just the decimal part of the rating #}
+                {% set decimal = _core.settings.companyAggregateRatingValue - _core.settings.companyAggregateRatingValue|floor %}
+                {# Set up the number of whole, half, and empty stars to show #}
+                {% set numWholeStars = _core.settings.companyAggregateRatingValue|floor %}
+                {% set numHalfStars = 0 %}
+                {% if decimal > 0.3 && decimal < 0.9 %}
+                    {% set numHalfStars = 1 %}
+                {% elseif decimal >= 0.9 %}
+                    {% set numWholeStars = numWholeStars + 1 %}
+                {% endif %}
+
+                {% set numEmptyStars = 5 - numWholeStars - numHalfStars %}
+
+                {# Output the stars #}
+                {% if numWholeStars > 0 %}
+                    {% for num in 1..numWholeStars %}
+                        {{ macros.iconImg('star', 'Star rating', "GoogleRatingsBar-star") }}
+                    {% endfor %}
+                {% endif %}
+                {% if numHalfStars > 0 %}
+                    {% for num in 1..numHalfStars %}
+                        {{ macros.iconImg('star-half', 'Half star rating', "GoogleRatingsBar-star") }}
+                    {% endfor %}
+                {% endif %}
+                {% if numEmptyStars > 0 %}
+                    {% for num in 1..numEmptyStars %}
+                        {{ macros.iconImg('star-empty', 'Empty star rating', "GoogleRatingsBar-star") }}
+                    {% endfor %}
+                {% endif %}
+            </span>
+            {% if _core.theme.settings.googleRatingsBarReviewsLink %}
+                {% set _core.theme.settings.googleRatingsBarReviewsLink.class = 'GoogleRatingsBar-link' %}
+                {{ _core.theme.settings.googleRatingsBarReviewsLink.tag }}
+            {% endif %}
+        </span>
+    </div>
+</div>

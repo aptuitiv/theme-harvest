@@ -1,0 +1,14 @@
+/* ===========================================================================
+    Content container
+=========================================================================== */
+
+/* @define ContentContainer */
+
+.ContentContainer {
+    padding: 30px 0;
+}
+
+/* postcss-bem-linter: ignore */
+.no-banner-space .ContentContainer {
+    padding-top: 0;
+}

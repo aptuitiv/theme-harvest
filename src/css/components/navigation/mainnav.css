@@ -1,80 +1,66 @@
-/* ==========================================================================
-   Main Navigation
-   ========================================================================== */
+/* =========================================================================== *\
+    Main Navigation
+\* =========================================================================== */
 
-/** @define MainNav */
-
-:root {
-    --MainNav-fontFamily: var(--theme-nav-font);
-    --MainNav-fontSize: var(--theme-nav-font-size);
-    --MainNav-lineHeight: var(--theme-nav-line-height);
-    --MainNav-link-background: transparent;
-    --MainNav-link-backgroundHover: transparent;
-    --MainNav-link-color: var(--theme-nav-color);
-    --MainNav-link-colorHover: var(--theme-nav-color-hover);
-}
-
-/**
- * Base menu
- */
-
+/* @define MainNav */
 .MainNav {
-    box-sizing: border-box;
-    display: block;
-    font-family: var(--MainNav-fontFamily);
-    font-size: var(--MainNav-fontSize);
-    line-height: var(--MainNav-lineHeight);
+    align-items: center;
+    display: flex;
+    flex-flow: column wrap;
+    font-family: var(--MainNav-font-family);
+    gap: var(--MainNav-item-gap);
+    justify-content: var(--MainNav-horizontal-alignment);
     list-style: none;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
-
-/**
- * Items
- */
 
 .MainNav-item {
-    box-sizing: border-box;
-    display: inline-block;
+    font-size: var(--MainNav-font-size);
+    letter-spacing: var(--MainNav-letter-spacing);
+    line-height: var(--MainNav-line-height);
+    text-transform: var(--MainNav-text-transform);
+    width: 100%;
 }
-
-/** Item that should only be shown in the small screen navigation **/
-
-.MainNav-item--smallScreen {
-    display: none;
-}
-
-@media (--c-bp-smallScreenNav) {
-    .MainNav-item--smallScreen {
-        display: block;
-    }
-}
-
-/**
- * Links
- */
 
 .MainNav-link {
-    background: var(--MainNav-link-background);
-    border-top: 2px solid #fff;
-    box-sizing: border-box;
-    color: var(--MainNav-link-color);
+    background: var(--MainNav-link-background, transparent);
+    color: var(--MainNav-color);
     display: block;
-    letter-spacing: 1px;
-    padding: 10px 10px;
+    font-weight: var(--MainNav-font-weight);
+    padding: var(--MainNav-item-padding-sm);
     position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
+    text-align: center;
+    text-decoration: var(--MainNav-link-text-decoration, none);
 }
 
-@media (--c-bp-largeScreenNav) {
-    .MainNav-item.is-current > .MainNav-link,
-    .MainNav-item.is-currentParent > .MainNav-link,
-    .MainNav-item:hover > .MainNav-link {
-        background: var(--MainNav-link-backgroundHover);
-        border-top: 2px solid var(--Dropdown-background);
-        color: var(--MainNav-link-colorHover);
-        text-decoration: none;
+.MainNav-item.is-current > .MainNav-link,
+.MainNav-item.is-currentParent > .MainNav-link,
+.MainNav-item:hover > .MainNav-link {
+    background: var(--MainNav-link-background-hover, transprent);
+    color: var(--MainNav-color-hover);
+    text-decoration: var(--MainNav-link-text-decoration-hover, none);
+}
+
+/* ------------------------------------ *\
+    Responsive
+\* ------------------------------------ */
+
+@media (--m-lg) {
+    .MainNav {
+        flex-direction: row;
+        margin: 0;
+    }
+
+    .MainNav-item {
+        width: unset;
+    }
+
+    .MainNav-link {
+        padding: var(--MainNav-item-padding);
+    }
+
+    .MainNav-item--small {
+        display: none;
     }
 }

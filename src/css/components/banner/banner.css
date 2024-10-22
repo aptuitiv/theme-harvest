@@ -1,0 +1,183 @@
+/* =========================================================================== *\
+    Banner
+\* =========================================================================== */
+
+/* @define Banner */
+.Banner {
+    align-items: var(--Banner-align-horizontal, center);
+    display: flex;
+    flex-direction: column;
+    justify-content: var(--Banner-align-vertical, center);
+    position: relative;
+}
+
+.Banner--noMedia {
+    aspect-ratio: var(--Banner-content-aspect-ratio);
+    background-color: var(--Banner-background);
+}
+
+/* ------------------------------------ *\
+    Image and Video
+\* ------------------------------------ */
+
+.Banner-bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.Banner-picture {
+    height: 100%;
+}
+
+.Banner-image,
+.Banner-video {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.Banner-image--top {
+    object-position: top;
+}
+
+.Banner-image--bottom {
+    object-position: bottom;
+}
+
+/* ------------------------------------ *\
+    Background Image Overlay
+\* ------------------------------------ */
+
+.Banner-fg {
+    background-color: var(--Banner-overlay, transparent);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+/* ------------------------------------ *\
+    Overlay Image
+\* ------------------------------------ */
+
+.Banner-contentImageWrap {
+    align-items: var(--Banner-align-horizontal, center);
+    display: flex;
+    flex-direction: column;
+    gap: var(--Banner-overlay-image-sm-gap, 0);
+    justify-content: var(--Banner-align-vertical, center);
+    max-width: var(--Banner-overlay-image-grid-width, 1400px);
+    min-height: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+.Banner-overlayImage {
+    display: var(--Banner-overlay-image-sm-display, none);
+}
+
+@media (--m-md) {
+    .Banner-contentImageWrap {
+        align-items: var(--Banner-align-vertical, center);
+        display: grid;
+        gap: 0;
+        grid-template-columns: var(--Banner-overlay-image-grid-md, 1fr 1fr);
+        justify-content: start;
+    }
+
+    .Banner-overlayImage {
+        display: block;
+        height: 100%;
+        object-fit: var(--Banner-overlay-image-objectFit);
+        object-position: var(--Banner-overlay-image-objectPosition);
+        width: 100%;
+    }
+}
+
+/* ------------------------------------ *\
+    Content
+\* ------------------------------------ */
+
+.Banner-content {
+    display: flex;
+    padding: var(--Banner-padding-sm);
+    position: relative;
+    z-index: 3;
+}
+
+.Banner-contentInner {
+    max-width: var(--Banner-content-width);
+    text-align: var(--Banner-align-horizontal, center);
+}
+
+.Banner-contentImageWrap .Banner-contentInner {
+    max-width: var(--Banner-overlay-image-content-width, var(--Banner-content-width));
+}
+
+.Banner--noMedia .Banner-content {
+    padding: var(--Banner-padding-no-image-sm);
+}
+
+/* postcss-bem-linter: ignore */
+.Banner-content *:not(.Button) {
+    color: var(--Banner-color);
+    text-shadow: var(--Banner-text-shadow, none);
+}
+
+/* postcss-bem-linter: ignore */
+.Banner--noMedia .Banner-content *:not(.Button) {
+    color: var(--Banner-no-media-color);
+    text-shadow: var(--Banner-no-media-text-shadow, none);
+}
+
+/* postcss-bem-linter: ignore */
+.Banner-content p {
+    font-size: var(--Banner-content-font-size, 2rem);
+}
+
+@media (width <= 800px) {
+    /* postcss-bem-linter: ignore */
+    .Banner-content h1 {
+        font-size: 2em;
+    }
+}
+
+@media (--m-lg) {
+    .Banner-content {
+        padding: var(--Banner-padding);
+    }
+
+    .Banner--noMedia .Banner-content {
+        padding: var(--Banner-padding-no-image);
+    }
+}
+
+/* ------------------------------------ *\
+    Content Button
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.Banner .Button {
+    margin: var(--Banner-content-button-gap, 10px);
+}
+
+@media (--m-md) {
+    /* postcss-bem-linter: ignore */
+    .Banner .Button {
+        margin-left: var(--Banner-content-button-gap, 10px);
+    }
+
+    /* postcss-bem-linter: ignore */
+    .Banner .Button:first-child {
+        margin-left: 0;
+    }
+}

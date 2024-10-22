@@ -1,0 +1,23 @@
+/* ===========================================================================
+    Full width image styles
+=========================================================================== */
+
+/* @define FullWidthImage */
+
+.FullWidthImage {
+    width: 100%;
+}
+
+.FullWidthImage-caption {
+    color: var(--FullWidthImage-caption-typography-color);
+    font-family: var(--FullWidthImage-caption-typography-font-family);
+    font-size: var(--FullWidthImage-caption-typography-font-size);
+    font-style: var(--FullWidthImage-caption-typography-font-style);
+    font-weight: var(--FullWidthImage-caption-typography-font-weight);
+    letter-spacing: var(--FullWidthImage-caption-typography-letter-spacing);
+    line-height: var(--FullWidthImage-caption-typography-line-height);
+    margin: var(--FullWidthImage-caption-typography-margin);
+    text-align: var(--FullWidthImage-caption-typography-text-align);
+    text-decoration: var(--FullWidthImage-caption-typography-text-decoration);
+    text-transform: var(--FullWidthImage-caption-typography-text-transform);
+}

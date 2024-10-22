@@ -1,0 +1,95 @@
+/* =========================================================================== *\
+    Popup Modal
+\* =========================================================================== */
+
+/* @define Modal */
+.Modal {
+    display: none;
+}
+
+.Modal.is-open {
+    display: block;
+}
+
+.Modal-overlay {
+    align-items: center;
+    background: var(--Modal-overlay-background);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+    z-index: 999;
+}
+
+.Modal-container {
+    background-color: var(--Modal-background);
+    border-radius: var(--Modal-border-radius);
+    color: var(--Modal-color);
+    margin: 20px;
+    max-height: calc(100vh - 40px);
+    max-width: var(--Modal-width);
+    overflow-y: auto;
+    width: 100%;
+}
+
+.Modal-header {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    padding: var(--Modal-header-padding);
+}
+
+.Modal-alert {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.Modal-title {
+    align-items: center;
+    color: var(--Modal-title-color);
+    display: flex;
+    font-family: var(--Modal-title-font-family);
+    font-size: var(--Modal-title-font-size-sm, 20px);
+    font-weight: var(--Modal-title-font-weight);
+    letter-spacing: var(--Modal-title-letter-spacing);
+    line-height: var(--Modal-title-line-height);
+    text-transform: var(--Modal-title-text-transform);
+}
+
+.Modal-close {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.Modal-close::before {
+    color: var(--Modal-close-color);
+    content: '\2715';
+    transition: all 250ms;
+}
+
+.Modal-close:focus-visible::before {
+    color: var(--Modal-close-color-hover);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .Modal-close:hover::before {
+        color: var(--Modal-close-color-hover);
+    }
+}
+
+.Modal-content {
+    padding: var(--Modal-content-padding, 20px);
+}
+
+@media (--m-md) {
+    .Modal-header {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .Modal-title {
+        font-size: var(--Modal-title-font-size);
+    }
+}

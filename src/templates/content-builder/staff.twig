@@ -2,26 +2,25 @@
 
 {% if alignImages != 'Center' %}
     {% for person in people %}
-        {% set size = 'u-sizeFull' %}
+        {% set size = 'w-1-1' %}
         {% set pull = '' %}
         {% if person.image %}
-            {% set size = 'u-size3of4 u-lg-size2of3 u-md-sizeFull' %}
-            {% set pull = 'u-pull1of4 u-lg-pull1of3 u-md-pullNone' %}
+            {% set size = 'col-1-1 col-2-3-md col-3-4-lg' %}
             {% if person.image.alt|length == 0 %}
                 {% set person.image.alt = person.name %}
             {% endif %}
-            {% set person.image.class = 'u-sizeFull u-lg-sizeAuto u-sm-sizeFull' %}
+            {% set person.image.class = 'w-1-1 w-auto-lg' %}
         {% endif %}
-        <div class="Grid Grid--withGutter u-margBottom3">
+        <div class="grid g-2 mb-3">
             {% if person.image %}
-                <div class="Grid-cell u-size1of4 u-lg-size1of3 u-md-hide{% if alignImages == 'Right' %} u-push3of4 u-lg-push2of3{% endif %}">
+                <div class="col-1-3 col-1-4-lg hidden block-md{% if alignImages == 'Right' %} order-2-md{% endif %}">
                     {{ person.image.tag }}
                 </div>
             {% endif %}
-            <div class="Grid-cell {{ size }}{% if alignImages == 'Right' %} {{ pull }}{% endif %}">
-                <h2 class="u-margBottom1">{{ person.name }}</h2>
+            <div class="{{ size }}{% if alignImages == 'Right' %} order-1-md{% endif %}">
+                <h2 class="mb-1">{{ person.name }}</h2>
                 {% if person.title %}
-                    <div class="u-fontSizeH4">{{ person.title }}</div>
+                    <div>{{ person.title }}</div>
                 {% endif %}
                 {% if person.email %}
                     <div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>
@@ -30,7 +29,7 @@
                     <div><a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a></div>
                 {% endif %}
                 {% if person.image %}
-                    <div class="u-hidden u-md-show">{{ person.image.tag }}</div>
+                    <div class="hidden-md">{{ person.image.tag }}</div>
                 {% endif %}
                 {{ person.bio }}
             </div>
@@ -41,18 +40,18 @@
     {% set count = people|length  %}
 
     {% if count % 4 == 0 %}
-        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm col-1-3-md col-1-4-lg' %}
     {% elseif count % 3 == 0 %}
-        {% set class = 'u-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm col-1-3-md' %}
     {% elseif count == 2 %}
-        {% set class = 'u-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm' %}
     {% elseif count > 4 %}
-        {% set class = 'u-size1of4 u-lg-size1of3 u-md-size1of2 u-sm-sizeFull' %}
+        {% set class = 'col-1-1 col-1-2-sm col-1-3-md col-1-4-lg' %}
     {% elseif count == 1 %}
-        {% set class = 'Grid-cell--center u-sm-sizeFull' %}
+        {% set class = 'col-1-1' %}
     {% endif %}
 
-    <div class="Grid Grid--withGutter Grid--equalHeight ImageGrid">
+    <div class="grid g-2 Grid--equalHeight ImageGrid">
         {% for person in people %}
             {% if person.image %}
                 {% if person.image.alt|length == 0 %}
@@ -60,7 +59,7 @@
                 {% endif %}
                 {% set person.image.class = 'ImageGrid-image' %}
             {% endif %}
-            <div class="Grid-cell {{ class }} ImageGrid-col">
+            <div class="{{ class }} ImageGrid-col">
                 <div class="ImageGrid-item">
                     <div class="StaffGrid-image">{{ person.image.tag }}</div>
                     <div class="StaffGrid-text">{{ person.name }}</div>

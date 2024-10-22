@@ -2,21 +2,20 @@
 
 {% import 'macros/macros' as macros %}
 
-{% block header %}
-    <div class="ContentHeader">
-        <div class="Container">
-            <h1 class="ContentHeader-title">{{ item.itemName }}</h1>
-            <div class="ContentHeader-content"><a href="{{ item.goBackUrl }}"> {{ macros.iconImg("caret-left", "Go Back") }} Back</a></div>
-        </div>
-    </div>
+{% block banner %}
+    {% set content %}
+        <h1>{{ item.itemName }}</h1>
+        <p><a href="{{ item.goBackUrl }}"> {{ macros.iconImg("caret-left", "Go Back") }} Back</a></p>
+    {% endset %}
+    {% include('content-builder/banner-bar') %}
 {% endblock %}
 
 {# Video Macro #}
 {% macro video(item) %}
     {% set video = item.video.urlInfo|first %}
-    <div class="FlexEmbed u-margBottom2">
-        <div class="FlexEmbed-ratio FlexEmbed-ratio--8by5"></div>
-        <iframe class="FlexEmbed-content" frameborder="0" title="{{ video.title }}" allowfullscreen src="{{ video.iframeEmbed.src }}" loading="lazy"></iframe>
+    <div class="embed mb-2">
+        <div class="aspect-8by5"></div>
+        <iframe class="" frameborder="0" title="{{ video.title }}" allowfullscreen src="{{ video.iframeEmbed.src }}" loading="lazy"></iframe>
     </div>
 {% endmacro %}
 
@@ -26,12 +25,12 @@
     {% if item.video %}
         {# Displaying the video #}
         {% if item.description %}
-            <div class="Grid Grid--withGutterLg">
-                <div class="Grid-cell u-size2of3 u-lg-size1of2 u-md-sizeFull u-md-margBottom2">{{ itemMacros.video(item) }}</div>
-                <div class="Grid-cell u-size1of3 u-lg-size1of2 u-md-sizeFull">{{ item.description }}</div>
+            <div class="grid g-4">
+                <div class="col-1-1 col-1-2-md col-2-3-lg mb-2 mb-0-md">{{ itemMacros.video(item) }}</div>
+                <div class="col-1-1 col-1-2-md col-1-3-lg">{{ item.description }}</div>
             </div>
         {% else %}
-            <div class="u-push1of6 u-size2of3 u-md-sizeFull u-md-pushNone">{{ itemMacros.video(item) }}</div>
+            <div class="push-1-6-md col-1-1 col-2-3-md">{{ itemMacros.video(item) }}</div>
         {% endif %}
     {% else %}
         {% if item.images|length > 1 %}
@@ -41,7 +40,7 @@
                             {% for image in item.images %}
                                 <li class="splide__slide">
                                     {% set image.image.large.alt = image.altText|default(item.itemName) %}
-                                    {% set image.image.large.class = 'u-widthFull' %}
+                                    {% set image.image.large.class = 'w-1-1' %}
                                     {% set image.image.large.style = 'object-fit: cover;' %}
                                     {{ image.image.large.tag }}
                                 </li>
@@ -49,8 +48,8 @@
                         </ul>
                 </div>
             </div>
-            
-            <div id="thumbnail-slider" role="group" class="splide u-margTop1" aria-label="Thumbnail Slider">
+
+            <div id="thumbnail-slider" role="group" class="splide mt-1" aria-label="Thumbnail Slider">
                 <div class="splide__track">
                         <ul class="splide__list">
                             {% for image in item.images %}
@@ -62,10 +61,10 @@
                         </ul>
                 </div>
             </div>
-            
+
             {% import 'macros/macros' as macros %}
             {{ macros.loadSplide() }}
-            
+
             {% inlinejs %}
                 loadjs.ready('splide', {
                     success: function() {
@@ -74,7 +73,7 @@
                             type       : 'fade',
                             pagination : false
                         });
-                        
+
                         {# Create thumbnail slider #}
                         var thumbnails = new Splide('#thumbnail-slider', {
                             rewind          : true,
@@ -97,7 +96,7 @@
                                 },
                             },
                         });
-                        
+
                         {# Link and start the sliders #}
                         main.sync(thumbnails);
                         main.mount();
@@ -108,13 +107,15 @@
         {% else %}
             {% for image in item.images %}
                 {% set image.image.large.alt = image.altText|default(item.itemName) %}
-                {% set image.image.large.class = 'u-widthFull' %}
+                {% set image.image.large.class = 'w-1-1' %}
                 {{ image.image.large.tag }}
             {% endfor %}
         {% endif %}
-        
+
         {% if item.description %}
-            <div class="u-margTop2">{{ item.description }}</div>
+            <div class="mt-2">{{ item.description }}</div>
         {% endif %}
     {% endif %}
 {% endblock %}
+
+{% do _page.addCss('gallery.css'|theme_url) %}

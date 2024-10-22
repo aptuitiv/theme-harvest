@@ -2,7 +2,6 @@
     Header
 \* =========================================================================== */
 
-
 /* @define Header */
 
 .Header {
@@ -23,11 +22,11 @@
     }
 
     .Header.is-sticky {
-        box-shadow: 1px 1px 3px rgba(43, 26, 35, .4);
+        box-shadow: 1px 1px 3px rgb(43 26 35 / 40%);
     }
 }
 
-@media (--c-bp-sm) {
+@media (--m-sm) {
     .Header {
         padding: 2rem var(--g-gutter-sm);
     }
@@ -35,6 +34,10 @@
     .Header--outer {
         padding: 0;
     }
+}
+
+.Header-textLogo {
+    font-size: var(--Header-text-logo-font-size-sm);
 }
 
 .Header-skipToMain {

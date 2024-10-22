@@ -1,47 +1,39 @@
-{% set contentCol = 'u-sizeFull' %}
-{% set imageCol = 'u-sizeFull' %}
-{% set imagePush = '' %}
-{% set contentPull = '' %}
-
-{% if image %}
-    {% if imageSize == '1/4' %}
-        {% set contentCol = 'u-size3of4 u-lg-size2of3 u-md-sizeFull' %}
-        {% set imageCol = 'u-size1of4 u-lg-size1of3 u-md-sizeFull' %}
-        {% set imagePush = 'u-push3of4 u-lg-push2of3 u-md-pushNone' %}
-        {% set contentPull = 'u-pull1of4 u-lg-pull1of3 u-md-pullNone' %}
-    {% elseif imageSize == '1/3' %}
-        {% set contentCol = 'u-size2of3 u-md-sizeFull' %}
-        {% set imageCol = 'u-size1of3 u-md-sizeFull' %}
-        {% set imagePush = 'u-push2of3 u-md-pushNone' %}
-        {% set contentPull = 'u-pull1of3 u-md-pullNone' %}
-    {% elseif imageSize == '2/5' %}
-        {% set contentCol = 'u-size3of5 u-md-sizeFull' %}
-        {% set imageCol = 'u-size2of5 u-md-sizeFull' %}
-        {% set imagePush = 'u-push3of5 u-md-pushNone' %}
-        {% set contentPull = 'u-pull2of5 u-md-pullNone' %}
-    {% elseif imageSize == '1/2' %}
-        {% set contentCol = 'u-size1of2 u-md-sizeFull' %}
-        {% set imageCol = 'u-size1of2 u-md-sizeFull' %}
-        {% set imagePush = 'u-push1of2 u-md-pushNone' %}
-        {% set contentPull = 'u-pull1of2 u-md-pullNone' %}
+{% if image and content %}
+    {% set imageCol = 'col-1-1 col-1-2-lg' %}
+    {% set contentCol = 'col-1-1 col-1-2-lg' %}
+    {% if imageSize == 'Third' %}
+        {% set imageCol = 'col-1-1 col-1-2-md col-1-3-lg' %}
+        {% set contentCol = 'col-1-1 col-1-2-md col-2-3-lg' %}
+    {% elseif imageSize == 'Quarter' %}
+        {% set imageCol = 'col-1-1 col-1-2-md col-1-4-lg' %}
+        {% set contentCol = 'col-1-1 col-1-2-md col-3-4-lg' %}
     {% endif %}
-
-    {% if image.alt|length == 0 %}
-        {% set image.alt = heading %}
-    {% endif %}
-{% endif %}
-<div class="Grid Grid--withGutter u-margBottom3">
+    {% set contentWrapper = '' %}
+        {% set contentWrapper = contentWrapper ~ 'flex align-center h-100' %}
+        {% if imagePosition == 'Right' %}
+            {% set contentWrapper = contentWrapper ~ ' pe-2 pe-5-lg' %}
+            {% set imageCol = imageCol ~ ' order-2-lg' %}
+            {% set contentCol = contentCol ~ ' order-1-lg' %}
+        {% else %}
+            {% set contentWrapper = contentWrapper ~ ' ps-2 ps-5-lg' %}
+        {% endif %}
     {% if image %}
-        <div class="Grid-cell {{ imageCol }}{% if alignImage == 'Right' %} {{ imagePush }}{% endif %}"><div class="u-md-hide">{% if link %}<a href="{{ link }}">{% endif %}{{ image.tag }}{% if link %}</a>{% endif %}</div></div>
     {% endif %}
-    <div class="Grid-cell {{ contentCol }}{% if alignImage == 'Right' %} {{ contentPull }}{% endif %}">
-        <h2 class="u-margBottom1">{% if link %}<a href="{{ link }}" class="u-linkSubtle">{% endif %}{{ heading }}{% if link %}</a>{% endif %}</h2>
-        {% if image %}
-            <div class="u-hidden u-md-show">{% if link %}<a href="{{ link }}">{% endif %}{{ image.tag }}{% if link %}</a>{% endif %}</div>
-        {% endif %}
-        {{ content }}
-        {% if link %}
-            <a href="{{ link }}" class="Button">{{ buttonText }}</a>
-        {% endif %}
+    <div class="Container Container--pad">
+        <div class="grid py-2 py-4-lg">
+            <div class="{{ imageCol }}">
+                {% do image.resize(800) %}
+                {% do image.lazy() %}
+                {% set image.class = "w-100" %}
+                <div class="flex align-center h-100">
+                    {{ image.tag }}
+                </div>
+            </div>
+            <div class="{{ contentCol }}">
+                <div class="{{ contentWrapper }}">
+                    <div class="clearfix first-child-st-0 last-child-sb-0">{{ content }}</div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+{% endif %}

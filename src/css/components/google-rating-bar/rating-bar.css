@@ -1,0 +1,76 @@
+/* ===========================================================================
+    Google rating bar styles
+=========================================================================== */
+
+/* @define GoogleRatingsBar */
+
+.GoogleRatingsBar {
+    background: var(--GoogleRatingBar-background);
+    color: var(--GoogleRatingBar-color);
+    font-family: var(--GoogleRatingBar-font-family);
+    font-size: var(--GoogleRatingBar-font-size, inherit);
+    font-style: var(--GoogleRatingBar-font-style);
+    font-weight: var(--GoogleRatingBar-font-weight, 400);
+    letter-spacing: var(--GoogleRatingBar-letter-spacing);
+    line-height: var(--GoogleRatingBar-line-height, inherit);
+    padding: var(--GoogleRatingBar-padding, 2px);
+    text-align: var(--GoogleRatingBar-text-align, center);
+    text-decoration: var(--GoogleRatingBar-text-decoration);
+    text-transform: var(--GoogleRatingBar-text-transform);
+}
+
+.GoogleRatingsBar-company {
+    color: var(--GoogleRatingBar-company-color);
+    font-family: var(--GoogleRatingBar-company-font-family);
+    font-size: var(--GoogleRatingBar-company-font-size, inherit);
+    font-style: var(--GoogleRatingBar-company-font-style);
+    font-weight: var(--GoogleRatingBar-company-font-weight, 400);
+    letter-spacing: var(--GoogleRatingBar-company-letter-spacing);
+    line-height: var(--GoogleRatingBar-company-line-height, inherit);
+    text-decoration: var(--GoogleRatingBar-company-text-decoration);
+    text-transform: var(--GoogleRatingBar-company-text-transform);
+}
+
+.GoogleRatingsBar-rating {
+    color: var(--GoogleRatingBar-rating-color);
+    font-family: var(--GoogleRatingBar-rating-font-family);
+    font-size: var(--GoogleRatingBar-rating-font-size, inherit);
+    font-style: var(--GoogleRatingBar-rating-font-style);
+    font-weight: var(--GoogleRatingBar-rating-font-weight, 400);
+    letter-spacing: var(--GoogleRatingBar-rating-letter-spacing);
+    line-height: var(--GoogleRatingBar-rating-line-height, inherit);
+    text-decoration: var(--GoogleRatingBar-rating-text-decoration);
+    text-transform: var(--GoogleRatingBar-rating-text-transform);
+}
+
+.GoogleRatingsBar-stars {
+    align-items: center;
+    color: var(--GoogleRatingBar-stars-color);
+    display: inline-flex;
+    font-family: var(--GoogleRatingBar-stars-font-family);
+    font-size: var(--GoogleRatingBar-stars-font-size, inherit);
+    font-style: var(--GoogleRatingBar-stars-font-style);
+    font-weight: var(--GoogleRatingBar-stars-font-weight, 400);
+    letter-spacing: var(--GoogleRatingBar-stars-letter-spacing);
+    line-height: var(--GoogleRatingBar-stars-line-height, inherit);
+    padding: var(--GoogleRatingBar-stars-padding, 0 2px);
+    text-decoration: var(--GoogleRatingBar-stars-text-decoration);
+    text-transform: var(--GoogleRatingBar-stars-text-transform);
+}
+
+.GoogleRatingsBar-link {
+    color: var(--GoogleRatingBar-link-color);
+    font-family: var(--GoogleRatingBar-link-font-family);
+    font-size: var(--GoogleRatingBar-link-font-size, inherit);
+    font-style: var(--GoogleRatingBar-link-font-style);
+    font-weight: var(--GoogleRatingBar-link-font-weight, 400);
+    letter-spacing: var(--GoogleRatingBar-link-letter-spacing);
+    line-height: var(--GoogleRatingBar-link-line-height, inherit);
+    text-decoration: var(--GoogleRatingBar-link-text-decoration);
+    text-transform: var(--GoogleRatingBar-link-text-transform);
+}
+
+.GoogleRatingsBar-link:hover {
+    color: var(--GoogleRatingBar-link-color-hover);
+    text-decoration: var(--GoogleRatingBar-link-text-decoration-hover);
+}

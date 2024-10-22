@@ -8,138 +8,90 @@
  * Drop-down navigation menu.
  */
 
-:root {
-    --Dropdown-background: var(--theme-nav-dropdown-background);
-    --Dropdown-fontSize: inherit;
-    --Dropdown-lineHeight: inherit;
-    --Dropdown-item-padding: .5em 1em;
-    --Dropdown-item-padding-small-screen: .8em 30px .8em 1em;
-    --Dropdown-link-color: var(--theme-nav-dropdown-color);
-    --Dropdown-link-colorHover: var(--theme-nav-dropdown-color-hover);
-}
-
 .Dropdown {
     position: relative;
 }
 
-/* Base menu
-   ========================================================================== */
+/* ------------------------------------ *\
+    Menu
+\* ------------------------------------ */
 
 .Dropdown-menu {
-    background: var(--Dropdown-background);
-    box-shadow: 0 22px 35px 0 rgba(0, 0, 0, .1);
-    box-sizing: border-box;
+    background: var(--Dropdown-background, #fff);
     display: none;
-    left: 0;
     list-style: none;
     margin: 0;
-    min-width: 100%;
     padding: 0;
-    position: absolute;
-    text-align: left;
-    top: 100%;
-    z-index: 999;
 }
 
-.Dropdown-menu::before,
-.Dropdown-menu::after {
-    content: ' ';
-    display: table;
+.Dropdown-menu .Dropdown-menu {
+    margin: 0;
+    padding-top: 0;
 }
 
-.Dropdown-menu::after {
-    clear: both;
+/* postcss-bem-linter: ignore */
+.MainNav-item.is-first .Dropdown-menu {
+    left: 0;
 }
-
-/* Menu items
-   ========================================================================== */
 
 .Dropdown-item {
-    box-sizing: border-box;
     position: relative;
 }
 
-/** Item that should only be shown in the small screen navigation **/
-
-.Dropdown-item--smallScreen {
-    display: none;
-}
-
-@media (--c-bp-smallScreenNav) {
-    .Dropdown-item--smallScreen {
-        display: block;
-    }
-}
-
-/* Menu links
-   ========================================================================== */
-
 .Dropdown-link {
-    box-sizing: border-box;
-    color: var(--Dropdown-link-color);
+    background: var(--Dropdown-link-background-sm);
+    color: var(--Dropdown-link-color-sm) !important;
     display: block;
-    font-size: var(--Dropdown-fontSize);
-    font-weight: 400;
-    line-height: var(--Dropdown-lineHeight);
-    padding: var(--Dropdown-item-padding);
-    text-decoration: none;
-    white-space: nowrap;
+    font-size: var(--Dropdown-link-font-size);
+    font-weight: var(--Dropdown-link-font-weight);
+    letter-spacing: var(--Dropdown-link-letter-spacing);
+    line-height: var(--Dropdown-link-line-height);
+    padding: var(--Dropdown-link-padding, 6px 10px);
+    text-align: var(--Dropdown-link-text-align);
+    text-decoration: var(--Dropdown-link-text-decoration, none);
+    text-transform: var(--Dropdown-link-text-transform);
 }
 
-@media (--c-bp-largeScreenNav) {
-    .Dropdown-link:hover,
-    .Dropdown-link.is-current,
-    .Dropdown-link.is-currentParent {
-        color: var(--Dropdown-link-colorHover);
-    }
-
-    .Dropdown-link:hover {
-        text-decoration: none;
-    }
-}
-
+.Dropdown-link:hover,
 .Dropdown-link.is-current,
 .Dropdown-link.is-currentParent {
-    font-weight: 700;
+    background-color: var(--Dropdown-link-background-hover);
+    color: var(--Dropdown-link-color-hover) !important;
 }
 
-/* State
-   ========================================================================== */
+.Dropdown-link:hover {
+    text-decoration: none;
+}
 
-@media (--c-bp-largeScreenNav) {
+/* ------------------------------------ *\
+    States
+\* ------------------------------------ */
 
-    /* show sub-menus under hovered items */
+/* show sub-menus under hovered items */
+.Dropdown.is-active > .Dropdown-menu {
+    display: block;
+}
 
-    .Dropdown:hover > .Dropdown-menu,
-    .Dropdown.is-active > .Dropdown-menu,
-    .Dropdown-item:hover > .Dropdown-menu {
-        display: block;
-    }
+/* fly-out to the right */
+.Dropdown-item.is-active > .Dropdown-menu {
+    display: block;
+    left: 100%;
+    top: 0;
+    transform: none;
+}
 
-    /* display sub-menus under the last item to the right */
+/* display sub-menus under the last item to the right */
+.Dropdown.is-last:hover > .Dropdown-menu {
+    left: auto;
+    right: 0;
+}
 
-    .Dropdown.is-last:hover > .Dropdown-menu {
-        left: auto;
-        right: 0;
-    }
-
-    /* fly-out to the right */
-
-    .Dropdown-item:hover > .Dropdown-menu,
-    .Dropdown-item.is-active > .Dropdown-menu {
-        display: block;
-        left: 100%;
-        top: 0;
-        transform: none;
-    }
-
-    /* fly-out to the left if root parent is last item */
-
-    .Dropdown.is-last .Dropdown-item:hover > .Dropdown-menu
-    .Dropdown.is-last .Dropdown-item.is-active > .Dropdown-menu {
-        left: auto;
-        right: 100%;
-    }
+/* fly-out to the left if root parent is last item */
+.Dropdown.is-last .Dropdown-item:hover > .Dropdown-menu,
+.Dropdown.is-last .Dropdown-item.is-active > .Dropdown-menu {
+    display: block;
+    left: auto;
+    right: 100%;
 }
 
 /* ------------------------------------ *\
@@ -150,24 +102,63 @@
     position: relative;
 }
 
-.Dropdown-link--parent::before,
-.Dropdown-link--parent::after {
-    background: var(--Dropdown-link-color);
-    content: '';
-    display: inline-block;
-    height: 1px;
-    margin-top: -1px;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform-origin: 7px 50%;
-    width: 7px;
-}
+/* ------------------------------------ *\
+    Reposnsive
+\* ------------------------------------ */
 
-.Dropdown-link--parent::after {
-    transform: rotate(-45deg);
-}
+@media (--m-xl) {
+    .Dropdown-menu {
+        left: var(--Dropdown-left);
+        margin-top: 0;
+        max-width: var(--Dropdown-max-width);
+        min-width: var(--Dropdown-min-width);
+        padding: var(--Dropdown-padding, 0);
+        position: absolute;
+        top: 100%;
+        width: max-content;
+        z-index: 999;
+    }
 
-.Dropdown-link--parent::before {
-    transform: rotate(45deg);
+    .Dropdown-item--smallScreen {
+        display: none;
+    }
+
+    .Dropdown-link {
+        background: var(--Dropdown-link-background);
+        color: var(--Dropdown-link-color) !important;
+    }
+
+    .Dropdown:hover > .Dropdown-menu,
+    .Dropdown-item:hover > .Dropdown-menu {
+        display: block;
+    }
+
+    .Dropdown-item:hover > .Dropdown-menu {
+        display: block;
+        left: 100%;
+        top: 0;
+        transform: none;
+    }
+
+    .Dropdown-link--parent::before,
+    .Dropdown-link--parent::after {
+        background: var(--Dropdown-link-color);
+        content: '';
+        display: inline-block;
+        height: 1px;
+        margin-top: -1px;
+        position: absolute;
+        right: var(--Dropdown-arrow-offset, 10px);
+        top: 50%;
+        transform-origin: 7px 50%;
+        width: 7px;
+    }
+
+    .Dropdown-link--parent::after {
+        transform: rotate(-45deg);
+    }
+
+    .Dropdown-link--parent::before {
+        transform: rotate(45deg);
+    }
 }

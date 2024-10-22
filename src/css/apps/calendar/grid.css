@@ -1,0 +1,88 @@
+/* =========================================================================== *\
+    CALENDAR MINI GRID
+\* =========================================================================== */
+
+/** @define CalendarGrid */
+
+.CalendarGrid {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* ------------------------------------ *\
+    #GRID-CELLS
+\* ------------------------------------ */
+
+.CalendarGrid-headCell {
+    background: var(--theme-primary-color);
+    border: 1px solid #e6e6e6;
+    color: #fff;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 14.28%;
+}
+
+.CalendarGrid-headCellContent {
+    padding: 0;
+}
+
+.CalendarGrid-cell {
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 14.28%;
+}
+
+.CalendarGrid-cell--isEmpty {
+    background: #e9e9e9;
+}
+
+.CalendarGrid-cell--isEnd {
+    background: #f5f5f5;
+}
+
+.CalendarGrid-cell--isToday {
+    outline: 2px solid var(--theme-primary-color);
+    outline-offset: -2px;
+}
+
+.CalendarGrid-cellContent {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.CalendarGrid-cellDate {
+    font-weight: bold;
+}
+
+/** Force the date cells to be a minimum height */
+
+.CalendarGrid-cellDate::before {
+    content: '';
+    display: block;
+    float: left;
+    padding-top: 75%;
+}
+
+@media (width <= 800px) {
+    .CalendarGrid-head {
+        display: none;
+    }
+
+    .CalendarGrid-cell {
+        display: block;
+        width: 100%;
+    }
+
+    .CalendarGrid-cellDate::before {
+        display: none;
+    }
+}

@@ -1,0 +1,13 @@
+{% if faqs|length > 0 %}
+    <div class="Container Container--pad" itemscope itemtype="https://schema.org/FAQPage">
+        {% for item in faqs %}
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 class="text-start" itemprop="name">{{ item.question }}</h3>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">{{ item.answer }}</p>
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

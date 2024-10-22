@@ -1,0 +1,9 @@
+/* =========================================================================== *\
+    Form Description
+\* =========================================================================== */
+
+/* @define FormDescription */
+
+.FormDescription--withLabelMargin {
+    margin-bottom: var(--FormLabel-margin-bottom, 0);
+}

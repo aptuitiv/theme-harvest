@@ -1,220 +1,5 @@
 {
     "name": "Custom",
-    "settings": {
-        "groups": [
-            {
-                "name": "Social Icons",
-                "description": "Set the links and icons to use for your social networks in the footer of each page.",
-                "fields": [
-                    {
-                        "name": "social",
-                        "label": "Social Networks",
-                        "type": "repeating",
-                        "itemName": "Social Network",
-                        "children": [
-                            {
-                                "name": "name",
-                                "label": "Social network name",
-                                "type": "text"
-                            },
-                            {
-                                "name": "url",
-                                "label": "URL to your page on this social network",
-                                "type": "text"
-                            },
-                            {
-                                "name": "icon",
-                                "label": "Icon",
-                                "type": "select",
-                                "options": {
-                                    "facebook": "Facebook",
-                                    "instagram": "Instagram",
-                                    "linkedin": "LinkedIn",
-                                    "pinterest": "Pinterest",
-                                    "twitter": "Twitter",
-                                    "youtube": "YouTube"
-                                }
-                            }
-                        ],
-                        "default": [
-                            {
-                                "name": "Facebook",
-                                "icon": "facebook"
-                            },
-                            {
-                                "name": "Instagram",
-                                "icon": "instagram"
-                            },
-                            {
-                                "name": "LinkedIn",
-                                "icon": "linkedin"
-                            },
-                            {
-                                "name": "Pinterest",
-                                "icon": "pinterest"
-                            },
-                            {
-                                "name": "Twitter",
-                                "icon": "twitter"
-                            },
-                            {
-                                "name": "YouTube",
-                                "icon": "youtube"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "Header",
-                "description": "Content for the header that is used on all pages",
-                "fields": [
-                    {
-                        "name": "enableStickyHeader",
-                        "label": "Enable 'sticky' Header",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "headerShowSocial",
-                        "label": "Show Social",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "headerShowPhone",
-                        "label": "Show Phone Number",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "headerShowAddress",
-                        "label": "Show Address",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "headerShowPrimaryButton",
-                        "label": "Show Primary Button",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "headerPrimaryButtonText",
-                        "label": "Primary Button Text",
-                        "type": "text",
-                        "default": "Donate"
-                    },
-                    {
-                        "name": "headerPrimaryButtonUrl",
-                        "label": "Primary Button URL",
-                        "type": "url"
-                    },
-                    {
-                        "name": "headerShowSecondaryButton",
-                        "label": "Show Secondary Button",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "headerSecondaryButtonText",
-                        "label": "Secondary Button Text",
-                        "type": "text",
-                        "default": "Subscribe"
-                    },
-                    {
-                        "name": "headerSecondaryButtonUrl",
-                        "label": "Secondary Button URL",
-                        "type": "url"
-                    },
-                    {
-                        "name": "headerLogo",
-                        "label": "Logo",
-                        "type": "image",
-                        "path": "images",
-                        "default": "/theme/custom/images/logo.svg"
-                    },
-                    {
-                        "name": "headerLogoSize",
-                        "label": "Header Logo Size",
-                        "type": "radio",
-                        "options": {
-                            "auto": "Auto",
-                            "full": "Full Width",
-                            "1of3": "1/3 Width",
-                            "1of2": "1/2 Width",
-                            "2of3": "2/3 Width",
-                            "3of4": "3/4 Width"
-                        },
-                        "default": "auto",
-                        "description": "How much of the width of the header that the logo fills"
-                    }
-                ]
-            },
-            {
-                "name": "Footer",
-                "description": "Content for the footer that is used on all pages",
-                "fields": [
-                    {
-                        "name": "footerShowSocial",
-                        "label": "Show Social",
-                        "type": "radio",
-                        "options": {
-                            "yes": "Yes",
-                            "no": "No"
-                        },
-                        "default": "yes"
-                    },
-                    {
-                        "name": "footerLogo",
-                        "label": "Logo",
-                        "type": "image",
-                        "path": "images",
-                        "default": "/theme/custom/images/logo.svg"
-                    },
-                    {
-                        "name": "footerLogoSize",
-                        "label": "Footer Logo Size",
-                        "type": "radio",
-                        "options": {
-                            "auto": "Auto",
-                            "full": "Full Width",
-                            "1of3": "1/3 Width",
-                            "1of2": "1/2 Width",
-                            "2of3": "2/3 Width",
-                            "3of4": "3/4 Width"
-                        },
-                        "default": "auto",
-                        "description": "How much of the width of the footer that the logo fills"
-                    }
-                ]
-            }
-        ]
-    },
     "contentBuilder": {
         "groups": {
             "_bd-simple-content-elements": {
@@ -1812,9 +1597,7 @@
             "name": "Two Column",
             "default": true,
             "adminBar": true,
-            "contentAreas": [
-                "banner"
-            ]
+            "contentAreas": ["banner"]
         },
         {
             "key": "one-column",
@@ -1827,9 +1610,7 @@
             "name": "One Column Full Width Header",
             "default": false,
             "adminBar": true,
-            "contentAreas": [
-                "banner"
-            ]
+            "contentAreas": ["banner"]
         },
         {
             "key": "one-column2",
@@ -3903,9 +3684,7 @@
             "availableOnSnippets": true,
             "availableOnContentAreas": "specific",
             "parseOnRequest": true,
-            "contentAreas": [
-                "banner"
-            ],
+            "contentAreas": ["banner"],
             "fields": [
                 {
                     "key": "spacingAfterHeader",
@@ -4242,9 +4021,7 @@
             "availableOnSnippets": true,
             "availableOnContentAreas": "specific",
             "parseOnRequest": true,
-            "contentAreas": [
-                "banner"
-            ],
+            "contentAreas": ["banner"],
             "fields": [
                 {
                     "key": "headingText",

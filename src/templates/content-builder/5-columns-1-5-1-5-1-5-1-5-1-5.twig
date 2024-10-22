@@ -1,6 +1,6 @@
-<div class="Grid Grid--withGutterLg">
+<div class="grid g-4">
     {% for column in columns %}
-        <div class="Grid-cell u-size1of5 u-md-sizeFull u-md-margBottom2">
+        <div class="col-1-1 col-md-1-5">
             {% for element in column.elements %}
                 {{ element.content }}
             {% endfor %}

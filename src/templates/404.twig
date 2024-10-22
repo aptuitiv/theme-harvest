@@ -1,0 +1,14 @@
+{% include 'snippets/header' %}
+
+{% set title = "Page Not Found" %}
+{% include("content-layouts/banner") %}
+
+<div class="py-3">
+    <main>
+        <div class="Container Container--pad">
+            {% block main _page.content() %}
+        </div>
+    </main>
+</div>
+
+{% include 'snippets/footer' %}

@@ -1,0 +1,42 @@
+/* =========================================================================== *\
+    Column Lists
+    Convert a ul/ol into columns
+\* =========================================================================== */
+
+/* @define ColumnList */
+
+.ColumnList-twoColumn,
+.ColumnList-threeColumn,
+.ColumnList-fourColumn {
+    column-count: 1;
+    column-gap: var(--ColumnList-list-gap, 50px);
+    list-style: var(--ColumnList-list-style, none);
+    padding: var(--ColumnList-padding);
+}
+
+.ColumnList-twoColumnAlways {
+    column-count: 2;
+    column-gap: var(--ColumnList-list-gap, 50px);
+    list-style: var(--ColumnList-list-style, none);
+    padding: var(--ColumnList-padding);
+}
+
+@media (--m-sm) {
+    .ColumnList-twoColumn {
+        column-count: 2;
+    }
+
+    .ColumnList-threeColumn {
+        column-count: 3;
+    }
+
+    .ColumnList-fourColumn {
+        column-count: 2;
+    }
+}
+
+@media (--m-md) {
+    .ColumnList-fourColumn {
+        column-count: 4;
+    }
+}

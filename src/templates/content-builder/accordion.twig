@@ -1,0 +1,13 @@
+{% if items|length > 0 %}
+    <div class="Container Container--pad">
+        {% for item in items %}
+            <div class="Accordion js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}">
+                <div class="Accordion-heading js-accordionHeading">
+                    <span class="Accordion-title">{{ item.heading }}</span>
+                    <span class="Accordion-icon"></span>
+                </div>
+                <div class="Accordion-content clearfix last-child-sb-0 js-accordionContent">{{ item.content }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

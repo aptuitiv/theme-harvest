@@ -1,7 +1,7 @@
 {% if caption and image.alt|length == 0 %}
     {% set image.alt = caption %}
 {% endif %}
-{% set image.class = 'u-sizeFull' %}
+{% set image.class = 'w-1-1' %}
 <div class="ImageWrapper">
     {{ image.tag }}
     {% if caption %}

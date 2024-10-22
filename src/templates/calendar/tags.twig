@@ -1,0 +1,15 @@
+
+{% extends "one-column.twig" %}
+
+{% block main %}
+    <h1>Calendar Tags</h1>
+    {% if tagCount > 0 %}
+        <ul>
+            {% for tag in tags %}
+                <li><a href="{{ tag.url }}">{{ tag.tagName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% do _page.addCss('calendar.css') %}

@@ -42,7 +42,6 @@
 .ContentGrid-title {
     color: var(--theme-content-grid-title-color);
     font-family: var(--theme-typography-heading-fontFamily);
-    font-size: var(--base-typography-h3-fontSize);
     font-size: var(--base-typography-h3-lineHeight);
 }
 

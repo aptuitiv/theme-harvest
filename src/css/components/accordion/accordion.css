@@ -1,0 +1,95 @@
+/* =========================================================================== *\
+    Accordion
+\* =========================================================================== */
+
+/* @define Accordion */
+.Accordion {
+    page-break-inside: avoid;
+}
+
+.Accordion:last-child {
+    border: none;
+}
+
+.Accordion-heading {
+    align-items: center;
+    background: var(--Accordion-heading-background);
+    border-bottom: var(--Accordion-heading-bottom-border-size) solid var(--Accordion-heading-bottom-border-color);
+    border-radius: var(--Accordion-heading-borderRadius);
+    color: var(--Accordion-heading-typography-color);
+    column-gap: var(--Accordion-heading-space);
+    cursor: pointer;
+    display: flex;
+    font-family: var(--Accordion-heading-typography-font-family);
+    font-size: var(--Accordion-heading-typography-font-size);
+    font-style: var(--Accordion-heading-typography-font-style);
+    font-weight: var(--Accordion-heading-typography-font-weight);
+    justify-content: var(--Accordion-heading-justifyContent);
+    letter-spacing: var(--Accordion-heading-typography-letter-spacing);
+    line-height: var(--Accordion-heading-typography-line-height);
+    margin: var(--Accordion-heading-margin);
+    padding: var(--Accordion-heading-padding);
+    text-align: var(--Accordion-heading-typography-text-align);
+    text-decoration: var(--Accordion-heading-typography-text-decoration);
+    text-transform: var(--Accordion-heading-typography-text-transform);
+    transition: 0.1s;
+}
+
+.Accordion-icon {
+    display: inline-block;
+    height: var(--Accordion-icon-size);
+    position: relative;
+    transition: 0.3s;
+    vertical-align: middle;
+    width: var(--Accordion-icon-size);
+}
+
+.Accordion-icon::after,
+.Accordion-icon::before {
+    background: currentcolor;
+    content: '';
+    height: 3px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    transition: all 0.35s ease-in-out;
+    width: var(--Accordion-icon-size);
+}
+
+.Accordion-icon::before {
+    transform: translateY(-50%) translateX(-50%) rotate(90deg);
+}
+
+.Accordion-content {
+    height: auto;
+    overflow: hidden;
+    padding: var(--Accordion-content-padding);
+    transition: all 0.25s ease-in-out;
+}
+
+/**
+ * States
+ */
+
+.Accordion[data-collapsed='initial'] .Accordion-content {
+    height: 0;
+    padding: 0;
+}
+
+.Accordion[data-collapsed='yes'] .Accordion-content {
+    opacity: 0;
+    padding: 0;
+}
+
+.Accordion[data-collapsed='no'] .Accordion-content {
+    opacity: 1;
+}
+
+.Accordion[data-collapsed='no'] .Accordion-icon {
+    transform: rotate(360deg);
+}
+
+.Accordion[data-collapsed='no'] .Accordion-icon::before {
+    transform: translateY(-50%) translateX(-50%) rotate(0deg);
+}

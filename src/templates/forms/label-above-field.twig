@@ -7,9 +7,9 @@
     {{ macros.formErrorContainer(form) }}
     {{ macros.buildLabelAboveFieldFields(form) }}
     {{ macros.captcha(form) }}
-    
-    <p class="u-margBottom1"><em>* Required Fields</em></p>
-    <p><button type="submit" class="Button Button--lg">{{ form.submitButtonText }}</button></p>
+
+    {{ macros.requiredMessage() }}
+    {{ macros.formButton(form.submitButtonText) }}
 {{ form.closeTag }}
 
-{{ macros.formValidateHandlerJs(form, errorContainerId) }}
+{{ macros.formValidateHandlerJs(form) }}

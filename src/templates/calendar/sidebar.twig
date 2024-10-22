@@ -1,0 +1,76 @@
+
+{% import 'macros/macros' as macros %}
+
+<div class="h3 flex align-center justify-center">
+    {% if miniGrid.previousDateUrl %}
+        <a href="{{ miniGrid.previousDateUrl }}" class="flex align-center" title="Go to the previous date range">{{ macros.iconImg('caret-left', 'Go to the previous month') }}</a>
+    {% endif %}
+    {% set month = dateRanges.month|first %}
+    <a href="{{ month.url }}" class="link-subtle">
+        {{ miniGrid.month }}
+        {{ miniGrid.year }}
+    </a>
+    {% if miniGrid.nextDateUrl %}
+        <a href="{{ miniGrid.nextDateUrl }}" class="flex align-center" title="Go to the next date range">{{ macros.iconImg('caret-right', 'Go to the next month') }}</a>
+    {% endif %}
+</div>
+
+<table class="CalendarMiniGrid">
+    <thead class="CalendarMiniGrid-head">
+        <tr>
+            <th class="CalendarMiniGrid-headCell">S</th>
+            <th class="CalendarMiniGrid-headCell">M</th>
+            <th class="CalendarMiniGrid-headCell">T</th>
+            <th class="CalendarMiniGrid-headCell">W</th>
+            <th class="CalendarMiniGrid-headCell">T</th>
+            <th class="CalendarMiniGrid-headCell">F</th>
+            <th class="CalendarMiniGrid-headCell">S</th>
+        </tr>
+    </thead>
+    <tbody class="CalendarMiniGrid-body">
+    {% for row in miniGrid.rows %}
+        <tr>
+        {% for box in row.boxes %}
+            {% set class = 'CalendarMini' %}
+            {% if box.isWeekend == true && box.isThisMonth == true %}
+                {% set class = class ~ ' ' ~ 'CalendarMini--isEnd' %}
+            {% endif %}
+            {% if box.isToday %}
+                {% set class = class ~ ' ' ~ 'CalendarMini--isToday' %}
+            {% endif %}
+            {% if box.isThisMonth == false %}
+                {% set class = class ~ ' ' ~ 'CalendarMini--isEmpty' %}
+            {% endif %}
+            <td class="{{ class|trim }}">
+            {% if box.isThisMonth %}
+                {% if box.eventCount > 0 %}
+                    <a href="{{ box.dayUrl }}" class="CalendarMiniGrid-dateLink{% if box.isToday %} CalendarMiniGrid-dateLink--isToday{% endif %}{% if box.isCurrentDay %} CalendarMiniGrid-dateLink--isCurrentDay{% endif %}">{{ box.dayShort }}</a>
+                {% else %}
+                    {{ box.dayShort }}
+                {% endif %}
+            {% endif %}
+            </td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<div class="py-2">
+    <div class="h3 flex align-center g-1">{{ macros.iconImg('calendar', 'Change date') }} Change Date</div>
+    <div class="pt-1">
+        <form action="{{ dateNavigation.form.action }}" method="{{ dateNavigation.form.method }}">
+            <div class="flex align-center g-1">
+                {% set dateNavigation.form.fields.month.class = "SelectInput" %}
+                {{ dateNavigation.form.fields.month.tag }}
+                {% set dateNavigation.form.fields.year.class = "SelectInput" %}
+                {{ dateNavigation.form.fields.year.tag }}
+                {{ dateNavigation.form.fields.view.tag }}
+                <button type="submit" class="Button">Go</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{ _api.calendar.searchForm.template('sidebar-search.twig') }}

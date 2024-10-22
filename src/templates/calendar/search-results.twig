@@ -1,0 +1,49 @@
+
+{% extends "one-column.twig" %}
+
+{% block main %}
+    <div class="Container Container--narrow">
+        <h1>Search Results</h1>
+        {{ events|debug}}
+        {% if pagination.totalItemCount > 0 %}
+            {# SHOW THE TOTAL NUMBER OF RESULTS #}
+            <p>{{ pagination.firstItemNumber }} - {{ pagination.lastItemNumber }} of {{ pagination.totalItemCount }}
+                {% if pagination.totalItemCount > 1 %}
+                    results
+                {% else %}
+                    result
+                {% endif %}
+                for "{{ searchTerm }}".
+            </p>
+
+            {# SHOW THE SEARCH RESULTS #}
+            {% for event in events %}
+                <p>
+                    <a href="{{ event.url }}">{{ event.title }}</a><br>
+                    {{ event.publishDate }}<br />
+                    {% if event.description %}
+                        {{ event.description }}
+                    {% endif %}
+                </p>
+            {% endfor %}
+
+            {# PAGINATION #}
+            {% include 'snippets/pagination' %}
+        {% else %}
+            {# NO MATCHING RESULTS #}
+            <p>There were no events for "{{ searchTerm }}".</p>
+        {% endif %}
+
+        {# SHOW THE SEARCH FORM TO SEARCH AGAIN #}
+        <h2>Search Again</h2>
+        {{ form.openTag }}
+            {% set form.fields.term.class = 'TextInput' %}
+            {% set form.fields.term.placeholder = 'Search...' %}
+            <label for="{{ form.fields.term.id }}" class="visually-hidden">Search</label>
+            {{ form.fields.term.tag }}
+            <button type="submit" class="Button">Search</button>
+        {{ form.closeTag }}
+    </div>
+{% endblock %}
+
+{% do _page.addCss('calendar.css') %}

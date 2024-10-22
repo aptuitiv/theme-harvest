@@ -1,0 +1,104 @@
+/* =========================================================================== *\
+    Banner
+\* =========================================================================== */
+
+/* @define BannerSlider */
+
+/* postcss-bem-linter: ignore */
+.BannerSlider .Banner {
+    padding-bottom: 30px; /* Do this to allow space for the dot pagination */
+    position: static; /* Do this to allow the background image to fill the slide when the slides are not all the same height */
+}
+
+/* ------------------------------------ *\
+    Splide
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.BannerSlider .splide__track {
+    height: 100%;
+}
+
+/* postcss-bem-linter: ignore */
+.BannerSlider .splide__pagination {
+    justify-content: var(--Banner-slider-dot-pagination-position, center);
+    padding: var(--Banner-slider-dot-pagination-padding, 0);
+}
+
+/* postcss-bem-linter: ignore */
+.BannerSlider .splide__pagination__page {
+    background-color: var(--Banner-slider-dot-pagination-color, #fff);
+    height: 17px;
+    opacity: 1;
+    transition: 250ms;
+    width: 17px;
+}
+
+/* postcss-bem-linter: ignore */
+.BannerSlider .splide__pagination__page.is-active,
+.BannerSlider .splide__pagination__page:hover {
+    background-color: var(--Banner-slider-dot-pagination-color-active, #bbb);
+    opacity: 1;
+    transform: none;
+}
+
+/* ------------------------------------ *\
+    Text pagination
+\* ------------------------------------ */
+
+.BannerSlider-pagination {
+    display: none;
+    flex-direction: row;
+    gap: var(--Banner-slider-text-pagination-gap, 10px);
+    justify-content: center;
+    list-style: none;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.BannerSlider-paginationButton {
+    background: var(--Banner-slider-text-background, transparent);
+    border: none;
+    border-bottom: var(--Banner-slider-text-pagination-bottom-border-size, 0) solid
+        var(--Banner-slider-text-border-color);
+    border-radius: var(--Banner-slider-text-border-radius);
+    color: var(--Banner-slider-text-pagination-color);
+    cursor: pointer;
+    display: inline-block;
+    font-family: var(--Banner-slider-text-pagination-font-family);
+    font-size: var(--Banner-slider-text-pagination-font-size);
+    font-style: var(--Banner-slider-text-pagination-font-style);
+    font-weight: var(--Banner-slider-text-pagination-font-weight);
+    letter-spacing: var(--Banner-slider-text-pagination-letter-spacing);
+    line-height: var(--Banner-slider-text-pagination-line-height);
+    margin: 0;
+    padding: var(--Banner-slider-text-pagination-padding);
+    text-align: center;
+    text-decoration: var(--Banner-slider-text-pagination-text-decoration);
+    text-transform: var(--Banner-slider-text-pagination-text-transform);
+    user-select: none; /* 2 */
+    width: var(--Banner-slider-text-pagination-item-width, auto);
+}
+
+.BannerSlider-paginationButton:hover,
+.BannerSlider-paginationButton.is-active {
+    background: var(--Banner-slider-text-background-hover, transparent);
+    border-color: var(--Banner-slider-text-border-color-hover, var(--Banner-slider-text-border-color));
+    color: var(--Banner-slider-text-pagination-color-hover, var(--Banner-slider-text-pagination-color));
+    font-style: var(--Banner-slider-text-pagination-font-style-hover, var(--Banner-slider-text-pagination-font-style));
+    text-decoration: var(
+        --Banner-slider-text-pagination-text-decoration-hover,
+        var(--Banner-slider-text-pagination-text-decoration)
+    );
+}
+
+@media (--m-md) {
+    /* postcss-bem-linter: ignore */
+    .BannerSlider .Banner {
+        padding-bottom: 0;
+    }
+
+    .BannerSlider-pagination {
+        display: flex;
+    }
+}

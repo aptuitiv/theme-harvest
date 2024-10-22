@@ -2,85 +2,45 @@
     Footer Navigation
 \* =========================================================================== */
 
-
-
-/** @define FooterNav */
-
-:root {
-    --FooterNav-fontSize: .9em;
-    --FooterNav-lineHeight: 1;
-    --FooterNav-link-color: var(--theme-footer-nav-color);
-    --FooterNav-link-colorHover: var(--theme-footer-nav-color-hover);
-}
-
-/**
- * Base menu
- */
-
+/* @define FooterNav */
 .FooterNav {
-    box-sizing: border-box;
-    display: inline-block;
-    font-family: var(--theme-footer-nav-font);
-    font-size: var(--FooterNav-fontSize);
-    line-height: var(--FooterNav-lineHeight);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
     list-style: none;
-    margin: 30px 0;
-    padding: 0;
-    text-transform: uppercase;
+    margin-bottom: 0;
+    padding-left: 0;
 }
-
-/**
- * Items
- */
-
-.FooterNav-item {
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0 20px;
-}
-
-.FooterNav-item:first-child {
-    margin-left: 0;
-}
-
-/**
- * Links
- */
 
 .FooterNav-link {
-    box-sizing: border-box;
-    color: var(--FooterNav-link-color);
-    display: block;
-    text-decoration: none;
+    color: var(--FooterNav-color);
 }
 
-.FooterNav-link:hover {
-    color: var(--FooterNav-link-colorHover);
-    text-decoration: underline;
-}
-
-@media (--c-bp-lg) {
+@media (--m-md) {
     .FooterNav {
-        column-count: 3;
-        column-gap: 50px;
-        display: block;
-        margin-bottom: 20px;
+        flex-direction: row;
+        gap: 20px;
     }
 
-    .FooterNav-item {
-        display: block;
-        padding: 8px 0;
+    .FooterNav-link {
+        line-height: 1;
+        position: relative;
     }
-}
 
-@media (--c-bp-sm) {
-    .FooterNav {
-        column-count: 2;
+    .FooterNav-link::after {
+        background: var(--FooterNav-color);
+        content: '';
+        height: 25%;
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
     }
-}
 
-@media (--c-bp-xs) {
-    .FooterNav {
-        column-count: 1;
+    .FooterNav-item:last-child .FooterNav-link::after {
+        display: none;
     }
 }

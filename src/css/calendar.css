@@ -1,11 +1,5 @@
 /**
- * Component styles
+ * Calendar app CSS
  */
 
-@import './components/calendar';
-
-/**
- * Theme configuration
- */
-
-@import './theme';
+@import './apps/calendar';

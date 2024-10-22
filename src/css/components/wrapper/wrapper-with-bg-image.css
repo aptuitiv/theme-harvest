@@ -1,0 +1,69 @@
+/* ===========================================================================
+    Wrapper block around content that has a background image
+=========================================================================== */
+
+/* @define WrapperWithBgImage */
+
+.WrapperWithBgImage {
+    margin: var(--Wrapper-wbgimage-margin);
+    padding: var(--Wrapper-wbgimage-padding);
+    position: relative;
+}
+
+.WrapperWithBgImage--marginTopNone {
+    margin-top: 0;
+}
+
+.WrapperWithBgImage--noPad {
+    padding: 0;
+}
+
+.WrapperWithBgImage-bg {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.WrapperWithBgImage-fg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+/* Adjust the z-indexes if the image is above the background */
+.WrapperWithBgImage--above .WrapperWithBgImage-bg {
+    z-index: 2;
+}
+
+.WrapperWithBgImage--above .WrapperWithBgImage-fg {
+    z-index: 1;
+}
+
+.WrapperWithBgImage-fg--bgGray {
+    background-color: var(--Wrapper-wbgimage-background-grey);
+}
+
+.WrapperWithBgImage-fg--bgDark {
+    background-color: var(--Wrapper-wbgimage-background-dark);
+    color: #fff;
+}
+
+.WrapperWithBgImage-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage--bgDark *:not(.Button, input, select, textarea) {
+    color: var(--Wrapper-wbgimage-background-dark-color, #fff);
+    text-shadow: var(--Wrapper-wbgimage-background-dark-text-shadow);
+}

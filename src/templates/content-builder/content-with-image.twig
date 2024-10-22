@@ -1,0 +1,14 @@
+<div class="Container Container--pad">
+    <div class="clearfix">
+        {% if image %}
+            {% if imagePosition == 'Left of content' %}
+                {% set image.class = 'image-left' %}
+            {% elseif imagePosition == 'Right of content' %}
+                {% set image.class = 'image-right' %}
+            {% endif %}
+            {% do image.addSrcSet('500w').resize({w: 500}) %}
+            {{ image.tag }}
+        {% endif %}
+    {{ content }}
+    </div>
+</div>

@@ -23,7 +23,7 @@ export default {
         }
     ],
     css: {
-        buildFiles: 'main.css'
+        buildFiles: '*.css'
     },
     eslint: {
         ignores: ['fslightbox.js']
@@ -33,9 +33,14 @@ export default {
             {
                 build: 'main.js',
                 nodeModules: [
-                    'jquery/dist/jquery.js'
-                ],                src: [
+                    'micromodal/dist/micromodal.min.js'
+                ],
+                src: [
+                    'script-loader.js',
+                    'iframe-loader.js',
+                    'notifications.js',
                     'navigation.js',
+                    'accordion.js',
                     'main.js'
                 ]
             },
@@ -46,8 +51,6 @@ export default {
                 ]
             }
         ],
-        files: [
-            'forms.js'
-        ]
+        files: []
     }
 };

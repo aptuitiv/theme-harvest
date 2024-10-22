@@ -2,21 +2,13 @@
     Footer
 \* =========================================================================== */
 
-
 /* @define Footer */
 
 .Footer {
-    background: var(--theme-footer-bg);
-    color: var(--theme-footer-color);
-    font-size: 1.6rem;
-    padding: 2rem var(--g-gutter);
+    color: var(--Footer-color);
+    margin: var(--Footer-sm-margin, 0);
+    padding: var(--Footer-sm-padding, 0);
     text-align: center;
-}
-
-@media (--c-bp-sm) {
-    .Footer {
-        padding: 1rem var(--g-gutter-sm);
-    }
 }
 
 .Footer-link {
@@ -54,16 +46,14 @@
 
 .Footer-copyright {
     color: var(--theme-footer-nav-color);
-    font-size: .9em;
+    font-size: 0.9em;
 }
 
 .Footer-credit {
-    border-left: 1px solid #666;
     color: var(--theme-footer-nav-color);
-    display: inline-block;
-    font-size: .9em;
-    line-height: 1;
-    padding: 0 1rem;
+    font-size: 0.9em;
+    line-height: 1.5;
+    padding: 0;
     text-decoration: none;
 }
 
@@ -78,11 +68,22 @@
     border-left: none;
 }
 
-@media (max-width: 750px) {
+/* ------------------------------------ *\
+    Responsive
+\* ------------------------------------ */
+
+@media (--m-md) {
     .Footer-credit {
-        border-left: none;
-        display: block;
-        line-height: 1.5;
-        padding: 0;
+        border-left: 1px solid #666;
+        display: inline-block;
+        line-height: 1;
+        padding: 0 1rem;
+    }
+}
+
+@media (--m-lg) {
+    .Footer {
+        margin: var(--Footer-margin, 0);
+        padding: var(--Footer-padding, 20px 0);
     }
 }

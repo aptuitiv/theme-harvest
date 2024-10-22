@@ -1,0 +1,29 @@
+{# Build the smaller banner with a single image or video #}
+{% import 'macros/banner' as bannerMacros %}
+
+{% if image or video or content %}
+    <div class="Banner{% if not image && not video %} Banner--noMedia{% endif %}" role="group" aria-label="Banner">
+        {% if image %}
+            {{ bannerMacros.bannerImage(
+                image,
+                imageCrop,
+                _core.theme.settings.bannerBarImageSizes,
+                _core.theme.settings.bannerBarMinImageRatio,
+                _core.theme.settings.bannerBarImageRatio,
+                _core.theme.settings.bannerImageCropStrategy,
+                _core.theme.settings.bannerBarImageCropOrientation,
+                content|length > 0,
+                true
+            ) }}
+        {% elseif video %}
+            {{ bannerMacros.bannerVideo(video, core.theme.settings.bannerBarImageSizes, true) }}
+        {% endif %}
+
+        {% if content %}
+            <div class="Banner-fg"></div>
+            <div class="Banner-content">
+                <div class="Banner-contentInner first-child-st-0 last-child-sb-0">{{ content }}</div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

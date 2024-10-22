@@ -1,0 +1,36 @@
+{% set uniqueClass = 'WrapperWithBgImage--' ~random_string() %}
+<div class="WrapperWithBgImage WrapperWithBgImage--bg{{ background|pascal}} WrapperWithBgImage--{{ _core.theme.settings.blockWrapperWBgImageDisplay }} WrapperWithBgImage--marginTop{{ topMargin|pascal }}">
+    <div class="WrapperWithBgImage-bg {{ uniqueClass }}"></div>
+    <div class="WrapperWithBgImage-fg WrapperWithBgImage-fg--bg{{ background|pascal}}"></div>
+    <div class="WrapperWithBgImage-content Container {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+        {% for element in content.elements %}
+            {{ element.content }}
+        {% endfor %}
+    </div>
+</div>
+
+{# Output the image size css if the image has not been output yet #}
+{% if backgroundImage %}
+    {% set css = [] %}
+    {% if _core.theme.settings.blockWrapperWBgImageWidths %}
+        {% set _core.theme.settings.blockWrapperWBgImageWidths = _core.theme.settings.blockWrapperWBgImageWidths|sort %}
+        {% for width in _core.theme.settings.blockWrapperWBgImageWidths %}
+            {% set css = css|merge([{
+                width: loop.first ? 1 : width.size.size,
+                image: backgroundImage.resize(width.size.size).src
+            }]) %}
+        {% endfor %}
+    {% else %}
+        {% set css = css|merge([{
+            width: 1,
+            image: background.image.src
+        }]) %}
+    {% endif %}
+    {% inlinecss %}
+        {% for cssOption in css %}
+         @media (min-width: {{ cssOption.width }}px) {
+            .{{ uniqueClass}} {background-image: url({{ cssOption.image }}); }
+        }
+        {% endfor %}
+    {% endinlinecss %}
+{% endif %}

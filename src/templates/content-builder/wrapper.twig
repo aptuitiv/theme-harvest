@@ -1,0 +1,7 @@
+<div class="Wrapper Wrapper--bg{{ background|pascal}}{% if topMargin == 'none' %} mt-0{% endif %}">
+    <div class="Container {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+        {% for element in content.elements %}
+            {{ element.content }}
+        {% endfor %}
+    </div>
+</div>

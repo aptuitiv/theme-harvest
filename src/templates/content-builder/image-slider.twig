@@ -1,132 +1,50 @@
 {% import 'macros/macros' as macros %}
 
 {% if slides %}
-    {% macro slideImage(slide) %}
-        {% if slide.image %}
-            {% set slide.image.class = 'ImageSlider-image' %}
-            {% set slide.image.alt = slide.title ?: 'Slider Image' %}
-            {% if slide.link %}
-                <a href="{{ slide.link }}" class="ImageSlider-imageWrap">{{ slide.image.tag }}</a>
-            {% else %}
-                <div class="ImageSlider-imageWrap">{{ slide.image.tag }}</div>
-            {% endif %}
-        {% endif %}
-    {% endmacro %}
-
-    {% macro slideContent(slide, titleClass, contentClass) %}
-        {% if slide.title %}
-            {% if slide.link %}
-                <a href="{{ slide.link }}" class="ImageSlider-title ImageSlider-link {{ titleClass }}">{{ slide.title }}</a>
-            {% else %}
-                <div class="ImageSlider-title {{ titleClass }}">{{ slide.title }}</div>
-            {% endif %}
-        {% endif %}
-        {% if slide.content %}
-            <div class="ImageSlider-content {{ contentClass }}">{{ slide.content }}</div>
-        {% endif %}
-    {% endmacro %}
-
-    {% import _self as slide_macros %}
-
-    {% set class = 'js-imageSlider' ~ random_string(8)|upper %}
-    {% set slideGridClass = class ~ 'Grid' %}
-    {% set numSlides = 4 %}
-    {% set mdNumSlides = 3 %}
-    {% set smNumSlides = 2 %}
-    <div class="splide ImageSlider {{ class }}" role="group" aria-label="Image Slider">
-        <div class="splide__track">
-            <ul class="splide__list">
-                {% for slide in slides %}
-                    {% set slideClass = '' %}
-                    {% if displayContent == 'Over Image' %}
-                        {% set slideClass = slideClass ~ ' ImageSlider-cover' %}
-                    {% elseif displayContent == 'Behind Image' %}
-                        {% set slideClass = slideClass ~ ' ImageSlider-hover' %}
-                    {% endif %}
-                    
-                    <li class="splide__slide ImageSlider-slide{{ slideClass }}">
-                        {% if displayContent == 'Below Image' %}
-                            {% set numSlides = 3 %}
-                            {% set mdNumSlides = 2 %}
-                            {% set smNumSlides = 2 %}
-                            {{ slide_macros.slideImage(slide) }}
-                            <div class="ImageSlider-contentWrap">
-                                {{ slide_macros.slideContent(slide) }}
-                            </div>
-                        {% elseif displayContent == 'Right of Image' %}
-                            {% set numSlides = 2 %}
-                            {% set mdNumSlides = 1 %}
-                            {% set smNumSlides = 1 %}
-                            <div class="Grid Grid--equalHeight ImageSlider-grid {{ slideGridClass }}">
-                                <div class="Grid-cell u-size1of2 u-sm-sizeFull  u-flexCol">{{ slide_macros.slideImage(slide) }}</div>
-                                <div class="Grid-cell u-size1of2 u-sm-sizeFull ImageSlider-gridContent">
-                                    {{ slide_macros.slideContent(slide) }}
-                                </div>
-                            </div>
-                        {% elseif displayContent == 'Left of Image' %}
-                            {% set numSlides = 2 %}
-                            {% set mdNumSlides = 1 %}
-                            {% set smNumSlides = 1 %}
-                            <div class="Grid Grid--equalHeight ImageSlider-grid {{ slideGridClass }}">
-                                <div class="Grid-cell u-size1of2 u-sm-sizeFull ImageSlider-gridContent">
-                                    {{ slide_macros.slideContent(slide) }}
-                                </div>
-                                <div class="Grid-cell u-size1of2 u-sm-sizeFull u-flexCol">{{ slide_macros.slideImage(slide) }}</div>
-                            </div>
-                        {% elseif displayContent == 'Over Image' %}
-                            {% if slide.link %}
-                                {% set link = slide.link %}
-                                {% set slide.link = null %}
-                            {% endif %}
-                            {% set numSlides = 3 %}
-                            {% set mdNumSlides = 2 %}
-                            {% set smNumSlides = 2 %}
-                            {{ slide_macros.slideImage(slide) }}
-                            {% if link %}
-                                <a href="{{ link }}" class="ImageSlider-coverContent ImageSlider-coverLink">
-                                    <div class="ImageSlider-coverContentInner">
-                                        {{ slide_macros.slideContent(slide, 'ImageSlider-coverContentHeading', 'ImageSlider-coverContentWrap') }}
-                                    </div>
-                                </a>
-                            {% else %}
-                                <div class="ImageSlider-coverContent">
-                                    <div class="ImageSlider-coverContentInner">
-                                        {{ slide_macros.slideContent(slide, 'ImageSlider-coverContentHeading', 'ImageSlider-coverContentWrap') }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% elseif displayContent == 'Behind Image' %}
-                            {% if slide.link %}
-                                {% set link = slide.link %}
-                                {% set slide.link = null %}
-                            {% endif %}
-                            {% set numSlides = 3 %}
-                            {% set mdNumSlides = 2 %}
-                            {% set smNumSlides = 2 %}
-                            {{ slide_macros.slideImage(slide) }}
-                            {% if link %}
-                                <a href="{{ link }}" class="ImageSlider-hoverContent ImageSlider-hoverLink">
-                                    <div class="ImageSlider-hoverContentInner">
-                                        {{ slide_macros.slideContent(slide, 'ImageSlider-hoverContentHeading', 'ImageSlider-hoverContentWrap') }}
-                                    </div>
-                                </a>
-                            {% else %}
-                                <div class="ImageSlider-hoverContent">
-                                    <div class="ImageSlider-hoverContentInner">
-                                        {{ slide_macros.slideContent(slide, 'ImageSlider-hoverContentHeading', 'ImageSlider-c\hoverContentWrap') }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% else %}
-                            {{ slide_macros.slideImage(slide) }}
+    <div class="Container Container--pad">
+        {% set class = 'js-imageSlider--' ~ random_string() %}
+        <div class="Slider splide {{ class }}" role="group" aria-label="Image Slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for slide in slides %}
+                        {% if slide.image %}
+                            <li class="splide__slide">
+                                {% set content %}
+                                    {% set lgImage = clone(slide.image) %}
+                                    {% do lgImage.resize(1200, 1000) %}
+                                    {% set slide.image.class = 'w-100' %}
+                                    {% if aspectRatio != 'None' %}
+                                        {% set width = 1500 %}
+                                        {% if slidesPerPage|int > 1 %}
+                                            {% set width = width / slidesPerPage|int %}
+                                        {% endif %}
+                                        {% do slide.image.crop({ ar: aspectRatio|replace(':', 'x'), w: width, crop: slide.cropPosition ?? 'center' }) %}
+                                    {% endif %}
+                                    {% do slide.image.alt|default(slide.title) %}
+                                    {% do slide.image.lazy() %}
+                                    {% if slide.link %}
+                                        {{ slide.image.tag }}
+                                    {% else %}
+                                        <a href="{{ lgImage.src }}" data-fslightbox data-type="image" data-caption="{{ slide.title }}">{{ slide.image.tag }}</a>
+                                    {% endif %}
+                                    {% if slide.title %}
+                                        <div class="Slider-content">{{ slide.title }}</div>
+                                    {% endif %}
+                                {% endset %}
+                                {% if slide.link %}
+                                    <a href="{{ slide.link }}" class="Slider-wrapper">{{ content }}</a>
+                                {% else %}
+                                    <div class="Slider-wrapper">{{ content }}</div>
+                                {% endif %}
+                            </li>
                         {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
-    
     {{ macros.loadSplide() }}
+    {{ macros.loadLightbox()}}
     {% inlinejs %}
         loadjs.ready('splide', {
             success: function() {
@@ -135,18 +53,20 @@
                     rewind      : true,
                     perMove     : 1,
                     gap         : '10px',
-                    padding     : { left: 36, right: 36 },
                     autoplay    : {{ autoPlaySlides ? 'true' : 'false' }},
                     interval    : {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
-                    perPage     : {{ numSlides }},
-                    breakpoints : {
-                        900: {
-                            perPage: {{ mdNumSlides }}
+                    perPage     : {{ slidesPerPage }},
+                    breakpoints: {
+                        1280: {
+                            perPage: {{ slidesPerPage|int < 4 ? slidesPerPage : 4 }}
                         },
-                        700: {
-                            perPage: {{ smNumSlides }}
+                        1024: {
+                            perPage: {{ slidesPerPage|int < 3 ? slidesPerPage : 3 }}
                         },
-                        450: {
+                        768: {
+                            perPage: {{ slidesPerPage|int < 2 ? slidesPerPage : 2 }}
+                        },
+                        576: {
                             perPage: 1
                         }
                     }
