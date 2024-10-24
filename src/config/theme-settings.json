@@ -187,14 +187,8 @@
                     ]
                 },
                 {
-                    "name": "Information",
+                    "name": "Address and phone",
                     "fields": [
-                        {
-                            "name": "headerShowSocial",
-                            "label": "Show social",
-                            "type": "switch",
-                            "defaultValue": "yes"
-                        },
                         {
                             "name": "headerShowAddress",
                             "label": "Show address",
@@ -216,6 +210,12 @@
             "description": "Set the links and icons to use for your social networks in the footer of each page.",
             "sidebarSize": "medium",
             "fields": [
+                {
+                    "name": "headerShowSocial",
+                    "label": "Show social",
+                    "type": "switch",
+                    "defaultValue": "yes"
+                },
                 {
                     "name": "social",
                     "label": "Social Networks",
