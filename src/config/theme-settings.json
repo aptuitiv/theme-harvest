@@ -163,7 +163,7 @@
                         {
                             "name": "headerButtons",
                             "label": "Buttons",
-                            "type": "repeatingGrid",
+                            "type": "repeating",
                             "itemName": "Button",
                             "children": [
                                 {
