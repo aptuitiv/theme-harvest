@@ -115,3 +115,14 @@ FTP_SERVER = ftp1.branchcms.com
 FTP_USERNAME = my_ftp_username
 FTP_PASSWORD = my_ftp_password
 ```
+
+## Typography
+
+Information about choosing font sizes.
+
+We recommend the Major third (1.250) or Perfect fourth (1.333) scales with the base size starting at 18px.
+
+- [What is a type scale](https://supercharge.design/blog/what-is-a-type-scale).
+- [Typescale calculator](https://typescale.com/)
+- [Fluid type scale calculator](https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=500&minRatio=1.25&maxFontSize=18&maxWidth=1280&maxRatio=1.25&steps=sm,base,md,lg,xl,xxl,xxxl&baseStep=base&prefix=fs&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it,+we+had+left+the+ground&previewWidth=1280) - This will give rem values.
+- [Type scale generator](https://baseline.is/tools/type-scale-generator/) - Convert the rendered pixel values to rems by dividing by 10. 
