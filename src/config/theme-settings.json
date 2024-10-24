@@ -105,7 +105,6 @@
         {
             "name": "Header",
             "description": "Content for the header that is used on all pages.",
-            "sidebarSize": "small",
             "groups": [
                 {
                     "name": "Image Logo",
@@ -150,58 +149,37 @@
                             }
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Popup on Load",
+            "description": "Options for the optional popup that shows on page load.",
+            "sidebarSize": "medium",
+            "fields": [
+                {
+                    "name": "popupDisplay",
+                    "label": "Display the popup",
+                    "type": "switch"
                 },
                 {
-                    "name": "Buttons",
-                    "fields": [
-                        {
-                            "name": "headerShowButtons",
-                            "label": "Show buttons",
-                            "type": "switch",
-                            "defaultValue": "yes"
-                        },
-                        {
-                            "name": "headerButtons",
-                            "label": "Buttons",
-                            "type": "repeating",
-                            "itemName": "Button",
-                            "children": [
-                                {
-                                    "name": "button",
-                                    "label": "Button",
-                                    "type": "url",
-                                    "showLinkTextField": true,
-                                    "linkTextFieldLabel": "Button text"
-                                },
-                                {
-                                    "name": "style",
-                                    "label": "Style",
-                                    "type": "select",
-                                    "options": {
-                                        "primary": "Primary",
-                                        "secondary": "Secondary"
-                                    }
-                                }
-                            ]
-                        }
-                    ]
+                    "name": "popupSeconds",
+                    "label": "Seconds to wait before showing the popup",
+                    "type": "stepper",
+                    "after": "seconds",
+                    "defaultValue": "5"
                 },
                 {
-                    "name": "Address and phone",
-                    "fields": [
-                        {
-                            "name": "headerShowAddress",
-                            "label": "Show address",
-                            "type": "switch",
-                            "defaultValue": "yes"
-                        },
-                        {
-                            "name": "headerShowPhone",
-                            "label": "Show phone",
-                            "type": "switch",
-                            "defaultValue": "yes"
-                        }
-                    ]
+                    "name": "popupCookieExpiration",
+                    "label": "Number of days to show popup again after closing",
+                    "type": "stepper",
+                    "after": "days",
+                    "defaultValue": "30"
+                },
+                {
+                    "name": "popupContent",
+                    "label": "Content",
+                    "type": "richTextEditor"
                 }
             ]
         },
@@ -250,32 +228,62 @@
             ]
         },
         {
-            "name": "Popup on Load",
-            "description": "Options for the optional popup that shows on page load.",
+            "name": "Top bar",
             "fields": [
                 {
-                    "name": "popupDisplay",
-                    "label": "Display the popup",
-                    "type": "switch"
+                    "name": "headerShowAddress",
+                    "label": "Show address",
+                    "type": "switch",
+                    "defaultValue": "yes"
                 },
                 {
-                    "name": "popupSeconds",
-                    "label": "Seconds to wait before showing the popup",
-                    "type": "stepper",
-                    "after": "seconds",
-                    "defaultValue": "5"
+                    "name": "headerShowPhone",
+                    "label": "Show phone",
+                    "type": "switch",
+                    "defaultValue": "yes"
                 },
                 {
-                    "name": "popupCookieExpiration",
-                    "label": "Number of days to show popup again after closing",
-                    "type": "stepper",
-                    "after": "days",
-                    "defaultValue": "30"
+                    "name": "headerSmallScreenPhoneText",
+                    "label": "Small screen phone number button text",
+                    "description": "Text to use for the phone number button on small screens.",
+                    "type": "text",
+                    "defaultValue": "Call Us"
+                }
+            ]
+        },
+        {
+            "name": "Top bar buttons",
+            "sidebarSize": "medium",
+            "fields": [
+                {
+                    "name": "headerShowButtons",
+                    "label": "Show buttons",
+                    "type": "switch",
+                    "defaultValue": "yes"
                 },
                 {
-                    "name": "popupContent",
-                    "label": "Content",
-                    "type": "richTextEditor"
+                    "name": "headerButtons",
+                    "label": "Buttons",
+                    "type": "repeating",
+                    "itemName": "Button",
+                    "children": [
+                        {
+                            "name": "button",
+                            "label": "Button",
+                            "type": "url",
+                            "showLinkTextField": true,
+                            "linkTextFieldLabel": "Button text"
+                        },
+                        {
+                            "name": "style",
+                            "label": "Style",
+                            "type": "select",
+                            "options": {
+                                "primary": "Primary",
+                                "secondary": "Secondary"
+                            }
+                        }
+                    ]
                 }
             ]
         }
