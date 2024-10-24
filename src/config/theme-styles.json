@@ -411,7 +411,7 @@
                             "name": "bannerSliderTextPaginationBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#a21514",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-text-background"
@@ -421,7 +421,7 @@
                             "name": "bannerSliderTextPaginationBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#7a0504",
+                            "defaultValue": "#2A6614",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-text-background-hover"
@@ -1476,7 +1476,7 @@
                             "name": "defaultButtonBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#a21514",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-background"
@@ -1486,7 +1486,7 @@
                             "name": "defaultButtonBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#7a0504",
+                            "defaultValue": "#2A6614",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-background-hover"
@@ -1509,8 +1509,8 @@
                                 "defaultValue": "#fff"
                             },
                             "fontSize": {
-                                "defaultValue": "18px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "1.8rem"
                             },
                             "lineHeight": {
                                 "defaultValue": "1.4"
@@ -1524,7 +1524,7 @@
                             "name": "defaultButtonBorderColor",
                             "label": "Border color",
                             "type": "color",
-                            "defaultValue": "#333333",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-border-color"
@@ -1534,7 +1534,7 @@
                             "name": "defaultButtonBorderColorHover",
                             "label": "Border color (hover)",
                             "type": "color",
-                            "defaultValue": "#333333",
+                            "defaultValue": "#2A6614",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-border-color-hover"
@@ -1544,7 +1544,7 @@
                             "name": "defaultButtonBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "4px",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-border-radius"
@@ -1564,7 +1564,7 @@
                             "name": "defaultButtonPadding",
                             "label": "Padding",
                             "type": "padding",
-                            "defaultValue": "6px 12px",
+                            "defaultValue": "6px 20px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-padding"
@@ -1579,7 +1579,7 @@
                             "name": "alt1ButtonBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#a21514",
+                            "defaultValue": "#fff",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-background"
@@ -1589,7 +1589,7 @@
                             "name": "alt1ButtonBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#7a0504",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-background-hover"
@@ -1606,11 +1606,14 @@
                                 "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
                             },
                             "color": {
-                                "defaultValue": "#333333"
+                                "defaultValue": "#38871A"
+                            },
+                            "colorHover": {
+                                "defaultValue": "#fffff"
                             },
                             "fontSize": {
-                                "defaultValue": "18px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "1.8rem"
                             },
                             "lineHeight": {
                                 "defaultValue": "1.4"
@@ -1624,7 +1627,7 @@
                             "name": "alt1ButtonBorderColor",
                             "label": "Border color",
                             "type": "color",
-                            "defaultValue": "#333333",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-color"
@@ -1634,7 +1637,7 @@
                             "name": "alt1ButtonBorderColorHover",
                             "label": "Border color (hover)",
                             "type": "color",
-                            "defaultValue": "#333333",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-color-hover"
@@ -1644,7 +1647,7 @@
                             "name": "alt1ButtonBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "4px",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-radius"
@@ -1654,7 +1657,7 @@
                             "name": "alt1ButtonBorderWidth",
                             "label": "Border width",
                             "type": "size",
-                            "defaultValue": "0",
+                            "defaultValue": "2px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-width"
@@ -1664,7 +1667,7 @@
                             "name": "alt1ButtonPadding",
                             "label": "Padding",
                             "type": "padding",
-                            "defaultValue": "6px",
+                            "defaultValue": "6px 20px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-padding"
@@ -1679,7 +1682,7 @@
                             "name": "alt2ButtonBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#a21514",
+                            "defaultValue": "#1A7189",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-background"
@@ -1689,7 +1692,7 @@
                             "name": "alt2ButtonBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#7a0504",
+                            "defaultValue": "#1A5E89",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-background-hover"
@@ -1706,7 +1709,16 @@
                                 "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
                             },
                             "color": {
-                                "defaultValue": "#333333"
+                                "defaultValue": "#fff"
+                            },
+                            "colorHover": {
+                                "defaultValue": "#fff"
+                            },
+                            "fontSize": {
+                                "defaultValue": "1.8rem"
+                            },
+                            "lineHeight": {
+                                "defaultValue": "1.4"
                             },
                             "render": {
                                 "type": "css-head",
@@ -1717,7 +1729,7 @@
                             "name": "alt2ButtonBorderColor",
                             "label": "Border color",
                             "type": "color",
-                            "defaultValue": "#333333",
+                            "defaultValue": "#1A7189",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-border-color"
@@ -1727,7 +1739,7 @@
                             "name": "alt2ButtonBorderColorHover",
                             "label": "Border color (hover)",
                             "type": "color",
-                            "defaultValue": "#333333",
+                            "defaultValue": "#1A5E89",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-border-color-hover"
@@ -1737,7 +1749,7 @@
                             "name": "alt2ButtonBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "4px",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-border-radius"
@@ -1757,7 +1769,7 @@
                             "name": "alt2ButtonPadding",
                             "label": "Padding",
                             "type": "padding",
-                            "defaultValue": "6px",
+                            "defaultValue": "6px 20px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-padding"
@@ -1772,7 +1784,7 @@
                             "name": "buttonSmPadding",
                             "label": "Small button padding",
                             "type": "padding",
-                            "defaultValue": "6px",
+                            "defaultValue": "4px 8px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-sm-padding"
@@ -1791,7 +1803,7 @@
                             "name": "buttonLgPadding",
                             "label": "Large button padding",
                             "type": "padding",
-                            "defaultValue": "10px 20px",
+                            "defaultValue": "10px 30px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-lg-padding"
@@ -1801,6 +1813,7 @@
                             "name": "buttonLgFontSize",
                             "label": "Large button font size",
                             "type": "fontsize",
+                            "defaultValue": "2.2rem",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-lg-font-size"
@@ -3654,11 +3667,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "18px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "1.8rem"
+                            },
+                            "fontWeight": {
+                                "defaultValue": "400"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             }
                         }
                     ]
@@ -3797,14 +3813,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "32px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "5.49rem"
                             },
                             "fontWeight": {
                                 "defaultValue": "700"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             },
                             "margin": {
                                 "defaultValue": {
@@ -3836,14 +3852,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "28px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "4.39rem"
                             },
                             "fontWeight": {
                                 "defaultValue": "700"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             }
                         }
                     ]
@@ -3869,14 +3885,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "24px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "3.52rem"
                             },
                             "fontWeight": {
                                 "defaultValue": "700"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             }
                         }
                     ]
@@ -3901,14 +3917,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "20px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "2.81rem"
                             },
                             "fontWeight": {
                                 "defaultValue": "700"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             }
                         }
                     ]
@@ -3933,14 +3949,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "18px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "2.25rem"
                             },
                             "fontWeight": {
                                 "defaultValue": "700"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             }
                         }
                     ]
@@ -3965,14 +3981,14 @@
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "defaultValue": "18px",
                                 "allowedUnits": ["px"]
+                                "defaultValue": "1.8rem"
                             },
                             "fontWeight": {
                                 "defaultValue": "700"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.58"
+                                "defaultValue": "1.6"
                             }
                         }
                     ]
