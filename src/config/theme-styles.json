@@ -1499,9 +1499,6 @@
                             "collapsable": false,
                             "useHover": true,
                             "useTextAlign": false,
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#fff"
                             },
@@ -1509,7 +1506,6 @@
                                 "defaultValue": "#fff"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "1.8rem"
                             },
                             "lineHeight": {
@@ -1602,9 +1598,6 @@
                             "collapsable": false,
                             "useHover": true,
                             "useTextAlign": false,
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#38871A"
                             },
@@ -1612,7 +1605,6 @@
                                 "defaultValue": "#fffff"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "1.8rem"
                             },
                             "lineHeight": {
@@ -1705,9 +1697,6 @@
                             "collapsable": false,
                             "useHover": true,
                             "useTextAlign": false,
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#fff"
                             },
@@ -2598,12 +2587,6 @@
                             "collapsable": false,
                             "useHover": true,
                             "useTextAlign": false,
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
-                            "fontSize": {
-                                "allowedUnits": ["px"]
-                            },
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Button.Header-button"
@@ -3660,14 +3643,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "1.8rem"
                             },
                             "fontWeight": {
@@ -3774,9 +3753,6 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-link"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#0000EE"
                             },
@@ -3806,14 +3782,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-h1"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "5.49rem"
                             },
                             "fontWeight": {
@@ -3845,14 +3817,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-h2"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "4.39rem"
                             },
                             "fontWeight": {
@@ -3878,14 +3846,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-h3"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "3.52rem"
                             },
                             "fontWeight": {
@@ -3910,14 +3874,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-h4"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "2.81rem"
                             },
                             "fontWeight": {
@@ -3942,14 +3902,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-h5"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "2.25rem"
                             },
                             "fontWeight": {
@@ -3974,14 +3930,10 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-h6"
                             },
-                            "fontSizePreview": {
-                                "template": "{% if value.size %}{{ value.size / 10 }}rem{% endif %}"
-                            },
                             "color": {
                                 "defaultValue": "#333333"
                             },
                             "fontSize": {
-                                "allowedUnits": ["px"]
                                 "defaultValue": "1.8rem"
                             },
                             "fontWeight": {
