@@ -1950,7 +1950,7 @@
                                 "type": "css-head",
                                 "cssSelector": ".FooterNav-link"
                             },
-                            "colorPreview": {
+                            "colorRender": {
                                 "cssSelector": "",
                                 "cssVariable": "--FooterNav-color"
                             }
@@ -2187,7 +2187,7 @@
                             "type": "typography",
                             "collapsable": false,
                             "useMargin": true,
-                            "marginPreview": {
+                            "marginRender": {
                                 "cssSelector": "",
                                 "cssVariable": "--FormLabel-margin",
                                 "config": {
@@ -2436,7 +2436,7 @@
                                 "type": "css-head",
                                 "cssSelector": ".Header-textLogo"
                             },
-                            "fontSizePreview": {
+                            "fontSizeRender": {
                                 "cssSelector": "",
                                 "cssVariable": "--Header-text-logo-font-size"
                             }
@@ -2662,7 +2662,7 @@
                             "name": "headerStickyHeaderBackground",
                             "label": "Header background when sticky",
                             "type": "color",
-                            "preview": {
+                            "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-sticky-background"
                             }
@@ -2671,7 +2671,7 @@
                             "name": "headerStickyHeaderLogoWidth",
                             "label": "Logo width when sticky",
                             "type": "size",
-                            "preview": {
+                            "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-sticky-logo-width"
                             }
@@ -2681,7 +2681,7 @@
                             "label": "Approximate sticky header height",
                             "description": "This is used to offset any anchor links so that they don't end up under the sticky header.",
                             "type": "size",
-                            "preview": {
+                            "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-sticky-height"
                             }
