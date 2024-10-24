@@ -1520,7 +1520,6 @@
                             "name": "defaultButtonBorderColor",
                             "label": "Border color",
                             "type": "color",
-                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-border-color"
@@ -1530,7 +1529,6 @@
                             "name": "defaultButtonBorderColorHover",
                             "label": "Border color (hover)",
                             "type": "color",
-                            "defaultValue": "#2A6614",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-border-color-hover"
@@ -1718,7 +1716,6 @@
                             "name": "alt2ButtonBorderColor",
                             "label": "Border color",
                             "type": "color",
-                            "defaultValue": "#1A7189",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-border-color"
@@ -1728,7 +1725,6 @@
                             "name": "alt2ButtonBorderColorHover",
                             "label": "Border color (hover)",
                             "type": "color",
-                            "defaultValue": "#1A5E89",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-border-color-hover"
