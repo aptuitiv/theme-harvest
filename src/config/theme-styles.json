@@ -1509,7 +1509,7 @@
                                 "defaultValue": "1.8rem"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.4"
+                                "defaultValue": "1.6"
                             },
                             "render": {
                                 "type": "css-head",
@@ -1606,7 +1606,7 @@
                                 "defaultValue": "1.8rem"
                             },
                             "lineHeight": {
-                                "defaultValue": "1.4"
+                                "defaultValue": "1.6"
                             },
                             "render": {
                                 "type": "css-head",
@@ -1700,12 +1700,6 @@
                             },
                             "colorHover": {
                                 "defaultValue": "#fff"
-                            },
-                            "fontSize": {
-                                "defaultValue": "1.8rem"
-                            },
-                            "lineHeight": {
-                                "defaultValue": "1.4"
                             },
                             "render": {
                                 "type": "css-head",
