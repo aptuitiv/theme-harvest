@@ -2,186 +2,197 @@
     Header top bar
 \* =========================================================================== */
 
-
 /* @define TopBar */
 
 .TopBar {
-    background: var(--theme-primary-color);
-    color: #fff;
+    background: var(--TopBar-background);
+    color: var(--TopBar-color);
     font-size: 1.6rem;
-    padding: 6px 0;
 }
 
-.TopBar-social {
-    background: #fff;
-    color: var(--theme-primary-color);
-    display: inline-block;
-    margin-right: 8px;
-    padding: 2px;
-    text-decoration: none;
-}
-
-.TopBar-social:last-child {
-    margin-right: 0;
-}
-
-.TopBar-social:active,
-.TopBar-social:focus,
-.TopBar-social:hover {
-    background: var(--theme-primary-color);
-    color: #fff;
-    text-decoration: none;
-}
-
-.TopBar-contact {
-    font-family: var(--theme-typography-serif);
-    font-size: .9em;
-    font-weight: 300;
-    text-align: center;
-}
-
-.TopBar-contactItem {
-    border-left: 1px solid #fff;
-    display: inline-block;
-    line-height: 1;
-    padding: 0 10px;
-}
-
-.TopBar-contactItem:first-child {
-    border-left: none;
-}
-
-@media (--m-lg) {
-    .TopBar-contactItem {
-        border-left: none;
-        display: block;
-        line-height: inherit;
-        padding: 0;
-        text-align: center;
-    }
-}
-
-.TopBar-link {
-    box-sizing: border-box;
-    color: #fff;
-    display: inline-block;
-    font-size: var(--Button-fontSize);
-    letter-spacing: var(--Button-letterSpacing);
-    line-height: var(--Button-lineHeight);
-    margin: 0 12px;
-    padding: var(--Button-padding);
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    user-select: none;
-}
-
-.TopBar-link:active,
-.TopBar-link:focus,
-.TopBar-link:hover {
-    background: var(--theme-primary-color-hover);
-    color: #fff;
-    text-decoration: none;
-}
-
-/* postcss-bem-linter: ignore */
-
-.TopBar-button,
-a[href^="tel"].TopBar-button {
-    background: #fff;
-    color: var(--theme-primary-color);
-    text-transform: uppercase;
-}
-
-/* postcss-bem-linter: ignore */
-
-.TopBar-button:active,
-.TopBar-button:focus,
-.TopBar-button:hover,
-a[href^="tel"].TopBar-button:active,
-a[href^="tel"].TopBar-button:focus,
-a[href^="tel"].TopBar-button:hover {
-    background: var(--theme-primary-color-hover);
-    color: #fff;
-}
-
-.TopBar-nav {
-    text-align: right;
-}
-
-.TopBar-navItem {
-    display: inline-block;
-}
-
-@media (width >= 801px) and (width <= 850px) {
-    .TopBar-navItem {
-        display: block;
-        margin-bottom: 10px;
-        text-align: right;
-    }
-
-    .TopBar-navItem:last-child {
-        margin-bottom: 0;
-    }
-
-    .TopBar-link {
-        margin: 0;
-    }
+.TopBar-inner {
+    flex-direction: column;
+    gap: var(--TopBar-gap, 20px);
+    padding: var(--TopBar-padding-sm);
 }
 
 @media (--m-md) {
-    .TopBar {
-        padding: 12px 0;
-    }
-
-    .TopBar-nav {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .TopBar-navItem {
-        text-align: center;
-    }
-
-    .TopBar-link {
-        background: #fff;
-        color: var(--theme-primary-color);
+    .TopBar-inner {
+        flex-direction: row;
+        padding: var(--TopBar-padding);
     }
 }
 
-@media (width >= 281px) and (width <= 400px) {
-    .TopBar-nav {
+/* ------------------------------------ *\
+    Social
+\* ------------------------------------ */
+
+.TopBar-social {
+    align-items: center;
+    display: none;
+    gap: var(--TopBar-social-gap, 10px);
+    justify-content: flex-end;
+    line-height: 1;
+}
+
+.TopBar-socialLink {
+    align-items: center;
+    background: var(--TopBar-social-background);
+    border-radius: var(--TopBar-social-border-radius, 50%);
+    color: var(--TopBar-social-color);
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    line-height: 1;
+    padding: var(--TopBar-social-padding, 4px);
+    text-decoration: none;
+}
+
+.TopBar-socialLink:active,
+.TopBar-socialLink:focus,
+.TopBar-socialLink:hover {
+    background: var(--TopBar-social-backgroundHover);
+    color: var(--TopBar-social-colorHover);
+    text-decoration: none;
+}
+
+.TopBar-socialIcon {
+    font-size: var(--TopBar-social-size, 1.6rem);
+}
+
+@media (--m-md) {
+    .TopBar-social {
         display: flex;
     }
+}
 
-    .TopBar-navItem {
-        flex: 1 0 0;
-        margin: 0 10px;
+/* ------------------------------------ *\
+    Contact information
+\* ------------------------------------ */
+
+.TopBar-contact {
+    align-items: center;
+    display: flex;
+    font-family: var(--theme-typography-serif);
+    font-size: 0.9em;
+    font-weight: 300;
+    gap: var(--TopBar-contact-gap-sm, 15px);
+}
+
+.TopBar-contactItem {
+    display: block;
+}
+
+.TopBar-contactItem:first-child::before {
+    display: none;
+}
+
+.TopBar-contactItem::before {
+    background: currentcolor;
+    content: '';
+    height: 70%;
+    left: calc(-1 * var(--TopBar-contact-gap-sm) / 2);
+    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+}
+
+.TopBar-contactItem {
+    line-height: 1;
+    position: relative;
+}
+
+@media (--m-lg) {
+    .TopBar-contact {
+        gap: var(--TopBar-contact-gap, 20px);
     }
 
-    .TopBar-navItem:first-child {
-        margin-left: 0;
-    }
-
-    .TopBar-navItem:last-child {
-        margin-right: 0;
-    }
-
-    .TopBar-link,
-    .TopBar-button {
-        display: block;
-        margin: 0;
-        width: 100%;
+    .TopBar-contactItem::before {
+        left: calc(-1 * var(--TopBar-contact-gap) / 2);
     }
 }
 
-@media (width <= 280px) {
-    .TopBar-navItem {
-        display: block;
-        margin-bottom: 10px;
-    }
+/* ------------------------------------ *\
+    Topbar buttons
+\* ------------------------------------ */
 
-    .TopBar-navItem:last-child {
-        margin-bottom: 0;
-    }
+.TopBar-buttons {
+    display: flex;
+    gap: var(--TopBar-button-gap, 10px);
+}
+
+.TopBar-buttonPrimary,
+.TopBar-buttonPrimary[href^='tel'] {
+    align-items: center;
+    background: var(--TopBar-button-primary-background);
+    border: var(--TopBar-button-primary-border-width) solid var(--TopBar-button-primary-border-color);
+    border-radius: var(--TopBar-button-primary-border-radius);
+    color: var(--TopBar-button-primary-typography-color);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--TopBar-button-primary-typography-font-family);
+    font-size: var(--TopBar-button-primary-typography-font-size);
+    font-style: var(--TopBar-button-primary-typography-font-style);
+    font-weight: var(--TopBar-button-primary-typography-font-weight);
+    letter-spacing: var(--TopBar-button-primary-typography-letter-spacing);
+    line-height: var(--TopBar-button-primary-typography-line-height);
+    margin: 0;
+    padding: var(--TopBar-button-primary-padding);
+    text-align: center;
+    text-decoration: var(--TopBar-button-primary-typography-text-decoration);
+    text-shadow: none; /* Done in case this is within another element that has text-shadow applied to it */
+    text-transform: var(--TopBar-button-primary-typography-text-transform);
+    user-select: none; /* 1 */
+}
+
+.TopBar-buttonPrimary:hover,
+.TopBar-buttonPrimary[href^='tel']:hover,
+.TopBar-buttonPrimary:focus,
+.TopBar-buttonPrimary[href^='tel']:focus,
+.TopBar-buttonPrimary:active,
+.TopBar-buttonPrimary[href^='tel']:active {
+    background: var(--TopBar-button-primary-background-hover);
+    border-color: var(--TopBar-button-primary-border-color-hover);
+    color: var(--TopBar-button-primary-typography-color-hover);
+    font-style: var(--TopBar-button-primary-typography-font-style-hover);
+    text-decoration: var(--TopBar-button-primary-typography-text-decoration-hover);
+}
+
+.TopBar-buttonSecondary,
+.TopBar-buttonSecondary[href^='tel'] {
+    align-items: center;
+    background: var(--TopBar-button-secondary-background);
+    border: var(--TopBar-button-secondary-border-width) solid var(--TopBar-button-secondary-border-color);
+    border-radius: var(--TopBar-button-secondary-border-radius);
+    color: var(--TopBar-button-secondary-typography-color);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--TopBar-button-secondary-typography-font-family);
+    font-size: var(--TopBar-button-secondary-typography-font-size);
+    font-style: var(--TopBar-button-secondary-typography-font-style);
+    font-weight: var(--TopBar-button-secondary-typography-font-weight);
+    letter-spacing: var(--TopBar-button-secondary-typography-letter-spacing);
+    line-height: var(--TopBar-button-secondary-typography-line-height);
+    margin: 0;
+    padding: var(--TopBar-button-secondary-padding);
+    text-align: center;
+    text-decoration: var(--TopBar-button-secondary-typography-text-decoration);
+    text-shadow: none; /* Done in case this is within another element that has text-shadow applied to it */
+    text-transform: var(--TopBar-button-secondary-typography-text-transform);
+    user-select: none; /* 1 */
+}
+
+.TopBar-buttonSecondary:hover,
+.TopBar-buttonSecondary[href^='tel']:hover,
+.TopBar-buttonSecondary:focus,
+.TopBar-buttonSecondary[href^='tel']:focus,
+.TopBar-buttonSecondary:active,
+.TopBar-buttonSecondary[href^='tel']:active {
+    background: var(--TopBar-button-secondary-background-hover);
+    border-color: var(--TopBar-button-secondary-border-color-hover);
+    color: var(--TopBar-button-secondary-typography-color-hover);
+    font-style: var(--TopBar-button-secondary-typography-font-style-hover);
+    text-decoration: var(--TopBar-button-secondary-typography-text-decoration-hover);
 }

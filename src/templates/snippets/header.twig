@@ -41,54 +41,50 @@
         </div>
         <div class="TopBar">
             <div class="Container Container--pad">
-                <div class="grid g-2 align-center">
-                    <div class="col-1-3 hidden block-md">
-                        {% if _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
+                <div class="TopBar-inner flex align-center justify-between">
+                    {% if _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
+                        <div class="TopBar-social">
                             {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', twitter: 'Twitter', youtube: 'YouTube'} %}
                             {% for social in _core.theme.settings.social %}
-                                <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="TopBar-social">
-                                    {{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "Header-icon") }}
-                                </a>
+                                <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="TopBar-socialLink">{{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "TopBar-socialIcon") }}</a>
                             {% endfor %}
-                        {% endif %}
-                    </div>
-                    <div class="col-1-1 col-1-3-md">
-                        {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
-                            <div class="TopBar-contact">
-                                {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
-                                    <span class="TopBar-contactItem hidden inline-md"><a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a></span>
-                                    <a href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" class="Button TopBar-button hidden-md mb-2" aria-label="Call {{ _core.settings.companyPhone }}">Call Now</a>
-                                {% endif %}
-                                {% if _core.theme.settings.headerShowAddress == 'yes' %}
-                                    <span class="TopBar-contactItem">
-                                        {% if _core.settings.companyAddressStreet %}
-                                            {{ _core.settings.companyAddressStreet }},
-                                        {% endif %}
-                                        {% if _core.settings.companyAddressCity %}
-                                            {{ _core.settings.companyAddressCity }},
-                                        {% endif %}
-                                        {% if _core.settings.companyAddressState %}
-                                            {{ _core.settings.companyAddressState }}
-                                        {% endif %}
-                                    </span>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    </div>
-                    <div class="col-1-1 col-1-3-md">
-                        {% if _core.theme.settings.headerButtons|first.button and _core.theme.settings.headerShowButtons == 'yes' %}
-                            <div class="TopBar-nav">
-                                {% for button in _core.theme.settings.headerButtons %}
-                                    {% if button.style == 'primary' %}
-                                        {% set button.button.class = "Button TopBar-button" %}
-                                    {% elseif button.style == 'secondary' %}
-                                        {% set button.button.class = "TopBar-link" %}
+                        </div>
+                    {% endif %}
+                    {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
+                        <div class="TopBar-contact">
+                            {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
+                                <span class="TopBar-contactItem">
+                                    <a class="hidden inline-md" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a>
+                                    <a class="hidden-md mb-2" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.theme.settings.headerSmallScreenPhoneText }}</a>
+                                </span>
+                            {% endif %}
+                            {% if _core.theme.settings.headerShowAddress == 'yes' %}
+                                <span class="TopBar-contactItem">
+                                    {% if _core.settings.companyAddressStreet %}
+                                        {{ _core.settings.companyAddressStreet }},
                                     {% endif %}
-                                    <div class="TopBar-navItem">{{ button.button.tag }}</div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
+                                    {% if _core.settings.companyAddressCity %}
+                                        {{ _core.settings.companyAddressCity }},
+                                    {% endif %}
+                                    {% if _core.settings.companyAddressState %}
+                                        {{ _core.settings.companyAddressState }}
+                                    {% endif %}
+                                </span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if _core.theme.settings.headerButtons|first.button and _core.theme.settings.headerShowButtons == 'yes' %}
+                        <div class="TopBar-buttons">
+                            {% for button in _core.theme.settings.headerButtons %}
+                                {% if button.style == 'primary' %}
+                                    {% set button.button.class = "TopBar-buttonPrimary" %}
+                                {% elseif button.style == 'secondary' %}
+                                    {% set button.button.class = "TopBar-buttonSecondary" %}
+                                {% endif %}
+                                {{ button.button.tag }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

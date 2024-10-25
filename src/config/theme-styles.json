@@ -3594,6 +3594,388 @@
             ]
         },
         {
+            "name": "Top Bar",
+            "description": "Styles for the bar above the header.",
+            "groups": [
+                {
+                    "name": "General",
+                    "fields": [
+                        {
+                            "name": "topBarBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-background"
+                            }
+                        },
+                        {
+                            "name": "topBarColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-color"
+                            }
+                        },
+                        {
+                            "name": "topBarColorHover",
+                            "label": "Text color (hover)",
+                            "type": "color",
+                            "description": "This applies when hovering over a link, like a phone link",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-colorHover"
+                            }
+                        },
+                        {
+                            "name": "topBarPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "6px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-padding"
+                            }
+                        },
+                        {
+                            "name": "topBarPaddingSm",
+                            "label": "Padding (small screens)",
+                            "type": "padding",
+                            "defaultValue": "12px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-padding-sm"
+                            }
+                        },
+                        {
+                            "name": "topBarGap",
+                            "label": "Space between top bar columns",
+                            "type": "size",
+                            "defaultValue": "20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-gap"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Social",
+                    "fields": [
+                        {
+                            "name": "topBarSocialGap",
+                            "label": "Space between social icons",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-gap"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialBorderRadius",
+                            "label": "Border radius around the icon",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-border-radius"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialSize",
+                            "label": "Icon size",
+                            "type": "size",
+                            "defaultValue": "18px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-size"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialPadding",
+                            "label": "Padding around the icon",
+                            "description": "The padding shows more of the background around the icon",
+                            "type": "padding",
+                            "defaultValue": "4px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-padding"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialBackground",
+                            "label": "Social background color",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-background"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialBackgroundHover",
+                            "label": "Social background color (hover)",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-backgroundHover"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialColor",
+                            "label": "Social icon color",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-color"
+                            }
+                        },
+                        {
+                            "name": "topBarSocialColorHover",
+                            "label": "Social icon color (hover)",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-social-colorHover"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Contact information",
+                    "fields": [
+                        {
+                            "name": "topBarContactGap",
+                            "label": "Space between contact items",
+                            "type": "size",
+                            "defaultValue": "20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-contact-gap"
+                            }
+                        },
+                        {
+                            "name": "topBarContactGapSm",
+                            "label": "Space between contact items (small screens)",
+                            "type": "size",
+                            "defaultValue": "15px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-contact-gap-sm"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Buttons general",
+                    "fields": [
+                        {
+                            "name": "topBarButtonGap",
+                            "label": "Space between top bar buttons",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-gap"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Primary buttons",
+                    "description": "Styles for the primary button type in the top bar",
+                    "fields": [
+                        {
+                            "name": "topBarPrimaryButtonBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-background"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonBackgroundHover",
+                            "label": "Background color (hover)",
+                            "type": "color",
+                            "defaultValue": "#2A6614",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-background-hover"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useHover": true,
+                            "useTextAlign": false,
+                            "color": {
+                                "defaultValue": "#38871A"
+                            },
+                            "colorHover": {
+                                "defaultValue": "#fff"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-typography"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-border-color"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonBorderColorHover",
+                            "label": "Border color (hover)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-border-color-hover"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-border-radius"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonBorderWidth",
+                            "label": "Border width",
+                            "type": "size",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-border-width"
+                            }
+                        },
+                        {
+                            "name": "topBarPrimaryButtonPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "6px 20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-primary-padding"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Secondary buttons",
+                    "description": "Styles for the secondary button type in the top bar",
+                    "fields": [
+                        {
+                            "name": "topBarSecondaryButtonBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#38871A",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-background"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonBackgroundHover",
+                            "label": "Background color (hover)",
+                            "type": "color",
+                            "defaultValue": "#2A6614",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-background-hover"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useHover": true,
+                            "useTextAlign": false,
+                            "color": {
+                                "defaultValue": "#ffffff"
+                            },
+                            "colorHover": {
+                                "defaultValue": "#ffffff"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-typography"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-border-color"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonBorderColorHover",
+                            "label": "Border color (hover)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-border-color-hover"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-border-radius"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonBorderWidth",
+                            "label": "Border width",
+                            "type": "size",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-border-width"
+                            }
+                        },
+                        {
+                            "name": "topBarSecondaryButtonPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "6px 20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-button-secondary-padding"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Typography",
             "description": "Styles for typography throughout the website.",
             "groups": [
