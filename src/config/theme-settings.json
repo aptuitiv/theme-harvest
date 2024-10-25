@@ -189,12 +189,6 @@
             "sidebarSize": "medium",
             "fields": [
                 {
-                    "name": "headerShowSocial",
-                    "label": "Show social",
-                    "type": "switch",
-                    "defaultValue": "yes"
-                },
-                {
                     "name": "social",
                     "label": "Social Networks",
                     "type": "repeatingGrid",
@@ -239,6 +233,12 @@
                 {
                     "name": "headerShowPhone",
                     "label": "Show phone",
+                    "type": "switch",
+                    "defaultValue": "yes"
+                },
+                {
+                    "name": "headerShowSocial",
+                    "label": "Show social icons",
                     "type": "switch",
                     "defaultValue": "yes"
                 },
