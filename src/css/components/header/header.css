@@ -41,7 +41,10 @@
 }
 
 .Header-skipToMain {
+    align-items: center;
+    display: flex;
     height: 1px;
+    justify-content: center;
     left: -10000px;
     overflow: hidden;
     position: absolute;
@@ -51,12 +54,12 @@
 }
 
 .Header-skipToMain:focus {
-    background-color: #fff;
-    color: var(--theme-primary-color);
-    font-weight: bold;
+    background-color: var(--Header-skipMain-background, #fff);
+    color: var(--Header-skipMain-color);
+    font-weight: var(-Header-skipMain-font-weight, bold);
     height: auto;
     left: 10px;
-    padding: 5px 10px;
+    padding: var(--Header-skipMain-padding, 5px 10px);
     text-decoration: underline;
     width: auto;
 }

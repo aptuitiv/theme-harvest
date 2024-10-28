@@ -2640,6 +2640,52 @@
                     ]
                 },
                 {
+                    "name": "Skip to Main Button",
+                    "description": "Styles for the \"Skip to Main\" button when using a keyboard to navigate the site. It shows at the very top of the page when it has focus.",
+                    "fields": [
+                        {
+                            "name": "skipMainButtonBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-background"
+                            }
+                        },
+                        {
+                            "name": "skipMainButtonColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "defaultValue": "#38871A",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-color"
+                            }
+                        },
+                        {
+                            "name": "skipMainButtonFontWeight",
+                            "label": "Font weight",
+                            "type": "fontWeight",
+                            "defaultValue": "bold",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-font-weight"
+                            }
+                        },
+                        {
+                            "name": "skipMainButtonPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "5px 10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-padding"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Sticky header",
                     "fields": [
                         {
