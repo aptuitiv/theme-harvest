@@ -47,6 +47,9 @@
 {% set menu.class = menu.class ~ ' MainNav js-mainNav MainNav--' ~ _core.theme.settings.navigationStyle %}
 <ul{{menu.class.attr}}{{ menu.id.attr }} data-access-nav role="menubar">
     {% for item in items %}
+        {% if item.subItems and ('is-currentParent' in item.link.class or 'is-current' in item.link.class) %}
+            {% set item.link.class = item.link.class ~ " is-active" %}
+        {% endif %}
         {# ASSIGN MENU ITEM CLASS #}
         {% set class = "MainNav-item " ~ item.link.class %}
         {% if item.subItems %}
@@ -61,13 +64,13 @@
                 {% set item.link.id = random_string(8) %}
             {% endif %}
             {% set item.link.role = 'menuitem' %}
-            
+
             {% if item.link.href == '#' %}
                 <span class="{{ item.link.class }}">{{ item.link.text }}</span>
             {% else %}
                 {{ item.link.tag }}
             {% endif %}
-            
+
             {% if item.subItems %}
                 {# Set the item as the first sub item's parent to be used to optionaly duplicate it as the first item in the dropdown #}
                 {% set item.subItems.0.parent = item %}
