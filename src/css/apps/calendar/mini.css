@@ -8,6 +8,17 @@
     width: 100%;
 }
 
+.CalendarMiniGrid-heading {
+    gap: 10px;
+    justify-content: center;
+}
+
+.CalendarMiniGrid-navNext,
+.CalendarMiniGrid-navPrev {
+    color: currentcolor;
+    display: flex;
+}
+
 .CalendarMiniGrid-navPrev,
 .CalendarMiniGrid-navPrev:active,
 .CalendarMiniGrid-navPrev:focus,
@@ -19,56 +30,49 @@
     text-decoration: none;
 }
 
-.CalendarMiniGrid-navPrev {
-    margin-right: 10px;
-}
-
-.CalendarMiniGrid-navNext {
-    margin-left: 10px;
-}
-
 /* ------------------------------------ *\
     Cells
 \* ------------------------------------ */
 
 .CalendarMiniGrid-cell,
 .CalendarMiniGrid-headCell {
-    border: 1px solid var(--CalendarMiniGrid-cell-borderColor);
-    padding: 0;
+    border: var(--CalendarMiniGrid-cell-border-siz, 1px) solid solid var(--CalendarMiniGrid-cell-border-color, #e6e6e6);
+    padding: var(--CalendarMiniGrid-cell-padding, 0);
     text-align: center;
 }
 
 .CalendarMiniGrid-cell--isEmpty {
-    background: var(--CalendarMiniGrid-cell-background--empty);
+    background: var(--CalendarMiniGrid-empty-cell-background, #e9e9e9);
 }
 
 .CalendarMiniGrid-cell--isEnd {
-    background: var(--CalendarMiniGrid-cell-background--end);
-    color: var(--CalendarMiniGrid-cell-color--end);
+    background: var(--CalendarMiniGrid-end-cell-background, #f5f5f5);
+    color: var(--CalendarMiniGrid-end-cell-color, var(--base-typography-color));
 }
 
 .CalendarMiniGrid-cell--isToday {
-    background: var(--CalendarMiniGrid-cell-background--today);
-    color: var(--CalendarMiniGrid-cell-color--today);
+    background: var(--CalendarMiniGrid-today-cell-background);
+    color: var(--CalendarMiniGrid-today-cell-color, var(--base-typography-color));
 }
 
 /* ------------------------------------ *\
     #DATE LINKS
 \* ------------------------------------ */
 
-.CalendarMiniGrid-dateLink {
-    color: var(--CalendarMiniGrid-dateLink-color);
+/* postcss-bem-linter: ignore */
+.CalendarMiniGrid-dateLink,
+.CalendarMiniGrid-dateLink.CalendarMiniGrid-cell--isToday {
+    color: var(--CalendarMiniGrid-date-link-color, var(--base-typography-link-color));
     cursor: pointer;
     display: block;
     text-decoration: none;
 }
 
-.CalendarMiniGrid-dateLink--isCurrentDay,
 .CalendarMiniGrid-dateLink--isToday,
 .CalendarMiniGrid-dateLink:active,
 .CalendarMiniGrid-dateLink:focus,
 .CalendarMiniGrid-dateLink:hover {
-    background: var(--CalendarMiniGrid-dateLink-background--hover);
-    color: var(--CalendarMiniGrid-dateLink-color--hover);
+    background: var(--CalendarMiniGrid-date-link-background-hover);
+    color: var(--CalendarMiniGrid-date-link-color-hover, var(--base-typography-link-color-hover));
     text-decoration: none;
 }

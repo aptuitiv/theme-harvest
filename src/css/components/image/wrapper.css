@@ -1,0 +1,46 @@
+/* =========================================================================== *\
+    This is used for the Small Image component.
+    It is based on the Cacao image component.
+    https://aptuitiv.github.io/cacao/styles/image
+    The variables come from the Cacao image variables.
+    https://aptuitiv.github.io/cacao/styles/image#image-variables-source-css
+\* =========================================================================== */
+
+/* @define ImageWrapper */
+
+.ImageWrapper {
+    margin-bottom: var(--image-bottom-margin);
+}
+
+.ImageWrapper--default {
+    display: inline-block;
+}
+
+.ImageWrapper--center {
+    text-align: center;
+}
+
+@media (--m-sm) {
+    .ImageWrapper--left,
+    .ImageWrapper--right {
+        display: inline;
+        max-width: var(--image-max-width-sm);
+    }
+
+    .ImageWrapper--left {
+        float: left;
+        margin-right: var(--image-right-margin);
+    }
+
+    .ImageWrapper--right {
+        float: right;
+        margin-left: var(--image-left-margin);
+    }
+}
+
+@media (--m-md) {
+    .ImageWrapper--left,
+    .ImageWrapper--right {
+        max-width: var(--image-max-width-md);
+    }
+}

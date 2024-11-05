@@ -1,0 +1,38 @@
+/* =========================================================================== *\
+    Content
+    To be used as a wrapper around content for padding.
+
+    <div class="Container Container--pad ContentBg">
+        <div class="Content clearfix">
+            <main id="main">{% block main _page.content() %}</main>
+        </div>
+    </div>
+\* =========================================================================== */
+
+/* @define Content */
+
+.Content {
+    padding: var(--Content-padding-sm, 30px 0);
+}
+
+@media (--m-sm) {
+    .Content {
+        padding: var(--Content-padding, 30px 0);
+    }
+}
+
+/* ------------------------------------ *\
+    Overrides for no top or bottom padding.
+    The "no-banner-space" and "no-footer-space" classes
+    are typically added to the body tag.
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.no-banner-space .Content {
+    padding-top: 0;
+}
+
+/* postcss-bem-linter: ignore */
+.no-footer-space .Content {
+    padding-bottom: 0;
+}

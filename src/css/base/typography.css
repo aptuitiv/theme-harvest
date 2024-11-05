@@ -45,7 +45,7 @@ body {
     font-size: var(--base-typography-font-size, 1.8rem);
     font-weight: var(--base-typography-font-weight, 400);
     letter-spacing: var(--base-typography-letter-spacing);
-    line-height: var(--base-typography-line-height, 1.58);
+    line-height: var(--base-typography-line-height, 1.6);
 }
 
 /**
@@ -88,7 +88,7 @@ blockquote p:last-child {
 
 a {
     color: var(--base-typography-link-color, #00e);
-    font-weight: var(--base-typography-link-font-weight, 400);
+    font-weight: var(--base-typography-link-font-weight);
     text-decoration: var(--base-typography-link-text-decoration, underline);
     transition: all 250ms;
 }
@@ -173,11 +173,11 @@ h1,
 .h1 * {
     color: var(--base-typography-h1-color, #333);
     font-family: var(--base-typography-h1-font-family);
-    font-size: var(--base-typography-h1-font-size, 3.2rem);
+    font-size: var(--base-typography-h1-font-size-sm, 3.2rem);
     font-style: var(--base-typography-h1-font-style);
     font-weight: var(--base-typography-h1-font-weight, 700);
     letter-spacing: var(--base-typography-h1-letter-spacing);
-    line-height: var(--base-typography-h1-line-height, 1.58);
+    line-height: var(--base-typography-h1-line-height, 1.6);
     margin: var(--base-typography-h1-margin, 2.5rem 0 1.25rem);
     text-align: var(--base-typography-h1-text-align);
     text-decoration: var(--base-typography-h1-text-decoration);
@@ -190,11 +190,11 @@ h2,
 .h2 * {
     color: var(--base-typography-h2-color, #333);
     font-family: var(--base-typography-h2-font-family);
-    font-size: var(--base-typography-h2-font-size, 2.8rem);
+    font-size: var(--base-typography-h2-font-size-sm, 2.8rem);
     font-style: var(--base-typography-h2-font-style);
     font-weight: var(--base-typography-h2-font-weight, 700);
     letter-spacing: var(--base-typography-h2-letter-spacing);
-    line-height: var(--base-typography-h2-line-height, 1.58);
+    line-height: var(--base-typography-h2-line-height, 1.6);
     margin: var(--base-typography-h2-margin, 2.5rem 0 1.25rem);
     text-align: var(--base-typography-h2-text-align);
     text-decoration: var(--base-typography-h2-text-decoration);
@@ -206,11 +206,11 @@ h3,
 .h3 * {
     color: var(--base-typography-h3-color, #333);
     font-family: var(--base-typography-h3-font-family);
-    font-size: var(--base-typography-h3-font-size, 2.4rem);
+    font-size: var(--base-typography-h3-font-size-sm, 2.4rem);
     font-style: var(--base-typography-h3-font-style);
     font-weight: var(--base-typography-h3-font-weight, 700);
     letter-spacing: var(--base-typography-h3-letter-spacing);
-    line-height: var(--base-typography-h3-line-height, 1.58);
+    line-height: var(--base-typography-h3-line-height, 1.6);
     margin: var(--base-typography-h3-margin, 2.5rem 0 1.25rem);
     text-align: var(--base-typography-h3-text-align);
     text-decoration: var(--base-typography-h3-text-decoration);
@@ -222,11 +222,11 @@ h4,
 .h4 * {
     color: var(--base-typography-h4-color, #333);
     font-family: var(--base-typography-h4-font-family);
-    font-size: var(--base-typography-h4-font-size, 2rem);
+    font-size: var(--base-typography-h4-font-size-sm, 2rem);
     font-style: var(--base-typography-h4-font-style);
     font-weight: var(--base-typography-h4-font-weight, 700);
     letter-spacing: var(--base-typography-h4-letter-spacing);
-    line-height: var(--base-typography-h4-line-height, 1.58);
+    line-height: var(--base-typography-h4-line-height, 1.6);
     margin: var(--base-typography-h4-margin, 2.5rem 0 1.25rem);
     text-align: var(--base-typography-h4-text-align);
     text-decoration: var(--base-typography-h4-text-decoration);
@@ -238,11 +238,11 @@ h5,
 .h5 * {
     color: var(--base-typography-h5-color, #333);
     font-family: var(--base-typography-h5-font-family);
-    font-size: var(--base-typography-h5-font-size, 1.8rem);
+    font-size: var(--base-typography-h5-font-size-sm, 1.8rem);
     font-style: var(--base-typography-h5-font-style);
     font-weight: var(--base-typography-h5-font-weight, 700);
     letter-spacing: var(--base-typography-h5-letter-spacing);
-    line-height: var(--base-typography-h5-line-height, 1.58);
+    line-height: var(--base-typography-h5-line-height, 1.6);
     margin: var(--base-typography-h5-margin, 2.5rem 0 1.25rem);
     text-align: var(--base-typography-h5-text-align);
     text-decoration: var(--base-typography-h5-text-decoration);
@@ -254,11 +254,11 @@ h6,
 .h6 * {
     color: var(--base-typography-h6-color, #333);
     font-family: var(--base-typography-h6-font-family);
-    font-size: var(--base-typography-h6-font-size, 1.8rem);
+    font-size: var(--base-typography-h6-font-size-sm, 1.8rem);
     font-style: var(--base-typography-h6-font-style);
     font-weight: var(--base-typography-h6-font-weight, 700);
     letter-spacing: var(--base-typography-h6-letter-spacing);
-    line-height: var(--base-typography-h6-line-height, 1.58);
+    line-height: var(--base-typography-h6-line-height, 1.6);
     margin: var(--base-typography-h6-margin, 2.5rem 0 1.25rem);
     text-align: var(--base-typography-h6-text-align);
     text-decoration: var(--base-typography-h6-text-decoration);
@@ -272,4 +272,36 @@ h4:first-child,
 h5:first-child,
 h6:first-child {
     margin-top: 0;
+}
+
+@media (--m-sm) {
+    h1,
+    .h1 {
+        font-size: var(--base-typography-h1-font-size, 3.6rem);
+    }
+
+    h2,
+    .h2 {
+        font-size: var(--base-typography-h2-font-size, 3.2rem);
+    }
+
+    h3,
+    .h3 {
+        font-size: var(--base-typography-h3-font-size, 2.8rem);
+    }
+
+    h4,
+    .h4 {
+        font-size: var(--base-typography-h4-font-size, 2.4rem);
+    }
+
+    h5,
+    .h5 {
+        font-size: var(--base-typography-h5-font-size, 2rem);
+    }
+
+    h6,
+    .h6 {
+        font-size: var(--base-typography-h6-font-size, 1.8rem);
+    }
 }

@@ -23,7 +23,7 @@
                             "collapsable": false,
                             "useTextAlign": false,
                             "fontSize": {
-                                "defaultValue": "24px"
+                                "defaultValue": "2.4rem"
                             },
                             "render": {
                                 "type": "css-head",
@@ -155,6 +155,7 @@
                             "name": "bannerTextShadow",
                             "label": "Text shadow",
                             "type": "textShadow",
+                            "defaultValue": "1px 1px 0 rgba(0, 0, 0, 0.4)",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-text-shadow"
@@ -165,7 +166,7 @@
                             "label": "Overlay color",
                             "type": "color",
                             "description": "The background color of an overlay that sits on top of the banner image or video and below the text.",
-                            "defaultValue": "#00263e6e",
+                            "defaultValue": "rgba(68, 68, 68, 0.3)",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-overlay"
@@ -176,7 +177,7 @@
                             "label": "Background color",
                             "description": "Background color will only be seen if no image is uploaded.",
                             "type": "color",
-                            "defaultValue": "#00263e",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-background"
@@ -304,7 +305,7 @@
                             "label": "Minimum aspect ratio for content",
                             "type": "ratio",
                             "after": "px",
-                            "defaultValue": "10/2",
+                            "defaultValue": "10/1",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-content-aspect-ratio"
@@ -374,7 +375,7 @@
                             "name": "bannerSliderDotPaginationColorActive",
                             "label": "Dot pagination color (active)",
                             "type": "color",
-                            "defaultValue": "#f3f3f3",
+                            "defaultValue": "#38871a",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-dot-pagination-color-active"
@@ -743,59 +744,6 @@
                         "type": "css-head",
                         "cssVariable": "--ColumnContent-gap"
                     }
-                }
-            ]
-        },
-        {
-            "name": "Blocks - Full Width Image",
-            "description": "Styles for the \"Full Width Image\" block.",
-            "sidebarSize": "small",
-            "groups": [
-                {
-                    "name": "Content styles",
-                    "description": "Styles for the text content the \"Full Width Image\" block.",
-                    "fields": [
-                        {
-                            "name": "fullWidthImageWidth",
-                            "label": "Image width",
-                            "type": "radio",
-                            "defaultValue": "full",
-                            "options": {
-                                "full": "Span the full width of the page",
-                                "contained": "Maximum width is the container width"
-                            }
-                        },
-                        {
-                            "name": "fullWidthImagCaptionTypography",
-                            "label": "Caption typography",
-                            "type": "typography",
-                            "useMargin": "true",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--FullWidthImage-caption-typography"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Image sizes",
-                    "description": "These settings set the responsive sizes for the \"Full Width Image\" block.",
-                    "fields": [
-                        {
-                            "name": "blockFullWidthImageSizes",
-                            "label": "Image Sizes",
-                            "type": "repeatingGrid",
-                            "itemName": "Image size",
-                            "children": [
-                                {
-                                    "name": "maxWidth",
-                                    "label": "Max width",
-                                    "type": "stepper",
-                                    "after": "px"
-                                }
-                            ]
-                        }
-                    ]
                 }
             ]
         },
@@ -1280,6 +1228,175 @@
             ]
         },
         {
+            "name": "Blocks - Large Image",
+            "description": "Styles for the \"Full Width Image\" block.",
+            "sidebarSize": "small",
+            "fields": [
+                {
+                    "name": "blockLargeImageWidth",
+                    "label": "Image width",
+                    "type": "radio",
+                    "defaultValue": "full",
+                    "options": {
+                        "full": "Span the full width of the page",
+                        "contained": "Maximum width is the container width"
+                    }
+                },
+                {
+                    "name": "blockLargeImageSizes",
+                    "label": "Image Sizes",
+                    "description": "These set the responsive sizes for the \"Large Image\" block.",
+                    "type": "repeatingGrid",
+                    "itemName": "Image size",
+                    "children": [
+                        {
+                            "name": "maxWidth",
+                            "label": "Max width",
+                            "type": "stepper",
+                            "after": "px"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Blocks - Large & Small Image",
+            "groups": [
+                {
+                    "name": "Caption",
+                    "fields": [
+                        {
+                            "name": "imagCaptionTypography",
+                            "label": "Caption typography",
+                            "type": "typography",
+                            "usePadding": "true",
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "fontStyle": {
+                                "defaultValue": "italic"
+                            },
+                            "padding": {
+                                "defaultValue": "2px 0 0 0"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".ImageCaption"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Blocks - Staff",
+            "description": "Styles for the \"Staff\" block.",
+            "groups": [
+                {
+                    "name": "Person's name",
+                    "description": "Styles for the person's name",
+                    "fields": [
+                        {
+                            "name": "blockStaffNameTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useMargin": true,
+                            "margin": {
+                                "defaultValue": "0 0 6px 0"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-name"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Title",
+                    "description": "Styles for the person's title",
+                    "fields": [
+                        {
+                            "name": "blockStaffTitleTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useMargin": true,
+                            "fontWeight": {
+                                "defaultValue": "700"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-title"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Email",
+                    "description": "Styles for the person's email link",
+                    "fields": [
+                        {
+                            "name": "blockStaffEmailTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-emailLink"
+                            }
+                        },
+                        {
+                            "name": "blockStaffEmailMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-email"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Phone",
+                    "description": "Styles for the person's phone number",
+                    "fields": [
+                        {
+                            "name": "blockStaffPhoneTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-phoneLink"
+                            }
+                        },
+                        {
+                            "name": "blockStaffPhoneMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-phone"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Biography",
+                    "description": "Styles for the person's biography or description",
+                    "fields": [
+                        {
+                            "name": "blockStaffBioMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "defaultValue": "20px 0 0 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Staff-bio"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Blocks - Wrapper",
             "description": "Styles for the \"Wrapper\" block.",
             "fields": [
@@ -1449,6 +1566,188 @@
             ]
         },
         {
+            "name": "Blog - Recent Posts Block",
+            "description": "Styles for the blog recent posts block.",
+            "groups": [
+                {
+                    "name": "General",
+                    "fields": [
+                        {
+                            "name": "blogRecentPostsPadding",
+                            "label": "Padding around the content",
+                            "type": "padding",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--BlogRecentPosts-padding"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Heading",
+                    "fields": [
+                        {
+                            "name": "blogRecentPostsHeadingTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useMargin": true,
+                            "textAlign": {
+                                "defaultValue": "center"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-heading"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Post - general",
+                    "description": "Styles for the individual posts",
+                    "fields": [
+                        {
+                            "name": "blogRecentPostsCardBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-card"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsCardBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-card"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsCardBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-card",
+                                "cssProperty": "background"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsCardPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-card"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Post - title",
+                    "fields": [
+                        {
+                            "name": "blogRecentPostsTitleTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useHover": true,
+                            "fontSize": {
+                                "defaultValue": "2rem"
+                            },
+                            "fontWeight": {
+                                "defaultValue": "700"
+                            },
+                            "textDecoration": {
+                                "defaultValue": "none"
+                            },
+                            "textDecorationHover": {
+                                "defaultValue": "underline"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-titleLink"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsTitleMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "defaultValue": "0 0 4px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-title"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Post - date",
+                    "fields": [
+                        {
+                            "name": "blogRecentPostsDateTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "fontSize": {
+                                "defaultValue": "1.6rem"
+                            },
+                            "fontStyle": {
+                                "defaultValue": "italic"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-date"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsDateMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-date"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Posts - abstract",
+                    "fields": [
+                        {
+                            "name": "blogRecentPostsAbstractMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "defaultValue": "10px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-abstract"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsAbstractNumLines",
+                            "label": "Number of lines to show",
+                            "type": "radio",
+                            "defaultValue": "4",
+                            "options": {
+                                "1": "1",
+                                "2": "2",
+                                "3": "3",
+                                "4": "4",
+                                "5": "5",
+                                "6": "6",
+                                "7": "7",
+                                "8": "8"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--RecentPosts-abstract-lines"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Body",
             "description": "Base styles for the website body. See the Typography section for core font styles.",
             "fields": [
@@ -1461,6 +1760,102 @@
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--body-background"
+                    }
+                },
+                {
+                    "name": "contentBackground",
+                    "label": "Content background",
+                    "description": "The background of the main content.",
+                    "type": "color",
+                    "defaultValue": "#ffffff",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Content-background"
+                    }
+                },
+                {
+                    "name": "contentPadding",
+                    "label": "Content padding",
+                    "type": "padding",
+                    "defaultValue": "30px 0",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Content-padding"
+                    }
+                },
+                {
+                    "name": "contentPaddingSm",
+                    "label": "Content padding (small screens)",
+                    "type": "padding",
+                    "defaultValue": "30px 0",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Content-padding-sm"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Breadcrumbs",
+            "fields": [
+                {
+                    "name": "breadcrumbsColor",
+                    "label": "Text color",
+                    "type": "color",
+                    "defaultValue": "#4d4d4d",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Breadcrumbs-color"
+                    }
+                },
+                {
+                    "name": "breadcrumbsLinkColor",
+                    "label": "Link color",
+                    "type": "color",
+                    "defaultValue": "#888",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Breadcrumbs-link-color"
+                    }
+                },
+                {
+                    "name": "breadcrumbsLinkColorHover",
+                    "label": "Link color (hover)",
+                    "type": "color",
+                    "defaultValue": "#0000CD",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Breadcrumbs-link-colorHover"
+                    }
+                },
+                {
+                    "name": "breadcrumbFontSize",
+                    "label": "Font size",
+                    "type": "fontSize",
+                    "defaultValue": "1.2rem",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Breadcrumbs-fontSize"
+                    }
+                },
+                {
+                    "name": "breadcrumbPadding",
+                    "label": "Padding",
+                    "type": "padding",
+                    "defaultValue": "0 0 1em 0",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Breadcrumbs-padding"
+                    }
+                },
+                {
+                    "name": "breadcrumbPaddingSm",
+                    "label": "Padding",
+                    "type": "padding",
+                    "defaultValue": "0 0 1em 0",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Breadcrumbs-padding-sm"
                     }
                 }
             ]
@@ -1796,6 +2191,277 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-lg-font-size"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Calendar - Grid",
+            "description": "Styles for the calendar when it's displayed as a grid.",
+            "groups": [
+                {
+                    "name": "General grid cell styles",
+                    "fields": [
+                        {
+                            "name": "calendarGridCellBorderSize",
+                            "label": "Border size",
+                            "type": "size",
+                            "defaultValue": "1px",
+                            "allowedUnits": ["px"],
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-cell-border-size"
+                            }
+                        },
+                        {
+                            "name": "calendarGridCellBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "default": "#e6e6e6",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-cell-border-color"
+                            }
+                        },
+                        {
+                            "name": "calendarGridCellPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "default": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-cell-padding"
+                            }
+                        },
+                        {
+                            "name": "calendarGridEmptyCellBackground",
+                            "label": "Empty cell background",
+                            "description": "The background of the cell when it has no date.",
+                            "type": "color",
+                            "default": "#e9e9e9",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-empty-cell-background"
+                            }
+                        },
+                        {
+                            "name": "calendarGridEndCellBackground",
+                            "label": "Weekend cell background",
+                            "type": "color",
+                            "default": "#f5f5f5",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-end-cell-background"
+                            }
+                        },
+                        {
+                            "name": "calendarGridEndCellColor",
+                            "label": "Weekend cell color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-end-cell-color"
+                            }
+                        },
+                        {
+                            "name": "calendarGridTodayCellBackground",
+                            "label": "Today cell background",
+                            "description": "The background of the current day cell.",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-today-cell-background"
+                            }
+                        },
+                        {
+                            "name": "calendarGridTodayCellColor",
+                            "label": "Today cell color",
+                            "description": "The color of the current day cell.",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-today-cell-color"
+                            }
+                        },
+                        {
+                            "name": "calendarGridTodayCellOutlineColor",
+                            "label": "Today cell outline color",
+                            "description": "The outline color of the current day cell. Use an outline instead of a background color for a subtle highlight",
+                            "type": "color",
+                            "defaultValue": "#1456A7",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-today-cell-outline-color"
+                            }
+                        },
+                        {
+                            "name": "calendarGridTodayCellOutlineSize",
+                            "label": "Today cell outline size",
+                            "description": "The outline size of the current day cell. Use an outline instead of a background color for a subtle highlight",
+                            "type": "size",
+                            "default": "2px",
+                            "allowedUnits": ["px"],
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-today-cell-outline-size"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Heading cells",
+                    "description": "These are the grid cells that show the day of the week.",
+                    "fields": [
+                        {
+                            "name": "calendarGridHeadingBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarGrid-heading-background"
+                            }
+                        },
+                        {
+                            "name": "calendarGridHeadingTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "color": {
+                                "defaultValue": "#fff"
+                            },
+                            "useLetterSpacing": false,
+                            "useTextAlign": false,
+                            "useTextTransform": false,
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".CalendarGrid-headCell"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Calendar - Mini Grid",
+            "description": "The mini grid that shows in the sidebar of calendar pages",
+            "groups": [
+                {
+                    "name": "General grid cell styles",
+                    "fields": [
+                        {
+                            "name": "calendarMiniGridCellBorderSize",
+                            "label": "Border size",
+                            "type": "size",
+                            "defaultValue": "1px",
+                            "allowedUnits": ["px"],
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-cell-border-size"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridCellBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "default": "#e6e6e6",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-cell-border-color"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridCellPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "default": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-cell-padding"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridEmptyCellBackground",
+                            "label": "Empty cell background",
+                            "description": "The background of the cell when it has no date.",
+                            "type": "color",
+                            "default": "#e9e9e9",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-empty-cell-background"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridEndCellBackground",
+                            "label": "Weekend cell background",
+                            "type": "color",
+                            "default": "#f5f5f5",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-end-cell-background"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridEndCellColor",
+                            "label": "Weekend cell color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-end-cell-color"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridTodayCellBackground",
+                            "label": "Today cell background",
+                            "description": "The background of the current day cell.",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-today-cell-background"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridTodayCellColor",
+                            "label": "Today cell color",
+                            "description": "The color of the current day cell.",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-today-cell-color"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Day links",
+                    "description": "Styles for grid days that are links.",
+                    "fields": [
+                        {
+                            "name": "calendarMiniGridDateLinkColor",
+                            "label": "Link color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-date-link-color"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridDateLinkColorHover",
+                            "label": "Link color(hover)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-date-link-color-hover"
+                            }
+                        },
+                        {
+                            "name": "calendarMiniGridDateLinkBackgroundHover",
+                            "label": "Cell background (hover)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--CalendarMiniGrid-date-link-background-hover"
                             }
                         }
                     ]
@@ -2739,7 +3405,6 @@
                             "name": "navBarBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871a",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--NavBar-background"
@@ -2800,6 +3465,8 @@
                             "collapsable": false,
                             "useHover": true,
                             "useFontSizeHover": false,
+                            "useTextDecoration": false,
+                            "useTextDecorationHover": false,
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav"
@@ -2950,7 +3617,7 @@
                             "name": "navDropdownBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#591108",
+                            "defaultValue": "#2A6614",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Dropdown-link-background-hover"
@@ -3069,7 +3736,7 @@
                     "name": "messageBackgroundFailure",
                     "label": "Background color (failure message)",
                     "type": "color",
-                    "defaultValue": "#38871a",
+                    "defaultValue": "#871E0F",
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--Message-background-failure"
@@ -3098,7 +3765,7 @@
                             "name": "notificationBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#1A3A89",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Notification-background"
@@ -3158,7 +3825,7 @@
                             "name": "notificationCloseFontSize",
                             "label": "Button size",
                             "type": "fontSize",
-                            "defaultValue": "20px",
+                            "defaultValue": "2rem",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Notification-close-font-size"
@@ -3397,6 +4064,145 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Modal-content-padding"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Sidebar Navigation",
+            "description": "Styles for the sidebar navigation used in two-column page templates.",
+            "groups": [
+                {
+                    "name": "Heading",
+                    "description": "The heading above each block of sidebar content",
+                    "fields": [
+                        {
+                            "name": "sidebarHeadingTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "fontSize": {
+                                "defaultValue": "2rem"
+                            },
+                            "fontWeight": {
+                                "defaultValue": "700"
+                            },
+                            "useHover": true,
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".SidebarBox-heading"
+                            }
+                        },
+                        {
+                            "name": "sidebarHeadingBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".SidebarBox-heading"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Secondary content",
+                    "description": "This is used for smaller text in the sidebar. The blog sidebar uses this for dates and post counts.",
+                    "fields": [
+                        {
+                            "name": "sidebarSecondaryTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "color": {
+                                "defaultValue": "#4D4D4D"
+                            },
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".SidebarBox-secondary"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Links",
+                    "fields": [
+                        {
+                            "name": "sideNavBackground",
+                            "label": "Background",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SidebarNav-background"
+                            }
+                        },
+                        {
+                            "name": "sideNavBackgroundHover",
+                            "label": "Background (hover)",
+                            "type": "color",
+                            "defaultValue": "#38871A",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SidebarNav-background-hover"
+                            }
+                        },
+                        {
+                            "name": "sideNavTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useHover": true,
+                            "useTextAlign": false,
+                            "usePadding": true,
+                            "colorHover": {
+                                "defaultValue": "#ffffff"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SidebarNav"
+                            }
+                        },
+                        {
+                            "name": "sideNavCurrentColor",
+                            "label": "Current link color",
+                            "description": "The link for the page page number a given user is on.",
+                            "type": "color",
+                            "defaultValue": "#38871A",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SidebarNav-current-color"
+                            }
+                        }
+                    ]
+                },
+
+                {
+                    "name": "Parent Link",
+                    "description": "Styles for the current page's parent link.",
+                    "fields": [
+                        {
+                            "name": "sideNavParentTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useHover": true,
+                            "useTextAlign": false,
+                            "usePadding": true,
+                            "padding": {
+                                "defaultValue": "0 0 8px 0"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SidebarNav-parent"
+                            }
+                        },
+                        {
+                            "name": "sideNavBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".SidebarNav-link--isParent"
                             }
                         }
                     ]
@@ -4220,6 +5026,16 @@
                                     "bottom": "1.25rem"
                                 }
                             }
+                        },
+                        {
+                            "name": "baseTypographyH1Sm",
+                            "label": "Font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "4.39rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-h1-font-size-sm"
+                            }
                         }
                     ]
                 },
@@ -4248,6 +5064,16 @@
                             },
                             "lineHeight": {
                                 "defaultValue": "1.6"
+                            }
+                        },
+                        {
+                            "name": "baseTypographyH2Sm",
+                            "label": "Font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "3.52rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-h2-font-size-sm"
                             }
                         }
                     ]
@@ -4278,6 +5104,16 @@
                             "lineHeight": {
                                 "defaultValue": "1.6"
                             }
+                        },
+                        {
+                            "name": "baseTypographyH3Sm",
+                            "label": "Font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "2.81rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-h3-font-size-sm"
+                            }
                         }
                     ]
                 },
@@ -4305,6 +5141,16 @@
                             },
                             "lineHeight": {
                                 "defaultValue": "1.6"
+                            }
+                        },
+                        {
+                            "name": "baseTypographyH4Sm",
+                            "label": "Font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "2.25rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-h4-font-size-sm"
                             }
                         }
                     ]
@@ -4334,6 +5180,16 @@
                             "lineHeight": {
                                 "defaultValue": "1.6"
                             }
+                        },
+                        {
+                            "name": "baseTypographyH5Sm",
+                            "label": "Font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "2.25rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-h5-font-size-sm"
+                            }
                         }
                     ]
                 },
@@ -4361,6 +5217,16 @@
                             },
                             "lineHeight": {
                                 "defaultValue": "1.6"
+                            }
+                        },
+                        {
+                            "name": "baseTypographyH6Sm",
+                            "label": "Font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "1.8rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-h6-font-size-sm"
                             }
                         }
                     ]

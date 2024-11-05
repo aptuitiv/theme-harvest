@@ -3,7 +3,6 @@
     Based on http://w3bits.com/css-Gallery/
 \* =========================================================================== */
 
-
 /* @define Gallery */
 
 .Gallery {
@@ -11,7 +10,6 @@
 }
 
 .Gallery-item {
-    box-sizing: border-box;
     break-inside: avoid;
     display: inline-block;
     margin-bottom: 10px;
@@ -47,8 +45,8 @@
 
 .Gallery-imageWrap::after {
     background: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 30%) 50%, rgb(0 0 0 / 0%) 100%);
-    inset: 0;
     content: '';
+    inset: 0;
     position: absolute;
     width: 100%;
 }
@@ -71,10 +69,8 @@
     z-index: 1;
 }
 
-
 .Gallery-title {
-    box-sizing: border-box;
-    font-size: .9em;
+    font-size: 0.9em;
     padding: 4px 8px;
 }
 

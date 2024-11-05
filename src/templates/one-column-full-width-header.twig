@@ -1,11 +1,16 @@
 {% include 'snippets/header' %}
-{{ _page.content('banner') }}
-<div class="Container">
-    {% if _page.isHome == false %}
+
+{% block banner %}
+    {{ _page.content('banner') }}
+{% endblock %}
+
+<div class="Container Container--pad ContentBg">
+{% if _page.isHome == false %}
         {{ _page.breadcrumb }}
     {% endif %}
-    <div class="ContentContainer{% if _page.isHome == true %} pt-0{% endif %}">
-        <main id="main">{% block main %}{{ _page.content() }}{% endblock %}</main>
+    <div class="Content clearfix">
+        <main id="main">{% block main _page.content() %}</main>
     </div>
 </div>
+
 {% include 'snippets/footer' %}

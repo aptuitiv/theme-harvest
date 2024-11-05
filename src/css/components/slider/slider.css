@@ -2,24 +2,6 @@
     Image Slider Block
 \* =========================================================================== */
 
-/* :root {
-    --Slider-content-paddingVertical: 20px;
-    --Slider-content-paddingHorizontal: 20px;
-    --Slider-content-fontSize: 2rem;
-    --Slider-content-fontWeight: 700;
-    --Slider-content-lineHeight: 1.2;
-    --Slider-content-textTransform: none;
-    --Slider-content-background: #fff;
-    --Slider-content-color: #333;
-    --Slider-content-background-hover: #333;
-    --Slider-content-color-hover: #fff;
-
-    --Slider-arrow-background: #fff;
-    --Slider-arrow-color: #333;
-    --Slider-arrow-background-hover: #333;
-    --Slider-arrow-color-hover: #fff;
-} */
-
 /* @define Slider */
 .Slider {
     padding: 0 50px;

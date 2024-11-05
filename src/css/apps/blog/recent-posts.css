@@ -1,0 +1,32 @@
+/* ===========================================================================
+    Recent Blog Posts Block
+=========================================================================== */
+
+/* @define RecentPosts */
+
+.RecentPosts {
+    padding: var(--BlogRecentPosts-padding, 0);
+}
+
+.RecentPosts-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.RecentPosts-abstract {
+    flex-grow: 1;
+}
+
+.RecentPosts-abstractInner {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--RecentPosts-abstract-lines, 3);
+    line-clamp: var(--recentposts-abstract-lines, 3);
+    overflow: hidden;
+}
+
+.RecentPosts-moreLink {
+    align-items: center;
+    display: inline-flex;
+}

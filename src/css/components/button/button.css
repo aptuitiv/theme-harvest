@@ -13,10 +13,6 @@
  * general UI of the site/app.
  */
 
-:root {
-    --Button-disabled-opacity: 0.6;
-}
-
 /**
  * 1. Prevent button text from being selectable.
  */

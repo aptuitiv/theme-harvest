@@ -2,11 +2,6 @@
     Container
 \* =========================================================================== */
 
-:root {
-    --Container-narrow-width: 900px;
-    --Container-small-width: 600px;
-}
-
 /* @define Container */
 .Container {
     margin: 0 auto;

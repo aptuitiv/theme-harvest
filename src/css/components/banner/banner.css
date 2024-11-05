@@ -144,6 +144,11 @@
     font-size: var(--Banner-content-font-size, 2rem);
 }
 
+/* postcss-bem-linter: ignore */
+.Banner-content h1 {
+    font-size: var(--Banner-content-h1-font-size, 3.2rem);
+}
+
 @media (width <= 800px) {
     /* postcss-bem-linter: ignore */
     .Banner-content h1 {
