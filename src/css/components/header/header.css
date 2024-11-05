@@ -5,8 +5,8 @@
 /* @define Header */
 
 .Header {
-    padding: 3rem var(--g-gutter) 2rem;
-    text-align: center;
+    background: var(--Header-background);
+    padding: var(--Header-padding-sm, 20px 0);
 }
 
 .Header--outer {
@@ -15,20 +15,20 @@
 
 @media (--c-bp-largeScreenNav) {
     .Header {
-        background: #fff;
         position: sticky;
         top: 0;
         z-index: 11;
     }
 
     .Header.is-sticky {
+        background: var(--Header-sticky-background);
         box-shadow: 1px 1px 3px rgb(43 26 35 / 40%);
     }
 }
 
 @media (--m-sm) {
     .Header {
-        padding: 2rem var(--g-gutter-sm);
+        padding: var(--Header-padding);
     }
 
     .Header--outer {
@@ -36,9 +36,9 @@
     }
 }
 
-.Header-textLogo {
-    font-size: var(--Header-text-logo-font-size-sm);
-}
+/* ------------------------------------ *\
+    Skip to main content
+\* ------------------------------------ */
 
 .Header-skipToMain {
     align-items: center;
@@ -62,4 +62,29 @@
     padding: var(--Header-skipMain-padding, 5px 10px);
     text-decoration: underline;
     width: auto;
+}
+
+/* ------------------------------------ *\
+    Logo
+\* ------------------------------------ */
+
+.Header-logoWrap {
+    display: flex;
+    justify-content: center;
+    padding: var(--Header-logo-padding, 20px 0);
+}
+
+.Header-logo {
+    max-width: var(--Header-logo-width);
+    width: 100%;
+}
+
+.Header-textLogo {
+    font-size: var(--Header-text-logo-font-size-sm);
+}
+
+@media (--m-md) {
+    .Header-textLogo {
+        font-size: var(--Header-text-logo-font-size);
+    }
 }

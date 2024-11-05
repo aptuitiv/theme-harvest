@@ -117,7 +117,7 @@
                             "render": {
                                 "type": "replace",
                                 "contentSelector": "#header-logo",
-                                "template": "<div class=\"col-3-4 col-xl-1-3\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\" class=\"Header-logoLink\"><img src=\"{{ url }}\" height=\"{{ imageHeight }}\" width=\"{{ imageWidth }}\" alt=\"{{ alt }}\" class=\"Header-logo\"></a></div>"
+                                "template": "<div class=\"Header-logoWrap hidden flex-md\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\">{% if url %}<img src=\"{{ url }}\" height=\"{{ imageHeight }}\" width=\"{{ imageWidth }}\" class=\"Header-logo\">{% elseif fields.headerTextLogo.value %}<span class=\"Header-textLogo\">{{ fields.headerTextLogo.value }}</span>{% endif %}</a></div>"
                             }
                         },
                         {
@@ -145,7 +145,7 @@
                             "render": {
                                 "type": "replace",
                                 "contentSelector": "#header-logo",
-                                "template": "<div class=\"col-3-4 col-xl-1-3\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\" class=\"Header-logoLink\">{% if fields.headerLogo %}<img src=\"{{ fields.headerLogo.url }}\" class=\"Header-logo\">{% elseif value %}<div class=\"Header-textLogo\">{{ value }}</div>{% endif %}</a></div>"
+                                "template": "<div class=\"Header-logoWrap hidden flex-md\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\">{% if fields.headerLogo %}<img src=\"{{ fields.headerLogo.url }}\" height=\"{{ fields.headerLogo.imageHeight }}\" width=\"{{ fields.headerLogo.imageWidth }}\" class=\"Header-logo\">{% elseif value %}<span class=\"Header-textLogo\">{{ value }}</span>{% endif %}</a></div>"
                             }
                         }
                     ]

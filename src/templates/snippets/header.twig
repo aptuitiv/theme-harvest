@@ -90,7 +90,7 @@
         </div>
         <div class="Container">
             {# Logo for desktop #}
-            <div class="Header hidden block-md" id="header-logo">{# ID is used for live theme preview. #}
+            <div class="Header-logoWrap hidden flex-md" id="header-logo">{# ID is used for live theme preview. #}
                 {% if _core.theme.settings.headerLogo %}
                     {% set _core.theme.settings.headerLogo.class = "Header-logo" %}
                     {% do _core.theme.settings.headerLogo.resize(_core.theme.settings.headerLogoWidth + 100) %}

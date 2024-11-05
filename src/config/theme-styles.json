@@ -2373,8 +2373,17 @@
             "description": "Styles for the header of the website.",
             "groups": [
                 {
-                    "name": "Padding",
+                    "name": "General",
                     "fields": [
+                        {
+                            "name": "headerBackground",
+                            "label": "Background",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-background"
+                            }
+                        },
                         {
                             "name": "headerPadding",
                             "label": "Padding",
@@ -2393,6 +2402,16 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-padding-sm"
+                            }
+                        },
+                        {
+                            "name": "headerLogoPadding",
+                            "label": "Padding around logo",
+                            "type": "padding",
+                            "defaultValue": "20px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-logo-padding"
                             }
                         }
                     ]
