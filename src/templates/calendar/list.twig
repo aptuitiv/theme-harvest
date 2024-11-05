@@ -1,23 +1,24 @@
-{% extends 'two-column.twig' %}
+{% extends 'two-column-right-sidebar' %}
 {% import 'macros/macros' as macros %}
 
 {% block banner %}
     {% set content %}
-        <h1>Calendar of Events: {{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</h1>
+        <h1 class="flex flex-col align-center g-1">Calendar of Events<span class="h4 m-0">{{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</span></h1>
     {% endset %}
     {% include('content-builder/banner-bar') %}
 {% endblock %}
 
 {% block main %}
-    <div class="h2 flex justify-center g-1">
+    <div class="h4 flex align-center justify-center g-1">
         {% if previousDateUrl %}
-            <a href="{{ previousDateUrl }}" class="flex align-center" title="Go to the previous date range">{{ macros.iconImg('caret-left', 'Go to the previous month', 'CalendarGrid-headingIcon') }}</a>
+            <a href="{{ previousDateUrl }}" class="flex m-0" title="Go to the previous date range">{{ macros.iconImg('caret-left', 'Go to the previous month', 'm-0') }}</a>
         {% endif %}
-        <span>{{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</span>
+        <span class="m-0">{{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</span>
         {% if nextDateUrl %}
-            <a href="{{ nextDateUrl }}" class="flex align-center" title="Go to the next date range">{{ macros.iconImg('caret-right', 'Go to the next month', 'CalendarGrid-headingIcon') }}</a>
+            <a href="{{ nextDateUrl }}" class="flex m-0" title="Go to the next date range">{{ macros.iconImg('caret-right', 'Go to the next month', 'm-0') }}</a>
         {% endif %}
     </div>
+     {{ header }}
     {% if eventCount > 0 %}
         {% if list.events %}
             {% set events = list.events %}
@@ -28,7 +29,7 @@
         {% endif %}
         {% for event in events %}
             <div class="mb-3">
-                <div class="h2"><a href="{{ event.url }}">{{ event.title }}</a></div>
+                <h2 class="h3"><a href="{{ event.url }}">{{ event.title }}</a></h2>
                 {% if event.isMultiDay %}
                     <div class="flex align-center g-1">
                         {{ macros.iconImg('calendar', 'Date') }}
@@ -36,13 +37,13 @@
                     </div>
                 {% else %}
                     <div class="flex align-center g-1">
-                        {{ macros.iconImg('calendar', 'Date', 'CalendarGrid-headingIcon') }}
+                        {{ macros.iconImg('calendar', 'Date') }}
                         <div>{{ event.date }}</div>
                     </div>
                 {% endif %}
                 {% if event.time.type != 'notime' %}
                     <div class="flex align-center g-1">
-                        {{ macros.iconImg('clock', 'Time', 'CalendarGrid-headingIcon') }}
+                        {{ macros.iconImg('clock', 'Time') }}
                         <div>
                             {% if event.time.type == 'timed' %}
                                 {{ event.time.start }} to {{ event.time.end }}
@@ -57,8 +58,8 @@
                     </div>
                 {% endif %}
 
-                {% if event.shortDescription %}
-                    <div class="mt-1">{{ event.shortDescription }}</div>
+                {% if event.description %}
+                    <div class="mt-1">{{ event.description }}</div>
                 {% endif %}
             </div>
         {% endfor %}
@@ -70,5 +71,3 @@
 {% block sidebar %}
     {{ include('calendar/sidebar.twig') }}
 {% endblock %}
-
-{% do _page.addCss('calendar.css') %}

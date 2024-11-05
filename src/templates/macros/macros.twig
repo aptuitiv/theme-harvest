@@ -46,3 +46,17 @@
     {% endinlinejs %}
     {% do _page.registerJs('/js/lightbox.js'|theme_url) %}
 {% endmacro %}
+
+{# Macro to load Masonry Layout #}
+{% macro loadMasonry() %}
+    {% if _page.hasJs('masonry/masonry.pkgd.min.js'|theme_url) == false %}
+        {% inlinejs %}
+            loadjs.ready('main', {
+                success: function() {
+                    loadjs(['{{ 'masonry/masonry.pkgd.min.js'|theme_url }}'], 'masonry');
+                }
+            });
+        {% endinlinejs %}
+        {% do _page.registerJs('masonry/masonry.pkgd.min.js'|theme_url) %}
+    {% endif %}
+{% endmacro %}

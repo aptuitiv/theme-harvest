@@ -1,9 +1,10 @@
 
 {% import 'macros/macros' as macros %}
 
-<div class="h3 flex align-center justify-center">
+<div class="SidebarBox">
+<div class="SidebarBox-heading CalendarMiniGrid-heading">
     {% if miniGrid.previousDateUrl %}
-        <a href="{{ miniGrid.previousDateUrl }}" class="flex align-center" title="Go to the previous date range">{{ macros.iconImg('caret-left', 'Go to the previous month') }}</a>
+        <a href="{{ miniGrid.previousDateUrl }}" class="CalendarMiniGrid-navPrev" title="Go to the previous date range">{{ macros.iconImg('caret-left', 'Go to the previous month', 'CalendarMiniGrid-headingIcon') }}</a>
     {% endif %}
     {% set month = dateRanges.month|first %}
     <a href="{{ month.url }}" class="link-subtle">
@@ -11,11 +12,11 @@
         {{ miniGrid.year }}
     </a>
     {% if miniGrid.nextDateUrl %}
-        <a href="{{ miniGrid.nextDateUrl }}" class="flex align-center" title="Go to the next date range">{{ macros.iconImg('caret-right', 'Go to the next month') }}</a>
+        <a href="{{ miniGrid.nextDateUrl }}" class="CalendarMiniGrid-navNext" title="Go to the next date range">{{ macros.iconImg('caret-right', 'Go to the next month', 'CalendarMiniGrid-headingIcon') }}</a>
     {% endif %}
 </div>
 
-<table class="CalendarMiniGrid">
+<table class="CalendarMiniGrid u-margBottom4">
     <thead class="CalendarMiniGrid-head">
         <tr>
             <th class="CalendarMiniGrid-headCell">S</th>
@@ -31,15 +32,15 @@
     {% for row in miniGrid.rows %}
         <tr>
         {% for box in row.boxes %}
-            {% set class = 'CalendarMini' %}
+            {% set class = 'CalendarMiniGrid-cell' %}
             {% if box.isWeekend == true && box.isThisMonth == true %}
-                {% set class = class ~ ' ' ~ 'CalendarMini--isEnd' %}
+                {% set class = class ~ ' ' ~ 'CalendarMiniGrid-cell--isEnd' %}
             {% endif %}
             {% if box.isToday %}
-                {% set class = class ~ ' ' ~ 'CalendarMini--isToday' %}
+                {% set class = class ~ ' ' ~ 'CalendarMiniGrid-cell--isToday' %}
             {% endif %}
             {% if box.isThisMonth == false %}
-                {% set class = class ~ ' ' ~ 'CalendarMini--isEmpty' %}
+                {% set class = class ~ ' ' ~ 'CalendarMiniGrid-cell--isEmpty' %}
             {% endif %}
             <td class="{{ class|trim }}">
             {% if box.isThisMonth %}
@@ -55,10 +56,10 @@
     {% endfor %}
     </tbody>
 </table>
+</div>
 
-
-<div class="py-2">
-    <div class="h3 flex align-center g-1">{{ macros.iconImg('calendar', 'Change date') }} Change Date</div>
+<div class="SidebarBox">
+    <div class="SidebarBox-heading">{{ macros.iconImg('calendar', 'Change date') }} Change Date</div>
     <div class="pt-1">
         <form action="{{ dateNavigation.form.action }}" method="{{ dateNavigation.form.method }}">
             <div class="flex align-center g-1">

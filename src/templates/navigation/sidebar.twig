@@ -9,9 +9,6 @@
             {# Highlight the parent navigation item. It would be the first item #}
             {% if hasParentItem and loop.index == 1 %}
                 {% set item.link.class = item.link.class ~ ' SidebarNav-link--isParent' %}
-            {% else %}
-                {% set item.link.class = item.link.class ~ ' SidebarNav-link--indent' %}
-                <i class="Icon-right-open-mini SidebarNav-linkIcon"></i>
             {% endif %}
 
             {{ item.link.tag }}

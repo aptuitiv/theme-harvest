@@ -1,1 +1,22 @@
-{% extends 'one-column' %}
+{% extends 'two-column-right-sidebar' %}
+
+{% block banner %}
+    {% set content = '<h1>Blog Tags</h1>' %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
+
+{% block main %}
+    {% if tags|length > 0 %}
+        <ul>
+            {% for tag in tags %}
+                <li>
+                    <a href="{{ tag.url }}">{{ tag.tagName }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'blog/sidebar' %}
+{% endblock %}

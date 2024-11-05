@@ -4,7 +4,6 @@
 {% block main %}
     <div class="Container Container--narrow">
         <h1>Search Results</h1>
-        {{ events|debug}}
         {% if pagination.totalItemCount > 0 %}
             {# SHOW THE TOTAL NUMBER OF RESULTS #}
             <p>{{ pagination.firstItemNumber }} - {{ pagination.lastItemNumber }} of {{ pagination.totalItemCount }}
@@ -18,13 +17,40 @@
 
             {# SHOW THE SEARCH RESULTS #}
             {% for event in events %}
-                <p>
-                    <a href="{{ event.url }}">{{ event.title }}</a><br>
-                    {{ event.publishDate }}<br />
-                    {% if event.description %}
-                        {{ event.description }}
+                <div class="mb-3">
+                    <h2 class="h3"><a href="{{ event.url }}">{{ event.title }}</a></h2>
+                    {% if event.isMultiDay %}
+                        <div class="flex align-center g-1">
+                            {{ macros.iconImg('calendar', 'Date') }}
+                            <div>{{ event.startDate }} to {{ event.endDate }}</div>
+                        </div>
+                    {% else %}
+                        <div class="flex align-center g-1">
+                            {{ macros.iconImg('calendar', 'Date') }}
+                            <div>{{ event.date }}</div>
+                        </div>
                     {% endif %}
-                </p>
+                    {% if event.time.type != 'notime' %}
+                        <div class="flex align-center g-1">
+                            {{ macros.iconImg('clock', 'Time') }}
+                            <div>
+                                {% if event.time.type == 'timed' %}
+                                    {{ event.time.start }} to {{ event.time.end }}
+                                {% elseif event.time.type == 'start' %}
+                                    {{ event.time.start }}
+                                {% elseif event.time.type == 'allday' %}
+                                    All Day
+                                {% elseif event.time.type == 'tba' %}
+                                    TBA
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if event.description %}
+                        <div class="mt-1">{{ event.description }}</div>
+                    {% endif %}
+                </div>
             {% endfor %}
 
             {# PAGINATION #}
@@ -35,15 +61,17 @@
         {% endif %}
 
         {# SHOW THE SEARCH FORM TO SEARCH AGAIN #}
-        <h2>Search Again</h2>
-        {{ form.openTag }}
-            {% set form.fields.term.class = 'TextInput' %}
-            {% set form.fields.term.placeholder = 'Search...' %}
-            <label for="{{ form.fields.term.id }}" class="visually-hidden">Search</label>
-            {{ form.fields.term.tag }}
-            <button type="submit" class="Button">Search</button>
-        {{ form.closeTag }}
+        <div class="mt-5">
+            <h2>Search Again</h2>
+            {{ form.openTag }}
+            <div class="flex align-center g-1">
+                {% set form.fields.term.class = 'TextInput' %}
+                {% set form.fields.term.placeholder = 'Search...' %}
+                <label for="{{ form.fields.term.id }}" class="visually-hidden">Search</label>
+                {{ form.fields.term.tag }}
+                <button type="submit" class="Button">Search</button>
+            </div>
+            {{ form.closeTag }}
+        </div>
     </div>
 {% endblock %}
-
-{% do _page.addCss('calendar.css') %}

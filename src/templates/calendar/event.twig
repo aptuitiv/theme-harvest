@@ -12,7 +12,7 @@
 {% block main %}
     <div class="Container Container--narrow">
         <div class="h2 flex align-center g-1">
-            {{ macros.iconImg('calendar', 'Date') }}
+            {{ macros.iconImg('calendar', 'Date', 'm-0') }}
             {{ event.date }}
         </div>
         {% if event.time.type != 'notime' %}
@@ -45,5 +45,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% do _page.addCss('calendar.css') %}

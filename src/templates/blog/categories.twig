@@ -1,23 +1,33 @@
-{% extends 'one-column' %}
+{% extends 'two-column-right-sidebar' %}
+
+{% macro category(categories) %}
+    {% for category in categories %}
+        <li>
+            <a href="{{ category.url }}">{{ category.categoryName }}</a>
+            {% if category.subCategories %}
+                <ul>
+                    {% import _self as macros %}
+                    {{ macros.category(category.subCategories) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% block banner %}
+    {% set content = '<h1>Blog Categories</h1>' %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
 
 {% block main %}
-
-    {% for category in categories %}
-        <div class="BlogList-item mb-5">
-            <h2 class="BlogList-heading"><a href="{{ category.url }}" class="link-subtle">{{ category.name }}</a></h2>
-        {{ category.postCount ~ " post" ~ (category.postCount > 1 ? "s") }}
-            <p>{{ category.description }}</p>
-        </div>
-
-    {% endfor %}
+    {% if categories|length > 0 %}
+        <ul>
+            {% import _self as macros %}
+            {{ macros.category(categories) }}
+        </ul>
+    {% endif %}
 {% endblock %}
 
 {% block sidebar %}
-    <div class="Sidebar">
-        {{ _api.blog.categoryFilter.template('api-category-filter') }}
-        {{ _api.blog.tagFilter.template('api-tag-filter') }}
-        {{ _api.blog.recentPosts.template('api-recent-posts') }}
-        {{ _api.blog.recentComments.template('api-recent-comments') }}
-        {{ _api.blog.postArchive.template('api-post-archive') }}
-    </div>
+    {% include 'blog/sidebar' %}
 {% endblock %}

@@ -1,14 +1,11 @@
-{% include 'snippets/header' %}
+{# Template intended for 404 errors #}
+{% extends 'narrow' %}
 
-{% set title = "Page Not Found" %}
-{% include("content-layouts/banner") %}
+{% block banner %}
+    {% set content = '<h1>Not Found</h1>' %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
 
-<div class="py-3">
-    <main>
-        <div class="Container Container--pad">
-            {% block main _page.content() %}
-        </div>
-    </main>
-</div>
-
-{% include 'snippets/footer' %}
+{% block main %}
+    <div class="py-4">{{ _page.content() }}</div>
+{% endblock %}

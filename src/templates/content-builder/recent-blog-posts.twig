@@ -1,0 +1,41 @@
+{% import 'macros/macros' as macros %}
+{% set posts = _api.blog.recentPosts.limit(numberOfPosts) %}
+{% if posts %}
+    <div class="Wrapper Wrapper--bg{{ background|pascal}}{#{% if background == 'None' %} Wrapper--noPad{% endif %}#}">
+        <div class="Container {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+            <div class="RecentPosts">
+                <div class="flex flex-col align-center py-1">
+                    {% if heading %}
+                        <h2 class="RecentPosts-heading">{{ heading }}</h2>
+                    {% endif %}
+                    <p><a href="/blog">View All Posts</a></p>
+                </div>
+                <div class="grid g-4 justify-center">
+                    {% for post in posts %}
+                        <div class="flex flex-col col-1-1 col-1-2-md col-1-3-lg RecentPosts-card">
+                            <div class="RecentPosts-title"><a href="{{ post.url }}" class="RecentPosts-titleLink">{{ post.postTitle }}</a></div>
+                            <div class="RecentPosts-date">{{ post.publishedOnDate }}</div>
+                            {% if post.categories %}
+                                <div class="RecentPosts-categories">
+                                    {% for category in post.categories %}
+                                        <div><a href="{{ category.url }}">{{ category.categoryName }}</a></div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <div class="RecentPosts-abstract">
+                                <div class="RecentPosts-abstractInner">
+                                    {% if post.abstract %}
+                                        {{ post.abstract|striptags|truncate(300) }}
+                                    {% else %}
+                                        {{ post.content|striptags|truncate(300) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <p><a href="{{ post.url}}" aria-label="View the blog post {{ post.title|escape_quotes('double') }}" class="RecentPosts-moreLink">Read more {{ macros.iconAriaHidden("chevron-thin-right") }}</a></p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

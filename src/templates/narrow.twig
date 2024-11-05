@@ -1,0 +1,15 @@
+{# One-column template for narrow content. The content is as wide as the narrow container #}
+{% include 'snippets/header' %}
+
+<div class="Container Container--pad Container--narrow ContentBg">
+    <div class="Content clearfix">
+
+
+        {% if _core.theme.settings.showBreadcrumb == "yes" and _page.isHome == false %}
+            {{ _page.breadcrumb() }}
+        {% endif %}
+        <main id="main">{% block main _page.content() %}</main>
+    </div>
+</div>
+
+{% include 'snippets/footer' %}

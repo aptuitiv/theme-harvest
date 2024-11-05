@@ -67,7 +67,7 @@
                 {% endif %}
                 {{ field.label.tag }}
             </div>
-            {% if field.fieldType in ["radio", "multiCheckbox"] %}
+            {% if field.fieldType in ["checkbox", "radio", "multiCheckbox"] %}
                 {% set field.groupId = random_letters() %}
             {% endif %}
             <div class="col-1-1 col-3-4-lg {{ field.groupId ?: '' }}">

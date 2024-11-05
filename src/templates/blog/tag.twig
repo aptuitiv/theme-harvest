@@ -1,23 +1,20 @@
-{% extends 'two-column' %}
+{% extends 'two-column-right-sidebar' %}
+
+{% block banner %}
+    {% set content = '<h1 class="flex flex-col align-center g-1">Blog<span class="h3 m-0">' ~ tag.tagName ~ '</span></h1>' %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
 
 {% block main %}
-    <h1>{{ tag.tagName }}</h1>
     {{ tag.description }}
-
     {% if tag.posts %}
         {% for post in tag.posts %}
-            {% include 'blog/post-list-item' %}
+            {% include 'blog/post-list-item-simple' %}
         {% endfor %}
         {% include 'snippets/pagination' %}
     {% endif %}
 {% endblock %}
 
 {% block sidebar %}
-    <div class="Sidebar">
-        {{ _api.blog.categoryFilter.template('api-category-filter') }}
-        {{ _api.blog.tagFilter.template('api-tag-filter') }}
-        {{ _api.blog.recentPosts.template('api-recent-posts') }}
-        {{ _api.blog.recentComments.template('api-recent-comments') }}
-        {{ _api.blog.postArchive.template('api-post-archive') }}
-    </div>
+    {% include 'blog/sidebar' %}
 {% endblock %}

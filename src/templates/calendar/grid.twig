@@ -3,25 +3,24 @@
 
 {% block banner %}
     {% set content %}
-        <h1>Calendar of Events: {{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</h1>
+        <h1 class="flex flex-col align-center g-1">Calendar of Events<span class="h4 m-0">{{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</span></h1>
     {% endset %}
     {% include('content-builder/banner-bar') %}
 {% endblock %}
 
 {% block main %}
-{% if header %}
-    <div class="Container Container--narrow">{{ header }}</div>
-{% endif %}
+
 <div class="Container Container--pad">
-    <div class="h2 flex justify-center g-1">
-        {% if grid.previousDateUrl %}
-            <a href="{{ grid.previousDateUrl }}" class="flex align-center" title="Go to the previous month">{{ macros.iconImg('caret-left', 'Go to the previous month') }}</a>
+    <div class="h4 flex align-center justify-center g-1">
+        {% if previousDateUrl %}
+            <a href="{{ previousDateUrl }}" class="flex m-0" title="Go to the previous date range">{{ macros.iconImg('caret-left', 'Go to the previous month', 'm-0') }}</a>
         {% endif %}
-        <span>{{ grid.month }} {{ grid.year }}</span>
-        {% if grid.nextDateUrl %}
-            <a href="{{ grid.nextDateUrl }}" class="flex align-center" title="Go to the next month">{{ macros.iconImg('caret-right', 'Go to the next month') }}</a>
+        <span class="m-0">{{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</span>
+        {% if nextDateUrl %}
+            <a href="{{ nextDateUrl }}" class="flex m-0" title="Go to the next date range">{{ macros.iconImg('caret-right', 'Go to the next month', 'm-0') }}</a>
         {% endif %}
     </div>
+    {{ header }}
     <table class="CalendarGrid mb-4">
         <thead class="CalendarGrid-head">
         <tr>
@@ -38,19 +37,19 @@
         {% for row in grid.rows %}
             <tr>
                 {% for box in row.boxes %}
-                    {% set class = 'Calendar' %}
+                    {% set class = 'CalendarGrid-cell' %}
                     {% if box.isWeekend == true and box.isThisMonth == true %}
-                        {% set class = class ~ ' ' ~ 'Calendar--isEnd' %}
+                        {% set class = class ~ ' ' ~ 'CalendarGrid-cell--isEnd' %}
                     {% endif %}
                     {% if box.isToday %}
-                        {% set class = class ~ ' ' ~ 'Calendar--isToday' %}
+                        {% set class = class ~ ' ' ~ 'CalendarGrid-cell--isToday' %}
                     {% endif %}
                     {% if box.isThisMonth == false %}
-                        {% set class = class ~ ' ' ~ 'Calendar--isEmpty' %}
+                        {% set class = class ~ ' ' ~ 'CalendarGrid-cell--isEmpty' %}
                     {% endif %}
                     <td class="{{ class|trim }}">
                         {% if box.isThisMonth %}
-                            <div class="CalendarDate">{{ box.dayShort }}</div>
+                            <div class="CalendarGrid-cellDate">{{ box.dayShort }}</div>
                             {% if box.eventCount > 0 %}
                                 {% for event in box.events %}
                                     <a href="{{ event.url }}" class="link-subtle">{{ event.title }}<br>
@@ -78,5 +77,3 @@
     </table>
 </div>
 {% endblock %}
-
-{% do _page.addCss('calendar.css') %}

@@ -9,14 +9,14 @@
 {% endif %}
 
 {# Display the image based on alignment #}
-{% if alignment == 'Center' %}
+{% if alignment == 'center' %}
     <div class="ImageWrapper ImageWrapper--center">{{ image.tag }}{{ caption }}</div>
-{% elseif alignment == 'Float Left' %}
+{% elseif alignment == 'left' %}
     <div class="ImageWrapper ImageWrapper--left">{{ image.tag }}{{ caption }}</div>
-{% elseif alignment == 'Float Right' %}
+{% elseif alignment == 'right' %}
     <div class="ImageWrapper ImageWrapper--right">{{ image.tag }}{{ caption }}</div>
 {% else %}
-    <div class="ImageWrapper">
+    <div class="ImageWrapper ImageWrapper--default">
         {{ image.tag }}{{ caption }}
     </div>
 {% endif %}

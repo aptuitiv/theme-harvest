@@ -1,96 +1,45 @@
-{% import 'macros/macros' as macros %}
-
-{% if alignImages != 'Center' %}
-    {% for person in people %}
-        {% set size = 'w-1-1' %}
-        {% set pull = '' %}
-        {% if person.image %}
-            {% set size = 'col-1-1 col-2-3-md col-3-4-lg' %}
-            {% if person.image.alt|length == 0 %}
-                {% set person.image.alt = person.name %}
-            {% endif %}
-            {% set person.image.class = 'w-1-1 w-auto-lg' %}
-        {% endif %}
-        <div class="grid g-2 mb-3">
-            {% if person.image %}
-                <div class="col-1-3 col-1-4-lg hidden block-md{% if alignImages == 'Right' %} order-2-md{% endif %}">
-                    {{ person.image.tag }}
-                </div>
-            {% endif %}
-            <div class="{{ size }}{% if alignImages == 'Right' %} order-1-md{% endif %}">
-                <h2 class="mb-1">{{ person.name }}</h2>
-                {% if person.title %}
-                    <div>{{ person.title }}</div>
-                {% endif %}
-                {% if person.email %}
-                    <div><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>
-                {% endif %}
-                {% if person.phoneNumber %}
-                    <div><a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a></div>
-                {% endif %}
-                {% if person.image %}
-                    <div class="hidden-md">{{ person.image.tag }}</div>
-                {% endif %}
-                {{ person.bio }}
-            </div>
-        </div>
-    {% endfor %}
-{% else %}
-    {# Set the column classes based on the number of columns #}
-    {% set count = people|length  %}
-
-    {% if count % 4 == 0 %}
-        {% set class = 'col-1-1 col-1-2-sm col-1-3-md col-1-4-lg' %}
-    {% elseif count % 3 == 0 %}
-        {% set class = 'col-1-1 col-1-2-sm col-1-3-md' %}
-    {% elseif count == 2 %}
-        {% set class = 'col-1-1 col-1-2-sm' %}
-    {% elseif count > 4 %}
-        {% set class = 'col-1-1 col-1-2-sm col-1-3-md col-1-4-lg' %}
-    {% elseif count == 1 %}
-        {% set class = 'col-1-1' %}
+{% if people %}
+    {% set imageAlignment = alignImages %}
+    {% if imageAlignment == 'alternate' %}
+        {% set imageAlignment = 'left' %}
     {% endif %}
-
-    <div class="grid g-2 Grid--equalHeight ImageGrid">
+    <div class="Container Container--pad">
         {% for person in people %}
-            {% if person.image %}
-                {% if person.image.alt|length == 0 %}
-                    {% set person.image.alt = person.name %}
-                {% endif %}
-                {% set person.image.class = 'ImageGrid-image' %}
+            {% if alignImages == 'alternate' %}
+                {% set imageAlignment = cycle(['left', 'right'], loop.index0) %}
             {% endif %}
-            <div class="{{ class }} ImageGrid-col">
-                <div class="ImageGrid-item">
-                    <div class="StaffGrid-image">{{ person.image.tag }}</div>
-                    <div class="StaffGrid-text">{{ person.name }}</div>
-                    {% if person.title %}
-                        <div class="StaffGrid-text">{{ person.title }}</div>
+            {% set size = 'w-1-1' %}
+            {% set imageCol = 'col-1-1 col-1-3-md col-1-4-lg' %}
+            {% set contentCol = 'col-1-1' %}
+
+            <div class="grid py-2 py-4-lg g-2 g-4-lg">
+                {% if person.image %}
+                    {% set contentCol = 'col-1-1 col-2-3-md col-3-4-lg' %}
+                    {% if imageAlignment == 'right' %}
+                        {% set imageCol = imageCol ~ ' order-2-lg' %}
+                        {% set contentCol = contentCol ~ ' order-1-lg' %}
                     {% endif %}
-                    {% if person.phoneNumber %}
-                        <div class="StaffGrid-text"><a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a></div>
+                    {% do person.image.alt.default(person.name) %}
+                    {% do person.image.resize(800) %}
+                    {% do person.image.lazy() %}
+                    {% set person.image.class = 'w-1-1 w-auto-sm' %}
+
+                    <div class="{{ imageCol }}">{{ person.image.tag }}</div>
+                {% endif %}
+                <div class="{{ contentCol }} clearfix first-child-st-0 last-child-sb-0">
+                    <h2 class="Staff-name">{{ person.name }}</h2>
+                    {% if person.title %}
+                        <div class="Staff-title">{{ person.title }}</div>
                     {% endif %}
                     {% if person.email %}
-                        <div class="StaffGrid-iconWrap"><a href="mailto:{{ person.email }}"> {{ macros.iconImg("envelope", "Mail to " ~ person.name, "StaffGrid-icon") }} </a></div>
+                        <div class="Staff-email"><a href="mailto:{{ person.email }}" class="Staff-emailLink" title="Send an email to {{ person.name|escape_quotes('double') }}">{{ person.email }}</a></div>
                     {% endif %}
+                    {% if person.phoneNumber %}
+                        <div class="Staff-phone"><a href="tel:{{ person.phoneNumber }}" class="Staff-phoneLink" title="Call to {{ person.name|escape_quotes('double') }}">{{ person.phoneNumber }}</a></div>
+                    {% endif %}
+                    <div class="Staff-bio">{{ person.bio }}</div>
                 </div>
             </div>
-        {% endfor %}
-        {% for column in columns %}
-
-
-                {% if column.link %}
-                    <a href="{{ column.link }}" class="ImageGrid-item ImageGrid-link">
-                {% else %}
-                    <div class="ImageGrid-item">
-                {% endif %}
-                {% if column.title and displayTitle != 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
-                    {{ column.image.tag }}
-                {% if column.title and displayTitle == 'Below Image'%}<div class="ImageGrid-title {{ titleClass }}">{{ column.title }}</div>{% endif %}
-                {% if column.link %}
-                    </a>
-                {% else %}
-                    </div>
-                {% endif %}
         {% endfor %}
     </div>
 {% endif %}

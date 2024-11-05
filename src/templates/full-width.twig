@@ -1,0 +1,19 @@
+{# Full width one-column template. The main content spans the full width of the screen. #}
+{% include 'snippets/header' %}
+
+{% block banner %}
+    {{ _page.content('banner') }}
+{% endblock %}
+
+<div class="Content clearfix">
+    {% if _core.theme.settings.showBreadcrumb == "yes" and _page.isHome == false %}
+        <div class="Container Container--pad">
+            {{ _page.breadcrumb() }}
+        </div>
+    {% endif %}
+    <main>
+        {% block main _page.content() %}
+    </main>
+</div>
+
+{% include 'snippets/footer' %}

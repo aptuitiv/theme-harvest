@@ -10,13 +10,13 @@
     {% endif %}
 
     {% do image.alt.default(caption) %}
-    {% set image.class = 'FullWidthImage' %}
+    {% set image.class = 'w-100' %}
     {% do image.lazy() %}
     {% if _core.theme.settings.fullWidthImageWidth == 'contained' %}
         <div class="Container Container--pad">
     {% endif %}
         {{ image.tag }}
-        {% if caption %}<div class="FullWidthImage-caption">{{ caption }}</div>{% endif %}
+        {% if caption %}<div class="ImageCaption">{{ caption }}</div>{% endif %}
     {% if _core.theme.settings.fullWidthImageWidth == 'contained' %}
         </div>
     {% endif %}

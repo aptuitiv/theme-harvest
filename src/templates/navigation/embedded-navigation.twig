@@ -45,13 +45,13 @@
 
 {% for item in items %}
     {# ASSIGN MENU ITEM CLASS #}
-    {% set class = "SecondaryNav-item SecondaryNav-item--small " ~ item.link.class %}
+    {% set class = "MainNav-item MainNav-item--smallScreen " ~ item.link.class %}
     {% if item.subItems %}
         {% set class = class ~ " Dropdown" %}
     {% endif %}
     <li class="{{ class|trim }}">
         {# ASSIGN MENU LINK CLASS #}
-        {% set item.link.class = item.link.class ~ ' SecondaryNav-link' %}
+        {% set item.link.class = item.link.class ~ ' MainNav-link' %}
         {% if item.subItems %}
             {% set item.link.class = item.link.class ~ ' is-dropdown js-dropdown' %}
         {% endif %}

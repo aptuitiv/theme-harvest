@@ -1,31 +1,23 @@
-{% extends 'two-column' %}
+{% extends 'two-column-right-sidebar' %}
 
 {% block banner %}
-    {% set content %}
-        <h1>Blog</h1>
-    {% endset %}
+    {% set content = '<h1>Blog</h1>' %}
+    {% if pagination.current > 1 %}
+        {% set content = '<h1 class="flex flex-col align-center g-1">Blog<span class="h3 m-0">Page ' ~ pagination.current ~ '</span></h1>' %}
+    {% endif %}
     {% include('content-builder/banner-bar') %}
 {% endblock %}
 
 {% block main %}
-    {{ header }}
     {% if posts %}
         {% for post in posts %}
             {% include 'blog/post-list-item-simple' %}
         {% endfor %}
         {% include 'snippets/pagination' %}
     {% endif %}
-    {% if footer %}
-        <div class="mt-2">{{ footer }}</div>
-    {% endif %}
+
 {% endblock %}
 
 {% block sidebar %}
-    <div class="Sidebar">
-        {{ _api.blog.categoryFilter.template('api-category-filter') }}
-        {{ _api.blog.postArchive.template('api-tag-filter') }}
-        {{ _api.blog.recentPosts.template('api-recent-posts') }}
-        {{ _api.blog.recentComments.template('api-recent-comments') }}
-        {{ _api.blog.postArchive.template('api-post-archive') }}
-    </div>
+    {% include 'blog/sidebar' %}
 {% endblock %}
