@@ -8,11 +8,13 @@
 
 // eslint-disable-next-line
 const smallScreenNav = {
+
     /**
      * Initialization
      */
     init() {
-        const width = 768;
+        // The max window width where the small screen navigation is shown
+        const width = 1024;
 
         // Select elements
         const button = document.querySelector('.js-ssNavBtn');
