@@ -6,62 +6,24 @@
 
 .Header {
     background: var(--Header-background);
-    padding: var(--Header-padding-sm, 20px 0);
-}
-
-.Header--outer {
-    padding: 0;
 }
 
 @media (--c-bp-largeScreenNav) {
-    .Header {
+    .Header.is-sticky {
+        background: var(--Header-sticky-background);
+        box-shadow: 1px 1px 3px rgb(43 26 35 / 40%);
         position: sticky;
         top: 0;
         z-index: 11;
     }
 
-    .Header.is-sticky {
-        background: var(--Header-sticky-background);
-        box-shadow: 1px 1px 3px rgb(43 26 35 / 40%);
-    }
-}
-
-@media (--m-sm) {
-    .Header {
-        padding: var(--Header-padding);
+    .Header.is-sticky .Header-logoWrap {
+        padding: var(--Header-sticky-logo-padding, var(--Header-logo-padding, 20px 0));
     }
 
-    .Header--outer {
-        padding: 0;
+    .Header.is-sticky .Header-logo {
+        max-width: var(--Header-sticky-logo-width, var(--Header-logo-width));
     }
-}
-
-/* ------------------------------------ *\
-    Skip to main content
-\* ------------------------------------ */
-
-.Header-skipToMain {
-    align-items: center;
-    display: flex;
-    height: 1px;
-    justify-content: center;
-    left: -10000px;
-    overflow: hidden;
-    position: absolute;
-    top: 5px;
-    width: 1px;
-    z-index: 100;
-}
-
-.Header-skipToMain:focus {
-    background-color: var(--Header-skipMain-background, #fff);
-    color: var(--Header-skipMain-color);
-    font-weight: var(-Header-skipMain-font-weight, bold);
-    height: auto;
-    left: 10px;
-    padding: var(--Header-skipMain-padding, 5px 10px);
-    text-decoration: underline;
-    width: auto;
 }
 
 /* ------------------------------------ *\

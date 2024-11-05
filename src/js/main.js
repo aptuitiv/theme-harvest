@@ -1,4 +1,4 @@
-/* global smallScreenNav:readonly, navAccess:readonly, accordion:readonly, setupNotifications:readonly, MicroModal:readonly */
+/* global smallScreenNav:readonly, navAccess:readonly, accordion:readonly, setupNotifications:readonly, stickyHeader:readonly, MicroModal:readonly */
 
 /**
  * Initializes all Javascript bundled into main.js
@@ -9,6 +9,7 @@ const init = () => {
     navAccess.init();
     accordion.init();
     setupNotifications();
+    stickyHeader.init();
     MicroModal.init({
         disableFocus: true,
     });

@@ -2379,29 +2379,10 @@
                             "name": "headerBackground",
                             "label": "Background",
                             "type": "color",
+                            "defaultValue": "#ffffff",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-background"
-                            }
-                        },
-                        {
-                            "name": "headerPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "20px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-padding"
-                            }
-                        },
-                        {
-                            "name": "headerPaddingSm",
-                            "label": "Padding (small screens)",
-                            "type": "padding",
-                            "defaultValue": "20px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-padding-sm"
                             }
                         },
                         {
@@ -2711,12 +2692,13 @@
                             "name": "headerStickyEnabled",
                             "label": "Enable sticky header",
                             "type": "switch",
-                            "default": "no"
+                            "defaultValue": "no"
                         },
                         {
                             "name": "headerStickyHeaderBackground",
                             "label": "Header background when sticky",
                             "type": "color",
+                            "defaultValue": "#ffffff",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-sticky-background"
@@ -2736,6 +2718,7 @@
                             "label": "Approximate sticky header height",
                             "description": "This is used to offset any anchor links so that they don't end up under the sticky header.",
                             "type": "size",
+                            "defaultValue": "200px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-sticky-height"

@@ -40,6 +40,7 @@ export default {
                     'iframe-loader.js',
                     'notifications.js',
                     'navigation.js',
+                    'header.js',
                     'accordion.js',
                     'main.js'
                 ]
