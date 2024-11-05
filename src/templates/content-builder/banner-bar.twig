@@ -20,7 +20,9 @@
         {% endif %}
 
         {% if content %}
-            <div class="Banner-fg"></div>
+            {% if image or video %}
+                <div class="Banner-fg"></div>
+            {% endif %}
             <div class="Banner-content">
                 <div class="Banner-contentInner first-child-st-0 last-child-sb-0">{{ content }}</div>
             </div>
