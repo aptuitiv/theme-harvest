@@ -1,5 +1,5 @@
 {
-    "name": "harvest-theme",
+    "name": "aptuitiv-theme-harvest",
     "version": "2.0.0",
     "description": "",
     "author": "Aptuitiv, Inc <hello@aptuitiv.com>",
@@ -42,7 +42,6 @@
         "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-video": "^0.8.0",
         "cacao-css": "^6.3.0",
-        "fslightbox": "^3.4.2",
         "just-validate": "^4.3.0",
         "masonry-layout": "^4.2.2",
         "micromodal": "^0.4.10"
