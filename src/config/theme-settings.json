@@ -1,6 +1,17 @@
 {
     "groups": [
         {
+            "name": "Breadcrumb",
+            "fields": [
+                {
+                    "name": "showBreadcrumb",
+                    "label": "Show Breadcrumb Text",
+                    "type": "switch",
+                    "defaultValue": "yes"
+                }
+            ]
+        },
+        {
             "name": "Blocks - Google Ratings Bar",
             "description": "Settings for the Google Ratings Bar",
             "fields": [
