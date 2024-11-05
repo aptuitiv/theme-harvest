@@ -234,6 +234,7 @@
         },
         {
             "name": "Top bar",
+            "description": "Options for the top bar that appears above the header.",
             "fields": [
                 {
                     "name": "headerShowAddress",
