@@ -20,46 +20,48 @@ const stickyHeader = { // eslint-disable-line no-unused-vars
          */
         if ('IntersectionObserver' in window && typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('position', 'sticky')) {
             const headerEl = document.querySelector('.js-stickyHeader');
-            const config = {
-                offset: 0,
-                lowThreshold: 0.25,
-                highThreshold: 0.75,
-            };
-            /**
-             * Create an element before the sticky element to watch.
-             * Because styles could be changing on the sticky element (like height) it's important
-             * for this sentinel element to be at least half the height of the sticky element. That
-             * way the sticky element won't be changed to quickly. If you're scrolling really slowly
-             * then it would be possible to trigger the sticky/unsticky event rapidly, which looks
-             * bad. This sentinel element prevents that.
-             */
-            const sentinel = document.createElement('div');
-            let style = `position: absolute; z-index: -1; width: 1px; height: ${headerEl.clientHeight / 2}px;`;
-            if (typeof config.offset === 'number') {
-                style += ` top: -${config.offset}px;`;
-            }
-            sentinel.style = style;
-            headerEl.parentNode.insertBefore(sentinel, headerEl);
+            if (headerEl) {
+                const config = {
+                    offset: 0,
+                    lowThreshold: 0.25,
+                    highThreshold: 0.75,
+                };
+                /**
+                 * Create an element before the sticky element to watch.
+                 * Because styles could be changing on the sticky element (like height) it's important
+                 * for this sentinel element to be at least half the height of the sticky element. That
+                 * way the sticky element won't be changed to quickly. If you're scrolling really slowly
+                 * then it would be possible to trigger the sticky/unsticky event rapidly, which looks
+                 * bad. This sentinel element prevents that.
+                 */
+                const sentinel = document.createElement('div');
+                let style = `position: absolute; z-index: -1; width: 1px; height: ${headerEl.clientHeight / 2}px;`;
+                if (typeof config.offset === 'number') {
+                    style += ` top: -${config.offset}px;`;
+                }
+                sentinel.style = style;
+                headerEl.parentNode.insertBefore(sentinel, headerEl);
 
-            // Setup the observer
-            const observer = new IntersectionObserver(((entries) => {
-                entries.forEach((entry) => {
-                    // Check for stickyness by checking how much of the element is visible
-                    if (entry.intersectionRatio <= config.lowThreshold) {
-                        // Less than the low threshold percentage of the
-                        // sentinel is visible so mark the element as sticky
-                        headerEl.classList.add('is-sticky');
-                    } else if (entry.intersectionRatio >= config.highThreshold) {
-                        // More than this high threshold of the sentinel is visible,
-                        // almost to the top of the element so mark it as not sticky
-                        headerEl.classList.remove('is-sticky');
-                    }
+                // Setup the observer
+                const observer = new IntersectionObserver(((entries) => {
+                    entries.forEach((entry) => {
+                        // Check for stickyness by checking how much of the element is visible
+                        if (entry.intersectionRatio <= config.lowThreshold) {
+                            // Less than the low threshold percentage of the
+                            // sentinel is visible so mark the element as sticky
+                            headerEl.classList.add('is-sticky');
+                        } else if (entry.intersectionRatio >= config.highThreshold) {
+                            // More than this high threshold of the sentinel is visible,
+                            // almost to the top of the element so mark it as not sticky
+                            headerEl.classList.remove('is-sticky');
+                        }
+                    });
+                }), {
+                    threshold: [config.lowThreshold, config.highThreshold],
                 });
-            }), {
-                threshold: [config.lowThreshold, config.highThreshold],
-            });
-            // Observe the visibility of the sentinel
-            observer.observe(sentinel);
+                // Observe the visibility of the sentinel
+                observer.observe(sentinel);
+            }
         }
     },
 };
