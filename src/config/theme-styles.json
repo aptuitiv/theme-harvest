@@ -3716,7 +3716,7 @@
                     "name": "messageBackgroundSuccess",
                     "label": "Background color (successful message)",
                     "type": "color",
-                    "defaultValue": "#333",
+                    "defaultValue": "#e6feeb",
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--Message-background-success"
@@ -3726,7 +3726,7 @@
                     "name": "messageColorSuccess",
                     "label": "Text color (successful message)",
                     "type": "color",
-                    "defaultValue": "#fff",
+                    "defaultValue": "#047207",
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--Message-color-success"
@@ -3736,7 +3736,7 @@
                     "name": "messageBackgroundFailure",
                     "label": "Background color (failure message)",
                     "type": "color",
-                    "defaultValue": "#871E0F",
+                    "defaultValue": "#a02823",
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--Message-background-failure"
