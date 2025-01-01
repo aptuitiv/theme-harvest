@@ -1,0 +1,8 @@
+{% extends 'narrow' %}
+
+{% block main %}
+    <h1>Login</h1>
+    {{ loginForm.content }}
+
+    <p><a href="{{ appUrls.passwordReset }}">Forgot your password? Request a new one</a></p>
+{% endblock %}
