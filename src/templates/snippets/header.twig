@@ -90,21 +90,23 @@
             </div>
         </div>
         <div class="Container">
-            {# Logo for desktop #}
-            <div class="Header-logoWrap hidden flex-md" id="header-logo">{# ID is used for live theme preview. #}
-                {% if _core.theme.settings.headerLogo %}
-                    {% set _core.theme.settings.headerLogo.class = "Header-logo" %}
-                    {% do _core.theme.settings.headerLogo.resize(_core.theme.settings.headerLogoWidth + 100) %}
-                    {% do _core.theme.settings.headerLogo.alt.default(_core.settings.companyName) %}
-                    <a href="/" title="return to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
-                {% elseif _core.theme.settings.headerTextLogo %}
-                    <a href="/" title="return to home page"><span class="Header-textLogo">{{ _core.theme.settings.headerTextLogo }}</span></a>
-                {% endif %}
-            </div>
+            <div class="Header-inner">
+                {# Logo for desktop #}
+                <div class="Header-logoWrap hidden flex-md" id="header-logo">{# ID is used for live theme preview. #}
+                    {% if _core.theme.settings.headerLogo %}
+                        {% set _core.theme.settings.headerLogo.class = "Header-logo" %}
+                        {% do _core.theme.settings.headerLogo.resize(_core.theme.settings.headerLogoWidth + 100) %}
+                        {% do _core.theme.settings.headerLogo.alt.default(_core.settings.companyName) %}
+                        <a href="/" title="return to home page">{{ _core.theme.settings.headerLogo.tag }}</a>
+                    {% elseif _core.theme.settings.headerTextLogo %}
+                        <a href="/" title="return to home page"><span class="Header-textLogo">{{ _core.theme.settings.headerTextLogo }}</span></a>
+                    {% endif %}
+                </div>
 
-            <nav class="NavBar">
-                <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
-                {{ _api.navigation.get.key('main') }}
-            </nav>
+                <nav class="NavBar">
+                    <button class="SmScBtn js-ssNavBtn"><span class="SmScBtn-icon"></span>Menu</button>
+                    {{ _api.navigation.get.key('main') }}
+                </nav>
+            </div>
         </div>
     </header>
