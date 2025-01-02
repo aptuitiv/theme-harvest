@@ -9,10 +9,10 @@
                     {% set cookieIds = cookieIds|merge([cookieId]) %}
                 {% endif %}
             {% endfor %}
-            
+
             {# Get notification #}
             {% set notification = items|first %}
-            
+
             {# Check if notification cookie is not present #}
             {% if notification.id not in cookieIds or not notification.closable %}
                 <div class="Notification js-notification" data-id="{{ notification.id }}">
@@ -67,8 +67,6 @@
                     </div>
                 {% endif %}
             {% endif %}
-        {% else %}
-            <div class="Banner-border"></div>
         {% endif %}
     {% endverbatim %}
 {% endnevercache %}
