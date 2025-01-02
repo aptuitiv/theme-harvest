@@ -49,11 +49,13 @@
 @import 'cacao-css/dist/display/display.css';
 @import 'cacao-css/dist/display/flex.css';
 @import 'cacao-css/dist/display/justify.css';
+@import 'cacao-css/dist/display/order.css';
 
 /* Display (md) */
 @import 'cacao-css/dist/display/md/display.css';
 @import 'cacao-css/dist/display/md/flex.css';
 @import 'cacao-css/dist/display/md/justify.css';
+@import 'cacao-css/dist/display/md/order.css';
 
 /* Display (lg) */
 @import 'cacao-css/dist/display/lg/align.css';
@@ -121,6 +123,9 @@
 @import 'cacao-css/dist/gutter/all.css';
 @import 'cacao-css/dist/gutter/horizontal.css';
 @import 'cacao-css/dist/gutter/vertical.css';
+
+/* Gutter (md) */
+@import 'cacao-css/dist/gutter/md/all.css';
 
 /* Gutter (lg) */
 @import 'cacao-css/dist/gutter/lg/all.css';
