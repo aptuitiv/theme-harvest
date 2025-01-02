@@ -8,6 +8,10 @@
     background: var(--Header-background);
 }
 
+.Header-inner {
+    padding: var(--Header-inner-padding, 0);
+}
+
 @media (--c-bp-largeScreenNav) {
     .Header.is-sticky {
         background: var(--Header-sticky-background);

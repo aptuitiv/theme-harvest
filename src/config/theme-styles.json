@@ -3052,8 +3052,18 @@
                             }
                         },
                         {
+                            "name": "headerInnerPadding",
+                            "label": "Padding around the logo and navigation",
+                            "type": "padding",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-inner-padding"
+                            }
+                        },
+                        {
                             "name": "headerLogoPadding",
-                            "label": "Padding around logo",
+                            "label": "Padding around logo only",
                             "type": "padding",
                             "defaultValue": "20px 0",
                             "render": {
