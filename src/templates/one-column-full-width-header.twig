@@ -5,8 +5,8 @@
 {% endblock %}
 
 <div class="Container Container--pad ContentBg">
-{% if _page.isHome == false %}
-        {{ _page.breadcrumb }}
+    {% if _core.theme.settings.showBreadcrumb == "yes" and _page.isHome == false %}
+        {{ _page.breadcrumb() }}
     {% endif %}
     <div class="Content clearfix">
         <main id="main">{% block main _page.content() %}</main>
