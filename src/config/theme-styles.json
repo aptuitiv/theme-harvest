@@ -240,6 +240,16 @@
                             }
                         },
                         {
+                            "name": "bannerContentH1FontSize",
+                            "label": "Heading 1 content font size",
+                            "type": "fontSize",
+                            "defaultValue": "6rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-content-h1-font-size"
+                            }
+                        },
+                        {
                             "name": "bannerContentFontSize",
                             "label": "Paragraph content font size",
                             "type": "fontSize",
