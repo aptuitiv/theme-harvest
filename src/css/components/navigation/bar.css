@@ -4,13 +4,14 @@
 
 /* @define NavBar */
 .NavBar {
-    background-color: var(--NavBar-background);
+    background-color: var(--NavBar-background-sm);
     display: none;
     padding: var(--NavBar-padding-sm, 0);
 }
 
 @media (--m-lg) {
     .NavBar {
+        background-color: var(--NavBar-background);
         display: block;
         padding: var(--NavBar-padding, 0);
     }

@@ -3431,6 +3431,15 @@
                             }
                         },
                         {
+                            "name": "navBarBackgroundSm",
+                            "label": "Background color (small screens)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--NavBar-background-sm"
+                            }
+                        },
+                        {
                             "name": "navBarPadding",
                             "label": "Padding",
                             "type": "padding",
@@ -3529,6 +3538,59 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-background-hover"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Items (small screens)",
+                    "fields": [
+                        {
+                            "name": "mainNavItemBackgroundSm",
+                            "label": "Background color (small screens)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-background-sm"
+                            }
+                        },
+                        {
+                            "name": "mainNavItemBackgroundHoverSm",
+                            "label": "Hover/active background color (small screens)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-background-hover-sm"
+                            }
+                        },
+                        {
+                            "name": "mmainNavItemColorSm",
+                            "label": "Text color (small screens)",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-color-sm"
+                            }
+                        },
+                        {
+                            "name": "mainNavItemColorHoverSm",
+                            "label": "Hover/active text color (small screens)",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-color-hover-sm"
+                            }
+                        },
+                        {
+                            "name": "mainNavItemTextAlignSm",
+                            "label": "Text alignment (small screens)",
+                            "type": "textAlign",
+                            "defaultValue": "center",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-text-align-sm"
                             }
                         }
                     ]

@@ -94,6 +94,8 @@
 @import 'cacao-css/dist/grid-column/col-1.css';
 @import 'cacao-css/dist/grid-column/col-2.css';
 @import 'cacao-css/dist/grid-column/col-4.css';
+@import 'cacao-css/dist/grid-column/col-6.css';
+@import 'cacao-css/dist/grid-column/col-10.css';
 
 /* Grid Columns (sm) */
 @import 'cacao-css/dist/grid-column/sm/col-2.css';
@@ -123,6 +125,10 @@
 @import 'cacao-css/dist/gutter/all.css';
 @import 'cacao-css/dist/gutter/horizontal.css';
 @import 'cacao-css/dist/gutter/vertical.css';
+
+/* Gutter (sm) */
+@import 'cacao-css/dist/gutter/sm/horizontal.css';
+@import 'cacao-css/dist/gutter/sm/vertical.css';
 
 /* Gutter (md) */
 @import 'cacao-css/dist/gutter/md/all.css';

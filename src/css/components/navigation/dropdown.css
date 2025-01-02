@@ -47,7 +47,7 @@
     letter-spacing: var(--Dropdown-link-letter-spacing);
     line-height: var(--Dropdown-link-line-height);
     padding: var(--Dropdown-link-padding, 6px 10px);
-    text-align: var(--Dropdown-link-text-align);
+    text-align: var(--MainNav-text-align-sm, --Dropdown-link-text-align);
     text-decoration: var(--Dropdown-link-text-decoration, none);
     text-transform: var(--Dropdown-link-text-transform);
 }
@@ -103,6 +103,7 @@
     .Dropdown-link {
         background: var(--Dropdown-link-background);
         color: var(--Dropdown-link-color) !important;
+        text-align: var(--Dropdown-link-text-align);
     }
 
     .Dropdown:hover > .Dropdown-menu,
