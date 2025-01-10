@@ -12,6 +12,7 @@
 
 
     {% set class = "col-1-1" %}
+    {% set ncClass = "nc-1" %}
 
     {% set count6 = {width: 250, class: class ~ ' col-1-2-sm col-1-3-md col-1-6-lg'} %}
     {% set count5 = {width: 300, class: class ~ ' col-1-2-sm col-1-3-md col-1-5-lg'} %}
@@ -22,42 +23,53 @@
     {% if count == 6 %}
         {% set class = count6.class %}
         {% set width = count6.width %}
+        {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-6-lg" %}
     {% elseif count == 5 %}
         {% set class = count5.class %}
         {% set width = count5.width %}
+        {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-5-lg" %}
     {% elseif count == 4 %}
         {% set class = count4.class %}
         {% set width = count4.width %}
+        {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
     {% elseif count == 3 %}
         {% set class = count3.class %}
         {% set width = count3.width %}
+        {% set ncClass = "nc-1 nc-2-md nc-3-lg" %}
     {% elseif count == 2 %}
         {% set class = count2.class %}
         {% set width = count2.width %}
-    {% elseif numberOfImages == 'Auto' %}
+        {% set ncClass = "nc-1 nc-2-lg" %}
+    {% elseif numberOfColumns == 'Auto' %}
         {% if count % 6 == 0 %}
             {% set class = count6.class %}
             {% set width = count6.width %}
+            {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-6-lg" %}
         {% elseif count % 5 == 0 %}
             {% set class = count5.class %}
             {% set width = count5.width %}
+            {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-5-lg" %}
         {% elseif count % 4 == 0 %}
             {% set class = count4.class %}
             {% set width = count4.width %}
+            {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
         {% elseif count % 3 == 0 %}
             {% set class = count3.class %}
             {% set width = count3.width %}
+            {% set ncClass = "nc-1 nc-2-md nc-3-lg" %}
         {% elseif count % 2 == 0 %}
             {% set class = count2.class %}
             {% set width = count2.width %}
+            {% set ncClass = "nc-1 nc-2-lg" %}
         {% elseif count > 6 %}
             {% set class = count4.class %}
             {% set width = count4.width %}
+            {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
         {% endif %}
     {% endif %}
 
     <div class="Container Container--pad">
-        <div class="grid g-2">
+        <div class="grid g-2 {{ ncClass }}">
             {% for image in images %}
                 {% set imageLink = image.image.src %}
                 {% set image.image.class = imageStyle == 'Cover' ? 'fit-cover w-100' : 'fit-contain' %}
