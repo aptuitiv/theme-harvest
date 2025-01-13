@@ -30,7 +30,7 @@
 
     <header role="banner" class="Header{% if _core.theme.settings.headerStickyEnabled == 'yes' %} js-stickyHeader{% endif %}">
         {# Logo for small screens #}
-        <div class="hidden-md">
+        <div class="hidden-md flex justify-center">
             {% if _core.theme.settings.headerLogo %}
                 {% set _core.theme.settings.headerLogo.class = "Header-logo" %}
                 {% do _core.theme.settings.headerLogo.resize(_core.theme.settings.headerLogoWidth + 100) %}
