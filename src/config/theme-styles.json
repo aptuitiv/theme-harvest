@@ -4696,6 +4696,17 @@
                                 "type": "css-head",
                                 "cssVariable": "--TopBar-gap"
                             }
+                        },
+                        {
+                            "name": "topBarFontSize",
+                            "label": "Font size for the entire top bar",
+                            "description": "This can be overridden on some other Top Bar components below",
+                            "type": "fontSize",
+                            "defaultValue": "1.6rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TopBar-font-size"
+                            }
                         }
                     ]
                 },
@@ -4806,6 +4817,15 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--TopBar-contact-gap-sm"
+                            }
+                        },
+                        {
+                            "name": "topBarContactTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".TopBar-contact"
                             }
                         }
                     ]
