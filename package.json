@@ -36,7 +36,7 @@
         "watch": "aptuitiv-build watch"
     },
     "devDependencies": {
-        "@aptuitiv/website-build-tools": "^1.15.0"
+        "@aptuitiv/website-build-tools": "^1.16.0"
     },
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
