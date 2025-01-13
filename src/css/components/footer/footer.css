@@ -11,38 +11,57 @@
     text-align: center;
 }
 
-.Footer-link {
-    color: var(--theme-primary-color);
-    text-decoration: none;
+.Footer-logoWrap {
+    margin: var(--Footer-logo-margin, 0);
 }
 
-.Footer-link:active,
-.Footer-link:focus,
-.Footer-link:hover {
-    color: var(--theme-primary-color);
-    text-decoration: underline;
-}
+/* ------------------------------------ *\
+    Social
+\* ------------------------------------ */
 
 .Footer-social {
-    background: var(--theme-primary-color);
-    color: var(--theme-secondary-color);
-    display: inline-block;
-    margin-right: 8px;
-    padding: 2px;
+    align-items: center;
+    display: none;
+    gap: var(--Footer-social-gap, 10px);
+    justify-content: center;
+    line-height: 1;
+    margin: var(--Footer-social-margin);
+}
+
+.Footer-socialLink {
+    align-items: center;
+    background: var(--Footer-social-background);
+    border-radius: var(--Footer-social-border-radius, 50%);
+    color: var(--Footer-social-color);
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    line-height: 1;
+    padding: var(--Footer-social-padding, 4px);
     text-decoration: none;
 }
 
-.Footer-social:last-child {
-    margin-right: 0;
-}
-
-.Footer-social:active,
-.Footer-social:focus,
-.Footer-social:hover {
-    background: var(--theme-secondary-color);
-    color: var(--theme-primary-color);
+.Footer-socialLink:active,
+.Footer-socialLink:focus,
+.Footer-socialLink:hover {
+    background: var(--Footer-social-backgroundHover);
+    color: var(--Footer-social-colorHover);
     text-decoration: none;
 }
+
+.Footer-socialIcon {
+    font-size: var(--Footer-social-size, 1.6rem);
+}
+
+@media (--m-md) {
+    .Footer-social {
+        display: flex;
+    }
+}
+
+/* ------------------------------------ *\
+    Copyright and credit
+\* ------------------------------------ */
 
 .Footer-copyright {
     color: var(--theme-footer-nav-color);

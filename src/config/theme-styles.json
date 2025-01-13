@@ -2568,6 +2568,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--Footer-sm"
                             }
+                        },
+                        {
+                            "name": "footerLogoMargin",
+                            "label": "Margin around logo",
+                            "type": "margin",
+                            "defaultValue": "0 0 20px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-logo-margin"
+                            }
                         }
                     ]
                 },
@@ -2619,6 +2629,102 @@
                             "colorRender": {
                                 "cssSelector": "",
                                 "cssVariable": "--FooterNav-color"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Social",
+                    "fields": [
+                        {
+                            "name": "footerSocialMargin",
+                            "label": "Margin around social icons",
+                            "type": "margin",
+                            "defaultValue": "10 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-margin"
+                            }
+                        },
+                        {
+                            "name": "footerSocialGap",
+                            "label": "Space between social icons",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-gap"
+                            }
+                        },
+                        {
+                            "name": "footerSocialBorderRadius",
+                            "label": "Border radius around the icon",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-border-radius"
+                            }
+                        },
+                        {
+                            "name": "footerSocialSize",
+                            "label": "Icon size",
+                            "type": "size",
+                            "defaultValue": "1.8rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-size"
+                            }
+                        },
+                        {
+                            "name": "footerSocialPadding",
+                            "label": "Padding around the icon",
+                            "description": "The padding shows more of the background around the icon",
+                            "type": "padding",
+                            "defaultValue": "4px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-padding"
+                            }
+                        },
+                        {
+                            "name": "footerSocialBackground",
+                            "label": "Social background color",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-background"
+                            }
+                        },
+                        {
+                            "name": "footerSocialBackgroundHover",
+                            "label": "Social background color (hover)",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-backgroundHover"
+                            }
+                        },
+                        {
+                            "name": "footerSocialColor",
+                            "label": "Social icon color",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-color"
+                            }
+                        },
+                        {
+                            "name": "footerSocialColorHover",
+                            "label": "Social icon color (hover)",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-colorHover"
                             }
                         }
                     ]

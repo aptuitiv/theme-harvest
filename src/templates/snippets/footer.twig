@@ -2,7 +2,7 @@
 
     <footer class="Footer">
         <div class="Container">
-            <div class="text-center" id="footer-logo">{# ID is used for live theme preview. #}
+            <div class="Footer-logoWrap flex justify-center" id="footer-logo">{# ID is used for live theme preview. #}
                 {% if _core.theme.settings.footerLogo %}
                     {% set _core.theme.settings.footerLogo.class = "Footer-logo" %}
                     {% do _core.theme.settings.footerLogo.resize(_core.theme.settings.footerLogoWidth + 100) %}
@@ -17,12 +17,16 @@
                     {{ _api.navigation.get.key('main').template('footer').showSubNav('no') }}
                 {% endif %}
             {% endif %}
-            <div class="mb-2">
-                {% if _core.theme.settings.social|first.url and _core.theme.settings.footerShowSocial == 'yes' %}
+            {% if _core.theme.settings.social|first.url and _core.theme.settings.footerShowSocial == 'yes' %}
+                <div class="Footer-social">
+                    {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', twitter: 'Twitter', youtube: 'YouTube'} %}
                     {% for social in _core.theme.settings.social %}
-                        <a href="{{ social.url }}" title="Follow us on {{ social.name }}" class="Footer-social"> {{ macros.iconImg(social.icon, social.name) }} </a>
+                        <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="Footer-socialLink">{{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "Footer-socialIcon") }}</a>
                     {% endfor %}
-                {% endif %}
+                </div>
+            {% endif %}
+            <div class="mb-2">
+
                 {% if _core.theme.settings.footerShowAddress == 'yes' %}
                     <div>
                         {% if _core.settings.companyAddressStreet %}
