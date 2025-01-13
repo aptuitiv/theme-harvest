@@ -3561,6 +3561,18 @@
                             }
                         },
                         {
+                            "name": "navBarBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".NavBar",
+                                "config": {
+                                    "combine": false
+                                }
+                            }
+                        },
+                        {
                             "name": "navBarBackgroundSm",
                             "label": "Background color (small screens)",
                             "type": "color",
@@ -3668,6 +3680,18 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-background-hover"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkUnderlineDisplay",
+                            "label": "Show the underline on hover",
+                            "description": "Whether to show a line under the main navigation item when it's hovered or active. This only shows if the item does not have a dropdown.",
+                            "type": "switch",
+                            "default": "yes",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-underline-display",
+                                "template": "{{ value == 'yes' ? 'block' : 'none' }}"
                             }
                         }
                     ]

@@ -106,6 +106,7 @@
         border-top: 1px solid var(--MainNav-color-hover);
         bottom: -1px;
         content: '';
+        display: var(--MainNav-link-underline-display, 'block');
         left: 50%;
         position: absolute;
         transform: translateX(-50%);
