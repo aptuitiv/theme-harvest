@@ -78,10 +78,8 @@
 
 .TopBar-contactItem {
     display: block;
-}
-
-.TopBar-contactItem:first-child::before {
-    display: none;
+    line-height: 1;
+    position: relative;
 }
 
 .TopBar-contactItem::before {
@@ -96,9 +94,8 @@
     width: 1px;
 }
 
-.TopBar-contactItem {
-    line-height: 1;
-    position: relative;
+.TopBar-contactItem:first-child::before {
+    display: none;
 }
 
 @media (--m-lg) {
