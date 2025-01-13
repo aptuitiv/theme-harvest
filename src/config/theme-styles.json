@@ -3200,6 +3200,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--Header-logo-padding"
                             }
+                        },
+                        {
+                            "name": "headerLogoPaddingSm",
+                            "label": "Padding around logo only (small screens)",
+                            "type": "padding",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-logo-padding-sm"
+                            }
                         }
                     ]
                 },

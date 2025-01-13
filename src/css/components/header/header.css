@@ -40,6 +40,10 @@
     padding: var(--Header-logo-padding, 20px 0);
 }
 
+.Header-logoWrapSm {
+    padding: var(--Header-logo-padding-sm, 10px);
+}
+
 .Header-logo {
     max-width: var(--Header-logo-width);
     width: 100%;
