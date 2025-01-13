@@ -2760,6 +2760,29 @@
                     ]
                 },
                 {
+                    "name": "Footer copyright",
+                    "description": "Styles for the copyright text at the bottom of the footer.",
+                    "fields": [
+                        {
+                            "name": "footerCopyrightTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useTextAlign": false,
+                            "color": {
+                                "defaultValue": "#fff"
+                            },
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Footer-copyright"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Footer credit",
                     "description": "Styles for the Aptuitiv credit text at the bottom of the footer.",
                     "fields": [
@@ -2777,7 +2800,7 @@
                                 "defaultValue": "#fff"
                             },
                             "fontSize": {
-                                "defaultValue": "14px"
+                                "defaultValue": "1.4rem"
                             },
                             "textDecoration": {
                                 "defaultValue": "none"
@@ -2788,15 +2811,6 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Footer-attributeLink"
-                            }
-                        },
-                        {
-                            "name": "footerCreditPadding",
-                            "label": "Padding around the footer credit text",
-                            "type": "padding",
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".Footer-attribution"
                             }
                         }
                     ]

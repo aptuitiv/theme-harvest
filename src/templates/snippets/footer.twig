@@ -1,7 +1,7 @@
 {% import 'macros/macros' as macros %}
 
     <footer class="Footer">
-        <div class="Container">
+        <div class="Container Container--pad">
             <div class="Footer-logoWrap flex justify-center" id="footer-logo">{# ID is used for live theme preview. #}
                 {% if _core.theme.settings.footerLogo %}
                     {% set _core.theme.settings.footerLogo.class = "Footer-logo" %}
@@ -56,8 +56,8 @@
                         <div class="Footer-copyright">&copy; {{ _core.date.year }} {{ _core.settings.companyName }}</div>
                     </div>
                     <div class="col-1-1 col-1-2-sm text-center text-end-sm">
-                        <a href="https://www.aptuitiv.com" target="_blank" class="Footer-credit">Website by Aptuitiv</a>
-                        <a href="https://www.branchcms.com" target="_blank" class="Footer-credit">Powered by BranchCMS</a>
+                        <a href="https://www.aptuitiv.com" target="_blank" class="Footer-attributeLink">Website by Aptuitiv</a>
+                        <a href="https://www.branchcms.com" target="_blank" class="Footer-attributeLink">Powered by BranchCMS</a>
                     </div>
                 </div>
             {% else %}

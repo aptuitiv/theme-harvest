@@ -63,42 +63,20 @@
     Copyright and credit
 \* ------------------------------------ */
 
-.Footer-copyright {
-    color: var(--theme-footer-nav-color);
-    font-size: 0.9em;
+.Footer-attributeLink {
+    border-left: 1px solid currentcolor;
+    display: inline-block;
+    line-height: 1;
+    padding: 0 1rem;
 }
 
-.Footer-credit {
-    color: var(--theme-footer-nav-color);
-    font-size: 0.9em;
-    line-height: 1.5;
-    padding: 0;
-    text-decoration: none;
-}
-
-.Footer-credit:active,
-.Footer-credit:focus,
-.Footer-credit:hover {
-    color: var(--theme-footer-nav-color);
-    text-decoration: underline;
-}
-
-.Footer-credit:first-child {
+.Footer-attributeLink:first-child {
     border-left: none;
 }
 
 /* ------------------------------------ *\
     Responsive
 \* ------------------------------------ */
-
-@media (--m-md) {
-    .Footer-credit {
-        border-left: 1px solid #666;
-        display: inline-block;
-        line-height: 1;
-        padding: 0 1rem;
-    }
-}
 
 @media (--m-lg) {
     .Footer {
