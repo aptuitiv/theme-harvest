@@ -485,7 +485,7 @@
 
 
 {# Form button #}
-{% macro formButton(buttonText) %}
+{% macro formButton(buttonText, additionalClass) %}
     {% set buttonClass = 'Button' %}
     {% if _core.theme.settings.formButtonSize in ['sm', 'lg'] %}
         {% set buttonClass = buttonClass ~ ' Button--'  ~ _core.theme.settings.formButtonSize %}
@@ -496,5 +496,5 @@
     {% if _core.theme.settings.formButtonFullWidthSmallScreens == 'yes' %}
         {% set buttonClass = buttonClass ~ ' Button--smFull' %}
     {% endif %}
-    <div class="FormButton"><button type="submit" class="{{ buttonClass }}">{{ buttonText }}</button></div>
+    <div class="FormButton"><button type="submit" class="{{ buttonClass }}{% if additionalClass %} {{ additionalClass}}{% endif %}">{{ buttonText }}</button></div>
 {% endmacro %}
