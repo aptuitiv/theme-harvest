@@ -26,7 +26,7 @@
     font-family: var(--ImageGridItem-title-above-font-family);
     font-size: var(--ImageGridItem-title-above-font-size, inherit);
     font-style: var(--ImageGridItem-title-above-font-style);
-    font-weight: var(--ImageGridItem-title-above-font-weight, 700);
+    font-weight: var(--ImageGridItem-title-above-font-weight);
     letter-spacing: var(--ImageGridItem-title-above-letter-spacing);
     line-height: var(--ImageGridItem-title-above-line-height, inherit);
     margin: var(--ImageGridItem-title-above-margin, 0);
@@ -42,7 +42,7 @@
     font-family: var(--ImageGridItem-title-below-font-family);
     font-size: var(--ImageGridItem-title-below-font-size, inherit);
     font-style: var(--ImageGridItem-title-below-font-style);
-    font-weight: var(--ImageGridItem-title-below-font-weight, 700);
+    font-weight: var(--ImageGridItem-title-below-font-weight);
     letter-spacing: var(--ImageGridItem-title-below-letter-spacing);
     line-height: var(--ImageGridItem-title-below-line-height, inherit);
     margin: var(--ImageGridItem-title-below-margin, 0);
@@ -58,7 +58,7 @@
     font-family: var(--ImageGridItem-title-bottom-font-family);
     font-size: var(--ImageGridItem-title-bottom-font-size, inherit);
     font-style: var(--ImageGridItem-title-bottom-font-style);
-    font-weight: var(--ImageGridItem-title-bottom-font-weight, 700);
+    font-weight: var(--ImageGridItem-title-bottom-font-weight);
     letter-spacing: var(--ImageGridItem-title-bottom-letter-spacing);
     line-height: var(--ImageGridItem-title-bottom-line-height, inherit);
     margin: var(--ImageGridItem-title-bottom-margin, 0);
@@ -80,7 +80,7 @@
     font-family: var(--ImageGridItem-title-center-font-family);
     font-size: var(--ImageGridItem-title-center-font-size, inherit);
     font-style: var(--ImageGridItem-title-center-font-style);
-    font-weight: var(--ImageGridItem-title-center-font-weight, 700);
+    font-weight: var(--ImageGridItem-title-center-font-weight);
     letter-spacing: var(--ImageGridItem-title-center-letter-spacing);
     line-height: var(--ImageGridItem-title-center-line-height, inherit);
     margin: var(--ImageGridItem-title-center-margin, 0);
@@ -149,7 +149,7 @@
     font-family: var(--ImageGridItem-hover-text-font-family);
     font-size: var(--ImageGridItem-hover-text-font-size, inherit);
     font-style: var(--ImageGridItem-hover-text-font-style);
-    font-weight: var(--ImageGridItem-hover-text-font-weight, 700);
+    font-weight: var(--ImageGridItem-hover-text-font-weight);
     height: 0;
     letter-spacing: var(--ImageGridItem-hover-text-letter-spacing);
     line-height: var(--ImageGridItem-hover-text-line-height, inherit);
@@ -176,7 +176,7 @@
     font-family: var(--ImageGridItem-content-font-family);
     font-size: var(--ImageGridItem-content-font-size, inherit);
     font-style: var(--ImageGridItem-content-font-style);
-    font-weight: var(--ImageGridItem-content-font-weight, 700);
+    font-weight: var(--ImageGridItem-content-font-weight);
     letter-spacing: var(--ImageGridItem-content-letter-spacing);
     line-height: var(--ImageGridItem-content-line-height, inherit);
     margin: var(--ImageGridItem-content-margin, 0);
