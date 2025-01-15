@@ -1,23 +1,56 @@
-{% if image %}
-    {% set imageSizes = _core.theme.settings.blockFullWidthImageSizes|sort_by_key("maxWidth") %}
+{# Macro to resize the image #}
+{% macro doImageSizes(image, imageSizes) %}
     {% for imageOption in imageSizes %}
         {% do image.addSource("(max-width: " ~ imageOption.maxWidth ~ "px)").resize(imageOption.maxWidth) %}
     {% endfor %}
-    {# {% set image.picture.class = "Banner-picture" %} #}
     {% set largestSize = imageSizes|last %}
     {% if largestSize|length > 0 %}
         {% do image.resize(largestSize.maxWidth ) %}
     {% endif %}
+{% endmacro %}
+
+
+{% if image %}
+    {% set fullWidthImageSizes = _core.theme.settings.blockImageFullWidthSizes|sort_by_key("maxWidth") %}
+    {% set largeWidthImageSizes = _core.theme.settings.blockImageLargeWidthSizes|sort_by_key("maxWidth") %}
+    {% set mediumWidthImageSizes = _core.theme.settings.blockImageMediumWidthSizes|sort_by_key("maxWidth") %}
+    {% set smallWidthImageSizes = _core.theme.settings.blockImageSmallWidthSizes|sort_by_key("maxWidth") %}
+
+    {% if imageSize == 'full' %}
+        {{ _self.doImageSizes(image, fullWidthImageSizes) }}
+    {% elseif imageSize == 'large' || imageSize is not defined %}
+        {{ _self.doImageSizes(image, largeWidthImageSizes) }}
+    {% elseif imageSize == 'medium' %}
+        {{ _self.doImageSizes(image, mediumWidthImageSizes) }}
+    {% elseif imageSize == 'small' %}
+        {{ _self.doImageSizes(image, smallWidthImageSizes) }}
+    {% endif %}
 
     {% do image.alt.default(caption) %}
-    {% set image.class = 'w-100' %}
     {% do image.lazy() %}
-    {% if _core.theme.settings.fullWidthImageWidth == 'contained' %}
-        <div class="Container Container--pad">
+
+    {# Setup caption #}
+    {% if caption %}
+        {% set caption = '<div class="ImageCaption">' ~ caption ~ '</div>' %}
     {% endif %}
-        {{ image.tag }}
-        {% if caption %}<div class="ImageCaption">{{ caption }}</div>{% endif %}
-    {% if _core.theme.settings.fullWidthImageWidth == 'contained' %}
+
+    {# Setup the image #}
+    {% set imageContent = image.tag %}
+    {% if link %}
+        {% set link.content = image.tag %}
+        {% set imageContent = link.tag %}
+    {% endif %}
+
+    {# Display the image based on alignment #}
+    {% if alignment == 'center' %}
+        <div class="ImageWrapper ImageWrapper--center">{{ imageContent }}{{ caption }}</div>
+    {% elseif alignment == 'left' %}
+        <div class="ImageWrapper ImageWrapper--left">{{ imageContent }}{{ caption }}</div>
+    {% elseif alignment == 'right' %}
+        <div class="ImageWrapper ImageWrapper--right">{{ imageContent }}{{ caption }}</div>
+    {% else %}
+        <div class="ImageWrapper ImageWrapper--default">
+            {{ imageContent}}{{ caption }}
         </div>
     {% endif %}
 {% endif %}

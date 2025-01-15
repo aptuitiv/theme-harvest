@@ -1,5 +1,5 @@
 /* =========================================================================== *\
-    This is used for the Small Image component.
+    This is used for the Image component.
     It is based on the Cacao image component.
     https://aptuitiv.github.io/cacao/styles/image
     The variables come from the Cacao image variables.
@@ -13,11 +13,14 @@
 }
 
 .ImageWrapper--default {
-    display: inline-block;
+    margin: 0 0 var(--base-typography-spacing, 2.5rem);
 }
 
 .ImageWrapper--center {
-    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 var(--base-typography-spacing, 2.5rem);
 }
 
 @media (--m-sm) {

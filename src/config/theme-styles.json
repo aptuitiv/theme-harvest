@@ -1238,40 +1238,72 @@
             ]
         },
         {
-            "name": "Blocks - Large Image",
-            "description": "Styles for the \"Full Width Image\" block.",
+            "name": "Blocks - Image",
+            "description": "Styles for the \"Image\" block.",
             "sidebarSize": "small",
-            "fields": [
+            "groups": [
                 {
-                    "name": "blockLargeImageWidth",
-                    "label": "Image width",
-                    "type": "radio",
-                    "defaultValue": "full",
-                    "options": {
-                        "full": "Span the full width of the page",
-                        "contained": "Maximum width is the container width"
-                    }
-                },
-                {
-                    "name": "blockLargeImageSizes",
-                    "label": "Image Sizes",
-                    "description": "These set the responsive sizes for the \"Large Image\" block.",
-                    "type": "repeatingGrid",
-                    "itemName": "Image size",
-                    "children": [
+                    "name": "Image Sizes",
+                    "description": "The image can be set to \"Full width\", \"Large\", \"Medium\" or \"Small\" sizes. Below are the widths for those sizes. Only the width is set to allow the image to be any height. If additional widths are set then they will be used to resize the image smaller at those widths.",
+                    "fields": [
                         {
-                            "name": "maxWidth",
-                            "label": "Max width",
-                            "type": "stepper",
-                            "after": "px"
+                            "name": "blockImageFullWidthSizes",
+                            "label": "Full-width image widths",
+                            "type": "repeatingGrid",
+                            "itemName": "Image size",
+                            "children": [
+                                {
+                                    "name": "maxWidth",
+                                    "label": "Max width",
+                                    "type": "stepper",
+                                    "after": "px"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "blockImageLargeWidthSizes",
+                            "label": "Large image widths",
+                            "type": "repeatingGrid",
+                            "itemName": "Image size",
+                            "children": [
+                                {
+                                    "name": "maxWidth",
+                                    "label": "Max width",
+                                    "type": "stepper",
+                                    "after": "px"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "blockImageMediumWidthSizes",
+                            "label": "Medium image widths",
+                            "type": "repeatingGrid",
+                            "itemName": "Image size",
+                            "children": [
+                                {
+                                    "name": "maxWidth",
+                                    "label": "Max width",
+                                    "type": "stepper",
+                                    "after": "px"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "blockImageSmallWidthSizes",
+                            "label": "Small image widths",
+                            "type": "repeatingGrid",
+                            "itemName": "Image size",
+                            "children": [
+                                {
+                                    "name": "maxWidth",
+                                    "label": "Max width",
+                                    "type": "stepper",
+                                    "after": "px"
+                                }
+                            ]
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "Blocks - Large & Small Image",
-            "groups": [
+                },
                 {
                     "name": "Caption",
                     "fields": [

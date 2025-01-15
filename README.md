@@ -30,20 +30,17 @@ That will initialize the development environment. Follow the prompts to set up t
 
 Before deploying, you'll want to log into the CMS for the new site and do the following. These prepare the CMS for deploying the theme files.
 
-1. Configuration
-   - Turn on **SSL** by enabling "My site supports SSL", "Entire public site is secure", and "Entire administration is secure" from Settings -> Security.
-   - Disable **Cache** under Settings -> Cache.
-2. Install the **Theme** configuration by uploading it under Design -> View Themes -> Update and continuing on the next page. We recommend that you first export the theme from the original theme admin and then upload that `theme.json` file to this site.
-3. Prime templates
+1. Install the **Theme** configuration by uploading it under Design -> View Themes -> Update and continuing on the next page. We recommend that you first export the theme from the original theme admin and then upload that `theme.json` file to this site.
+2. Prime templates
    - Prime the **Page Templates** by visiting Design -> Templates.
    - Delete the "Default" Template from Design -> Templates.
    - Prime the **Snippets** by visiting Design -> Snippets.
    - Prime the **Navigation Templates** by visiting Design -> Navigation -> Navigation Templates.
    - Prime the **Form Templates** by visiting Forms -> Templates.
-4. Pages
+3. Pages
    - Edit the "Home" page to use the "One Column" *Page Template* from Content -> Pages.
 
-5. Navigation. Go to Design -> Navigation -> Navigation Menus
+4. Navigation. Go to Design -> Navigation -> Navigation Menus
     - Create a navigation menu called `Footer`.
       - Template: `Footer`
       - Show sub navigation: `Never`.
@@ -51,9 +48,9 @@ Before deploying, you'll want to log into the CMS for the new site and do the fo
       - Template: `Main`
       - Show sub navigation: `Show all sub navigation all the time`
 
-6. Prime the **Content Builder Elements** by visiting Design -> Content Builder -> Elements.
-7. Prime the **Collection Widgets** by visiting Widgets -> Collections -> Notifications.
-8. Search
+5. Prime the **Content Builder Elements** by visiting Design -> Content Builder -> Elements.
+6. Prime the **Collection Widgets** by visiting Widgets -> Collections -> Notifications.
+7. Search
    - Prime the **Search Templates** by visiting Site Manager -> Search -> Templates -> Templates.
    - Edit and save the **Search Form** under Site Manager -> Search -> Forms. This will generate the form fields.
 
@@ -92,10 +89,23 @@ To finish the installation, you'll need to configure some basic options of the t
           - 700 x 300
         - Aspect ratio when croping: `20 x 6`.
         - Minimum aspect ratio: `20 x 6`
-   4. Update the **Color Palette** under Palettes -> Color Palette.
-   5. Update the **Font Palette** under Palettes -> Font Palette.
-   6. Go through all of the **Theme Styles** from the Theme Styles tab and update all color references to use the *Color Palette* if matching one.
-   7. Update **Typography** under Styles -> Typography.
+   4. Go to Styles -> Blocks - Image. Set the Image Sizes
+      - Full-width image widths  
+        - 2000
+        - 1200
+        - 600
+      - Large image widths  
+        - 1200
+        - 600
+      - Medium image widths  
+        - 800
+        - 500
+      - Small image widths  
+        - 500
+   5. Update the **Color Palette** under Palettes -> Color Palette.
+   6. Update the **Font Palette** under Palettes -> Font Palette.
+   7. Go through all of the **Theme Styles** from the Theme Styles tab and update all color references to use the *Color Palette* if matching one.
+   8. Update **Typography** under Styles -> Typography.
 
 You've now got an instance of the theme installed and configured on your new site. From here you can customize the styles in the *Theme Editor* or make template changes.
 
