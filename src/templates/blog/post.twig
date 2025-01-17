@@ -1,6 +1,13 @@
 {% extends 'narrow' %}
 {% import 'macros/macros' as macros %}
 
+{% block banner %}
+    {% if post.bannerImage %}
+        {% set image = post.bannerImage %}
+    {% endif %}
+    {% include('content-builder/banner-bar') %}
+{% endblock %}
+
 {% block main %}
     <h1>{{ post.postTitle }}</h1>
     {% if post.categories %}

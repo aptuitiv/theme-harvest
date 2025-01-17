@@ -24,6 +24,26 @@
             ]
         },
         {
+            "name": "Blog",
+            "fields": [
+                {
+                    "name": "blogMainPageBannerHeading",
+                    "label": "Banner heading",
+                    "type": "text",
+                    "defaultValue": "Blog"
+                },
+                {
+                    "name": "blogMainPageBannerImage",
+                    "label": "Banner Image",
+                    "type": "image",
+                    "path": "images",
+                    "maxWidth": "2000",
+                    "useAttributes": false,
+                    "description": "The image will be cropped on the page to match the Banner Bar settings. See Styles - Blocks Banner Bar - Banner Bar Images for more information."
+                }
+            ]
+        },
+        {
             "name": "Footer",
             "description": "Content for the footer that is used on all pages",
             "groups": [
