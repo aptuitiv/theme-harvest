@@ -49,6 +49,12 @@
     width: 100%;
 }
 
+/* If the logo is an SVG, make sure it scales up. We set the actual width instead of a max width because SVGs can scale. */
+.Header-logo[src$='.svg'] {
+    height: auto;
+    width: var(--Header-logo-width);
+}
+
 .Header-textLogo {
     font-size: var(--Header-text-logo-font-size-sm);
 }
