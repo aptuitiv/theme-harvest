@@ -836,6 +836,146 @@
             ]
         },
         {
+            "name": "Blocks - Icon Grid",
+            "description": "Styles for the \"Image Grid\" block.",
+            "groups": [
+                {
+                    "name": "General styles",
+                    "description": "styles for general content",
+                    "fields": [
+                        {
+                            "name": "blockIconGridIconSize",
+                            "label": "Icon size",
+                            "type": "size",
+                            "defaultValue": "50px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-icon-size"
+                            }
+                        },
+                        {
+                            "name": "iconGridGapSize",
+                            "label": "Gap between items",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-gap-size"
+                            }
+                        },
+                        {
+                            "name": "iconGridGapSizeImageAndText",
+                            "label": "Gap between image and text",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-gap-size-image-text"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridBackgroundColor",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-background-color"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--ImageGrid-border"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-item-padding"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Typography",
+                    "description": "Styles for the text in the icon grid",
+                    "fields": [
+                        {
+                            "name": "blockIconGridTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useTextAlign": false,
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".IconGrid-item, .IconGrid-item .IconGrid-text"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Hover styles",
+                    "description": "Styles for when the icon is hovered over (for links)",
+                    "fields": [
+                        {
+                            "name": "blockIconGridBackgroundColorHover",
+                            "label": "Background color (hover)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-background-color-hover"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridTextHover",
+                            "label": "Text color (hover)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-text-hover"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridHoverTextDecoration",
+                            "label": "Text decoration (hover)",
+                            "type": "textDecoration",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-text-decoration-hover"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridBorderHover",
+                            "label": "Border (hover)",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-border-hover"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridScaleStepper",
+                            "label": "Scale on hover",
+                            "type": "stepper",
+                            "decimals": 2,
+                            "defaultValue": 1,
+                            "step": 0.1,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-scale-stepper"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Blocks - Image Bar",
             "description": "Styles for the \"Image Grid\" block.",
             "fields": [
