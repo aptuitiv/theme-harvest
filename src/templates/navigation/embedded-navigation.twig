@@ -1,11 +1,11 @@
 {#
     This navigation template is intended for the scenario where you need to embed one navigation menu
-    into another one where the embeded one will show on smaller screens.
+    into another one where the embedded one will show on smaller screens.
     An example scenario could be if you have a main navigation menu and a secondary navigation menu in a top bar.
     On smaller screens you want to show the secondary navigation items as part of the main navigation items after the
     main items. You could do that by putting the following API tag right before the closing </ul> tag in the main
     navigation template.
-    {{ _api.navigation.get.key('secondary').template('embeded-navigation').showSubNav('all') }}
+    {{ _api.navigation.get.key('secondary').template('embedded-navigation').showSubNav('all') }}
 #}
 {# Macro that handles building sub navigation #}
 {% macro menu_sub_items(items) %}
