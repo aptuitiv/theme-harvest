@@ -232,6 +232,16 @@
                     "defaultValue": "yes"
                 },
                 {
+                    "name": "headerAddressType",
+                    "label": "Address type to show",
+                    "type": "radio",
+                    "defaultValue": "physical",
+                    "options": {
+                        "physical": "Physical",
+                        "mailing": "Mailing"
+                    }
+                },
+                {
                     "name": "headerShowPhone",
                     "label": "Show phone",
                     "type": "switch",
