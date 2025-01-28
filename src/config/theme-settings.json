@@ -184,37 +184,6 @@
             ]
         },
         {
-            "name": "Popup on Load",
-            "description": "Options for the optional popup that shows on page load.",
-            "sidebarSize": "medium",
-            "fields": [
-                {
-                    "name": "popupDisplay",
-                    "label": "Display the popup",
-                    "type": "switch"
-                },
-                {
-                    "name": "popupSeconds",
-                    "label": "Seconds to wait before showing the popup",
-                    "type": "stepper",
-                    "after": "seconds",
-                    "defaultValue": "5"
-                },
-                {
-                    "name": "popupCookieExpiration",
-                    "label": "Number of days to show popup again after closing",
-                    "type": "stepper",
-                    "after": "days",
-                    "defaultValue": "30"
-                },
-                {
-                    "name": "popupContent",
-                    "label": "Content",
-                    "type": "richTextEditor"
-                }
-            ]
-        },
-        {
             "name": "Social Icons",
             "description": "Set the links and icons to use for your social networks in the footer of each page.",
             "sidebarSize": "medium",

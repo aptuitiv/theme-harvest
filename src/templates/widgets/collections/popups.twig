@@ -1,0 +1,62 @@
+{% nevercache %}
+    {% verbatim %}
+        {% if items|length > 0 %}
+            {% set popup = items|first %}
+            {# Get popup cookie IDs #}
+            {% set cookieIds = [] %}
+            {% if popup.showEachPage == 'No' %}
+                {% for cookieName in _page.cookies|keys %}
+                    {% if cookieName starts with "popup" %}
+                        {% set cookieId = cookieName|split('popup')|last %}
+                        {% set cookieIds = cookieIds|merge([cookieId]) %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {# Check if popup cookie is not present #}
+            {% if popup.id not in cookieIds %}
+                {% set show = true %}
+                {% if popup.pages == 'home' && !_page.isHome %}
+                    {% set show = false %}
+                {% endif %}
+                {% if popup.pages == 'specific' %}
+                    {% set pages = popup.pageList|nlc2array %}
+                    {% set fullUrl = _page.request.baseUrl ~ _page.request.url %}
+                    {% if _page.request.url not in pages && fullUrl not in pages %}
+                        {% set show = false %}
+                    {% endif %}
+                {% endif %}
+                {% if show %}
+                    <div class="Modal Modal-slide" id="announcement-modal" aria-hidden="true" data-id="{{ popup.id }}">
+                        <div class="Modal-overlay" tabindex="-1" data-micromodal-close>
+                            <div class="Modal-container" role="dialog" aria-modal="true">
+                                <div class="Modal-header {% if popup.heading %}justify-between{% else %}justify-end{% endif %}">
+                                    <div class="Modal-title">{{ popup.heading }}</div>
+                                    <button class="Modal-close" data-micromodal-close></button>
+                                </div>
+                                <div class="Modal-content last-child-sb-0">
+                                    {{ popup.content }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% inlinejs %}
+                        loadjs.ready('main', {
+                            success: function() {
+                                setTimeout(() => {
+                                    MicroModal.show('announcement-modal', {
+                                        disableFocus: true,
+                                            onClose: () => {
+                                                {% if popup.showEachPage == 'No' %}
+                                                    setCookie('popup{{ popup.id }}', "hide", {{ popup.cookieExpiration }});
+                                                {% endif %}
+                                            }
+                                    });
+                                }, {{ popup.waitSeconds }}000);
+                            }
+                        });
+                    {% endinlinejs %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endverbatim %}
+{% endnevercache %}

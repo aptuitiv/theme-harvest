@@ -88,35 +88,6 @@
     {{ _page.bodyEndCode() }}
 
     {# Optional Modal #}
-    {% nevercache %}
-        {% verbatim %}
-            {% if _core.theme.settings.popupDisplay == 'yes' and _core.theme.settings.popupContent and not _page.cookies.announcementPopup %}
-                <div class="Modal Modal-slide" id="announcement-modal" aria-hidden="true">
-                    <div class="Modal-overlay" tabindex="-1" data-micromodal-close>
-                        <div class="Modal-container" role="dialog" aria-modal="true">
-                            <div class="Modal-header justify-end">
-                                <button class="Modal-close" data-micromodal-close></button>
-                            </div>
-                            <div class="Modal-content last-child-sb-0">
-                                {{ _core.theme.settings.popupContent }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% inlinejs %}
-                    loadjs.ready('main', {
-                        success: function() {
-                            setTimeout(() => {
-                                MicroModal.show('announcement-modal', {
-                                    disableFocus: true
-                                });
-                                setCookie('announcementPopup', "hide", {{ _core.theme.settings.popupCookieExpiration }});
-                            }, {{ _core.theme.settings.popupSeconds }}000);
-                        }
-                    });
-                {% endinlinejs %}
-            {% endif %}
-        {% endverbatim %}
-    {% endnevercache %}
+    {{ _api.widgets.collection.get('popups') }}
 </body>
 </html>
