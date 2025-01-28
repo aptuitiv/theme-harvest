@@ -9,12 +9,10 @@
 }
 
 .Container--pad {
-    max-width: calc(var(--Container-width) + 60px);
     padding: 0 30px;
 }
 
 .Container--narrow {
-    max-width: calc(var(--Container-narrow-width) + 60px);
     padding: 0 30px;
 }
 
