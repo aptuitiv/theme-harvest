@@ -55,6 +55,9 @@
         {% if item.subItems %}
             {% set class = class ~ " Dropdown js-dropdownParent" %}
         {% endif %}
+        {% if _core.theme.settings.mainNavLinkLineDisplayPosition %}
+            {% set class = class ~ ' MainNav-itemLine--' ~ _core.theme.settings.mainNavLinkLineDisplayPosition %}
+        {% endif %}
         <li class="{{ class|trim }}" role="presentation">
             {# ASSIGN MENU LINK CLASS #}
             {% set item.link.class = item.link.class ~ ' MainNav-link js-navLink' %}

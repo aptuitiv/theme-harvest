@@ -3864,15 +3864,58 @@
                             }
                         },
                         {
-                            "name": "mainNavLinkUnderlineDisplay",
-                            "label": "Show the underline on hover",
-                            "description": "Whether to show a line under the main navigation item when it's hovered or active. This only shows if the item does not have a dropdown.",
+                            "name": "mainNavLinkLineDisplay",
+                            "label": "Show the line above or below on hover",
+                            "description": "Whether to show a line above or below the main navigation item when it's hovered or active. The line below only shows if the item does not have a dropdown. The line above would show even if there is a dropdown",
                             "type": "switch",
                             "default": "yes",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--MainNav-link-underline-display",
+                                "cssVariable": "--MainNav-link-line-display",
                                 "template": "{{ value == 'yes' ? 'block' : 'none' }}"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineDisplayPosition",
+                            "label": "Where to show the line",
+                            "type": "radio",
+                            "default": "above",
+                            "options": {
+                                "above": "Above",
+                                "below": "Below"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "template": "{{ value == 'above' ? ':root {--MainNav-link-line-bottom: auto; --MainNav-link-line-top: -' ~ fields.mainNavLinkLineHeight.value ~ '; }'  : ':root {--MainNav-link-line-bottom: -' ~ fields.mainNavLinkLineHeight.value ~ '; --MainNav-link-line-top: auto}' }}"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineHeight",
+                            "label": "Line height",
+                            "type": "size",
+                            "default": "2px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-height"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineWidth",
+                            "label": "Line width",
+                            "type": "size",
+                            "default": "100%",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-width"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineColor",
+                            "label": "Line color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-color"
                             }
                         }
                     ]
