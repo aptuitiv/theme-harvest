@@ -2984,6 +2984,15 @@
                                 "type": "css-head",
                                 "cssSelector": ".Footer-attributeLink"
                             }
+                        },
+                        {
+                            "name": "footerCreditPadding",
+                            "label": "Padding around the footer credit text",
+                            "type": "padding",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Footer-attribution"
+                            }
                         }
                     ]
                 }
