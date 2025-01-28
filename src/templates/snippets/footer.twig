@@ -19,7 +19,7 @@
             {% endif %}
             {% if _core.theme.settings.social|first.url and _core.theme.settings.footerShowSocial == 'yes' %}
                 <div class="Footer-social">
-                    {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', twitter: 'Twitter', youtube: 'YouTube'} %}
+                    {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', x: 'X', youtube: 'YouTube'} %}
                     {% for social in _core.theme.settings.social %}
                         <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="Footer-socialLink">{{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "Footer-socialIcon") }}</a>
                     {% endfor %}
