@@ -24,6 +24,36 @@
             ]
         },
         {
+            "name": "Blocks - Large Banner Slider",
+            "description": "Configuration for the Large Banner Slider block. Styles are under Blocks - Banners under the Styles tab",
+            "fields": [
+                {
+                    "name": "blocksLargeBannerSliderAutoplay",
+                    "label": "Autoplay slides",
+                    "type": "switch",
+                    "defaultValue": "yes"
+                },
+                {
+                    "name": "blocksLargeBannerSliderInterval",
+                    "label": "Slide interval",
+                    "type": "select",
+                    "defaultValue": "5000",
+                    "options": {
+                        "1000": "1 second",
+                        "2000": "2 seconds",
+                        "3000": "3 seconds",
+                        "4000": "4 seconds",
+                        "5000": "5 seconds",
+                        "6000": "6 seconds",
+                        "7000": "7 seconds",
+                        "8000": "8 seconds",
+                        "9000": "9 seconds",
+                        "10000": "10 seconds"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Blog",
             "fields": [
                 {

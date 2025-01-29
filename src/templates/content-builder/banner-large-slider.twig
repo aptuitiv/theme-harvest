@@ -97,6 +97,8 @@
                             pagination: true,
                         {% endif %}
                         arrows: false,
+                        autoplay: {{ _core.theme.settings.blocksLargeBannerSliderAutoplay == 'yes' ? 'true' : 'false' }},
+                        interval: {{ _core.theme.settings.blocksLargeBannerSliderInterval ?? '5000' }},
                         rewind: true,
                         type: 'fade',
                         speed: 1000
