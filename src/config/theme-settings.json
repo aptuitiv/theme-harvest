@@ -263,18 +263,54 @@
             ]
         },
         {
-            "name": "Top bar buttons",
+            "name": "Top bar buttons (left)",
+            "sidebarSize": "medium",
+            "fields": [
+                {
+                    "name": "headerShowLeftButtons",
+                    "label": "Show buttons on left",
+                    "type": "switch",
+                    "defaultValue": "yes"
+                },
+                {
+                    "name": "headerLeftButtons",
+                    "label": "Left side buttons",
+                    "type": "repeating",
+                    "itemName": "Button",
+                    "children": [
+                        {
+                            "name": "button",
+                            "label": "Button",
+                            "type": "url",
+                            "showLinkTextField": true,
+                            "linkTextFieldLabel": "Button text"
+                        },
+                        {
+                            "name": "style",
+                            "label": "Style",
+                            "type": "select",
+                            "options": {
+                                "primary": "Primary",
+                                "secondary": "Secondary"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Top bar buttons (right)",
             "sidebarSize": "medium",
             "fields": [
                 {
                     "name": "headerShowButtons",
-                    "label": "Show buttons",
+                    "label": "Show buttons on right",
                     "type": "switch",
                     "defaultValue": "yes"
                 },
                 {
                     "name": "headerButtons",
-                    "label": "Buttons",
+                    "label": "Right side buttons",
                     "type": "repeating",
                     "itemName": "Button",
                     "children": [

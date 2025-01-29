@@ -11,14 +11,12 @@
 }
 
 .TopBar-inner {
-    flex-direction: column;
     gap: var(--TopBar-gap, 20px);
     padding: var(--TopBar-padding-sm);
 }
 
 @media (--m-md) {
     .TopBar-inner {
-        flex-direction: row;
         padding: var(--TopBar-padding);
     }
 }
@@ -73,29 +71,35 @@
 .TopBar-contact {
     align-items: center;
     display: flex;
+    flex-direction: column;
     gap: var(--TopBar-contact-gap-sm, 15px);
 }
 
 .TopBar-contactItem {
     display: block;
-    line-height: 1;
     position: relative;
 }
 
-.TopBar-contactItem::before {
-    background: currentcolor;
-    content: '';
-    height: 70%;
-    left: calc(-1 * var(--TopBar-contact-gap-sm) / 2);
-    opacity: 0.5;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-}
+@media (--m-md) {
+    .TopBar-contact {
+        flex-direction: row;
+    }
 
-.TopBar-contactItem:first-child::before {
-    display: none;
+    .TopBar-contactItem::before {
+        background: currentcolor;
+        content: '';
+        height: 70%;
+        left: calc(-1 * var(--TopBar-contact-gap-sm) / 2);
+        opacity: 0.5;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+    }
+
+    .TopBar-contactItem:first-child::before {
+        display: none;
+    }
 }
 
 @media (--m-lg) {
@@ -189,4 +193,10 @@
     color: var(--TopBar-button-secondary-typography-color-hover);
     font-style: var(--TopBar-button-secondary-typography-font-style-hover);
     text-decoration: var(--TopBar-button-secondary-typography-text-decoration-hover);
+}
+
+.TopBar-buttonWithIcon {
+    align-items: center;
+    display: flex;
+    gap: 2px;
 }

@@ -42,13 +42,29 @@
         </div>
         <div class="TopBar">
             <div class="Container Container--pad">
-                <div class="TopBar-inner flex align-center justify-between">
-                    {% if _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
-                        <div class="TopBar-social">
-                            {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', x: 'X', youtube: 'YouTube'} %}
-                            {% for social in _core.theme.settings.social %}
-                                <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="TopBar-socialLink">{{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "TopBar-socialIcon") }}</a>
-                            {% endfor %}
+                <div class="TopBar-inner flex align-center justify-center justify-between-md">
+                    {% if (_core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes') or (_core.theme.settings.headerLeftButtons|first.button and _core.theme.settings.headerShowLeftButtons == 'yes') %}
+                        <div class="hidden flex-md align-center gx-2">
+                            {% if _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
+                                <div class="TopBar-social">
+                                    {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', x: 'X', youtube: 'YouTube'} %}
+                                    {% for social in _core.theme.settings.social %}
+                                        <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="TopBar-socialLink">{{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "TopBar-socialIcon") }}</a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if _core.theme.settings.headerLeftButtons|first.button and _core.theme.settings.headerShowLeftButtons == 'yes' %}
+                                <div class="TopBar-buttons">
+                                    {% for button in _core.theme.settings.headerLeftButtons %}
+                                        {% if button.style == 'primary' %}
+                                            {% set button.button.class = "TopBar-buttonPrimary hidden flex-lg" %}
+                                        {% else %}
+                                            {% set button.button.class = "TopBar-buttonSecondary hidden flex-lg" %}
+                                        {% endif %}
+                                        {{ button.button.tag }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                     {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
@@ -56,11 +72,11 @@
                             {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
                                 <span class="TopBar-contactItem">
                                     <a class="hidden inline-md" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a>
-                                    <a class="hidden-md mb-2" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.theme.settings.headerSmallScreenPhoneText }}</a>
+                                    <a class="hidden-md mb-2 TopBar-buttonPrimary" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}"><span>{{ _core.theme.settings.headerSmallScreenPhoneText }}</span></a>
                                 </span>
                             {% endif %}
                             {% if _core.theme.settings.headerShowAddress == 'yes' %}
-                                <span class="TopBar-contactItem">
+                                <span class="TopBar-contactItem hidden block-md">
                                     {% if _core.theme.settings.headerAddressType == 'physical' %}
                                         {% if _core.settings.companyAddressStreet %}
                                             {{ _core.settings.companyAddressStreet }},
@@ -92,9 +108,9 @@
                         <div class="TopBar-buttons">
                             {% for button in _core.theme.settings.headerButtons %}
                                 {% if button.style == 'primary' %}
-                                    {% set button.button.class = "TopBar-buttonPrimary" %}
-                                {% elseif button.style == 'secondary' %}
-                                    {% set button.button.class = "TopBar-buttonSecondary" %}
+                                    {% set button.button.class = "TopBar-buttonPrimary hidden flex-lg" %}
+                                {% else %}
+                                    {% set button.button.class = "TopBar-buttonSecondary hidden flex-lg" %}
                                 {% endif %}
                                 {{ button.button.tag }}
                             {% endfor %}
