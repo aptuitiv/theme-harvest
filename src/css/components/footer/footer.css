@@ -21,7 +21,7 @@
 
 .Footer-social {
     align-items: center;
-    display: none;
+    display: flex;
     gap: var(--Footer-social-gap, 10px);
     justify-content: center;
     line-height: 1;
@@ -51,12 +51,6 @@
 
 .Footer-socialIcon {
     font-size: var(--Footer-social-size, 1.6rem);
-}
-
-@media (--m-md) {
-    .Footer-social {
-        display: flex;
-    }
 }
 
 /* ------------------------------------ *\
