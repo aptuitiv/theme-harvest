@@ -242,6 +242,12 @@
                     }
                 },
                 {
+                    "name": "headerCustomAddress",
+                    "label": "Custom address",
+                    "description": "Use this field to override the address from Settings -> Company Information.",
+                    "type": "text"
+                },
+                {
                     "name": "headerShowPhone",
                     "label": "Show phone",
                     "type": "switch",

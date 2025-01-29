@@ -77,27 +77,31 @@
                             {% endif %}
                             {% if _core.theme.settings.headerShowAddress == 'yes' %}
                                 <span class="TopBar-contactItem hidden block-md">
-                                    {% if _core.theme.settings.headerAddressType == 'physical' %}
-                                        {% if _core.settings.companyAddressStreet %}
-                                            {{ _core.settings.companyAddressStreet }},
-                                        {% endif %}
-                                        {% if _core.settings.companyAddressCity %}
-                                            {{ _core.settings.companyAddressCity }},
-                                        {% endif %}
-                                        {% if _core.settings.companyAddressState %}
-                                            {{ _core.settings.companyAddressState }}
-                                        {% endif %}
+                                    {% if _core.theme.settings.headerCustomAddress %}
+                                        {{ _core.theme.settings.headerCustomAddress }}
                                     {% else %}
-                                        {% if _core.settings.companyMailingAddressStreet %}
-                                            {{ _core.settings.companyMailingAddressStreet }},
-                                        {% elseif _core.settings.companyMailingAddressPoBox %}
-                                            {{ _core.settings.companyMailingAddressPoBox }},
-                                        {% endif %}
-                                        {% if _core.settings.companyMailingAddressCity %}
-                                            {{ _core.settings.companyMailingAddressCity }},
-                                        {% endif %}
-                                        {% if _core.settings.companyMailingAddressState %}
-                                            {{ _core.settings.companyMailingAddressState }}
+                                        {% if _core.theme.settings.headerAddressType == 'physical' %}
+                                            {% if _core.settings.companyAddressStreet %}
+                                                {{ _core.settings.companyAddressStreet }},
+                                            {% endif %}
+                                            {% if _core.settings.companyAddressCity %}
+                                                {{ _core.settings.companyAddressCity }},
+                                            {% endif %}
+                                            {% if _core.settings.companyAddressState %}
+                                                {{ _core.settings.companyAddressState }}
+                                            {% endif %}
+                                        {% else %}
+                                            {% if _core.settings.companyMailingAddressStreet %}
+                                                {{ _core.settings.companyMailingAddressStreet }},
+                                            {% elseif _core.settings.companyMailingAddressPoBox %}
+                                                {{ _core.settings.companyMailingAddressPoBox }},
+                                            {% endif %}
+                                            {% if _core.settings.companyMailingAddressCity %}
+                                                {{ _core.settings.companyMailingAddressCity }},
+                                            {% endif %}
+                                            {% if _core.settings.companyMailingAddressState %}
+                                                {{ _core.settings.companyMailingAddressState }}
+                                            {% endif %}
                                         {% endif %}
                                     {% endif %}
                                 </span>
