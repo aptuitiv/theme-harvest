@@ -38,10 +38,7 @@
 .MainNav-item.is-current > .MainNav-link,
 .MainNav-item.is-currentParent > .MainNav-link,
 .MainNav-item:hover > .MainNav-link {
-    background: var(
-        --MainNav-link-background-hover-sm,
-        --MainNav-link-background-hover
-    );
+    background: var(--MainNav-link-background-hover-sm, --MainNav-link-background-hover);
     color: var(--MainNav-color-hover-sm, --MainNav-color-hover);
     text-decoration: var(--MainNav-link-text-decoration-hover, none);
 }
@@ -106,11 +103,10 @@
     .MainNav-item.is-current > .MainNav-link::after,
     .MainNav-item.is-currentParent > .MainNav-link::after,
     .MainNav-item:hover > .MainNav-link::after {
-        border-top: var(--MainNav-link-line-height) solid
-            var(--MainNav-link-line-color, var(--MainNav-color-hover));
+        border-top: var(--MainNav-link-line-height) solid var(--MainNav-link-line-color, var(--MainNav-color-hover));
         bottom: var(--MainNav-link-line-bottom);
-        content: "";
-        display: var(--MainNav-link-line-display, "block");
+        content: '';
+        display: var(--MainNav-link-line-display, 'block');
         left: 50%;
         position: absolute;
         top: var(--MainNav-link-line-top);
@@ -119,8 +115,7 @@
     }
 
     /* postcss-bem-linter: ignore */
-    .MainNav-item.Dropdown.MainNav-itemLine--below:hover
-        > .MainNav-link::after {
+    .MainNav-item.Dropdown.MainNav-itemLine--below:hover > .MainNav-link::after {
         display: none;
     }
 }
