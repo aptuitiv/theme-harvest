@@ -15,6 +15,17 @@
     margin: var(--Footer-logo-margin, 0);
 }
 
+.Footer-logo {
+    max-width: var(--Footer-logo-width);
+}
+
+/* If the logo is an SVG, make sure it scales up. We set the actual width instead of a max width because SVGs can scale. */
+.Footer-logo[src$='.svg'] {
+    height: auto;
+    max-width: 100%;
+    width: var(--Footer-logo-width);
+}
+
 /* ------------------------------------ *\
     Social
 \* ------------------------------------ */
