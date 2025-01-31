@@ -387,11 +387,12 @@
 
                 {# Add event listener to handle reCAPTCHA #}
                 validator.onSuccess(e => {
+                    const form = document.querySelector('.{{ form.class }}');
                     {# Show the submission overlay #}
                     document.querySelector('.{{ formOverlayClass }}').style.display = 'block';
 
                     {# Disable the submit button #}
-                    document.querySelector('.{{ form.class }} [type="submit"]').disabled = true;
+                    form.querySelector('button[type="submit"]').disabled = true;
 
                     {# Handle submission via either reCAPTCHA v3, a custom handler, or just a regular submission. #}
                     {% if form.captcha.type == 'recaptchaV3' %}
@@ -401,18 +402,18 @@
                             {% if submitHandler %}
                                 {{ submitHandler }}(form);
                             {% else %}
-                                document.querySelector('.{{ form.class }}').submit();
+                                form.submit();
                             {% endif %}
                         }).catch(function(e) {
                             console.error(e);
                             document.querySelector('.{{ formOverlayClass }}').style.display = 'none';
-                            document.querySelector('.{{ form.class }} [type="submit"]').disabled = false;
+                            form.querySelector('button[type="submit"]').disabled = false;
                         });
                     {% else %}
                         {% if submitHandler %}
                             {{ submitHandler }}(form);
                         {% else %}
-                            document.querySelector('.{{ form.class }}').submit();
+                            form.submit();
                         {% endif %}
                     {% endif %}
                 });
