@@ -7,33 +7,70 @@
 .Pagination {
     align-items: center;
     display: flex;
-    gap: 10px;
+    gap: var(--Pagination-gap-size);
     justify-content: center;
-    margin-top: 0;
+    margin: var(--Pagination-margin);
+    padding: var(--Pagination-padding);
 }
 
 .Pagination-item {
+    align-items: center;
+    background-color: var(--Pagination-item-background);
+    border: var(--Pagination-item-border);
+    border-radius: var(--Pagination-item-border-radius);
     color: var(--Pagination-item-color);
     display: inline-flex;
-    margin: 0;
-    padding: 0 10px;
+    font-weight: var(--Pagination-item-font-weight);
+    justify-content: center;
+    margin: var(--Pagination-item-margin);
+    padding: var(--Pagination-item-padding);
+    text-decoration: var(--Pagination-item-text-decoration);
 }
 
-.Pagination-item:active,
-.Pagination-item:focus,
-.Pagination-item:hover {
+.Pagination .Pagination-item:active,
+.Pagination .Pagination-item:focus,
+.Pagination .Pagination-item:hover {
     background-color: var(--Pagination-item-background-hover);
+    border: var(--Pagination-item-border-hover);
+    border-radius: var(--Pagination-item-border-radius-hover);
     color: var(--Pagination-item-color-hover);
-    font-weight: var(--Pagination-item-fontWeight-hover);
-    text-decoration: none;
+    font-weight: var(--Pagination-item-font-weight-hover);
+    text-decoration: var(--Pagination-item-text-decoration-hover);
 }
 
 .Pagination-item--isActive {
-    background-color: var(--Pagination-item-background--active);
-    color: var(--Pagination-item-color--active);
-    font-weight: var(--Pagination-item-fontWeight--active);
+    background-color: var(--Pagination-item-background-active);
+    border: var(--Pagination-item-border-active);
+    border-radius: var(--Pagination-item-border-radius-active);
+    color: var(--Pagination-item-color-active);
+    font-weight: var(--Pagination-item-font-weight-active);
+    text-decoration: var(--Pagination-item-text-decoration-active);
 }
 
 .Pagination-icon {
     margin: 0 !important;
+}
+
+.Pagination-item--next,
+.Pagination-item--prev {
+    background-color: var(--Pagination-item-next-prev-background);
+    border: var(--Pagination-item-next-prev-border);
+    border-radius: var(--Pagination-item-next-prev-border-radius);
+    color: var(--Pagination-item-next-prev-color);
+}
+
+.Pagination-item--next:hover,
+.Pagination-item--prev:hover {
+    background-color: var(--Pagination-item-next-prev-background-hover);
+    border: var(--Pagination-item-next-prev-border-hover);
+    border-radius: var(--Pagination-item-next-prev-border-radius-hover);
+    color: var(--Pagination-item-next-prev-color-hover);
+}
+
+.Pagination .Pagination-item:first-child {
+    margin-left: 0;
+}
+
+.Pagination .Pagination-item:last-child {
+    margin-right: 0;
 }
