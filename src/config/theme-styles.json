@@ -4317,10 +4317,10 @@
                             "label": "Padding",
                             "description": "Padding around all of the pagination",
                             "type": "padding",
-                            "defaultValue": "20px 0",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-padding"
+                                "cssSelector": ".Pagination"
                             }
                         },
                         {
@@ -4328,20 +4328,21 @@
                             "label": "Margin",
                             "description": "Margin around all of the pagination",
                             "type": "margin",
-                            "defaultValue": "20px 0",
+                            "defaultValue": "30px 0 20px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-margin"
+                                "cssSelector": ".Pagination"
                             }
                         },
-                        { 
+                        {
                             "name": "paginationGapSize",
                             "label": "Gap between items",
                             "type": "size",
-                            "defaultValue": "5px",
+                            "defaultValue": "10px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-gap-size"
+                                "cssSelector": ".Pagination",
+                                "cssProperty": "gap"
                             }
                         },
                         {
@@ -4351,6 +4352,9 @@
                             "collapsable": false,
                             "useHover": false,
                             "useTextAlign": false,
+                            "lineHeight": {
+                                "defaultValue": "1"
+                            },
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Pagination"
@@ -4362,63 +4366,62 @@
                     "name": "Page Numbers",
                     "fields": [
                         {
-                            "name": "paginationItemColor",
-                            "label": "Text color",
-                            "type": "color",
-                            "defaultValue": "#333",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Pagination-item-color"
-                            }
-                        },
-                        {
                             "name": "paginationItemBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#fff",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-background"
+                                "cssSelector": ".Pagination-item",
+                                "cssProperty": "background-color"
+                            }
+                        },
+                        {
+                            "name": "paginationItemColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Pagination-item",
+                                "cssProperty": "color"
                             }
                         },
                         {
                             "name": "paginationItemBorder",
                             "label": "Border",
                             "type": "border",
-                            "defaultValue": "1px solid #ddd",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-border"
+                                "cssSelector": ".Pagination-item"
                             }
                         },
                         {
                             "name": "paginationItemBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "3px",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-border-radius"
+                                "cssSelector": ".Pagination-item"
                             }
                         },
                         {
                             "name": "paginationItemPadding",
                             "label": "Padding",
                             "type": "padding",
-                            "defaultValue": "5px",
+                            "defaultValue": "6px 12px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-padding"
+                                "cssSelector": ".Pagination-item"
                             }
                         },
                         {
                             "name": "paginationItemMargin",
                             "label": "Margin",
                             "type": "margin",
-                            "defaultValue": "0 5px",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-margin"
+                                "cssSelector": ".Pagination-item"
                             }
                         },
                         {
@@ -4428,7 +4431,7 @@
                             "defaultValue": "normal",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-font-weight"
+                                "cssSelector": ".Pagination-item"
                             }
                         },
                         {
@@ -4438,7 +4441,7 @@
                             "defaultValue": "none",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-text-decoration"
+                                "cssSelector": ".Pagination-item"
                             }
                         }
                     ]
@@ -4450,50 +4453,47 @@
                             "name": "paginationItemBackgroundHover",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-background-hover"
+                                "cssSelector": ".Pagination-item:hover",
+                                "cssProperty": "background-color"
                             }
                         },
                         {
                             "name": "paginationItemColorHover",
                             "label": "Text color",
                             "type": "color",
-                            "defaultValue": "#fff",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-color-hover"
+                                "cssSelector": ".Pagination-item:hover",
+                                "cssProperty": "color"
                             }
                         },
                         {
                             "name": "paginationItemBorderHover",
                             "label": "Border",
                             "type": "border",
-                            "defaultValue": "1px solid #871E0F",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-border-hover"
+                                "cssSelector": ".Pagination-item:hover"
                             }
                         },
                         {
                             "name": "paginationItemBorderRadiusHover",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "3px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-border-radius-hover"
+                                "cssSelector": ".Pagination-item:hover"
                             }
                         },
                         {
                             "name": "paginationItemFontWeightHover",
                             "label": "Font weight",
                             "type": "fontWeight",
-                            "defaultValue": "bold",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-font-weight-hover"
+                                "cssSelector": ".Pagination-item:hover"
                             }
                         },
                         {
@@ -4503,7 +4503,7 @@
                             "defaultValue": "none",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-text-decoration-hover"
+                                "cssSelector": ".Pagination-item:hover"
                             }
                         }
                     ]
@@ -4518,7 +4518,8 @@
                             "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-background-active"
+                                "cssSelector": ".Pagination-item--isActive",
+                                "cssProperty": "background-color"
                             }
                         },
                         {
@@ -4528,34 +4529,32 @@
                             "defaultValue": "#fff",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-color-active"
+                                "cssSelector": ".Pagination-item--isActive",
+                                "cssProperty": "color"
                             }
                         },
                         {
                             "name": "paginationItemBorderActive",
                             "label": "Border",
                             "type": "border",
-                            "defaultValue": "1px solid #871E0F",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-border-active"
+                                "cssSelector": ".Pagination-item--isActive"
                             }
                         },
                         {
                             "name": "paginationItemBorderRadiusActive",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "3px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-border-radius-active"
+                                "cssSelector": ".Pagination-item--isActive"
                             }
                         },
                         {
                             "name": "paginationItemFontWeightActive",
                             "label": "Font weight",
                             "type": "fontWeight",
-                            "defaultValue": "bold",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Pagination-item-font-weight-active"
@@ -4565,10 +4564,9 @@
                             "name": "paginationItemTextDecorationActive",
                             "label": "Text decoration",
                             "type": "textDecoration",
-                            "defaultValue": "none",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-text-decoration-active"
+                                "cssSelector": ".Pagination-item--isActive"
                             }
                         }
                     ]
@@ -4577,43 +4575,41 @@
                     "name": "Previous and Next links",
                     "fields": [
                         {
-                            "name": "paginationItemNextPrevColor",
-                            "label": "Text color",
-                            "type": "color",
-                            "defaultValue": "#333",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-color"
-                            }
-                        },
-                        {
                             "name": "paginationItemNextPrevBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#fff",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-background"
+                                "cssSelector": ".Pagination .Pagination-item--next,.Pagination .Pagination-item--previous",
+                                "cssProperty": "background-color"
+                            }
+                        },
+                        {
+                            "name": "paginationItemNextPrevColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Pagination .Pagination-item--next,.Pagination .Pagination-item--previous",
+                                "cssProperty": "color"
                             }
                         },
                         {
                             "name": "paginationItemNextPrevBorder",
                             "label": "Border",
                             "type": "border",
-                            "defaultValue": "1px solid #ddd",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-border"
+                                "cssSelector": ".Pagination .Pagination-item--next,.Pagination .Pagination-item--previous"
                             }
                         },
                         {
                             "name": "paginationItemNextPrevBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "3px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-border-radius"
+                                "cssSelector": ".Pagination .Pagination-item--next,.Pagination .Pagination-item--previous"
                             }
                         }
                     ]
@@ -4622,43 +4618,41 @@
                     "name": "Previous and Next links (hover)",
                     "fields": [
                         {
-                            "name": "paginationItemNextPrevColorHover",
-                            "label": "Text color",
-                            "type": "color",
-                            "defaultValue": "#333",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-color-hover"
-                            }
-                        },
-                        {
                             "name": "paginationItemNextPrevBackgroundHover",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#fff",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-background-hover"
+                                "cssSelector": ".Pagination .Pagination-item--next:hover,.Pagination .Pagination-item--previous:hover",
+                                "cssProperty": "background-color"
+                            }
+                        },
+                        {
+                            "name": "paginationItemNextPrevColorHover",
+                            "label": "Text color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Pagination .Pagination-item--next:hover,.Pagination .Pagination-item--previous:hover",
+                                "cssProperty": "color"
                             }
                         },
                         {
                             "name": "paginationItemNextPrevBorderHover",
                             "label": "Border",
                             "type": "border",
-                            "defaultValue": "1px solid #ddd",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-border-hover"
+                                "cssSelector": ".Pagination .Pagination-item--next:hover,.Pagination .Pagination-item--previous:hover"
                             }
                         },
                         {
                             "name": "paginationItemNextPrevBorderRadiusHover",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "3px",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-next-prev-border-radius-hover"
+                                "cssSelector": ".Pagination .Pagination-item--next:hover,.Pagination .Pagination-item--previous:hover"
                             }
                         }
                     ]
