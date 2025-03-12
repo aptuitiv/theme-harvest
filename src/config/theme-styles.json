@@ -4336,9 +4336,20 @@
                         },
                         {
                             "name": "paginationGapSize",
-                            "label": "Gap between items",
+                            "label": "Gap between page numbers and the previous/next links",
                             "type": "size",
-                            "defaultValue": "10px",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Pagination",
+                                "cssProperty": "gap"
+                            }
+                        },
+                        {
+                            "name": "paginationPagesGapSize",
+                            "label": "Gap between page numbers",
+                            "type": "size",
+                            "defaultValue": "5px",
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Pagination",
@@ -4358,6 +4369,32 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Pagination"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Page Numbers Wrapper",
+                    "description": "The wrapper around the page numbers",
+                    "fields": [
+                        {
+                            "name": "paginationNumberWrapperBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Pagination-pages-wrapper-border"
+                            }
+                        },
+                        {
+                            "name": "paginationNumberWrapperPadding",
+                            "label": "Padding",
+                            "description": "Padding all around the page numbers",
+                            "type": "padding",
+                            "defaultValue": "0 5px 0 5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Pagination-pages"
                             }
                         }
                     ]

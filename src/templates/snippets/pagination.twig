@@ -1,17 +1,19 @@
 {% if pagination.pageCount > 1 %}
     <div class="Pagination">
         {% if pagination.previousUrl %}
-            <a class="Pagination-item Pagination-item--previous" href="{{ pagination.previousUrl }}" title="Previous Page">&lt; Previous</a> |
+            <a class="Pagination-item Pagination-item--previous js-paginationLink" href="{{ pagination.previousUrl }}" title="Previous Page"{% if noFollow %} rel="nofollow"{% endif %}>&lt; Previous</a>
         {% endif %}
-        {% for page in pagination.pagesInRange %}
-            {% if page.number != pagination.current %}
-                <a class="Pagination-item" href="{{ page.url }}" title="Go to Page {{ page.number }}">{{ page.number }}</a>
-            {% else %}
-                <span class="Pagination-item Pagination-item--isActive">{{ page.number }}</span>
-            {% endif %}
-        {% endfor %}
+        <div class="Pagination-pages">
+            {% for page in pagination.pagesInRange %}
+                {% if page.number != pagination.current %}
+                    <a class="Pagination-item js-paginationLink" href="{{ page.url }}" title="Go to Page {{ page.number }}"{% if noFollow %} rel="nofollow"{% endif %}>{{ page.number }}</a>
+                {% else %}
+                    <span class="Pagination-item Pagination-item--isActive">{{ page.number }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
         {% if pagination.nextUrl %}
-            | <a class="Pagination-item Pagination-item--next" href="{{ pagination.nextUrl }}" title="Next Page">Next &gt;</a>
+            <a class="Pagination-item Pagination-item--next js-paginationLink" href="{{ pagination.nextUrl }}" title="Next Page"{% if noFollow %} rel="nofollow"{% endif %}>Next &gt;</a>
         {% endif %}
         {% if pagination.current > 1 %}
             {% set _page.title = _page.title ~ ' - Page ' ~ pagination.current %}

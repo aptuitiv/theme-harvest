@@ -10,10 +10,60 @@
     justify-content: center;
 }
 
-.Pagination .Pagination-item:first-child {
-    margin-left: 0;
+.Pagination-pages {
+    align-items: center;
+    display: flex;
+    gap: 10px;
 }
 
-.Pagination .Pagination-item:last-child {
-    margin-right: 0;
+@media (--m-sm) {
+    .Pagination-pages {
+        border-left: var(--Pagination-pages-wrapper-border-left);
+        border-right: var(--Pagination-pages-wrapper-border-right);
+    }
+
+    .Pagination .Pagination-pages:first-child {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .Pagination .Pagination-pages:last-child {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .Pagination-pages .Pagination-item:first-child {
+        margin-left: 0;
+    }
+
+    .Pagination-pages .Pagination-item:last-child {
+        margin-right: 0;
+    }
+}
+
+/* Hide the previous/next links on small screens */
+.Pagination-item--previous,
+.Pagination-item--next {
+    display: none;
+}
+
+@media (--m-sm) {
+    .Pagination-item--previous,
+    .Pagination-item--next {
+        display: inline-flex;
+    }
+}
+
+/* Hide some of the paginiation on smaller screens */
+
+@media (width <= 349px) {
+    .Pagination-item:nth-child(n + 7) {
+        display: none;
+    }
+}
+
+@media (width >= 350px) and (width <= 430px) {
+    .Pagination-item:nth-child(n + 9) {
+        display: none;
+    }
 }
