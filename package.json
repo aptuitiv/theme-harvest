@@ -36,7 +36,7 @@
         "watch": "aptuitiv-build watch"
     },
     "devDependencies": {
-        "@aptuitiv/website-build-tools": "^1.20.0"
+        "@aptuitiv/website-build-tools": "^1.22.0"
     },
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
@@ -44,7 +44,7 @@
         "cacao-css": "^7.1.1",
         "just-validate": "^4.3.0",
         "masonry-layout": "^4.2.2",
-        "micromodal": "^0.4.10"
+        "micromodal": "^0.6.1"
     },
     "engines": {
         "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
