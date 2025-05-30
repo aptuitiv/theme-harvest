@@ -1,6 +1,9 @@
 {% set id = "js-iframe--" ~ random_string() %}
 <div class="Container Container--pad">
     {% for url in embedUrl.urlInfo %}
+        {% if url.providerName|lower == 'youtube' %}
+            {% set url.iframeEmbed.src = url.iframeEmbed.src ~ '&rel=0' %}
+        {% endif %}
         <div class="embed my-5 aspect-{{ embedRatio|replace(':', '-') }} {{ id }}">
             {% inlinejs %}
                 loadjs.ready('main', {
