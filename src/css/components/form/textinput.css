@@ -14,6 +14,5 @@
 }
 
 .TextInput:focus {
-    outline: var(--TextInput-border-width, 1px) dotted var(--TextInput-border-color, #777);
     outline: auto 5px -webkit-focus-ring-color;
 }
