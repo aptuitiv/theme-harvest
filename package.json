@@ -21,6 +21,7 @@
         "css": "aptuitiv-build css",
         "deploy": "aptuitiv-build upload -t",
         "download-theme": "aptuitiv-build download -t",
+        "env": "aptuitiv-build env",
         "export": "aptuitiv-build export",
         "fonts": "aptuitiv-build push-fonts",
         "icons": "aptuitiv-build icons",
@@ -28,6 +29,11 @@
         "init": "aptuitiv-build init",
         "js": "aptuitiv-build js",
         "jslint": "aptuitiv-build jslint",
+        "ncu": "ncu -i --format group",
+        "packagejson-format": "aptuitiv-build package-json format",
+        "packagejson-scripts": "aptuitiv-build package-json scripts",
+        "pull-templates": "aptuitiv-build pull-templates",
+        "pull-theme-config": "aptuitiv-build pull-theme-config",
         "start": "aptuitiv-build start",
         "stylelint": "aptuitiv-build stylelint",
         "templates": "aptuitiv-build push-templates",
@@ -36,12 +42,12 @@
         "watch": "aptuitiv-build watch"
     },
     "devDependencies": {
-        "@aptuitiv/website-build-tools": "^1.22.0"
+        "@aptuitiv/website-build-tools": "^1.26.0"
     },
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-video": "^0.8.0",
-        "cacao-css": "^7.1.1",
+        "cacao-css": "^7.3.0",
         "just-validate": "^4.3.0",
         "masonry-layout": "^4.2.2",
         "micromodal": "^0.6.1"
