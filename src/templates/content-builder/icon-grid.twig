@@ -1,0 +1,19 @@
+{% if icons|length > 0 %}
+    <div class="IconGrid" style="--IconGrid-textPosition: {{ textPosition }};">
+        {% for icon in icons %}
+            {% set icon.image.class = 'IconGrid-icon' %}
+            {% set iconContent %}
+                {% do icon.image.resize(100, 100) %}
+                {{ icon.image.tag }}
+                <span class="IconGrid-text">{{ icon.iconText }}</span>
+            {% endset %}
+            {% if icon.url %}
+                {% set icon.url.class = 'IconGrid-item IconGrid-link' %}
+                {% set icon.url.content = iconContent %}
+                {{ icon.url.tag }}
+            {% else %}
+                <div class="IconGrid-item">{{ iconContent }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
