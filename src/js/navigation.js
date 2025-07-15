@@ -6,7 +6,7 @@
  * Small screen navigation
  */
 
-// eslint-disable-next-line
+// eslint-disable-next-line no-unused-vars -- This is a global variable
 const smallScreenNav = {
 
     /**
@@ -17,6 +17,7 @@ const smallScreenNav = {
         const width = 1024;
 
         // Select elements
+        const body = document.querySelector('body');
         const button = document.querySelector('.js-ssNavBtn');
         const nav = document.querySelector('.js-navBar');
         const dropdowns = document.querySelectorAll('.js-dropdown');
@@ -39,10 +40,22 @@ const smallScreenNav = {
          */
         function toggleNav() {
             button.classList.toggle('is-active');
-            if (nav.style.display === 'block') {
-                nav.style.display = 'none';
+            if (nav.dataset.open === 'yes') {
+                // Hide the menu
+                nav.dataset.open = 'no';
+                button.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
             } else {
-                nav.style.display = 'block';
+                // Show the menu
+                nav.dataset.open = 'yes';
+                button.setAttribute('aria-expanded', 'true');
+                // Set the offset position for the menu
+                const buttonPosition = button.getBoundingClientRect().top + button.offsetHeight + 10;
+                nav.style.setProperty('--navbar-offset', `${buttonPosition}px`);
+                // Prevent scrolling on the body tag.
+                // Unfortunately, this doesn't work on iOS devices as of 2024. This is a known issue with no good workaround
+                // except to add "position: fixed" to the body tag, but that causes other issues.
+                body.style.overflow = 'hidden';
             }
         }
 
@@ -90,14 +103,13 @@ const smallScreenNav = {
  * Add "js-dropdownParent" class to a <li> tag that contains a sub list for a drop down.
  * Add "js-dropdown" to any link tags that have a drop down.
  */
-// eslint-disable-next-line
+// eslint-disable-next-line no-unused-vars -- This is a global variable
 const navAccess = {
     init() {
         const menus = document.querySelectorAll('[data-access-nav]');
-        const self = this;
         if (menus.length > 0) {
             menus.forEach((menu) => {
-                self.setupMenu(menu);
+                this.setupMenu(menu);
             });
         }
     },
@@ -109,7 +121,6 @@ const navAccess = {
      */
     setupMenu(menu) {
         const nav = menu.querySelectorAll('.js-navLink');
-        const self = this;
         let key;
         const next = ['ArrowDown', 'Down', 'Tab', 'Spacebar', ' '];
         const prev = ['ArrowUp', 'Up', 'Tab', 'Spacebar', ' '];
@@ -124,30 +135,30 @@ const navAccess = {
                     // Going forwards
                     if (e.shiftKey) {
                         // Shift key was down
-                        self.focus(e, e.target);
+                        this.focus(e, e.target);
                     } else {
                         // Moving forward
-                        self.focus(e, e.target, true);
+                        this.focus(e, e.target, true);
                     }
                 } else if (prev.indexOf(key) >= 0) {
                     // Going backwards
                     if (e.shiftKey) {
                         // Negating going backwards so going forwards
-                        self.focus(e, e.target, true);
+                        this.focus(e, e.target, true);
                     } else {
-                        self.focus(e, e.target);
+                        this.focus(e, e.target);
                     }
                 } else if (left.indexOf(key) >= 0) {
                     // Jumping backwards
-                    self.focus(e, e.target, false, true);
+                    this.focus(e, e.target, false, true);
                 } else if (right.indexOf(key) >= 0) {
                     // Jumping forwards
-                    self.focus(e, e.target, true, true);
+                    this.focus(e, e.target, true, true);
                 } else if (key === 'Escape') {
                     // Close the menu
-                    const parentLi = self.getParent(e.target).parentNode;
+                    const parentLi = this.getParent(e.target).parentNode;
                     if (parentLi !== null) {
-                        focusEl = self.getLink(parentLi);
+                        focusEl = this.getLink(parentLi);
                         focusEl.focus();
                     }
                 }
@@ -227,6 +238,10 @@ const navAccess = {
             el.classList.add('is-active');
             // change the aria-expanded and aria-hidden values on the <ul> tag
             el.querySelector('a').setAttribute('aria-expanded', 'true');
+            const dropdownMenu = el.querySelector('ul.js-dropdownMenu');
+            if (dropdownMenu) {
+                dropdownMenu.setAttribute('aria-hidden', 'false');
+            }
         }
     },
 
@@ -240,6 +255,10 @@ const navAccess = {
         parent.parentNode.classList.remove('is-active');
         // change the aria-expanded and aria-hidden values on the <ul> tag
         parent.setAttribute('aria-expanded', 'false');
+        const dropdownMenu = parent.querySelector('ul.js-dropdownMenu');
+        if (dropdownMenu) {
+            dropdownMenu.setAttribute('aria-hidden', 'true');
+        }
     },
 
     /**

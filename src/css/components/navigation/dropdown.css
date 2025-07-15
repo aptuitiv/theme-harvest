@@ -107,10 +107,12 @@
     }
 
     .Dropdown:hover > .Dropdown-menu,
+    .Dropdown.is-active > .Dropdown-menu, /* Needed for keyboard navigation */
     .Dropdown-item:hover > .Dropdown-menu {
         display: block;
     }
 
+    .Dropdown-item.is-active > .Dropdown-menu, /* Needed for keyboard navigation */
     .Dropdown-item:hover > .Dropdown-menu {
         display: block;
         left: 100%;
