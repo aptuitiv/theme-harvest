@@ -24,6 +24,7 @@
         "env": "aptuitiv-build env",
         "export": "aptuitiv-build export",
         "fonts": "aptuitiv-build push-fonts",
+        "format-theme-json": "aptuitiv-build format-theme-json",
         "icons": "aptuitiv-build icons",
         "images": "aptuitiv-build images",
         "init": "aptuitiv-build init",
@@ -42,7 +43,7 @@
         "watch": "aptuitiv-build watch"
     },
     "devDependencies": {
-        "@aptuitiv/website-build-tools": "^1.26.0"
+        "@aptuitiv/website-build-tools": "^1.28.0"
     },
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
