@@ -1,17 +1,6 @@
 {
     "groups": [
         {
-            "name": "Breadcrumb",
-            "fields": [
-                {
-                    "name": "showBreadcrumb",
-                    "label": "Show Breadcrumb Text",
-                    "type": "switch",
-                    "defaultValue": "yes"
-                }
-            ]
-        },
-        {
             "name": "Blocks - Google Ratings Bar",
             "description": "Settings for the Google Ratings Bar",
             "fields": [
@@ -66,10 +55,21 @@
                     "name": "blogMainPageBannerImage",
                     "label": "Banner Image",
                     "type": "image",
+                    "description": "The image will be cropped on the page to match the Banner Bar settings. See Styles - Blocks Banner Bar - Banner Bar Images for more information.",
                     "path": "images",
                     "maxWidth": "2000",
-                    "useAttributes": false,
-                    "description": "The image will be cropped on the page to match the Banner Bar settings. See Styles - Blocks Banner Bar - Banner Bar Images for more information."
+                    "useAttributes": false
+                }
+            ]
+        },
+        {
+            "name": "Breadcrumb",
+            "fields": [
+                {
+                    "name": "showBreadcrumb",
+                    "label": "Show Breadcrumb Text",
+                    "type": "switch",
+                    "defaultValue": "yes"
                 }
             ]
         },
@@ -274,8 +274,8 @@
                 {
                     "name": "headerCustomAddress",
                     "label": "Custom address",
-                    "description": "Use this field to override the address from Settings -> Company Information.",
-                    "type": "text"
+                    "type": "text",
+                    "description": "Use this field to override the address from Settings -> Company Information."
                 },
                 {
                     "name": "headerShowPhone",
@@ -292,8 +292,8 @@
                 {
                     "name": "headerSmallScreenPhoneText",
                     "label": "Small screen phone number button text",
-                    "description": "Text to use for the phone number button on small screens.",
                     "type": "text",
+                    "description": "Text to use for the phone number button on small screens.",
                     "defaultValue": "Call Us"
                 }
             ]
