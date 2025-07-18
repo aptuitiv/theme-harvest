@@ -42,15 +42,18 @@
     {% endif %}
 
     {# Display the image based on alignment #}
-    {% if alignment == 'center' %}
-        <div class="ImageWrapper ImageWrapper--center">{{ imageContent }}{{ caption }}</div>
-    {% elseif alignment == 'left' %}
-        <div class="ImageWrapper ImageWrapper--left">{{ imageContent }}{{ caption }}</div>
-    {% elseif alignment == 'right' %}
-        <div class="ImageWrapper ImageWrapper--right">{{ imageContent }}{{ caption }}</div>
-    {% else %}
-        <div class="ImageWrapper ImageWrapper--default">
-            {{ imageContent}}{{ caption }}
-        </div>
+    {% set class = 'ImageWrapper' %}
+    {% if bottomMargin == 'none' %}
+        {% set class = class ~ ' mb-0' %}
     {% endif %}
+    {% if alignment == 'center' %}
+        {% set class = class ~ ' ImageWrapper--center' %}
+    {% elseif alignment == 'left' %}
+        {% set class = class ~ ' ImageWrapper--left' %}
+    {% elseif alignment == 'right' %}
+        {% set class = class ~ ' ImageWrapper--right' %}
+    {% else %}
+        {% set class = class ~ ' ImageWrapper--default' %}
+    {% endif %}
+    <div class="{{ class}}">{{ imageContent}}{{ caption }}</div>
 {% endif %}
