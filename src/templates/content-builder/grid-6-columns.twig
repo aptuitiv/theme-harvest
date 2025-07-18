@@ -1,0 +1,20 @@
+{# Set the vertical alignment #}
+{% set alignment = '' %}
+{% if fields.verticalAlignment == 'center' %}
+    {% set alignment = ' align-center' %}
+{% elseif fields.verticalAlignment == 'bottom' %}
+    {% set alignment = ' align-end' %}
+{% endif %}
+
+{# Build the grid #}
+<div class="Container Container--pad">
+    <div class="grid g-4 nc-1 nc-3-md nc-6-lg{{ alignment }}">
+        {% for column in columns %}
+            <div class="col-1-1 col-1-3-md col-1-6-lg">
+                {% for element in column.elements %}
+                    {{ element.content }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
