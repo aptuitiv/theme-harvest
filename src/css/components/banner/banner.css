@@ -141,18 +141,18 @@
 
 /* postcss-bem-linter: ignore */
 .Banner-content p {
-    font-size: var(--Banner-content-font-size, 2rem);
+    font-size: var(--Banner-content-font-size, var(--base-typography-font-size, 1.8rem));
 }
 
 /* postcss-bem-linter: ignore */
 .Banner-content h1 {
-    font-size: var(--Banner-content-h1-font-size, 3.2rem);
+    font-size: var(--Banner-content-h1-font-size-sm, var(--base-typography-h1-font-size-sm, 5rem));
 }
 
-@media (width <= 800px) {
+@media (--m-md) {
     /* postcss-bem-linter: ignore */
     .Banner-content h1 {
-        font-size: 2em;
+        font-size: var(--Banner-content-h1-font-size, var(--base-typography-h1-font-size, 4rem));
     }
 }
 

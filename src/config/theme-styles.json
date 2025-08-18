@@ -252,6 +252,16 @@
                             }
                         },
                         {
+                            "name": "bannerContentH1FontSizeSm",
+                            "label": "Heading 1 content font size (small screens)",
+                            "type": "fontSize",
+                            "defaultValue": "4rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-content-h1-font-size-sm"
+                            }
+                        },
+                        {
                             "name": "bannerContentFontSize",
                             "label": "Paragraph content font size",
                             "type": "fontSize",
