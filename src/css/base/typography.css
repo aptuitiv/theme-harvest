@@ -274,7 +274,7 @@ h6:first-child {
     margin-top: 0;
 }
 
-@media (--m-sm) {
+@media (--m-md) {
     h1,
     .h1 {
         font-size: var(--base-typography-h1-font-size, 3.6rem);
