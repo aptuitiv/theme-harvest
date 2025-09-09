@@ -1,100 +1,170 @@
 {% if images %}
     {% import 'macros/macros' as macros %}
 
-    {# Max width for the images #}
-    {% set width = 800 %}
+    {% if displayAs == 'slider' %}
+        {# DISPLAY AS A SLIDER #}
+        <div class="Container Container--pad">
+            {% set class = 'js-imageSlider--' ~ random_string() %}
+            <div class="Slider splide {{ class }}" role="group" aria-label="Image Slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for slide in images %}
+                            {% if slide.image %}
+                                <li class="splide__slide">
+                                    {% set content %}
+                                    {% set lgImage = clone(slide.image) %}
+                                    {% do lgImage.resize(1200, 1000) %}
+                                    {% set slide.image.class = 'w-100' %}
+                                    {% if aspectRatio != 'Auto' %}
+                                        {% set width = 1500 %}
+                                        {% if slidesPerPage|int > 1 %}
+                                            {% set width = width / slidesPerPage|int %}
+                                        {% endif %}
+                                        {% do slide.image.crop({ar: aspectRatio, w: width, crop: slide.cropPosition ?? 'center'}) %}
+                                    {% endif %}
+                                    {% do slide.image.alt|default(slide.title) %}
+                                    {% do slide.image.lazy() %}
 
-    {# Set the image classes based on the number of images #}
-    {% set count = numberOfImages == 'Auto' ? images|length : numberOfImages %}
-    {% if count == null %}
+                                    <a href="{{ lgImage.src }}" data-fslightbox data-type="image" data-caption="{{ slide.title }}">{{ slide.image.tag }}</a>
+                                    {% if slide.title %}
+                                        <div class="Slider-content">{{ slide.title }}</div>
+                                    {% endif %}
+                                    {% endset %}
+                                    <div class="Slider-wrapper">{{ content }}</div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{ macros.loadSplide() }}
+        {{ macros.loadLightbox() }}
+        {% inlinejs %}
+            loadjs.ready('splide', {
+                success: function() {
+                    new Splide('.{{ class }}', {
+                        pagination  : false,
+                        rewind      : true,
+                        perMove     : 1,
+                        gap         : '10px',
+                        autoplay    : {{ sliderAutoPlay ? 'true' : 'false' }},
+                        interval    : {{ sliderSpeed ? sliderSpeed * 1000 : 4000 }},
+                        perPage     : {{ slidesPerPage }},
+                        breakpoints: {
+                            1280: {
+                                perPage: {{ slidesPerPage|int < 4 ? slidesPerPage : 4 }}
+                            },
+                            1024: {
+                                perPage: {{ slidesPerPage|int < 3 ? slidesPerPage : 3 }}
+                            },
+                            768: {
+                                perPage: {{ slidesPerPage|int < 2 ? slidesPerPage : 2 }}
+                            },
+                            576: {
+                                perPage: 1
+                            }
+                        }
+                    }).mount();
+                }
+            });
+        {% endinlinejs %}
+    {% else %}
+        {# DISPLAY AS A GRID #}
+
+        {# Max width for the images #}
+        {% set width = 800 %}
+
+        {# Set the image classes based on the number of images #}
+        {% set count = numberOfImages == 'Auto' ? images|length : numberOfImages %}
+            {% if count == null %}
         {% set count = images|length %}
-    {% endif %}
+        {% endif %}
 
+        {% set class = "col-1-1" %}
+        {% set ncClass = "nc-1" %}
 
-    {% set class = "col-1-1" %}
-    {% set ncClass = "nc-1" %}
-
-    {% set count6 = {width: 250, class: class ~ ' col-1-2-sm col-1-3-md col-1-6-lg'} %}
-    {% set count5 = {width: 300, class: class ~ ' col-1-2-sm col-1-3-md col-1-5-lg'} %}
-    {% set count4 = {width: 400, class: class ~ ' col-1-2-sm col-1-3-md col-1-4-lg'} %}
-    {% set count3 = {width: 500, class: class ~ ' col-1-2-md col-1-3-lg'} %}
-    {% set count2 = {width: 800, class: class ~ '  col-1-2-lg'} %}
-
-    {% if count == 6 %}
-        {% set class = count6.class %}
-        {% set width = count6.width %}
-        {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-6-lg" %}
-    {% elseif count == 5 %}
-        {% set class = count5.class %}
-        {% set width = count5.width %}
-        {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-5-lg" %}
-    {% elseif count == 4 %}
-        {% set class = count4.class %}
-        {% set width = count4.width %}
-        {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
-    {% elseif count == 3 %}
-        {% set class = count3.class %}
-        {% set width = count3.width %}
-        {% set ncClass = "nc-1 nc-2-md nc-3-lg" %}
-    {% elseif count == 2 %}
-        {% set class = count2.class %}
-        {% set width = count2.width %}
-        {% set ncClass = "nc-1 nc-2-lg" %}
-    {% elseif numberOfColumns == 'Auto' %}
-        {% if count % 6 == 0 %}
+        {% set count6 = {width: 250, class: class ~ ' col-1-2-sm col-1-3-md col-1-6-lg'} %}
+        {% set count5 = {width: 300, class: class ~ ' col-1-2-sm col-1-3-md col-1-5-lg'} %}
+        {% set count4 = {width: 400, class: class ~ ' col-1-2-sm col-1-3-md col-1-4-lg'} %}
+        {% set count3 = {width: 500, class: class ~ ' col-1-2-md col-1-3-lg'} %}
+        {% set count2 = {width: 800, class: class ~ '  col-1-2-lg'} %}
+            {% if count == 6 %}
             {% set class = count6.class %}
             {% set width = count6.width %}
             {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-6-lg" %}
-        {% elseif count % 5 == 0 %}
+        {% elseif count == 5 %}
             {% set class = count5.class %}
             {% set width = count5.width %}
             {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-5-lg" %}
-        {% elseif count % 4 == 0 %}
+        {% elseif count == 4 %}
             {% set class = count4.class %}
             {% set width = count4.width %}
             {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
-        {% elseif count % 3 == 0 %}
+        {% elseif count == 3 %}
             {% set class = count3.class %}
             {% set width = count3.width %}
             {% set ncClass = "nc-1 nc-2-md nc-3-lg" %}
-        {% elseif count % 2 == 0 %}
+        {% elseif count == 2 %}
             {% set class = count2.class %}
             {% set width = count2.width %}
             {% set ncClass = "nc-1 nc-2-lg" %}
-        {% elseif count > 6 %}
-            {% set class = count4.class %}
-            {% set width = count4.width %}
-            {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
+        {% elseif numberOfColumns == 'Auto' %}
+            {% if count % 6 == 0 %}
+                {% set class = count6.class %}
+                {% set width = count6.width %}
+                {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-6-lg" %}
+            {% elseif count % 5 == 0 %}
+                {% set class = count5.class %}
+                {% set width = count5.width %}
+                {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-5-lg" %}
+            {% elseif count % 4 == 0 %}
+                {% set class = count4.class %}
+                {% set width = count4.width %}
+                {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
+            {% elseif count % 3 == 0 %}
+                {% set class = count3.class %}
+                {% set width = count3.width %}
+                {% set ncClass = "nc-1 nc-2-md nc-3-lg" %}
+            {% elseif count % 2 == 0 %}
+                {% set class = count2.class %}
+                {% set width = count2.width %}
+                {% set ncClass = "nc-1 nc-2-lg" %}
+            {% elseif count > 6 %}
+                {% set class = count4.class %}
+                {% set width = count4.width %}
+                {% set ncClass = "nc-1 nc-2-sm nc-3-md nc-4-lg" %}
+            {% endif %}
         {% endif %}
+
+        <div class="Container Container--pad">
+            <div class="grid g-2 {{ ncClass }}">
+                {% for image in images %}
+                    {% set imageLink = image.image.src %}
+                    {% set image.image.class = 'fit-cover w-100' %}
+                    {% do image.image.alt.default(image.title) %}
+                    {% if aspectRatio != 'Auto' %}
+                        {% do image.image.resize({w: width, ar: aspectRatio, crop: true}) %}
+                    {% else %}
+                        {% do image.image.resize(width) %}
+                    {% endif %}
+                    {% do image.image.lazy() %}
+                    <div class="{{ class }}" data-ar="{{ aspectRatio }}">
+                        <a data-fslightbox data-type="image" class="block link-subtle" href="{{ imageLink }}" {{ image.title ? 'data-caption="' ~ image.title ~ '"' }}>
+                            {% if aspectRatio != 'Auto' %}
+                                <span class="flex aspect-{{ aspectRatio|replace('x', '-') }}">{{ image.image.tag }}</span>
+                            {% else %}
+                                {{ image.image.tag }}
+                            {% endif %}
+                            {% if image.title %}
+                                <span class="mt-1 block text-center">{{ image.title }}</span>
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {{ macros.loadLightbox() }}
     {% endif %}
 
-    <div class="Container Container--pad">
-        <div class="grid g-2 {{ ncClass }}">
-            {% for image in images %}
-                {% set imageLink = image.image.src %}
-                {% set image.image.class = imageStyle == 'Cover' ? 'fit-cover w-100' : 'fit-contain' %}
-                {% do image.image.alt.default(image.title) %}
-                {% if imageAspectRatio != 'Auto' %}
-                    {% do image.image.resize({w: width, ar: imageAspectRatio, crop: true}) %}
-                {% else %}
-                    {% do image.image.resize(width) %}
-                {% endif %}
-                {% do image.image.lazy() %}
-                <div class="{{ class }}">
-                    <a data-fslightbox data-type="image" class="block link-subtle" href="{{ imageLink }}" {{ image.title ? 'data-caption="' ~ image.title ~ '"' }}>
-                        {% if imageAspectRatio != 'Auto' %}
-                            <span class="flex aspect-{{ imageAspectRatio|replace('x', '-') }}">{{ image.image.tag }}</span>
-                        {% else %}
-                            {{ image.image.tag }}
-                        {% endif %}
-                        {% if image.title %}
-                            <span class="mt-1 block text-center">{{ image.title }}</span>
-                        {% endif %}
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    {{ macros.loadLightbox() }}
 {% endif %}
