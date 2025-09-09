@@ -1395,6 +1395,21 @@
             "description": "Styles for the \"Image Slider\" block.",
             "groups": [
                 {
+                    "name": "General",
+                    "fields": [
+                        {
+                            "name": "blocksImageSliderMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "defaultValue": "2.5rem 0 2.5rem 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Slider-margin"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Content",
                     "fields": [
                         {
