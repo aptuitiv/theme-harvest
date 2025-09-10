@@ -1,0 +1,12 @@
+/* ===========================================================================
+    Image gallery block styles
+=========================================================================== */
+
+/* @define ImageGallery */
+
+.ImageGallery {
+    --gap: var(--ImageGallery-gap, 20px); /* set the --gap variable that is used by the Cacao grid utility */
+
+    gap: var(--gap);
+    margin: var(--ImageGallery-margin, 2.5rem 0);
+}

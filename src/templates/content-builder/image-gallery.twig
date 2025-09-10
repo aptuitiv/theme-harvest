@@ -138,7 +138,7 @@
         {% endif %}
 
         <div class="Container Container--pad">
-            <div class="grid g-2 {{ ncClass }}">
+            <div class="ImageGallery grid {{ ncClass }}">
                 {% for image in images %}
                     {% set imageLink = image.image.src %}
                     {% set image.image.class = 'fit-cover w-100' %}
