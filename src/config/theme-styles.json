@@ -1407,6 +1407,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--ImageGallery-margin"
                             }
+                        },
+                        {
+                            "name": "blocksImageGalleryGridGap",
+                            "label": "Gap between images",
+                            "type": "size",
+                            "defaultValue": "20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--ImageGallery-gap"
+                            }
                         }
                     ]
                 },
