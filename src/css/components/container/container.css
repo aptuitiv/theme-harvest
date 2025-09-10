@@ -9,11 +9,22 @@
 }
 
 .Container--pad {
-    padding: 0 30px;
+    padding: 0 10px;
 }
 
 .Container--narrow {
-    padding: 0 30px;
+    max-width: var(--Container-narrow-width);
+    padding: 0 10px;
+}
+
+@media (--m-xl) {
+    .Container--pad {
+        padding: 0 30px;
+    }
+
+    .Container--narrow {
+        padding: 0 30px;
+    }
 }
 
 .Container--pad .Container--pad,
