@@ -46,8 +46,8 @@
 .SidebarNav-link:active,
 .SidebarNav-link:focus,
 .SidebarNav-link:hover {
-    background: var(--SidebarNav-backgroundHover);
-    color: var(--SidebarNav-colorHover);
+    background: var(--SidebarNav-background-hoverover);
+    color: var(--SidebarNav-color-hover);
     text-decoration: none;
 }
 
