@@ -5758,6 +5758,31 @@
                     ]
                 },
                 {
+                    "name": "Small text",
+                    "description": "Typography for text that is intentionally smaller than the base typography.",
+                    "fields": [
+                        {
+                            "name": "baseTypographySmall",
+                            "label": "Small",
+                            "type": "typography",
+                            "useFontStyle": false,
+                            "useTextAlign": false,
+                            "useTextDecoration": false,
+                            "useTextTransform": false,
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "lineHeight": {
+                                "defaultValue": "1.6"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-small"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Lists",
                     "description": "Styles for ordered and unordered lists.",
                     "fields": [

@@ -308,3 +308,18 @@ h1:first-child {
         font-size: var(--base-typography-h6-font-size, 1.8rem);
     }
 }
+
+/* ------------------------------------ *\
+    Small text
+\* ------------------------------------ */
+
+
+small,
+.small-text {
+    color: var(--base-typography-small-color, var(--base-typography-color, #333));
+    font-family: var(--base-typography-small-font-family);
+    font-size: var(--base-typography-small-font-size, 1.4rem);
+    font-weight: var(--base-typography-small-font-weight, var(--base-typography-font-weight, 400));
+    letter-spacing: var(--base-typography-small-letter-spacing);
+    line-height: var(--base-typography-small-line-height, var(--base-typography-line-height, 1.6));
+}
