@@ -16,20 +16,28 @@
         {% set contentCol = contentCol ~ ' order-1-lg' %}
     {% endif %}
 
-    <div class="Container Container--pad">
-        <div class="grid py-2 py-4-lg g-2 g-4-lg {{ ncClass }}">
+    <div class="Container Container--spaced Container--pad">
+        <div class="grid g-2 g-4-lg {{ ncClass }}">
             <div class="{{ imageCol }}">
                 {% do image.resize(800) %}
                 {% do image.lazy() %}
                 {% set image.class = "w-100" %}
-                <div class="flex align-center h-100">
+                {% if verticalAlignment == 'center' || verticalAlignment == 'center-image' %}
+                    <div class="flex align-center h-100">
+                        {{ image.tag }}
+                    </div>
+                {% else %}
                     {{ image.tag }}
-                </div>
+                {% endif %}
             </div>
             <div class="{{ contentCol }}">
-                <div class="flex align-center h-100">
+                {% if verticalAlignment == 'center' %}
+                    <div class="flex align-center h-100">
+                        <div class="clearfix first-child-st-0 last-child-sb-0">{{ content }}</div>
+                    </div>
+                {% else %}
                     <div class="clearfix first-child-st-0 last-child-sb-0">{{ content }}</div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>
