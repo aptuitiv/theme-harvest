@@ -269,6 +269,14 @@ h1:first-child {
     margin-top: 0;
 }
 
+/**
+ * Remove the margin-top from the first h2 in the main content if its in the first child of the #main element.
+ * This targets the first child within the #main element and the first child H2 within that.
+ */
+ #main > :first-child h2:first-child{
+    margin-top: 0;
+}
+
 @media (--m-md) {
     h1,
     .h1 {
