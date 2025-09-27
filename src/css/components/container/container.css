@@ -8,6 +8,11 @@
     max-width: var(--Container-width);
 }
 
+/* Container needing vertical spacing between elements after it. For example the "Content" block. */
+.Container--spaced {
+    margin-bottom: var(--base-typography-spacing, 2.5rem);
+}
+
 .Container--pad {
     padding: 0 10px;
 }
