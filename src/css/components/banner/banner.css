@@ -66,44 +66,6 @@
 }
 
 /* ------------------------------------ *\
-    Overlay Image
-\* ------------------------------------ */
-
-.Banner-contentImageWrap {
-    align-items: var(--Banner-align-horizontal, center);
-    display: flex;
-    flex-direction: column;
-    gap: var(--Banner-overlay-image-sm-gap, 0);
-    justify-content: var(--Banner-align-vertical, center);
-    max-width: var(--Banner-overlay-image-grid-width, 1400px);
-    min-height: 100%;
-    position: relative;
-    z-index: 3;
-}
-
-.Banner-overlayImage {
-    display: var(--Banner-overlay-image-sm-display, none);
-}
-
-@media (--m-md) {
-    .Banner-contentImageWrap {
-        align-items: var(--Banner-align-vertical, center);
-        display: grid;
-        gap: 0;
-        grid-template-columns: var(--Banner-overlay-image-grid-md, 1fr 1fr);
-        justify-content: start;
-    }
-
-    .Banner-overlayImage {
-        display: block;
-        height: 100%;
-        object-fit: var(--Banner-overlay-image-objectFit);
-        object-position: var(--Banner-overlay-image-objectPosition);
-        width: 100%;
-    }
-}
-
-/* ------------------------------------ *\
     Content
 \* ------------------------------------ */
 
@@ -117,10 +79,6 @@
 .Banner-contentInner {
     max-width: var(--Banner-content-width);
     text-align: var(--Banner-align-horizontal, center);
-}
-
-.Banner-contentImageWrap .Banner-contentInner {
-    max-width: var(--Banner-overlay-image-content-width, var(--Banner-content-width));
 }
 
 .Banner--noMedia .Banner-content {
@@ -145,13 +103,15 @@
 }
 
 /* postcss-bem-linter: ignore */
-.Banner-content h1 {
+.Banner-content h1,
+.Banner-content .h1 {
     font-size: var(--Banner-content-h1-font-size-sm, var(--base-typography-h1-font-size-sm, 5rem));
 }
 
 @media (--m-md) {
     /* postcss-bem-linter: ignore */
-    .Banner-content h1 {
+    .Banner-content h1,
+    .Banner-content .h1 {
         font-size: var(--Banner-content-h1-font-size, var(--base-typography-h1-font-size, 4rem));
     }
 }

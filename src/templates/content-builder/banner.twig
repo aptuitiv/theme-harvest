@@ -1,0 +1,38 @@
+{# Build the banner with a single image, video, or content #}
+{% import 'macros/banner' as bannerMacros %}
+
+{% if heading or image or video or content %}
+    <div class="Banner{% if not image && not video %} Banner--noMedia{% endif %}" role="group" aria-label="Banner">
+        {% if video %}
+            {{ bannerMacros.bannerVideo(video, image, imageSize == 'large' ? _core.theme.settings.largeBannerImageSizes : _core.theme.settings.bannerImageSizes, true) }}
+        {% elseif image %}
+            {{ bannerMacros.bannerImage(
+                image,
+                imageCrop,
+                imageSize == 'large' ? _core.theme.settings.largeBannerImageSizes : _core.theme.settings.bannerImageSizes,
+                imageSize == 'large' ? _core.theme.settings.largeBannerMinImageRatio : _core.theme.settings.bannerMinImageRatio,
+                imageSize == 'large' ? _core.theme.settings.largeBannerImageRatio :_core.theme.settings.bannerImageRatio,
+                imageSize == 'large' ? _core.theme.settings.largeBannerImageCropStrategy : _core.theme.settings.bannerImageCropStrategy,
+                imageSize == 'large' ? _core.theme.settings.largeBannerImageCropOrientation : _core.theme.settings.bannerImageCropOrientation,
+                content|length > 0 or heading|length > 0,
+                true
+            ) }}
+        {% endif %}
+
+        {% if image or video %}
+            <div class="Banner-fg"></div>
+        {% endif %}
+        <div class="Banner-content">
+            <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
+                {% if heading %}
+                    {% if displayHeadingAsH1 %}
+                        <h1>{{ heading }}</h1>
+                    {% else %}
+                        <div class="h1">{{ heading }}</div>
+                    {% endif %}
+                {% endif %}
+                {{ content }}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -496,13 +496,73 @@
                 },
                 {
                     "name": "Large banner images",
-                    "description": "These are for the large banner that is often used on the home page or other top-level pages. It is typically taller than the banner bar images.",
+                    "description": "These set the image sizes for large banner images. They are typically taller than the regular banner images.",
+                    "fields": [
+                        {
+                            "name": "largeBannerImageSizes",
+                            "label": "Image sizes",
+                            "type": "repeatingGrid",
+                            "description": "The different image sizes for the large banner background image. This is used to deliver the best image size to different device sizes",
+                            "itemName": "Image size",
+                            "children": [
+                                {
+                                    "name": "size",
+                                    "label": "Size",
+                                    "type": "ratio",
+                                    "after": "px"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "largeBannerImageRatio",
+                            "label": "Aspect ratio when cropping",
+                            "type": "ratio",
+                            "description": "If the banner image needs to be cropped, this is the aspect ratio that will be used.",
+                            "after": "px",
+                            "defaultValue": "20/9"
+                        },
+                        {
+                            "name": "largeBannerMinImageRatio",
+                            "label": "Minimum aspect ratio",
+                            "type": "ratio",
+                            "description": "If \"How to crop the banner image\" is set to \"Do not crop the banner image unless it is too tall\", this is the aspect ratio that will be used to determine if the image is too tall.",
+                            "after": "px",
+                            "defaultValue": "20/9"
+                        },
+                        {
+                            "name": "largeBannerImageCropStrategy",
+                            "label": "How to crop the banner image",
+                            "type": "radio",
+                            "description": "The banner image is considered too tall if its image ratio is less than the \"Minimum aspect ratio\" field value. (The lower the ratio the taller the image.)",
+                            "defaultValue": "crop",
+                            "options": {
+                                "crop": "Always use the above image aspect ratios to crop the image",
+                                "conditional": "Do not crop the banner image unless it is too tall"
+                            }
+                        },
+                        {
+                            "name": "largeBannerImageCropOrientation",
+                            "label": "Image crop orientation",
+                            "type": "radio",
+                            "description": "The default crop orientation for banner images when the image is too tall.",
+                            "defaultValue": "center",
+                            "options": {
+                                "top": "Top",
+                                "center": "Center",
+                                "bottom": "Bottom"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Regular banner images",
+                    "description": "These set the regular sized banner images. They are typically shorter than the large banner images.",
                     "fields": [
                         {
                             "name": "bannerImageSizes",
                             "label": "Image sizes",
                             "type": "repeatingGrid",
-                            "description": "The different image sizes for the large banner background image. This is used to deliver the best image size to different device sizes",
+                            "description": "The different image sizes for the banner bar background image. This is used to deliver the best image size to different device sizes",
                             "itemName": "Image size",
                             "children": [
                                 {
@@ -519,7 +579,7 @@
                             "type": "ratio",
                             "description": "If the banner image needs to be cropped, this is the aspect ratio that will be used.",
                             "after": "px",
-                            "defaultValue": "20/9"
+                            "defaultValue": "20/6"
                         },
                         {
                             "name": "bannerMinImageRatio",
@@ -527,7 +587,7 @@
                             "type": "ratio",
                             "description": "If \"How to crop the banner image\" is set to \"Do not crop the banner image unless it is too tall\", this is the aspect ratio that will be used to determine if the image is too tall.",
                             "after": "px",
-                            "defaultValue": "20/9"
+                            "defaultValue": "20/6"
                         },
                         {
                             "name": "bannerImageCropStrategy",
@@ -542,189 +602,6 @@
                         },
                         {
                             "name": "bannerImageCropOrientation",
-                            "label": "Image crop orientation",
-                            "type": "radio",
-                            "description": "The default crop orientation for banner images when the image is too tall.",
-                            "defaultValue": "center",
-                            "options": {
-                                "top": "Top",
-                                "center": "Center",
-                                "bottom": "Bottom"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Large banner overlay image",
-                    "description": "Settings for the overlay image that is displayed on top of the banner image on the Large Banner.",
-                    "fields": [
-                        {
-                            "name": "bannerOverlayImageGrid",
-                            "label": "Content and image grid",
-                            "type": "select",
-                            "description": "The content and image grid column sizes when an overlay image is used.",
-                            "defaultValue": "50% 1fr",
-                            "options": {
-                                "30% 1fr": "30% content, 70% image",
-                                "40% 1fr": "40% content, 60% image",
-                                "50% 1fr": "50% content, 50% image",
-                                "60% 1fr": "60% content, 40% image",
-                                "70% 1fr": "70% content, 30% image"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-grid"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageGridWidth",
-                            "label": "Max width for the content and image grid",
-                            "type": "size",
-                            "defaultValue": "1200px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-grid-width"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageContentWidth",
-                            "label": "Max width for the content",
-                            "type": "size",
-                            "description": "This will override the \"Max width for the content\" field value",
-                            "defaultValue": "800px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-content-width"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageObjectFit",
-                            "label": "Image fit",
-                            "type": "select",
-                            "defaultValue": "none",
-                            "options": {
-                                "none": "None",
-                                "contain": "Contain",
-                                "cover": "Cover"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-objectFit"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageObjectPosition",
-                            "label": "Image fit position",
-                            "type": "select",
-                            "description": "The position of the image within the container",
-                            "defaultValue": "bottom center",
-                            "options": {
-                                "initial": "Default",
-                                "top left": "Top Left",
-                                "top center": "Top Center",
-                                "top right": "Top Right",
-                                "left": "Left",
-                                "center": "Center",
-                                "right": "Right",
-                                "bottom left": "Bottom Left",
-                                "bottom center": "Bottom Center",
-                                "bottom right": "Bottom Right"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-objectPosition"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageSmDisplay",
-                            "label": "Display the overlay image on small screens",
-                            "type": "radio",
-                            "defaultValue": "block",
-                            "options": {
-                                "block": "Yes",
-                                "none": "No"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-sm-display"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageSmGap",
-                            "label": "Gap between the image and content on small screens",
-                            "type": "size",
-                            "description": "This only applies if the image is displayed on small screens.",
-                            "defaultValue": "20px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-overlay-image-sm-gap"
-                            }
-                        },
-                        {
-                            "name": "bannerOverlayImageSizes",
-                            "label": "Overlay image sizes",
-                            "type": "repeatingGrid",
-                            "description": "The different image sizes for the overlay image. This is used to deliver the best image size to different device sizes.",
-                            "itemName": "Image size",
-                            "children": [
-                                {
-                                    "name": "size",
-                                    "label": "Size",
-                                    "type": "ratio",
-                                    "after": "px"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "Banner bar images",
-                    "description": "These are for the banner bar that is often used on most pages. It is typically shorter than the large banner images.",
-                    "fields": [
-                        {
-                            "name": "bannerBarImageSizes",
-                            "label": "Image sizes",
-                            "type": "repeatingGrid",
-                            "description": "The different image sizes for the banner bar background image. This is used to deliver the best image size to different device sizes",
-                            "itemName": "Image size",
-                            "children": [
-                                {
-                                    "name": "size",
-                                    "label": "Size",
-                                    "type": "ratio",
-                                    "after": "px"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "bannerBarImageRatio",
-                            "label": "Aspect ratio when cropping",
-                            "type": "ratio",
-                            "description": "If the banner image needs to be cropped, this is the aspect ratio that will be used.",
-                            "after": "px",
-                            "defaultValue": "20/6"
-                        },
-                        {
-                            "name": "bannerBarMinImageRatio",
-                            "label": "Minimum aspect ratio",
-                            "type": "ratio",
-                            "description": "If \"How to crop the banner image\" is set to \"Do not crop the banner image unless it is too tall\", this is the aspect ratio that will be used to determine if the image is too tall.",
-                            "after": "px",
-                            "defaultValue": "20/6"
-                        },
-                        {
-                            "name": "bannerBarImageCropStrategy",
-                            "label": "How to crop the banner image",
-                            "type": "radio",
-                            "description": "The banner image is considered too tall if its image ratio is less than the \"Minimum aspect ratio\" field value. (The lower the ratio the taller the image.)",
-                            "defaultValue": "crop",
-                            "options": {
-                                "crop": "Always use the above image aspect ratios to crop the image",
-                                "conditional": "Do not crop the banner image unless it is too tall"
-                            }
-                        },
-                        {
-                            "name": "bannerBarImageCropOrientation",
                             "label": "Image crop orientation",
                             "type": "radio",
                             "description": "The default crop orientation for banner images when the image is too tall.",

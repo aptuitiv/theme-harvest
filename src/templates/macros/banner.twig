@@ -9,7 +9,7 @@
  # - bannerImageRatio: The default aspect ratio for the banner image. From theme settings.
  # - bannerImageCropStrategy: The crop strategy for the banner image. From theme settings.
  # - bannerImageCropOrientation: The crop orientation for the banner image. From theme settings.
-# - hasContent: Whether the banner has content. This is used to determine if the image should be a background image or a div with the image.
+ # - hasContent: Whether the banner has content. This is used to determine if the image should be a background image or a div with the image.
  # - doCss: Whether to output the CSS for the aspect ratios
  #}
 {% macro bannerImage(
@@ -144,12 +144,13 @@
 {##
  # Banner Video Macro
  # - video: The video to display
+ # - image: The image to display as the postor
  # - bannerImageSizes: The image sizes to use for the aspect ratios from theme settings
  # - doCss: Whether to output the CSS for the aspect ratios
 #}
-{% macro bannerVideo(video, bannerImageSizes, doCss) %}
+{% macro bannerVideo(video, image, bannerImageSizes, doCss) %}
     <div class="Banner-bg">
-        <video class="Banner-video" autoplay muted loop playsinline src="{{ video.src }}"></video>
+        <video class="Banner-video" autoplay muted loop playsinline src="{{ video.src }}"{% if image %} poster="{{ image.src }}"{% endif %}></video>
     </div>
     {% if doCss %}
         {# Set the aspect ratio on the Banner to make this visible #}
@@ -167,52 +168,5 @@
         {% inlinecss %}
             .Banner {aspect-ratio: {{ aspectRatio }}; }
         {% endinlinecss %}
-    {% endif %}
-{% endmacro %}
-
-{##
- # Content for the large banner
- # - content: The content to display
- # - overlayImage: The image to display over the background image and beside the content
- #}
-{% macro largeBannerContent(content, overlayImage) %}
-    <div class="Banner-fg"></div>
-    {% if overlayImage %}
-        <div class="Banner-contentImageWrap">
-            <div class="Banner-content">
-                <div class="Banner-contentInner first-child-st-0 last-child-sb-0">{{ content }}</div>
-            </div>
-            {# Extract the image sizes from the settings and sort them by width #}
-            {% set sizes = [] %}
-            {% for imageSize in _core.theme.settings.bannerOverlayImageSizes %}
-                {% set sizes = sizes|merge([{width: imageSize.size.x, height: imageSize.size.y, ratio: imageSize.size.number}]) %}
-            {% endfor %}
-            {% set sizes = sizes|sort_by_key("width") %}
-            {% if sizes|length > 1 %}
-                {% for size in sizes %}
-                    {# Add the image sources and preload media queries #}
-                    {% do overlayImage.addSrcSet(size.width ~ 'px')
-                        .resize({
-                            width: size.width,
-                            height: size.height
-                        })
-                    %}
-                {% endfor %}
-            {% endif %}
-            {% if sizes|length > 0 %}
-                {# Get the last size to resize the image to #}
-                {% set lastSize = sizes|last %}
-                {% do overlayImage.resize({
-                    width: lastSize.width,
-                    height: lastSize.height
-                }) %}
-            {% endif %}
-            {% set overlayImage.class = 'Banner-overlayImage' %}
-            {{ overlayImage.tag }}
-        </div>
-    {% else %}
-        <div class="Banner-content">
-            <div class="Banner-contentInner first-child-st-0 last-child-sb-0">{{ content }}</div>
-        </div>
     {% endif %}
 {% endmacro %}

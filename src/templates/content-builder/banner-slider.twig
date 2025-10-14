@@ -1,4 +1,4 @@
-{# Build the larger banner with oneo or more slides containing an image or video #}
+{# Build the banner with one or more slides containing an image or video #}
 {% import 'macros/macros' as macros %}
 {% import 'macros/banner' as bannerMacros %}
 
@@ -6,28 +6,32 @@
  # Build the slide
  # - slide: the slide to build
  # - doCss: Whether to output the CSS for the aspect ratios
+ # - imageSize: The image size to use for the aspect ratios
  # - pagination: Any pagination links to output
+ # - paginationClass: The class to add to the pagination links
  #}
-{% macro buildSlide(slide, doCss, pagination, paginationClass) %}
+{% macro buildSlide(slide, doCss, imageSize, pagination, paginationClass) %}
     {% if slide.image or slide.video or slide.content %}
         <div class="Banner{% if not slide.image && not slide.video %} Banner--noMedia{% endif %}" role="group" aria-label="Banner">
-            {% if slide.image %}
+            {% if slide.video %}
+                {{ bannerMacros.bannerVideo(slide.video, slide.image, imageSize == 'large' ? _core.theme.settings.largeBannerImageSizes : _core.theme.settings.bannerImageSizes, true) }}
+            {% elseif slide.image %}
                 {{ bannerMacros.bannerImage(
                     slide.image,
                     slide.imageCrop,
-                    _core.theme.settings.bannerImageSizes,
-                    _core.theme.settings.bannerMinImageRatio,
-                    _core.theme.settings.bannerImageRatio,
-                    _core.theme.settings.bannerImageCropStrategy,
-                    _core.theme.settings.bannerImageCropOrientation,
+                    imageSize == 'large' ? _core.theme.settings.largeBannerImageSizes : _core.theme.settings.bannerImageSizes,
+                    imageSize == 'large' ? _core.theme.settings.largeBannerMinImageRatio : _core.theme.settings.bannerMinImageRatio,
+                    imageSize == 'large' ? _core.theme.settings.largeBannerImageRatio :_core.theme.settings.bannerImageRatio,
+                    imageSize == 'large' ? _core.theme.settings.largeBannerImageCropStrategy : _core.theme.settings.bannerImageCropStrategy,
+                    imageSize == 'large' ? _core.theme.settings.largeBannerImageCropOrientation : _core.theme.settings.bannerImageCropOrientation,
                     slide.content|length > 0,
                     doCss
                 ) }}
-            {% elseif slide.video %}
-                {{ bannerMacros.bannerVideo(slide.video, core.theme.settings.bannerImageSizes, true) }}
             {% endif %}
              {% if pagination is iterable || slide.content|length > 0 %}
-                <div class="Banner-fg"></div>
+                {% if slide.image or slide.video %}
+                    <div class="Banner-fg"></div>
+                {% endif %}
                 <div class="Banner-content">
                     <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
                         {% if pagination is iterable %}
@@ -36,6 +40,9 @@
                                     <li class="BannerSlider-paginationItem"><button class="BannerSlider-paginationButton js-slidePagination{{ paginationClass }}" data-slide="{{ loop.index0 }}">{{ text }}</button></li>
                                 {% endfor %}
                             </ul>
+                        {% endif %}
+                        {% if slide.heading %}
+                            <div class="h1">{{ slide.heading }}</div>
                         {% endif %}
                         {{ slide.content }}
                     </div>
@@ -47,19 +54,12 @@
 {% endmacro %}
 
 
-{% if slides %}
-    {# There are no slides #}
-    {% if slides|length == 0 %}
-        <div class="Banner Banner--noMedia" role="group" aria-label="Banner">
-            {{ bannerMacros.largeBannerContent(content) }}
-        </div>
-    {% endif %}
-
+{% if slides|length > 0 %}
     {# There is only one slide #}
     {% if slides|length == 1 %}
         {# There is only one slide #}
         {% set slide = slides|first %}
-        {{ _self.buildSlide(slide, true) }}
+        {{ _self.buildSlide(slide, true, imageSize) }}
     {% else %}
         {# There are mulitple slides. #}
         {% set slidePagination = [] %}
@@ -75,7 +75,7 @@
                 <ul class="splide__list">
                     {% for slide in slides %}
                         <li class="splide__slide">
-                            {{ _self.buildSlide(slide, loop.first, slidePagination, randomString) }}
+                            {{ _self.buildSlide(slide, loop.first, imageSize, slidePagination, randomString) }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -97,8 +97,6 @@
                             pagination: true,
                         {% endif %}
                         arrows: false,
-                        autoplay: {{ _core.theme.settings.blocksLargeBannerSliderAutoplay == 'yes' ? 'true' : 'false' }},
-                        interval: {{ _core.theme.settings.blocksLargeBannerSliderInterval ?? '5000' }},
                         rewind: true,
                         type: 'fade',
                         speed: 1000
