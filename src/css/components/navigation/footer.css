@@ -18,6 +18,10 @@
     color: var(--FooterNav-color);
 }
 
+.FooterNav-link:hover {
+    color: var(--FooterNav-color-hover);
+}
+
 @media (--m-md) {
     .FooterNav {
         flex-direction: row;

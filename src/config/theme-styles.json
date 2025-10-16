@@ -2740,7 +2740,7 @@
                             },
                             "colorRender": {
                                 "cssSelector": "",
-                                "cssVariable": "--FooterNav-color"
+                                "cssVariable": "--FooterNav"
                             }
                         }
                     ]
