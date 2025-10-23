@@ -16,7 +16,10 @@
     {% set mediumWidthImageSizes = _core.theme.settings.blockImageMediumWidthSizes|sort_by_key("maxWidth") %}
     {% set smallWidthImageSizes = _core.theme.settings.blockImageSmallWidthSizes|sort_by_key("maxWidth") %}
 
+    {% set image.loading = 'lazy' %}
+
     {% if imageSize == 'full' %}
+        {% set image.class = 'w-1-1' %}
         {{ _self.doImageSizes(image, fullWidthImageSizes) }}
     {% elseif imageSize == 'large' || imageSize is not defined %}
         {{ _self.doImageSizes(image, largeWidthImageSizes) }}
