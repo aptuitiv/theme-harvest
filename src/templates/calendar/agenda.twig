@@ -5,7 +5,7 @@
     {% set content %}
         <h1 class="flex flex-col align-center g-1">Calendar of Events<span class="h4 m-0">{{ startDate }}{% if dateRangeKey != 'day' %} - {{ endDate }}{% endif %}</span></h1>
     {% endset %}
-    {% include('content-builder/banner-bar') %}
+    {% include('content-builder/banner') %}
 {% endblock %}
 
 {% block main %}
