@@ -93,3 +93,12 @@
         font-size: var(--Modal-title-font-size);
     }
 }
+
+/* ------------------------------------ *\
+    Content overrides
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.Modal-content .Container--pad {
+    padding: 0 !important;
+}
