@@ -16,7 +16,6 @@
     break-inside: avoid;
     display: inline-block;
     margin: 0 0 1em;
-    page-break-inside: avoid;
     position: relative;
     width: 100%;
 }

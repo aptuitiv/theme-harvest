@@ -4,7 +4,7 @@
 
 /* @define Accordion */
 .Accordion {
-    page-break-inside: avoid;
+    break-inside: avoid;
 }
 
 .Accordion:last-child {
