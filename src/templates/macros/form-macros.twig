@@ -60,12 +60,14 @@
         {% set field.class = field.class|replace({"error": "is-invalid"}) %}
         <div class="grid g-2-lg mb-2 nc-1 nc-2-lg">
             <div class="col-1-1 col-1-4-lg text-end-lg">
-                {% set field.label.class = field.label.class ~ ' FormLabel' %}
-                {% if field.isRequired %}
-                    {% set field.required = true %}
-                    {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
+                {% if field.fieldType != 'repeatingGrid' and field.fieldType != 'grid' %}
+                    {% set field.label.class = field.label.class ~ ' FormLabel' %}
+                    {% if field.isRequired %}
+                        {% set field.required = true %}
+                        {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
+                    {% endif %}
+                    {{ field.label.tag }}
                 {% endif %}
-                {{ field.label.tag }}
             </div>
             {% if field.fieldType in ["checkbox", "radio", "multiCheckbox"] %}
                 {% set field.groupId = random_letters() %}
@@ -118,9 +120,9 @@
             {{ field.tag|replace({"error": "is-invalid"}) }}
         {% endif %}
     {% elseif field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
-        <div class="grid gx-2">
+        <div class="grid gx-2 nc-1 nc-{{ field.columns|length }}-md">
             {% for column in field.columns %}
-                {% set class = 'col-1-' ~ loop.length  %}
+                {% set class = 'col-1-1 col-1-' ~ loop.length ~ '-md' %}
                 {% if column.class %}
                     {% if 'col-' in column.class %}
                         {% set class = column.class %}
@@ -128,7 +130,6 @@
                         {% set class = class ~ ' ' ~ column.class %}
                     {% endif %}
                 {% endif %}
-                {% set class = class ~ ' w-100' %}
                 <div class="{{ class }}">
                     {% for child in column.childFields %}
                         {% if child.fieldType in ["radio", "multiCheckbox", "checkbox"] %}
@@ -159,9 +160,9 @@
 {% macro buildLabelAboveFieldFields(form) %}
     {% for field in form.fields %}
         {% if field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
-            <div class="grid gx-2">
+            <div class="grid gx-2 nc-1 nc-{{ field.columns|length }}-md">
                 {% for column in field.columns %}
-                    {% set class = 'col-1-1 col-sm-1-' ~ loop.length  %}
+                    {% set class = 'col-1-1 col-1-' ~ loop.length ~ '-md' %}
                     {% if column.class %}
                         {% if 'col-' in column.class %}
                             {% set class = column.class %}
@@ -169,7 +170,6 @@
                             {% set class = class ~ ' ' ~ column.class %}
                         {% endif %}
                     {% endif %}
-                    {# {% set class = class ~ ' w-100' %} #}
                     <div class="{{ class }}">
                         {% for child in column.childFields %}
                             {{ _self.buildLabelAboveFieldField(child) }}
@@ -254,10 +254,10 @@
                 {% endif %}
             {% elseif field.fieldType == 'rating' %}
                 <div class="grid gx-2 nc-1 nc-2-md">
-                    <div class="col-1-2 col-2-3-md col-3-4-lg w-100">
+                    <div class="col-1-2 col-2-3-md col-3-4-lg">
                         {{ field.label.tag }}
                     </div>
-                    <div class="col-1-2 col-1-3-md col-1-4-lg w-100">
+                    <div class="col-1-2 col-1-3-md col-1-4-lg">
                         <div class="flex justify-end-lg align-center-lg h-100 justify-start align-start mt-1 mt-0-lg">
                             {% for option in field.options %}
                                 <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
@@ -387,12 +387,11 @@
 
                 {# Add event listener to handle reCAPTCHA #}
                 validator.onSuccess(e => {
-                    const form = document.querySelector('.{{ form.class }}');
                     {# Show the submission overlay #}
                     document.querySelector('.{{ formOverlayClass }}').style.display = 'block';
 
                     {# Disable the submit button #}
-                    form.querySelector('button[type="submit"]').disabled = true;
+                    document.querySelector('.{{ form.class }} [type="submit"]').disabled = true;
 
                     {# Handle submission via either reCAPTCHA v3, a custom handler, or just a regular submission. #}
                     {% if form.captcha.type == 'recaptchaV3' %}
@@ -402,18 +401,18 @@
                             {% if submitHandler %}
                                 {{ submitHandler }}(form);
                             {% else %}
-                                form.submit();
+                                document.querySelector('.{{ form.class }}').submit();
                             {% endif %}
                         }).catch(function(e) {
                             console.error(e);
                             document.querySelector('.{{ formOverlayClass }}').style.display = 'none';
-                            form.querySelector('button[type="submit"]').disabled = false;
+                            document.querySelector('.{{ form.class }} [type="submit"]').disabled = false;
                         });
                     {% else %}
                         {% if submitHandler %}
                             {{ submitHandler }}(form);
                         {% else %}
-                            form.submit();
+                            document.querySelector('.{{ form.class }}').submit();
                         {% endif %}
                     {% endif %}
                 });
@@ -477,9 +476,12 @@
     {% endif %}
 {% endmacro %}
 
-{# Form fields required message #}
-{% macro requiredMessage() %}
-    {% if _core.theme.settings.formRequiredShowMessage == 'yes' %}
+{# Form fields required message
+    showRequiredMessage: (string) The value of the showRequiredMessage setting. This comes from a custom value set on the "form" tag.
+                {% set form.showRequiredMessage = 'no' %}
+#}
+{% macro requiredMessage(showRequiredMessage) %}
+    {% if _core.theme.settings.formRequiredShowMessage == 'yes' && showRequiredMessage != 'no' %}
         <div class="FormRequired-message">{{ _core.theme.settings.formRequiredMessageText }}</div>
     {% endif %}
 {% endmacro %}
