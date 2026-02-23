@@ -108,9 +108,7 @@
                             "label": "Icon size",
                             "type": "size",
                             "defaultValue": "12px",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Accordion-icon-size"
@@ -648,78 +646,114 @@
         {
             "name": "Blocks - Google Ratings Bar",
             "description": "Styles for the \"Google Ratings Bar\" block.",
-            "fields": [
+            "groups": [
                 {
-                    "name": "blockGoogleRatingsBarBackground",
-                    "label": "Background color",
-                    "type": "color",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar-background"
-                    }
+                    "name": "Review link",
+                    "fields": [
+                        {
+                            "name": "googleRatingsBarReviewsLink",
+                            "label": "URL to view reviews on Google",
+                            "type": "url",
+                            "showLinkTextField": true
+                        }
+                    ]
                 },
                 {
-                    "name": "blockGoogleRatingsBarPadding",
-                    "label": "Padding",
-                    "type": "padding",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar-padding"
-                    }
+                    "name": "General styles",
+                    "fields": [
+                        {
+                            "name": "blockGoogleRatingsBarBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar-background"
+                            }
+                        },
+                        {
+                            "name": "blockGoogleRatingsBarPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar-padding"
+                            }
+                        },
+                        {
+                            "name": "blockGoogleRatingsBarTypography",
+                            "label": "Overall typography",
+                            "type": "typography",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "name": "blockGoogleRatingsBarTypography",
-                    "label": "Overall typography",
-                    "type": "typography",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar"
-                    }
+                    "name": "Company name",
+                    "fields": [
+                        {
+                            "name": "blockGoogleRatingsBarCompanyNameTypography",
+                            "label": "Company name typography",
+                            "type": "typography",
+                            "useTextAlign": false,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar-company"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "name": "blockGoogleRatingsBarCompanyNameTypography",
-                    "label": "Company name typography",
-                    "type": "typography",
-                    "useTextAlign": false,
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar-company"
-                    }
+                    "name": "Rating",
+                    "fields": [
+                        {
+                            "name": "blockGoogleRatingsBarRatingTypography",
+                            "label": "Rating typography",
+                            "type": "typography",
+                            "description": "Styles for the average rating, total number of stars, and total number of reviews",
+                            "useTextAlign": false,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar-rating"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "name": "blockGoogleRatingsBarRatingTypography",
-                    "label": "Rating typography",
-                    "type": "typography",
-                    "description": "Styles for the average rating, total number of stars, and total number of reviews",
-                    "useTextAlign": false,
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar-rating"
-                    }
+                    "name": "Stars",
+                    "fields": [
+                        {
+                            "name": "blockGoogleRatingsBarStarsTypography",
+                            "label": "Stars typography",
+                            "type": "typography",
+                            "description": "Styles for the stars and the average rating text before the stars",
+                            "useTextAlign": false,
+                            "usePadding": true,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar-stars"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "name": "blockGoogleRatingsBarStarsTypography",
-                    "label": "Stars typography",
-                    "type": "typography",
-                    "description": "Styles for the stars and the average rating text before the stars",
-                    "useTextAlign": false,
-                    "usePadding": true,
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar-stars"
-                    }
-                },
-                {
-                    "name": "blockGoogleRatingsBarLinkTypography",
-                    "label": "Reviews link typography",
-                    "type": "typography",
-                    "description": "Styles for the link text to view reviews",
-                    "useTextAlign": false,
-                    "useHover": true,
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--GoogleRatingBar-link"
-                    }
+                    "name": "Review link",
+                    "fields": [
+                        {
+                            "name": "blockGoogleRatingsBarLinkTypography",
+                            "label": "Reviews link typography",
+                            "type": "typography",
+                            "description": "Styles for the link text to view reviews",
+                            "useTextAlign": false,
+                            "useHover": true,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--GoogleRatingBar-link"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -1673,9 +1707,7 @@
                             "name": "size",
                             "label": "Size",
                             "type": "size",
-                            "allowedUnits": [
-                                "px"
-                            ]
+                            "allowedUnits": ["px"]
                         }
                     ]
                 }
@@ -2325,9 +2357,7 @@
                             "label": "Border size",
                             "type": "size",
                             "defaultValue": "1px",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--CalendarGrid-cell-border-size"
@@ -2420,9 +2450,7 @@
                             "type": "size",
                             "description": "The outline size of the current day cell. Use an outline instead of a background color for a subtle highlight",
                             "default": "2px",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--CalendarGrid-today-cell-outline-size"
@@ -2475,9 +2503,7 @@
                             "label": "Border size",
                             "type": "size",
                             "defaultValue": "1px",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--CalendarMiniGrid-cell-border-size"
@@ -2980,9 +3006,7 @@
                             "name": "textInputBorderWidth",
                             "label": "Border width",
                             "type": "size",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "defaultValue": "1px",
                             "render": {
                                 "type": "css-head",
@@ -3048,9 +3072,7 @@
                             "name": "selectInputBorderWidth",
                             "label": "Border width",
                             "type": "size",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "defaultValue": "1px",
                             "render": {
                                 "type": "css-head",
@@ -3952,9 +3974,7 @@
                             "name": "dropdownMinWidth",
                             "label": "Minimum width",
                             "type": "size",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "defaultValue": "220",
                             "render": {
                                 "type": "css-head",
@@ -3965,9 +3985,7 @@
                             "name": "dropdownMaxWidth",
                             "label": "Maximum width",
                             "type": "size",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "defaultValue": "300",
                             "render": {
                                 "type": "css-head",
@@ -5603,9 +5621,7 @@
                             "label": "Horizontal rule size",
                             "type": "size",
                             "defaultValue": "1px",
-                            "allowedUnits": [
-                                "px"
-                            ],
+                            "allowedUnits": ["px"],
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-hrule-width"

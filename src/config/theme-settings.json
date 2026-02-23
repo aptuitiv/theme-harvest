@@ -1,18 +1,6 @@
 {
     "groups": [
         {
-            "name": "Blocks - Google Ratings Bar",
-            "description": "Settings for the Google Ratings Bar",
-            "fields": [
-                {
-                    "name": "googleRatingsBarReviewsLink",
-                    "label": "URL to view reviews on Google",
-                    "type": "url",
-                    "showLinkTextField": true
-                }
-            ]
-        },
-        {
             "name": "Blocks - Large Banner Slider",
             "description": "Configuration for the Large Banner Slider block. Styles are under Blocks - Banners under the Styles tab",
             "fields": [
