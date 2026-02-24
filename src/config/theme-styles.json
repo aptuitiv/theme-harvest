@@ -229,6 +229,37 @@
                             }
                         },
                         {
+                            "name": "bannerContentBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-content-background"
+                            }
+                        },
+                        {
+                            "name": "bannerContentBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Banner-content"
+                            }
+                        },
+                        {
+                            "name": "bannerContentBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Banner-content",
+                                "config": {
+                                    "defaultValue": "none",
+                                    "combine": false
+                                }
+                            }
+                        },
+                        {
                             "name": "bannerContentButtonGap",
                             "label": "Space between buttons",
                             "type": "size",

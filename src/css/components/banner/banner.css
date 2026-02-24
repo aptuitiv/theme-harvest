@@ -70,6 +70,7 @@
 \* ------------------------------------ */
 
 .Banner-content {
+    background-color: var(--Banner-content-background);
     display: flex;
     padding: var(--Banner-padding-sm);
     position: relative;
