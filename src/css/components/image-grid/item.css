@@ -12,6 +12,16 @@
     text-decoration: none;
 }
 
+.ImageGridItem-link {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+}
+
+.ImageGridItem-link:hover {
+    text-decoration: none;
+}
+
 .ImageGridItem-image {
     position: relative;
 }
@@ -184,10 +194,4 @@
     text-align: var(--ImageGridItem-content-text-align);
     text-decoration: var(--ImageGridItem-content-text-decoration, none);
     text-transform: var(--ImageGridItem-content-text-transform);
-}
-
-.ImageGridItem:hover .ImageGridItem-content {
-    color: var(--ImageGridItem-content-color-hover);
-    font-style: var(--ImageGridItem-content-font-style-hover);
-    text-decoration: var(--ImageGridItem-content-text-decoration-hover);
 }
