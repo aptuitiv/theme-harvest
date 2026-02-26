@@ -13,9 +13,13 @@
 
 .SidebarBox-heading {
     align-items: center;
-    background: transparent;
+    background: var(--SidebarBox-heading-background);
     display: flex;
     gap: 5px;
+}
+
+.SidebarBox-heading:hover {
+    background: var(--SidebarBox-heading-background-hover);
 }
 
 .SidebarBox-item {

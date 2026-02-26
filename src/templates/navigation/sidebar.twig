@@ -6,10 +6,6 @@
         <li class="{{ class|trim }}">
             {# ASSIGN MENU LINK CLASS #}
             {% set item.link.class = item.link.class ~ ' SidebarNav-link' %}
-            {# Highlight the parent navigation item. It would be the first item #}
-            {% if hasParentItem and loop.index == 1 %}
-                {% set item.link.class = item.link.class ~ ' SidebarNav-link--isParent' %}
-            {% endif %}
 
             {{ item.link.tag }}
             {% if item.subItems %}
@@ -27,5 +23,8 @@
 
 {# Build the navigation menu #}
 <ul class="SidebarNav">
-    {{ macros.menu_items(items, true) }}
+    {% set first = items|first %}
+    {% set first.link.class = first.link.class ~ ' SidebarBox-heading' %}
+    {{ first.link.tag }}
+    {{ macros.menu_items(items|slice(1), true) }}
 </ul>
