@@ -60,3 +60,27 @@
         {% do _page.registerJs('masonry/masonry.pkgd.min.js'|theme_url) %}
     {% endif %}
 {% endmacro %}
+
+{#
+ # Outputs the container width class for blocks
+ # width: The width field value for the block
+#}
+{% macro blockWidth(width) %}
+{% if width == 'narrow' %} Container--narrow{% elseif width == 'small' %} Container--small{% endif %}
+{% endmacro %}
+
+{#
+ # Outputs the margin class for blocks
+ # margin: The margin field value for the block
+#}
+{% macro blockMargin(margin) %}
+{% if margin == 'regular' %} my-3 my-5-md{% elseif margin == 'regular-above' %} mt-3 mt-5-md{% elseif margin == 'regular-below' %} mb-3 mb-5-md{% elseif margin == 'large' %} my-4 my-6-md my-8-lg{% elseif margin == 'large-above' %} mt-4 mt-6-md mt-8-lg{% elseif margin == 'large-below' %} mb-4 mb-6-md mb-8-lg{% endif %}
+{% endmacro %}
+
+{#
+ # Outputs the padding class for blocks
+ # padding: The padding field value for the block
+#}
+{% macro blockPadding(padding) %}
+{% if padding == 'regular' %} py-3 py-5-md{% elseif padding == 'regular-above' %} pt-3 pt-5-md{% elseif padding == 'regular-below' %} pb-3 pb-5-md{% elseif padding == 'large' %} py-4 py-6-md py-8-lg{% elseif padding == 'large-above' %} pt-4 pt-6-md pt-8-lg{% elseif padding == 'large-below' %} pb-4 pb-6-md pb-8-lg{% endif %}
+{% endmacro %}

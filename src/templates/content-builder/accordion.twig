@@ -1,5 +1,6 @@
 {% if items|length > 0 %}
-    <div class="Container Container--pad"{% if contentIsFaqs %} itemscope itemtype="https://schema.org/FAQPage"{% endif %}>
+    {% import 'macros/macros' as macros %}
+    <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}"{% if contentIsFaqs %} itemscope itemtype="https://schema.org/FAQPage"{% endif %}>
         {% for item in items %}
             <div class="Accordion js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}"{% if contentIsFaqs %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% endif %}>
                 <div class="Accordion-heading js-accordionHeading">
