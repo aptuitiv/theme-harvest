@@ -7,12 +7,14 @@
     {% endblock %}
 </div>
 
-<div class="Container Container--pad Container--narrow ContentBg">
+<div class="Container Container--pad ContentBg">
     {% if _core.theme.settings.showBreadcrumb == "yes" and _page.isHome == false %}
         {{ _page.breadcrumb() }}
     {% endif %}
-    <div class="Content clearfix">
-        <main id="main">{% block main _page.content() %}</main>
+    <div class="Container Container--narrow">
+        <div class="Content clearfix">
+            <main id="main">{% block main _page.content() %}</main>
+        </div>
     </div>
 </div>
 
