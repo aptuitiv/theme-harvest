@@ -1,12 +1,16 @@
 {% if items|length > 0 %}
-    <div class="Container Container--pad">
+    <div class="Container Container--pad"{% if contentIsFaqs %} itemscope itemtype="https://schema.org/FAQPage"{% endif %}>
         {% for item in items %}
-            <div class="Accordion js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}">
+            <div class="Accordion js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}"{% if contentIsFaqs %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% endif %}>
                 <div class="Accordion-heading js-accordionHeading">
-                    <span class="Accordion-title">{{ item.heading }}</span>
+                    <span class="Accordion-title"{% if contentIsFaqs %} itemprop="name"{% endif %}>{{ item.heading }}</span>
                     <span class="Accordion-icon"></span>
                 </div>
-                <div class="Accordion-content clearfix last-child-mb-0 js-accordionContent">{{ item.content }}</div>
+                <div class="Accordion-content clearfix last-child-mb-0 js-accordionContent"{% if contentIsFaqs %} itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"{% endif %}>
+                    {% if contentIsFaqs %}<div itemprop="text">{% endif %}
+                    {{ item.content }}
+                    {% if contentIsFaqs %}</div>{% endif %}
+                </div>
             </div>
         {% endfor %}
     </div>
