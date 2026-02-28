@@ -19,7 +19,7 @@
                 {% do image.addSrcSet('500w').resize({w: 500}) %}
                 {% set wrapperClass = 'ImageWrapper ImageWrapper--' ~ imagePosition %}
                 {% if imageSize == 'two-third' %}
-                    {% set wrapperClass = wrapperClass ~ ' ImageWrapper--two-third' %}
+                    {% set wrapperClass = wrapperClass ~ ' ImageWrapper--twoThird' %}
                 {% elseif imageSize == 'third' %}
                     {% set wrapperClass = wrapperClass ~ ' ImageWrapper--third' %}
                 {% elseif imageSize == 'quarter' %}
