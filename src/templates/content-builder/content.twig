@@ -1,3 +1,4 @@
-<div class="Container Container--spaced {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+{% import 'macros/macros' as macros %}
+<div class="Container{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
     <div class="clearfix">{{ content }}</div>
 </div>

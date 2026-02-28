@@ -1,8 +1,9 @@
+{% import 'macros/macros' as macros %}
 {% set uniqueClass = 'WrapperWithBgImage--' ~random_string() %}
-<div class="WrapperWithBgImage WrapperWithBgImage--bg{{ background|pascal}} WrapperWithBgImage--{{ _core.theme.settings.blockWrapperWBgImageDisplay }} WrapperWithBgImage--marginTop{{ topMargin|pascal }}">
+<div class="WrapperWithBgImage WrapperWithBgImage--bg{{ background|pascal}} WrapperWithBgImage--{{ _core.theme.settings.blockWrapperWBgImageDisplay }}{{ macros.blockMargin(margin) }}">
     <div class="WrapperWithBgImage-bg {{ uniqueClass }}"></div>
     <div class="WrapperWithBgImage-fg WrapperWithBgImage-fg--bg{{ background|pascal}}"></div>
-    <div class="WrapperWithBgImage-content Container {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+    <div class="WrapperWithBgImage-content Container{{ macros.blockWidth(width) }}">
         {% for element in content.elements %}
             {{ element.content }}
         {% endfor %}

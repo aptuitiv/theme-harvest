@@ -1,5 +1,6 @@
-<div class="Wrapper Wrapper--bg{{ background|pascal}}{% if topMargin == 'none' %} mt-0{% endif %}">
-    <div class="Container {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+{% import 'macros/macros' as macros %}
+<div class="Wrapper Wrapper--bg{{ background|pascal}}{{ macros.blockMargin(margin) }}">
+    <div class="Container{{ macros.blockWidth(width) }}">
         {% for element in content.elements %}
             {{ element.content }}
         {% endfor %}
