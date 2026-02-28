@@ -99,7 +99,7 @@
 }
 
 /* postcss-bem-linter: ignore */
-.Banner-content p {
+.Banner-content :is(p, div):not(.h1, .h2, .h3, .h4, .h5, .h6) {
     font-size: var(--Banner-content-font-size, var(--base-typography-font-size, 1.8rem));
 }
 
