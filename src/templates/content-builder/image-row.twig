@@ -1,8 +1,7 @@
 {% if images|length > 0 %}
-    {% if _core.theme.settings.blockImageRowWidth == 'contained' %}
-        <div class="Container Container--pad">
-    {% endif %}
-        <div class="ImageRow{% if _core.theme.settings.blockImageRowImageGrayscale == 'yes' %} ImageRow--grayscale{% endif %}">
+    {% import 'macros/macros' as macros %}
+    <div class="ImageRow{% if _core.theme.settings.blockImageRowImageGrayscale == 'yes' %} ImageRow--grayscale{% endif %}{{ macros.blockMargin(margin) }}">
+        <div class="ImageRow-inner{{ macros.blockWidth(width, true) }}">
             {% for image in images %}
                 {% set image.image.class = 'ImageRow-image' %}
                 {% do image.image.lazy() %}
@@ -13,7 +12,5 @@
                 {% endif %}
             {% endfor %}
         </div>
-    {% if _core.theme.settings.blockImageRowWidth == 'contained' %}
-        </div>
-    {% endif %}
+    </div>
 {% endif %}

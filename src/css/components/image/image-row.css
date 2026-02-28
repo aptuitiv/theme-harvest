@@ -7,13 +7,15 @@
 /* @define ImageRow */
 
 .ImageRow {
-    align-items: center;
     background-color: var(--ImageRow-background, transparent);
+}
+
+.ImageRow-inner {
+    align-items: center;
     display: flex;
     flex-flow: row wrap;
     gap: var(--ImageRow-gap-sm, 10px);
     justify-content: center;
-    margin: var(--ImageRow-margin, 20px 0);
     padding: var(--ImageRow-padding, 0 20px);
 }
 

@@ -1449,16 +1449,6 @@
                     }
                 },
                 {
-                    "name": "blockImageRowMargin",
-                    "label": "Margin",
-                    "type": "margin",
-                    "defaultValue": "0 20px",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--ImageRow-margin"
-                    }
-                },
-                {
                     "name": "blockImageRowPadding",
                     "label": "Padding",
                     "type": "padding",
