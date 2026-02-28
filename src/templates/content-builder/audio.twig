@@ -1,10 +1,9 @@
 {% if audioFile %}
-    <div class="Container Container--pad">
-        <div class="my-5">
-            <audio controls preload="metadata" class="w-100">
-                <source src="{{ audioFile.src }}">
-                <p>Your browser can't display the audio player. <a href="{{ audioFile.src }}">Listen to the audio file: {{ audioFile.name }}</a>.</p>
-            </audio>
-        </div>
+    {% import 'macros/macros' as macros %}
+    <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
+        <audio controls preload="metadata" class="w-100">
+            <source src="{{ audioFile.src }}">
+            Your browser does not support the audio tag.
+        </audio>
     </div>
 {% endif %}

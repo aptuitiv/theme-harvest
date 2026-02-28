@@ -1,1 +1,4 @@
-{{ collectionWidget }} 
+{% import 'macros/macros' as macros %}
+<div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
+    {{ collectionWidget }}
+</div>

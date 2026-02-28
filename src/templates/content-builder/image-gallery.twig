@@ -3,7 +3,7 @@
 
     {% if displayAs == 'slider' %}
         {# DISPLAY AS A SLIDER #}
-        <div class="Container Container--pad">
+        <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
             {% set class = 'js-imageSlider--' ~ random_string() %}
             <div class="Slider splide {{ class }}" role="group" aria-label="Image Slider">
                 <div class="splide__track">
@@ -137,7 +137,7 @@
             {% endif %}
         {% endif %}
 
-        <div class="Container Container--pad">
+        <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
             <div class="ImageGallery grid {{ ncClass }}">
                 {% for image in images %}
                     {% set imageLink = image.image.src %}

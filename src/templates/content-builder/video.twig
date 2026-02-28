@@ -1,5 +1,6 @@
 {% if video %}
-    <div class="Container Container--pad">
+    {% import 'macros/macros' as macros %}
+    <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
         <div class="my-5">
             {% if thumbnail %}
                 {% do thumbnail.crop({ ar: '16x9' }) %}

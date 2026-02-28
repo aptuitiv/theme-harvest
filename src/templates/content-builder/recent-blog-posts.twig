@@ -1,8 +1,8 @@
 {% import 'macros/macros' as macros %}
 {% set posts = _api.blog.recentPosts.limit(numberOfPosts) %}
 {% if posts %}
-    <div class="Wrapper Wrapper--bg{{ background|pascal}}{#{% if background == 'None' %} Wrapper--noPad{% endif %}#}">
-        <div class="Container {{ width == 'Narrow' ? 'Container--narrow' : 'Container--pad' }}">
+    <div class="Wrapper Wrapper--bg{{ background|pascal}}{{ macros.blockMargin(margin) }}">
+        <div class="Container {{ macros.blockWidth(width, true) }}">
             <div class="RecentPosts">
                 <div class="flex flex-col align-center py-1">
                     {% if heading %}

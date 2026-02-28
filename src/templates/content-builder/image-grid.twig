@@ -125,7 +125,7 @@
     {% endmacro %}
 
     {# Build the image grid item #}
-    <div class="Container Container--pad">
+    <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
         <div class="ImageGrid grid {{ ncClass }}">
             {% for column in images %}
                 {% set hasLink = (linkType == 'link' and column.link) or linkType == 'lightbox' %}

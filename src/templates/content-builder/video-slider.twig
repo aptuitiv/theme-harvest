@@ -2,7 +2,7 @@
 
 {% if videos %}
     {% set mainSliderClass = 'js-imageSlider' ~ random_string(8)|upper %}
-    <div class="Container Container--pad">
+    <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
         <div class="splide {{ mainSliderClass }}" role="group" aria-label="Video Slider">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -44,7 +44,7 @@
                         }
                     }
                 });
-                
+
                 const thumbnails = new Splide('.{{ thumbSliderClass }}', {
                     fixedWidth: 240,
                     fixedHeight: 180,
@@ -60,7 +60,7 @@
                         }
                     }
                 });
-                
+
                 main.sync(thumbnails);
                 main.mount(window.splide.Extensions);
                 thumbnails.mount();

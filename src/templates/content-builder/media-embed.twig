@@ -1,5 +1,6 @@
+{% import 'macros/macros' as macros %}
 {% set id = "js-iframe--" ~ random_string() %}
-<div class="Container Container--pad">
+<div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
     {% for url in embedUrl.urlInfo %}
         {% if url.providerName|lower == 'youtube' %}
             {% set url.iframeEmbed.src = url.iframeEmbed.src ~ '&rel=0' %}
@@ -13,6 +14,6 @@
                     }
                 });
             {% endinlinejs %}
-        </div> 
+        </div>
     {% endfor %}
 </div>

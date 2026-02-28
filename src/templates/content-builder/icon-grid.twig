@@ -1,5 +1,6 @@
 {% if icons|length > 0 %}
-    <div class="IconGrid" style="--IconGrid-textPosition: {{ textPosition }};">
+    {% import 'macros/macros' as macros %}
+    <div class="IconGrid{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}" style="--IconGrid-textPosition: {{ textPosition }};">
         {% for icon in icons %}
             {% set icon.image.class = 'IconGrid-icon' %}
             {% set iconContent %}

@@ -3,7 +3,7 @@
     {% if imageAlignment == 'alternate' %}
         {% set imageAlignment = 'left' %}
     {% endif %}
-    <div class="Container Container--pad">
+    <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
         {% for person in people %}
             {% if alignImages == 'alternate' %}
                 {% set imageAlignment = cycle(['left', 'right'], loop.index0) %}
