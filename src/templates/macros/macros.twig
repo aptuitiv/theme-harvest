@@ -64,8 +64,18 @@
 {#
  # Outputs the container width class for blocks
  # width: The width field value for the block
+ # useRegularWidth: Whether to use the regular width class. This is for blocks that could be full width, but want the option to be contained.
+ #}
+{% macro blockWidth(width, useRegularWidth = false) %}
+{% if useRegularWidth && (width in ['regular', 'narrow', 'small']) %} Container Container--pad{{ _self.blockNarrowSmallWidth(width) }}{% else %}{{ _self.blockNarrowSmallWidth(width) }}{% endif %}
+{% endmacro %}
+
+{#
+ # Outputs the narrow or small width class for the container.
+ # Unlike blockWidth, this does not handle the regular width class.
+ # width: The width field value for the block
 #}
-{% macro blockWidth(width) %}
+{% macro blockNarrowSmallWidth(width) %}
 {% if width == 'narrow' %} Container--narrow{% elseif width == 'small' %} Container--small{% endif %}
 {% endmacro %}
 
