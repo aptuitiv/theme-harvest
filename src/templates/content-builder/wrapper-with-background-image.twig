@@ -3,7 +3,7 @@
 <div class="WrapperWithBgImage WrapperWithBgImage--bg{{ background|pascal}} WrapperWithBgImage--{{ _core.theme.settings.blockWrapperWBgImageDisplay }}{{ macros.blockMargin(margin) }}">
     <div class="WrapperWithBgImage-bg {{ uniqueClass }}"></div>
     <div class="WrapperWithBgImage-fg WrapperWithBgImage-fg--bg{{ background|pascal}}"></div>
-    <div class="WrapperWithBgImage-content Container{{ macros.blockWidth(width) }}">
+    <div class="WrapperWithBgImage-content Container first-child-mt-0 last-child-mb-0{{ macros.blockWidth(width) }}">
         {% for element in content.elements %}
             {{ element.content }}
         {% endfor %}

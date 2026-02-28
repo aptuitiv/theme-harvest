@@ -1,6 +1,6 @@
 {% import 'macros/macros' as macros %}
 <div class="Wrapper Wrapper--bg{{ background|pascal}}{{ macros.blockMargin(margin) }}">
-    <div class="Container{{ macros.blockWidth(width) }}">
+    <div class="Container first-child-mt-0 last-child-mb-0{{ macros.blockWidth(width) }}">
         {% for element in content.elements %}
             {{ element.content }}
         {% endfor %}
