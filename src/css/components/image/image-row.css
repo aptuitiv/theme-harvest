@@ -1,0 +1,37 @@
+/* ===========================================================================
+    Image row styles
+    The image row is a block that displays a row of images.
+    This is sometimes used to show a row of logos.
+=========================================================================== */
+
+/* @define ImageRow */
+
+.ImageRow {
+    align-items: center;
+    background-color: var(--ImageRow-background, transparent);
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--ImageRow-gap-sm, 10px);
+    justify-content: center;
+    margin: var(--ImageRow-margin, 20px 0);
+    padding: var(--ImageRow-padding, 0 20px);
+}
+
+.ImageRow-image {
+    max-height: var(--ImageRow-image-max-height, auto);
+    width: auto;
+}
+
+.ImageRow--grayscale .ImageRow-image {
+    filter: grayscale(1);
+}
+
+.ImageRow--grayscale .ImageRow-image:hover {
+    filter: grayscale(0);
+}
+
+@media (--m-md) {
+    .ImageRow {
+        gap: var(--ImageRow-gap, 30px);
+    }
+}

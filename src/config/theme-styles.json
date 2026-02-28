@@ -1025,77 +1025,6 @@
             ]
         },
         {
-            "name": "Blocks - Image Bar",
-            "description": "Styles for the \"Image Grid\" block.",
-            "fields": [
-                {
-                    "name": "blockImageBarWidth",
-                    "label": "Width",
-                    "type": "select",
-                    "options": {
-                        "contained": "Same width as the content",
-                        "full": "Full width"
-                    }
-                },
-                {
-                    "name": "blockImageBarImageGrayscale",
-                    "label": "Display the images as grayscale until hover",
-                    "type": "switch"
-                },
-                {
-                    "name": "blockImageBarGap",
-                    "label": "Gap between images",
-                    "type": "size",
-                    "defaultValue": "30px",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--ImageBar-gap"
-                    }
-                },
-                {
-                    "name": "blockImageBarGapSm",
-                    "label": "Gap between images (small screens)",
-                    "type": "size",
-                    "defaultValue": "10px",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--ImageBar-gap-sm"
-                    }
-                },
-                {
-                    "name": "blockImageBarImageMaxHeight",
-                    "label": "Maximum height of images",
-                    "type": "size",
-                    "allowAuto": true,
-                    "defaultValue": "auto",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--ImageBar-image-max-height"
-                    }
-                },
-                {
-                    "name": "blockImageBarMargin",
-                    "label": "Margin",
-                    "type": "margin",
-                    "defaultValue": "0 20px",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--ImageBar-margin"
-                    }
-                },
-                {
-                    "name": "blockImageBarPadding",
-                    "label": "Padding",
-                    "type": "padding",
-                    "defaultValue": "0 20px",
-                    "render": {
-                        "type": "css-head",
-                        "cssVariable": "--ImageBar-padding"
-                    }
-                }
-            ]
-        },
-        {
             "name": "Blocks - Image Gallery / Slider",
             "description": "Styles for the \"Image Gallery\" block. This includes styles when it's displayed as a Grid or as a Slider.",
             "groups": [
@@ -1467,6 +1396,77 @@
                             }
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Blocks - Image Row",
+            "description": "Styles for the \"Image Row\" block.",
+            "fields": [
+                {
+                    "name": "blockImageRowBackground",
+                    "label": "Background color",
+                    "type": "color",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--ImageRow-background"
+                    }
+                },
+                {
+                    "name": "blockImageRowImageGrayscale",
+                    "label": "Display the images as grayscale until hover",
+                    "type": "switch"
+                },
+                {
+                    "name": "blockImageRowGap",
+                    "label": "Gap between images",
+                    "type": "size",
+                    "defaultValue": "30px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--ImageRow-gap"
+                    }
+                },
+                {
+                    "name": "blockImageRowGapSm",
+                    "label": "Gap between images (small screens)",
+                    "type": "size",
+                    "defaultValue": "10px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--ImageRow-gap-sm"
+                    }
+                },
+                {
+                    "name": "blockImageRowImageMaxHeight",
+                    "label": "Maximum height of images",
+                    "type": "size",
+                    "allowAuto": true,
+                    "defaultValue": "auto",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--ImageRow-image-max-height"
+                    }
+                },
+                {
+                    "name": "blockImageRowMargin",
+                    "label": "Margin",
+                    "type": "margin",
+                    "defaultValue": "0 20px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--ImageRow-margin"
+                    }
+                },
+                {
+                    "name": "blockImageRowPadding",
+                    "label": "Padding",
+                    "type": "padding",
+                    "defaultValue": "0 20px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--ImageRow-padding"
+                    }
                 }
             ]
         },

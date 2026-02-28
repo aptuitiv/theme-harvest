@@ -1,19 +1,19 @@
 {% if images|length > 0 %}
-    {% if _core.theme.settings.blockImageBarWidth == 'contained' %}
+    {% if _core.theme.settings.blockImageRowWidth == 'contained' %}
         <div class="Container Container--pad">
     {% endif %}
-        <div class="ImageBar{% if _core.theme.settings.blockImageBarImageGrayscale == 'yes' %} ImageBar--grayscale{% endif %}">
+        <div class="ImageRow{% if _core.theme.settings.blockImageRowImageGrayscale == 'yes' %} ImageRow--grayscale{% endif %}">
             {% for image in images %}
-                {% set image.image.class = 'ImageBar-image' %}
+                {% set image.image.class = 'ImageRow-image' %}
                 {% do image.image.lazy() %}
                 {% if image.url %}
-                    <a href="{image.url}" target="_blank" class="ImageBar-link">{{ image.image.tag }}</a>
+                    <a href="{image.url}" target="_blank" class="ImageRow-link">{{ image.image.tag }}</a>
                 {% else %}
                     {{ image.image.tag }}
                 {% endif %}
             {% endfor %}
         </div>
-    {% if _core.theme.settings.blockImageBarWidth == 'contained' %}
+    {% if _core.theme.settings.blockImageRowWidth == 'contained' %}
         </div>
     {% endif %}
 {% endif %}
