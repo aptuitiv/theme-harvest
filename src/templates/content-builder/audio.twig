@@ -1,6 +1,10 @@
 {% if audioFile %}
-    <audio controls preload="metadata" style="width: 100%">
-        <source src="{{ audioFile.src }}">
-        <p>Your browser can't display the audio player. <a href="{{ audioFile.src }}">Listen to the audio file: {{ audioFile.name }}</a>.</p>
-    </audio>
+    <div class="Container Container--pad">
+        <div class="my-5">
+            <audio controls preload="metadata" class="w-100">
+                <source src="{{ audioFile.src }}">
+                <p>Your browser can't display the audio player. <a href="{{ audioFile.src }}">Listen to the audio file: {{ audioFile.name }}</a>.</p>
+            </audio>
+        </div>
+    </div>
 {% endif %}
