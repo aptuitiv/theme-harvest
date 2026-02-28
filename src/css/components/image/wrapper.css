@@ -1,5 +1,5 @@
 /* =========================================================================== *\
-    This is used for the Image component.
+    This is used for the Small Image component.
     It is based on the Cacao image component.
     https://aptuitiv.github.io/cacao/styles/image
     The variables come from the Cacao image variables.
@@ -46,4 +46,26 @@
     .ImageWrapper--right {
         max-width: var(--image-max-width-md);
     }
+}
+
+/* Size modifiers for wrap mode */
+
+.ImageWrapper--half {
+    --image-max-width-sm: 50%;
+    --image-max-width-md: 50%;
+}
+
+.ImageWrapper--two-third {
+    --image-max-width-sm: 50%;
+    --image-max-width-md: 66.666%;
+}
+
+.ImageWrapper--third {
+    --image-max-width-sm: 50%;
+    --image-max-width-md: 33.333%;
+}
+
+.ImageWrapper--quarter {
+    --image-max-width-sm: 50%;
+    --image-max-width-md: 25%;
 }

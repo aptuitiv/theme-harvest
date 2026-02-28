@@ -1,45 +1,89 @@
 {% import 'macros/macros' as macros %}
-{% if image and content %}
-    {% set ncClass = "nc-1 nc-2-lg" %}
-    {% set imageCol = 'col-1-1 col-1-2-lg' %}
-    {% set contentCol = 'col-1-1 col-1-2-lg' %}
-    {% if imageSize == 'Third' %}
-        {% set imageCol = 'col-1-1 col-1-2-md col-1-3-lg' %}
-        {% set contentCol = 'col-1-1 col-1-2-md col-2-3-lg' %}
-        {% set ncClass = "nc-1 nc-2-md" %}
-    {% elseif imageSize == 'Quarter' %}
-        {% set imageCol = 'col-1-1 col-1-2-md col-1-4-lg' %}
-        {% set contentCol = 'col-1-1 col-1-2-md col-3-4-lg' %}
-        {% set ncClass = "nc-1 nc-2-md" %}
-    {% endif %}
-    {% if imagePosition == 'Right' %}
-        {% set imageCol = imageCol ~ ' order-2-lg' %}
-        {% set contentCol = contentCol ~ ' order-1-lg' %}
-    {% endif %}
 
-    <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
-        <div class="grid g-2 g-4-lg {{ ncClass }}">
-            <div class="{{ imageCol }}">
-                {% do image.resize(800) %}
-                {% do image.lazy() %}
-                {% set image.class = "w-100" %}
-                {% if verticalAlignment == 'center' || verticalAlignment == 'center-image' %}
-                    <div class="flex align-center h-100">
-                        {{ image.tag }}
-                    </div>
-                {% else %}
-                    {{ image.tag }}
-                {% endif %}
-            </div>
-            <div class="{{ contentCol }}">
-                {% if verticalAlignment == 'center' %}
-                    <div class="flex align-center h-100 w-1-1">
-                        <div class="clearfix first-child-mt-0 last-child-mb-0 w-1-1">{{ content }}</div>
-                    </div>
-                {% else %}
-                    <div class="clearfix first-child-mt-0 last-child-mb-0">{{ content }}</div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+{# Common image setup #}
+{% if image %}
+    {% do image.lazy() %}
 {% endif %}
+
+{# Optional caption #}
+{% set captionHtml = '' %}
+{% if caption is defined and caption %}
+    {% set captionHtml = '<div class="ImageCaption">' ~ caption ~ '</div>' %}
+{% endif %}
+
+<div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
+    {% if contentDisplay == 'wrap' %}
+        {# Wrap mode: image floats with text wrapping around it #}
+        <div class="clearfix">
+            {% if image %}
+                {% do image.addSrcSet('500w').resize({w: 500}) %}
+                {% set wrapperClass = 'ImageWrapper ImageWrapper--' ~ imagePosition %}
+                {% if imageSize == 'two-third' %}
+                    {% set wrapperClass = wrapperClass ~ ' ImageWrapper--two-third' %}
+                {% elseif imageSize == 'third' %}
+                    {% set wrapperClass = wrapperClass ~ ' ImageWrapper--third' %}
+                {% elseif imageSize == 'quarter' %}
+                    {% set wrapperClass = wrapperClass ~ ' ImageWrapper--quarter' %}
+                {% else %}
+                    {% set wrapperClass = wrapperClass ~ ' ImageWrapper--half' %}
+                {% endif %}
+                <div class="{{ wrapperClass }}">{{ image.tag }}{{ captionHtml }}</div>
+            {% endif %}
+            {{ content }}
+        </div>
+    {% else %}
+        {# Column mode (default): image and content in separate columns #}
+        {% if image %}
+            {% set ncClass = "nc-1 nc-2-lg" %}
+            {% set imageCol = 'col-1-1 col-1-2-lg' %}
+            {% set contentCol = 'col-1-1 col-1-2-lg' %}
+            {% if imageSize == 'two-third' %}
+                {% set imageCol = 'col-1-1 col-1-2-md col-2-3-lg' %}
+                {% set contentCol = 'col-1-1 col-1-2-md col-1-3-lg' %}
+                {% set ncClass = "nc-1 nc-2-md" %}
+            {% elseif imageSize == 'third' %}
+                {% set imageCol = 'col-1-1 col-1-2-md col-1-3-lg' %}
+                {% set contentCol = 'col-1-1 col-1-2-md col-2-3-lg' %}
+                {% set ncClass = "nc-1 nc-2-md" %}
+            {% elseif imageSize == 'quarter' %}
+                {% set imageCol = 'col-1-1 col-1-2-md col-1-4-lg' %}
+                {% set contentCol = 'col-1-1 col-1-2-md col-3-4-lg' %}
+                {% set ncClass = "nc-1 nc-2-md" %}
+            {% endif %}
+            {% if imagePosition == 'right' %}
+                {% set imageCol = imageCol ~ ' order-2-lg' %}
+                {% set contentCol = contentCol ~ ' order-1-lg' %}
+            {% endif %}
+
+            {% do image.resize(800) %}
+            {% set image.class = "w-100" %}
+
+            <div class="grid g-2 g-4-lg {{ ncClass }}">
+                <div class="{{ imageCol }}">
+                    {% if verticalAlignment == 'center' || verticalAlignment == 'center-image' %}
+                        <div class="flex flex-col justify-center h-100">
+                            {{ image.tag }}
+                            {{ captionHtml }}
+                        </div>
+                    {% else %}
+                        {{ image.tag }}
+                        {{ captionHtml }}
+                    {% endif %}
+                </div>
+                {% if content %}
+                    <div class="{{ contentCol }}">
+                        {% if verticalAlignment == 'center' %}
+                            <div class="flex align-center h-100 w-1-1">
+                                <div class="clearfix first-child-mt-0 last-child-mb-0 w-1-1">{{ content }}</div>
+                            </div>
+                        {% else %}
+                            <div class="clearfix first-child-mt-0 last-child-mb-0">{{ content }}</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% elseif content %}
+            <div class="clearfix first-child-mt-0 last-child-mb-0">{{ content }}</div>
+        {% endif %}
+    {% endif %}
+</div>
