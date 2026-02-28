@@ -1012,6 +1012,9 @@
                             "padding": {
                                 "defaultValue": "2px 0 0 0"
                             },
+                            "textAlign": {
+                                "defaultValue": "center"
+                            },
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".ImageCaption"
