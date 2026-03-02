@@ -28,13 +28,14 @@
                     doCss
                 ) }}
             {% endif %}
-             {% if pagination is iterable || slide.content|length > 0 %}
+
+             {% if (pagination is iterable && pagination|length > 0) || slide.content|length > 0 || slide.heading|length > 0 %}
                 {% if slide.image or slide.video %}
                     <div class="Banner-fg"></div>
                 {% endif %}
                 <div class="Banner-content">
                     <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
-                        {% if pagination is iterable %}
+                        {% if pagination is iterable && pagination|length > 0 %}
                             <ul class="BannerSlider-pagination">
                                 {% for text in pagination %}
                                     <li class="BannerSlider-paginationItem"><button class="BannerSlider-paginationButton js-slidePagination{{ paginationClass }}" data-slide="{{ loop.index0 }}">{{ text }}</button></li>

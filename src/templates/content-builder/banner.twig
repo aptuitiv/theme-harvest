@@ -19,20 +19,22 @@
             ) }}
         {% endif %}
 
-        {% if image or video %}
-            <div class="Banner-fg"></div>
-        {% endif %}
-        <div class="Banner-content">
-            <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
-                {% if heading %}
-                    {% if displayHeadingAsH1 %}
-                        <h1>{{ heading }}</h1>
-                    {% else %}
-                        <div class="h1">{{ heading }}</div>
+        {% if content|length > 0 or heading|length > 0 %}
+            {% if image or video %}
+                <div class="Banner-fg"></div>
+            {% endif %}
+            <div class="Banner-content">
+                <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
+                    {% if heading %}
+                        {% if displayHeadingAsH1 %}
+                            <h1>{{ heading }}</h1>
+                        {% else %}
+                            <div class="h1">{{ heading }}</div>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                {{ content }}
+                    {{ content }}
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 {% endif %}
