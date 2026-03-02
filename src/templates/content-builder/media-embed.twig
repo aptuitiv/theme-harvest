@@ -5,7 +5,7 @@
         {% if url.providerName|lower == 'youtube' %}
             {% set url.iframeEmbed.src = url.iframeEmbed.src ~ '&rel=0' %}
         {% endif %}
-        <div class="embed my-5 aspect-{{ embedRatio|replace(':', '-') }} {{ id }}">
+        <div class="embed aspect-{{ embedRatio|replace(':', '-') }} {{ id }}">
             {% inlinejs %}
                 loadjs.ready('main', {
                     success: function() {
