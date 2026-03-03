@@ -16,6 +16,8 @@
     background: var(--SidebarBox-heading-background);
     display: flex;
     gap: 5px;
+    justify-content: var(--SidebarBox-heading-text-align);
+    text-align: var(--SidebarBox-heading-text-align);
 }
 
 .SidebarBox-heading:hover {
