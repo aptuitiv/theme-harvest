@@ -156,6 +156,16 @@
     {{ _self.buildFieldDescription(field, 'below') }}
 {% endmacro %}
 
+{# Build the grid form button #}
+{% macro buildGridFormButton(buttonText, additionalButtonClass) %}
+    <div class="grid mb-2 justify-end-md nc-1">
+        <div class="col-1-1 col-3-4-lg ps-1-lg">
+            {{ _self.requiredMessage() }}
+            {{ _self.formButton(buttonText, additionalButtonClass) }}
+        </div>
+    </div>
+{% endmacro %}
+
 {# Build the Label Above Field fields #}
 {% macro buildLabelAboveFieldFields(form) %}
     {% for field in form.fields %}
