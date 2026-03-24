@@ -95,3 +95,5 @@ const accordion = {
         container.setAttribute('data-collapsed', 'yes');
     },
 };
+
+export default accordion;

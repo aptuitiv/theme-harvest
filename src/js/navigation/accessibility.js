@@ -1,84 +1,3 @@
-/* =========================================================================== *\
-    JavaScript for navigation menus
-\* =========================================================================== */
-
-/**
- * Small screen navigation
- */
-
-// eslint-disable-next-line no-unused-vars -- This is a global variable
-const smallScreenNav = {
-
-    /**
-     * Initialization
-     */
-    init() {
-        // The max window width where the small screen navigation is shown
-        const width = 1024;
-
-        // Select elements
-        const body = document.querySelector('body');
-        const button = document.querySelector('.js-ssNavBtn');
-        const nav = document.querySelector('.js-navBar');
-        const dropdowns = document.querySelectorAll('.js-dropdown');
-
-        // Make sure that the navigation gets displayed if the window resizes.
-        // If you resize to make the small screen nav display, show and hide the nav,
-        // and then resize so that regular nav should show, the regular nav doesn't show
-        // because there are inline styles on the nav to hide it.
-        // We do this by clearing out any inline CSS styles so that the styles
-        // from the stylesheet are used.
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= width) {
-                nav.style.display = '';
-                nav.style.opacity = '';
-            }
-        });
-
-        /**
-         * Function to toggle showing and hiding the small screen navigation
-         */
-        function toggleNav() {
-            button.classList.toggle('is-active');
-            if (nav.dataset.open === 'yes') {
-                // Hide the menu
-                nav.dataset.open = 'no';
-                button.setAttribute('aria-expanded', 'false');
-                body.style.overflow = '';
-            } else {
-                // Show the menu
-                nav.dataset.open = 'yes';
-                button.setAttribute('aria-expanded', 'true');
-                // Set the offset position for the menu
-                const buttonPosition = button.getBoundingClientRect().top + button.offsetHeight + 10;
-                nav.style.setProperty('--navbar-offset', `${buttonPosition}px`);
-                // Prevent scrolling on the body tag.
-                // Unfortunately, this doesn't work on iOS devices as of 2024. This is a known issue with no good workaround
-                // except to add "position: fixed" to the body tag, but that causes other issues.
-                body.style.overflow = 'hidden';
-            }
-        }
-
-        if (button !== null) {
-            // Small screen nav menu (hamburger) button click
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleNav();
-            });
-        }
-
-        Array.from(dropdowns).forEach((dropdown) => {
-            dropdown.addEventListener('click', (e) => {
-                if (window.innerWidth <= width) {
-                    e.preventDefault();
-                    e.target.classList.toggle('is-active');
-                    e.target.parentElement.classList.toggle('is-active');
-                }
-            });
-        });
-    },
-};
-
 /**
  * Adds accessibly functionality to the main navigation.
  * Adds support for navigating with the keyboard.
@@ -103,8 +22,7 @@ const smallScreenNav = {
  * Add "js-dropdownParent" class to a <li> tag that contains a sub list for a drop down.
  * Add "js-dropdown" to any link tags that have a drop down.
  */
-// eslint-disable-next-line no-unused-vars -- This is a global variable
-const navAccess = {
+const navAccessibility = {
     init() {
         const menus = document.querySelectorAll('[data-access-nav]');
         if (menus.length > 0) {
@@ -192,8 +110,8 @@ const navAccess = {
                 sibling = el.nextElementSibling;
                 // If next element is a dropdown, expand it
                 if (
-                    sibling !== null
-                    && sibling.nodeName.toLowerCase() === 'ul'
+                    sibling !== null &&
+                    sibling.nodeName.toLowerCase() === 'ul'
                 ) {
                     this.activate(el.parentNode);
                 }
@@ -210,8 +128,8 @@ const navAccess = {
         } else {
             sibling = el.parentNode.previousElementSibling;
             if (
-                sibling !== null
-                && sibling.classList.contains('js-dropdownParent')
+                sibling !== null &&
+                sibling.classList.contains('js-dropdownParent')
             ) {
                 // Link before a sibling with dropdown (skip over dropdown)
                 focusEl = this.getPrevInLevel(el);
@@ -235,7 +153,7 @@ const navAccess = {
      */
     activate(el) {
         if (el.classList.contains('js-dropdownParent')) {
-            el.classList.add('is-active');
+            el.classList.add('is-focused');
             // change the aria-expanded and aria-hidden values on the <ul> tag
             el.querySelector('a').setAttribute('aria-expanded', 'true');
             const dropdownMenu = el.querySelector('ul.js-dropdownMenu');
@@ -252,7 +170,7 @@ const navAccess = {
      */
     deactivateParent(el) {
         const parent = this.getParent(el);
-        parent.parentNode.classList.remove('is-active');
+        parent.parentNode.classList.remove('is-focused');
         // change the aria-expanded and aria-hidden values on the <ul> tag
         parent.setAttribute('aria-expanded', 'false');
         const dropdownMenu = parent.querySelector('ul.js-dropdownMenu');
@@ -348,8 +266,8 @@ const navAccess = {
         let node = el;
         while (node !== document.body) {
             if (
-                node.classList.contains('js-dropdownParent')
-                || node.parentNode.classList.contains('js-mainNav')
+                node.classList.contains('js-dropdownParent') ||
+                node.parentNode.classList.contains('js-mainNav')
             ) {
                 break;
             }
@@ -388,3 +306,5 @@ const navAccess = {
         return el ? el.querySelector('a.js-navLink') : null;
     },
 };
+
+export default navAccessibility;

@@ -1,73 +1,74 @@
 {
-    "name": "aptuitiv-theme-harvest",
-    "version": "2.0.0",
-    "description": "",
-    "author": "Aptuitiv, Inc <hello@aptuitiv.com>",
-    "copyright": "Aptuitiv, Inc",
-    "license": "Apache-2.0",
-    "private": true,
-    "bugs": {
-        "email": "support@aptuitiv.com"
-    },
-    "browserslist": [
-        "> 0.5%",
-        "last 2 years",
-        "Firefox ESR",
-        "not dead"
-    ],
-    "scripts": {
-        "build": "aptuitiv-build build",
-        "copy": "aptuitiv-build copy",
-        "css": "aptuitiv-build css",
-        "download": "aptuitiv-build download -t",
-        "download-content-docs": "aptuitiv-build download -p docs",
-        "download-content-images": "aptuitiv-build download -p images",
-        "download-templates": "aptuitiv-build download -p theme/custom/templates",
-        "download-theme": "aptuitiv-build download -t",
-        "download-theme-config": "aptuitiv-build download -p theme/custom/config",
-        "download-theme-images": "aptuitiv-build download -p theme/custom/images",
-        "env": "aptuitiv-build env",
-        "export": "aptuitiv-build export",
-        "fonts": "aptuitiv-build push-fonts",
-        "format-theme-json": "aptuitiv-build format-theme-json",
-        "icons": "aptuitiv-build icons",
-        "images": "aptuitiv-build images",
-        "init": "aptuitiv-build init",
-        "js": "aptuitiv-build js",
-        "jslint": "aptuitiv-build jslint",
-        "ncu": "ncu -i --format group",
-        "package-json-format": "aptuitiv-build package-json format",
-        "package-json-scripts": "aptuitiv-build package-json scripts",
-        "pull-templates": "aptuitiv-build pull-templates",
-        "pull-theme-config": "aptuitiv-build pull-theme-config",
-        "pull-theme-images": "aptuitiv-build pull-images",
-        "start": "aptuitiv-build start",
-        "stylelint": "aptuitiv-build stylelint",
-        "templates": "aptuitiv-build push-templates",
-        "theme-config": "aptuitiv-build push-theme-config",
-        "upload": "aptuitiv-build upload -t",
-        "upload-css": "aptuitiv-build upload -p theme/custom/css",
-        "upload-fonts": "aptuitiv-build upload -p theme/custom/fonts",
-        "upload-images": "aptuitiv-build upload -p theme/custom/images",
-        "upload-js": "aptuitiv-build upload -p theme/custom/js",
-        "upload-templates": "aptuitiv-build upload -p theme/custom/templates",
-        "upload-theme": "aptuitiv-build upload -t",
-        "upload-theme-config": "aptuitiv-build upload -p theme/custom/config",
-        "watch": "aptuitiv-build watch"
-    },
-    "devDependencies": {
-        "@aptuitiv/website-build-tools": "^1.35.0"
-    },
-    "dependencies": {
-        "@splidejs/splide": "^4.1.4",
-        "@splidejs/splide-extension-video": "^0.8.0",
-        "cacao-css": "^8.0.1",
-        "just-validate": "^4.3.0",
-        "masonry-layout": "^4.2.2",
-        "micromodal": "^0.6.1"
-    },
-    "engines": {
-        "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
-    },
-    "type": "module"
+  "name": "aptuitiv-theme-harvest",
+  "version": "2.0.0",
+  "description": "",
+  "author": "Aptuitiv, Inc <hello@aptuitiv.com>",
+  "copyright": "Aptuitiv, Inc",
+  "license": "Apache-2.0",
+  "private": true,
+  "bugs": {
+    "email": "support@aptuitiv.com"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 years",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "scripts": {
+    "build": "aptuitiv-build build",
+    "copy": "aptuitiv-build copy",
+    "css": "aptuitiv-build css",
+    "download": "aptuitiv-build download -t",
+    "download-content-docs": "aptuitiv-build download -p docs",
+    "download-content-images": "aptuitiv-build download -p images",
+    "download-templates": "aptuitiv-build download -p theme/custom/templates",
+    "download-theme": "aptuitiv-build download -t",
+    "download-theme-config": "aptuitiv-build download -p theme/custom/config",
+    "download-theme-images": "aptuitiv-build download -p theme/custom/images",
+    "env": "aptuitiv-build env",
+    "export": "aptuitiv-build export",
+    "fonts": "aptuitiv-build push-fonts",
+    "format-theme-json": "aptuitiv-build format-theme-json",
+    "icons": "aptuitiv-build icons",
+    "images": "aptuitiv-build images",
+    "init": "aptuitiv-build init",
+    "js": "aptuitiv-build js",
+    "jslint": "aptuitiv-build jslint",
+    "ncu": "ncu -i --format group",
+    "package-json-format": "aptuitiv-build package-json format",
+    "package-json-scripts": "aptuitiv-build package-json scripts",
+    "pull-templates": "aptuitiv-build pull-templates",
+    "pull-theme-config": "aptuitiv-build pull-theme-config",
+    "pull-theme-images": "aptuitiv-build pull-images",
+    "start": "aptuitiv-build start",
+    "stylelint": "aptuitiv-build stylelint",
+    "templates": "aptuitiv-build push-templates",
+    "theme-config": "aptuitiv-build push-theme-config",
+    "upload": "aptuitiv-build upload -t",
+    "upload-css": "aptuitiv-build upload -p theme/custom/css",
+    "upload-fonts": "aptuitiv-build upload -p theme/custom/fonts",
+    "upload-images": "aptuitiv-build upload -p theme/custom/images",
+    "upload-js": "aptuitiv-build upload -p theme/custom/js",
+    "upload-templates": "aptuitiv-build upload -p theme/custom/templates",
+    "upload-theme": "aptuitiv-build upload -t",
+    "upload-theme-config": "aptuitiv-build upload -p theme/custom/config",
+    "watch": "aptuitiv-build watch"
+  },
+  "devDependencies": {
+    "@aptuitiv/website-build-tools": "^1.35.0"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-video": "^0.8.0",
+    "cacao-css": "^8.0.1",
+    "just-validate": "^4.3.0",
+    "masonry-layout": "^4.2.2",
+    "micromodal": "^0.6.1",
+    "lodash": "^4.17.23"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "type": "module"
 }

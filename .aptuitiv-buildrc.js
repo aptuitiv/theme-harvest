@@ -9,49 +9,43 @@ export default {
                 'node_modules/@splidejs/splide/dist/css/splide.min.css',
                 'node_modules/@splidejs/splide/dist/js/splide.min.js',
                 'node_modules/@splidejs/splide-extension-video/dist/js/splide-extension-video.min.js',
-                'node_modules/@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css'
+                'node_modules/@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css',
             ],
-            dest: 'splide'
+            dest: 'splide',
         },
         {
             src: 'node_modules/just-validate/dist/just-validate.production.min.js',
-            dest: 'just-validate'
+            dest: 'just-validate',
         },
         {
             src: 'node_modules/masonry-layout/dist/*.{pkgd.min.js, min.js}',
-            dest: 'masonry'
-        }
+            dest: 'masonry',
+        },
     ],
     css: {
-        buildFiles: '*.css'
+        buildFiles: '*.css',
     },
     eslint: {
-        ignores: ['fslightbox.js']
+        ignores: ['fslightbox.js'],
     },
     javascript: {
         bundles: [
             {
-                build: 'main.js',
-                nodeModules: [
-                    'micromodal/dist/micromodal.min.js'
-                ],
-                src: [
-                    'script-loader.js',
-                    'iframe-loader.js',
-                    'notifications.js',
-                    'navigation.js',
-                    'header.js',
-                    'accordion.js',
-                    'main.js'
-                ]
-            },
-            {
                 build: 'lightbox.js',
-                src: [
-                    'fslightbox.js'
-                ]
-            }
+                src: ['fslightbox.js'],
+            },
         ],
-        files: []
-    }
+        entryPoints: [
+            {
+                in: 'main.js',
+                out: 'main',
+                config: { globalName: 'main' },
+                bundle: {
+                    nodeModules: ['micromodal/dist/micromodal.min.js'],
+                    src: ['form.js', 'iframe-loader.js', 'script-loader.js'],
+                },
+            },
+        ],
+        files: ['tabs.js'],
+    },
 };

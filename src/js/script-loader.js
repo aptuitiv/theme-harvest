@@ -1,8 +1,9 @@
 /* ===========================================================================
-    This provides a way to load scripts when a user interacts with the page.
+    Class to inject scripts into the page after there has been a user action
 =========================================================================== */
 
 /* eslint-disable no-unused-vars */
+
 class ScriptLoader {
     /**
      * Create an instance of ScriptLoader
@@ -17,7 +18,9 @@ class ScriptLoader {
         this.loadScriptsHandler = this.loadScripts.bind(this);
 
         document.addEventListener('keydown', this.loadScriptsHandler);
-        document.querySelector('body').addEventListener('click', this.loadScriptsHandler);
+        document
+            .querySelector('body')
+            .addEventListener('click', this.loadScriptsHandler);
     }
 
     /**
@@ -26,7 +29,9 @@ class ScriptLoader {
     loadScripts() {
         // Remove event listeners
         document.removeEventListener('keydown', this.loadScriptsHandler);
-        document.querySelector('body').removeEventListener('click', this.loadScriptsHandler);
+        document
+            .querySelector('body')
+            .removeEventListener('click', this.loadScriptsHandler);
 
         // Inject scripts
         const head = document.querySelector('head');
