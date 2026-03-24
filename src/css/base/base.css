@@ -26,11 +26,13 @@ body {
  *    onto a page with a rich text editor.
  *    See https://github.com/twbs/bootstrap/issues/18178
  * 3. Align middle to prevent white space created by aligning to text baseline.
+ * 4. Prevent the image orientation from being changed by the browser.
  */
 
 img {
     font-style: italic; /* 1 */
     height: auto; /* 2 */
+    image-orientation: none; /* 4 */
     max-width: 100%; /* 2 */
     vertical-align: middle; /* 3 */
 }
@@ -106,4 +108,14 @@ button:focus {
 
 [hidden] {
     display: none !important;
+}
+
+/* Ensure that on small screens the input, select, and textarea elements are the big enough to prevent the mobile browser zooming in. */
+
+@media (--m-md-below) {
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
 }
