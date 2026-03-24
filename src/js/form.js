@@ -628,6 +628,8 @@ class FormHandler {
                     }
                     if (typeof this.submitErrorCallback === 'function') {
                         this.submitErrorCallback(errorResponse, this);
+                    } else {
+                        this.showError(errorResponse);
                     }
                 });
         }
@@ -658,9 +660,13 @@ class FormHandler {
             })
                 .then((response) => {
                     if (response.ok) {
-                        resolve(response);
+                        response.json().then((data) => {
+                            resolve(data);
+                        });
                     } else {
-                        reject(response);
+                        response.json().then((data) => {
+                            reject(data);
+                        });
                     }
                 })
                 .catch((error) => {
@@ -737,6 +743,7 @@ class FormHandler {
             const output = `<div class="Message Message--failure mb-5">${errorContent}</div>`;
             this.errorContainer.innerHTML = output;
             this.errorContainer.classList.remove('hidden');
+            this.errorContainer.scrollIntoView({ behavior: 'smooth' });
         };
 
         if (this.errorContainer) {

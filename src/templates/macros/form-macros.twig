@@ -54,125 +54,73 @@
     {% endfor %}
 {% endmacro %}
 
+{# Display the opening grid #}
+{% macro gridFieldOpen(field, alignMiddle) %}
+    {% set field.class = field.class|replace({"error": "is-invalid"}) %}
+    <div class="grid gx-2-lg mb-2 nc-1 nc-2-lg{% if alignMiddle %} align-center{% endif %}">
+        <div class="col-1-1 col-1-4-lg text-end-lg">
+            {{ _self.buildFieldLabel(field) }}
+        </div>
+        <div class="col-1-1 col-3-4-lg {{ field.groupId ?: '' }}">
+{% endmacro %}
+
+{# Display the closing grid #}
+{% macro gridFieldClose() %}
+    </div>
+</div>
+{% endmacro %}
+
 {# Display regular form fields #}
 {% macro buildGridFieldRow(field) %}
     {% if field.fieldType != "hidden" %}
-        {% set field.class = field.class|replace({"error": "is-invalid"}) %}
-        <div class="grid g-2-lg mb-2 nc-1 nc-2-lg">
-            <div class="col-1-1 col-1-4-lg text-end-lg">
-                {% if field.fieldType != 'repeatingGrid' and field.fieldType != 'grid' %}
-                    {% set field.label.class = field.label.class ~ ' FormLabel' %}
-                    {% if field.isRequired %}
-                        {% set field.required = true %}
-                        {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
-                    {% endif %}
-                    {{ field.label.tag }}
-                {% endif %}
-            </div>
-            {% if field.fieldType in ["checkbox", "radio", "multiCheckbox"] %}
-                {% set field.groupId = random_letters() %}
+        {{ _self.gridFieldOpen(field) }}
+            {{ _self.buildField(field) }}
+        {{ _self.gridFieldClose() }}
+    {% else %}
+        {{ field.tag }}
+    {% endif %}
+{% endmacro %}
+
+
+{#
+    Build the grid submit button
+    form: (object) The Twig form variable
+    hideRequiredMessage: (boolean) OPTIONAL Hide the required message
+#}
+{% macro buildGridSubmit(form, hideRequiredMessage) %}
+    <div class="grid gx-2 mb-2 nc-1 nc-2-lg">
+        <div class="col-1-1 col-1-4-lg"></div>
+        <div class="col-1-1 col-3-4-lg">
+            {% if _core.theme.settings.formRequiredMessageLocation == 'below' %}
+                {{ _self.requiredMessage(hideRequiredMessage) }}
             {% endif %}
-            <div class="col-1-1 col-3-4-lg {{ field.groupId ?: '' }}">
-                {{ _self.buildGridField(field) }}
-            </div>
-        </div>
-    {% else %}
-        {{ field.tag }}
-    {% endif %}
-{% endmacro %}
-
-{# Build out each field #}
-{% macro buildGridField(field) %}
-    {# Display the field description above the field if necessary #}
-    {% if field.type not in ['grid', 'repeatingGrid'] %}
-        {{ _self.buildFieldDescription(field, 'above') }}
-    {% endif %}
-
-    {% if field.fieldType in ['email', 'number', 'password', 'text', 'url', 'tel'] %}
-        {% set field.class = field.class ~ ' TextInput w-100' %}
-        {{ field.tag }}
-    {%  elseif field.fieldType in ['date','time','month'] %}
-        {% set field.class = field.class ~ ' TextInput' %}
-        {{ field.tag }}
-    {% elseif field.fieldType == 'button' %}
-        {% set field.class = field.class ~ ' Button' %}
-        {{ field.tag }}
-    {% elseif field.fieldType == 'textarea' %}
-        {% if field.size == 'small' %}
-            {% set field.rows = 2 %}
-        {% elseif field.size == 'medium' %}
-            {% set field.rows = 5 %}
-        {% elseif field.size == 'large' %}
-            {% set field.rows = 10 %}
-        {% endif %}
-        {% set field.class = field.class ~ ' TextInput w-100' %}
-        {{ field.tag }}
-    {% elseif field.fieldType == 'select' %}
-        <div class="SelectInput w-100">
-            {{ field.tag }}
-        </div>
-    {% elseif field.fieldType == 'radio' %}
-        {% if field.config.separator == 'space' %}
-            {% for option in field.options %}
-                <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
-            {% endfor %}
-        {% else %}
-            {{ field.tag|replace({"error": "is-invalid"}) }}
-        {% endif %}
-    {% elseif field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
-        <div class="grid gx-2 nc-1 nc-{{ field.columns|length }}-md">
-            {% for column in field.columns %}
-                {% set class = 'col-1-1 col-1-' ~ loop.length ~ '-md' %}
-                {% if column.class %}
-                    {% if 'col-' in column.class %}
-                        {% set class = column.class %}
-                    {% else %}
-                        {% set class = class ~ ' ' ~ column.class %}
-                    {% endif %}
-                {% endif %}
-                <div class="{{ class }}">
-                    {% for child in column.childFields %}
-                        {% if child.fieldType in ["radio", "multiCheckbox", "checkbox"] %}
-                            {% set child.groupId = random_letters() %}
-                        {% endif %}
-                        <div class="mb-2 {{ child.groupId ?: '' }}">
-                            {% set child.label.class = child.label.class ~ ' FormLabel FormLabel--block' %}
-                            {% if child.isRequired %}
-                                {% set child.required = true %}
-                                {% set child.label.text = child.label.text ~ ' <span class="FormRequired">*</span>' %}
-                            {% endif %}
-                            {{ child.label.tag }}
-                            {{ _self.buildGridField(child) }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        {{ field.tag|replace({"error": "is-invalid"}) }}
-    {% endif %}
-
-    {# Display the field description below the field if necessary #}
-    {{ _self.buildFieldDescription(field, 'below') }}
-{% endmacro %}
-
-{# Build the grid form button #}
-{% macro buildGridFormButton(buttonText, additionalButtonClass) %}
-    <div class="grid mb-2 justify-end-md nc-1">
-        <div class="col-1-1 col-3-4-lg ps-1-lg">
-            {{ _self.requiredMessage() }}
-            {{ _self.formButton(buttonText, additionalButtonClass) }}
+            {{ _self.formButton(form.submitButtonText)}}
         </div>
     </div>
+{% endmacro %}
+
+{#
+    Build the "required fields" message above the grid form if necessary
+    hideRequiredMessage: (boolean) OPTIONAL Hide the required message
+#}
+{% macro buildGridRequiredMessageAbove(hideRequiredMessage) %}
+    {% if hideRequiredMessage != true && _core.theme.settings.formRequiredMessageLocation == 'above' && _core.theme.settings.formRequiredShowMessage == 'yes' %}
+        <div class="grid gx-2 mb-2 nc-1 nc-2-lg">
+            <div class="col-1-1 col-1-4-lg"></div>
+            <div class="col-1-1 col-3-4-lg">
+                {{ _self.requiredMessage(hideRequiredMessage) }}
+            </div>
+        </div>
+    {% endif %}
 {% endmacro %}
 
 {# Build the Label Above Field fields #}
 {% macro buildLabelAboveFieldFields(form) %}
     {% for field in form.fields %}
         {% if field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
-            <div class="grid gx-2 nc-1 nc-{{ field.columns|length }}-md">
+            <div class="grid g-2 nc-1 nc-2-sm">
                 {% for column in field.columns %}
-                    {% set class = 'col-1-1 col-1-' ~ loop.length ~ '-md' %}
+                    {% set class = 'col-1-1 col-1-' ~ loop.length ~ '-sm' %}
                     {% if column.class %}
                         {% if 'col-' in column.class %}
                             {% set class = column.class %}
@@ -208,81 +156,318 @@
     {% endfor %}
 {% endmacro %}
 
+
+
 {# Display regular form fields #}
 {% macro buildLabelAboveFieldField(field) %}
     {% if field.fieldType != "hidden" %}
-        {% set field.class = field.class|replace({"error": "is-invalid"}) %}
-        {% if field.fieldType in ["checkbox", "radio", "multiCheckbox"] %}
-            {% set field.groupId = random_letters() %}
-        {% endif %}
-        <div class="mb-2 {{ field.groupId ?: '' }}">
-            {% set field.label.class = field.label.class ~ ' FormLabel FormLabel--block' %}
-            {% if field.description and field.fieldType in ['checkbox', 'multiCheckbox', 'radio'] %}
-                {% set field.label.class = field.label.class ~ ' FormLabel--mb0' %}
-            {% endif %}
-            {% if field.isRequired %}
-                {% set field.required = true %}
-                {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
-            {% endif %}
-            {% if field.fieldType != 'rating' %}
-                {{ field.label.tag }}
-            {% endif %}
-
-            {# Display the field description above the field if necessary #}
-            {{ _self.buildFieldDescription(field, 'above') }}
-
-            {% if field.fieldType in ['email', 'number', 'password', 'text', 'url', 'tel'] %}
-                {% set field.class = field.class ~ ' TextInput w-100' %}
-                {{ field.tag }}
-            {%  elseif field.fieldType in ['date','time','month'] %}
-                {% set field.class = field.class ~ ' TextInput' %}
-                {{ field.tag }}
-            {% elseif field.fieldType == 'button' %}
-                {% set field.class = field.class ~ ' Button' %}
-                {{ field.tag }}
-            {% elseif field.fieldType == 'textarea' %}
-                {% if field.size == 'small' %}
-                    {% set field.rows = 2 %}
-                {% elseif field.size == 'medium' %}
-                    {% set field.rows = 5 %}
-                {% elseif field.size == 'large' %}
-                    {% set field.rows = 10 %}
-                {% endif %}
-                {% set field.class = field.class ~ ' TextInput w-100' %}
-                {{ field.tag }}
-            {% elseif field.fieldType == 'select' %}
-                <div class="SelectInput w-100">
-                    {{ field.tag }}
-                </div>
-            {% elseif field.fieldType == 'radio' or field.fieldType == 'multiCheckbox' %}
-                {% if field.config.separator == 'space' %}
-                    {% for option in field.options %}
-                        <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
-                    {% endfor %}
-                {% else %}
-                    {{ field.tag|replace({"error": "is-invalid"}) }}
-                {% endif %}
-            {% elseif field.fieldType == 'rating' %}
-                <div class="grid gx-2 nc-1 nc-2-md">
-                    <div class="col-1-2 col-2-3-md col-3-4-lg">
-                        {{ field.label.tag }}
-                    </div>
-                    <div class="col-1-2 col-1-3-md col-1-4-lg">
-                        <div class="flex justify-end-lg align-center-lg h-100 justify-start align-start mt-1 mt-0-lg">
-                            {% for option in field.options %}
-                                <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            {% else %}
-                {{ field.tag|replace({"error": "is-invalid"}) }}
-            {% endif %}
-            {# Display the field description below the field if necessary #}
-            {{ _self.buildFieldDescription(field, 'below') }}
+        <div class="mb-2">
+            {{ _self.buildFieldLabel(field, 'FormLabel--block') }}
+            {{ _self.buildField(field) }}
         </div>
     {% else %}
         {{ field.tag }}
+    {% endif %}
+{% endmacro %}
+
+{#
+    Build the label above field submit button
+    form: (object) The Twig form variable
+    hideRequiredMessage: (boolean) OPTIONAL Hide the required message
+#}
+{% macro buildLabelAboveFieldSubmit(form, hideRequiredMessage) %}
+    {% if _core.theme.settings.formRequiredMessageLocation == 'below' %}
+        {{ _self.requiredMessage(hideRequiredMessage) }}
+    {% endif %}
+    {{ _self.formButton(form.submitButtonText)}}
+{% endmacro %}
+
+{# Form button #}
+{% macro formButton(buttonText) %}
+    {% set buttonClass = 'Button' %}
+    {% if _core.theme.settings.formButtonSize in ['sm', 'lg'] %}
+        {% set buttonClass = buttonClass ~ ' Button--'  ~ _core.theme.settings.formButtonSize %}
+    {% endif %}
+    {% if _core.theme.settings.formButtonStyle in ['alt', 'alt2'] %}
+        {% set buttonClass = buttonClass ~ ' Button--' ~ _core.theme.settings.formButtonStyle %}
+    {% endif %}
+    {% if _core.theme.settings.formButtonFullWidthSmallScreens == 'yes' %}
+        {% set buttonClass = buttonClass ~ ' Button--smFull' %}
+    {% endif %}
+    <div class="FormButton"><button type="submit" class="{{ buttonClass }}">{{ buttonText }}</button></div>
+{% endmacro %}
+
+{#
+    Build the "required fields" message above the form if necessary
+    hideRequiredMessage: (boolean) OPTIONAL Hide the required message
+#}
+{% macro buildLabelAboveFieldRequiredMessageAbove(hideRequiredMessage) %}
+    {% if hideRequiredMessage != true && _core.theme.settings.formRequiredMessageLocation == 'above' && _core.theme.settings.formRequiredShowMessage == 'yes' %}
+        {{ _self.requiredMessage(hideRequiredMessage) }}
+    {% endif %}
+{% endmacro %}
+
+{#
+    Form fields required message
+    hideRequiredMessage: (boolean) OPTIONAL Force hiding the required message
+#}
+{% macro requiredMessage(hideRequired) %}
+    {% if _core.theme.settings.formRequiredShowMessage == 'yes' && hideRequired != true %}
+        <div class="FormRequired-message"><span class="FormRequired">*</span> {{ _core.theme.settings.formRequiredMessageText }}</div>
+    {% endif %}
+{% endmacro %}
+
+{#
+ # Build the field label
+ # field: (array) The field data
+ #}
+{% macro buildFieldLabel(field, labelClass, formType) %}
+    {% set field.label.class = field.label.class ~ ' FormLabel' %}
+    {% if formType == 'labelAboveField' %}
+        {% if field.description and field.fieldType in ['checkbox', 'multiCheckbox', 'radio'] %}
+            {% set field.label.class = field.label.class ~ ' FormLabel--mb0' %}
+        {% endif %}
+    {% endif %}
+    {% if labelClass %}
+        {% set field.label.class = field.label.class ~ ' ' ~ labelClass %}
+    {% endif %}
+    {% if field.isRequired %}
+        {% set field.required = true %}
+        {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
+    {% endif %}
+    {% if field.fieldType not in ['rating', 'checkbox'] %}
+        {{ field.label.tag }}
+    {% endif %}
+{% endmacro %}
+
+{#
+ # Build a form field
+ # field: (array) The field data
+ #}
+{% macro buildField(field) %}
+    {% import 'macros/macros.twig' as macros %}
+    {# Display the field description above the field if necessary #}
+    {% if field.type not in ['grid', 'repeatingGrid'] %}
+        {{ _self.buildFieldDescription(field, 'above') }}
+    {% endif %}
+
+    {# Add the is-invalid class to the field if there is an error #}
+    {% set field.class = field.class|replace({"error": "is-invalid"}) %}
+
+    {# Set HTML attributes based on the validation #}
+    {% if field.fieldType not in ["radio", "multiCheckbox", "checkbox"] %}
+        {% if field.rules %}
+            {% set field.data.validate = true %}
+            {% if field.fieldType == 'email' %}
+                {% do field.set('data-validate-email', 'Please enter a valid email') %}
+            {% elseif field.fieldType == 'number' %}
+                {% do field.set('data-validate-number', true) %}
+            {% endif %}
+            {% for rule in field.rules %}
+                {% do field.set('data-validate-' ~ rule.type|kebab, rule.message) %}
+                {% if rule.type == 'min_length' %}
+                    {% do field.set('data-validate-' ~ rule.type|kebab ~ '-value', rule.rule) %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% if field.fieldType == 'email' %}
+                {# The field isn't required, but it's an email field and should be validated #}
+                {% set field.data.validate = true %}
+                {% do field.set('data-validate-email', 'Please enter a valid email') %}
+            {% elseif field.fieldType == 'number' %}
+                {# The field isn't required, but it's a number field and should be validated #}
+                {% set field.data.validate = true %}
+                {% do field.set('data-validate-number', true) %}
+            {% endif %}
+        {% endif %}
+    {% elseif field.isRequired and field.fieldType in ["radio", "multiCheckbox", "checkbox"] %}
+        {# Set up the group information for required checkbox and radio fields #}
+        {% set field.groupId = random_letters() %}
+    {% endif %}
+
+    {# The groupId value is used for radio and checkbox field validation with the JustValidate library #}
+    {% if field.groupId %}
+        {% if field.rules %}
+            {% for rule in field.rules %}
+                {% if rule.type == "required" %}
+                    {% set requiredMessage = rule.message %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div id="{{ field.groupId }}" data-required-group="{{ requiredMessage ?? 'This field is required' }}" data-required-group-id="{{ field.groupId }}">
+    {% endif %}
+
+    {# Output the field #}
+    {% if field.fieldType in ['email', 'number', 'password', 'text', 'url', 'tel'] %}
+        {% set field.class = field.class ~ ' TextInput w-100' %}
+        {% if field.fieldType == 'number' %}
+            {% set field.class = field.class ~ ' js-numberInput' %}
+            {% set field.inputmode = 'numeric' %}
+            {# Because Safari internally change the field value to an empty string if the field isn't a number,
+               which messes up the validation and the internal filter to force a number value, we set the input type
+               as text and use the inputmode attribute to force a numeric keyboard on mobile devices. #}
+            {% set field.type = 'text' %}
+        {% endif %}
+        {{ field.tag }}
+    {%  elseif field.fieldType in ['date', 'time', 'month'] %}
+        {% set field.class = field.class ~ ' TextInput' %}
+        {{ field.tag }}
+    {% elseif field.fieldType == 'button' %}
+        {% set field.class = field.class ~ ' Button' %}
+        {{ field.tag }}
+    {% elseif field.fieldType == 'textarea' %}
+        {% if field.size == 'small' %}
+            {% set field.rows = 2 %}
+        {% elseif field.size == 'medium' %}
+            {% set field.rows = 5 %}
+        {% elseif field.size == 'large' %}
+            {% set field.rows = 10 %}
+        {% endif %}
+        {% set field.class = field.class ~ ' TextInput w-100' %}
+        {{ field.tag }}
+    {% elseif field.fieldType in ['select', 'selectMonth', 'selectDay', 'selectYear'] %}
+        <div class="SelectMenu SelectMenu--{{ _core.theme.settings.selectMenuArrowType }} w-100">
+            {{ field.tag }}
+        </div>
+    {% elseif field.fieldType == 'radio' or field.fieldType == 'multiCheckbox' %}
+        {% if field.config.separator == 'space' %}
+            {% for option in field.options %}
+                <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
+            {% endfor %}
+        {% else %}
+            {{ field.tag|replace({"error": "is-invalid"}) }}
+        {% endif %}
+    {% elseif field.fieldType == 'checkbox' %}
+        <label class="Checkbox">
+            {% set field.class = "Checkbox-input" %}
+            {{ field.tagNoLabel }}
+            <span class="Checkbox-pseudo"></span>
+            {{ field.label.text }}
+        </label>
+    {% elseif field.fieldType == 'file' %}
+        <div class="FormLabel">{{ field.label.text }}</div>
+        <label for="{{ field.id }}" class="Button FileField-button">Upload File</label>
+        {{ field.tag|replace({"error": "is-invalid"}) }}
+    {% elseif field.fieldType == 'image' %}
+        {% set field.class = field.class ~ ' FileField-input js-imageInput' %}
+        {% set field.accept = '.gif,.jpg,.jpeg,.png' %}
+        {% do field.set('data-for', field.id|ucfirst) %}
+        {% set fileBtnText = 'Choose an image' %}
+        {% set hasExistingImage = false %}
+        {% if field.value %}
+            {% set field.data.value = 'yes' %}
+            {% set hasExistingImage = true %}
+            {% set fileBtnText = 'Change image' %}
+            {# Show the current image above the field #}
+            <div class="mb-2 js-removeExistingImageCancelContainer hidden" data-id="{{ field.id }}">
+                <button type="button" class="js-removeExistingImageCancel FileField-actionButton" data-id="{{ field.id }}">{{ macros.iconAriaHidden('undo') }}Undo remove image</button>
+            </div>
+
+            <div class="js-currentImgContainer" data-id="{{ field.id }}">
+                <div class="grid g-1 align-center mb-2 nc-2">
+                    <div class="col-1-2">
+                        <img src="{{ field.value|file_url }}" data-id="{{ field.id }}" alt="Image" class="FileField-image">
+                    </div>
+                    <div class="col-1-2">
+                        <button type="button" class="js-removeExistingImage FileField-actionButton FileField-actionButton--remove" data-id="{{ field.id }}">{{ macros.iconAriaHidden('trash') }}Remove</button>
+                    </div>
+                    {#
+                        Used to pass an empty value to remove the image.
+                        To remove a file pass an empty value for that field.
+                        If a text or hidden input has a value for the field then that value will be used
+                        when saving. However, if a file upload is done then that will override the text/hidden input value.
+                    #}
+                    <input type="hidden" data-name="{{ field.name }}" value="" class="js-currentImageValue" data-id="{{ field.id }}">
+                </div>
+            </div>
+        {% endif %}
+        {# Output where the new image is displayed #}
+        <div class="js-newImageContainer hidden" data-id="{{ field.id }}">
+            <div class="grid g-1 align-center mb-2 nc-2">
+                <div class="col-1-2">
+                    <img src="" alt="Image" class="FileField-image js-newImage" data-id="{{ field.id }}">
+                </div>
+                <div class="col-1-2">
+                    <button type="button" class="js-removeNewImage FileField-actionButton FileField-actionButton--remove" data-id="{{ field.id }}"{% if hasExistingImage %} style="display: none"{% endif %}>{{ macros.iconAriaHidden('trash') }}Remove</button>
+                    <button type="button" class="js-undoNewImage FileField-actionButton" data-id="{{ field.id }}"{% if !hasExistingImage %} style="display: none"{% endif %}>{{ macros.iconAriaHidden('undo') }}Undo change</button>
+                </div>
+            </div>
+        </div>
+        {# Output the upload field and button #}
+        <label class="Button FileField-button" for="{{ field.id }}">
+            {{ macros.iconAriaHidden('upload') }} <span class="js-fileText" data-orig="Choose an image">{{ fileBtnText }}</span>
+            {{ field.tag }} {# The field is hidden #}
+        </label>
+    {% elseif field.fieldType == 'rating' %}
+        <div class="grid g-2 nc-2">
+            <div class="col-1-2 col-2-3-md col-3-4-lg w-100">
+                {{ field.label.tag }}
+            </div>
+            <div class="col-1-2 col-1-3-md col-1-4-lg w-100">
+                <div class="flex justify-end-lg align-center-lg h-100 justify-start align-start mt-1 mt-0-lg">
+                    {% for option in field.options %}
+                        <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% elseif field.fieldType == 'repeatingGrid' || field.fieldType == 'grid' %}
+        <div class="grid g-2 nc-{{ field.columns|length }}">
+            {% for column in field.columns %}
+                {% set class = 'col-1-' ~ loop.length  %}
+                {% if column.class %}
+                    {% if 'col-' in column.class %}
+                        {% set class = column.class %}
+                    {% else %}
+                        {% set class = class ~ ' ' ~ column.class %}
+                    {% endif %}
+                {% endif %}
+                {% set class = class ~ ' w-100' %}
+                <div class="{{ class }}">
+                    {% for child in column.childFields %}
+                        {% if child.fieldType in ["radio", "multiCheckbox", "checkbox"] %}
+                            {% set child.groupId = random_letters() %}
+                        {% endif %}
+                        <div class="mb-2 {{ child.groupId ?: '' }}">
+                            {{ _self.buildFieldLabel(child, 'FormLabel--block') }}
+                            {{ _self.buildField(child) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ field.tag|replace({"error": "is-invalid"}) }}
+    {% endif %}
+
+    {# The groupId value is used for radio and checkbox field validation #}
+    {% if field.groupId %}
+        </div>
+    {% endif %}
+
+    {# Display the field description below the field if necessary #}
+    {{ _self.buildFieldDescription(field, 'below') }}
+{% endmacro %}
+
+{##
+ # Build the field label
+ # field: (object) The form field object
+ # position: (string) The position of the label. Either 'above' or 'below'
+ #}
+{% macro buildFieldDescription(field, position) %}
+    {% if field.description %}
+        {% set settingPosition = _core.theme.settings.formDescriptionPosition %}
+        {% if position == 'above' %}
+            {# See if the field label should be displayed above the field #}
+            {% if settingPosition == 'above' or (settingPosition == 'belowExceptRadioCheckbox' and field.fieldType in ['checkbox', 'multiCheckbox', 'radio']) %}
+                <div class="FormDescription FormDescription--withLabelMargin">{{ field.description }}</div>
+            {% endif %}
+        {% elseif position == 'below' %}
+            {# See if the field description should be displayed below the field #}
+            {% if settingPosition == 'below' or (settingPosition == 'belowExceptRadioCheckbox' and field.fieldType not in ['checkbox', 'multiCheckbox', 'radio']) %}
+                <div class="FormDescription">{{ field.description }}</div>
+            {% endif %}
+        {% endif %}
     {% endif %}
 {% endmacro %}
 
@@ -315,6 +500,20 @@
     </div>
 {% endmacro %}
 
+{#
+    Sets the error container to show only a single message. This will not loop through errors.
+    Instead, it simply outputs a single error message. Useful for a login page.
+
+    errorContainerClass: (string) The unique class for the error container div
+    form: (object) The Twig form variable
+    message: (string) The error message to show
+#}
+{% macro formErrorContainerSingleMessage(errorContainerClass, form, message) %}
+    <div class="Message Message--failure mb-5 {{ errorContainerClass}}{% if form.errors is empty and form.paymentErrors is empty %} hidden{% endif %}">
+        {{ message }}
+    </div>
+{% endmacro %}
+
 {# Build the reCAPTCHA tag #}
 {% macro captcha(form) %}
     {% if form.captcha.type == 'recaptchaV3' %}
@@ -333,25 +532,41 @@
 {% endmacro %}
 
 {#
-    Form validation and submit handler Javascript
+    Set up the form validation and the form handler Javascript
+
     form: (array) The form data
-    formOverlayClass: (string) The class to use for the form overlay div
-    filesToLoad: (array) Array of additional Javascript files to load
-    submitHandler: (string) (optional) Name of a function to call after the form is validated and captcha has run.
-            It is used to do additional processing on the form. Example is preparing Stripe payment data for submission
+    config: (array) OPTIONAL Configuration options for the form validation
+
+    config options:
+    - filesToLoad: (array) Array of additional Javascript files to load
+    - filesToLoadKey: (string) The key to use for the loadjs.ready function to load additional files referenced in filesToLoad. This can be used
+            in some other Javascript to run code once the files load.
+    - formHandler: (string) Name of a custom form handler Javascript variable to use. The variable needs to be globally accessible.
+    - formOverlayClass: (string) The class to use for the form overlay div
+    - loadJsKey: (string) The key to use for the loadjs.ready function. This should reference a loadJs() key that is used in Javascript
+            outside of this macro to load other files.
+    - loadJsKeys: (array) Array of keys to use for the loadjs.ready function. These should reference one or more loadJs() keys that are used in Jvaascript
+            outside of this macro to load other files.
 
     Examples:
     Basic:
-    {{ macros.formValidateHandlerJs(form) }}
+    {{ macros.formHandlerJs(form) }}
     All parameters:
-    {{ macros.formValidateHandlerJs(form, formOverlayClass, ['js/stripe.js'|theme_url], 'stripePayment.prepareToken') }}
-    Skip filesToLoad
-    {{ macros.formValidateHandlerJs(form, formOverlayClass, '', 'prepareStripe') }}
+    {{ macros.formHandlerJs(form, {filesToLoad: ['js/stripe.js'|theme_url], formHandler: 'stripePayment', formOverlayClass: 'js-formOverlay'}) }}
+    Form handler:
+    <script>
+        const customHandler = new FormHandler();
+        // Do some other intial setup of the form handler.
+        customHandler.setUseAjax();
+    </script>
+    {{ macros.formHandlerJs(form, {formHandler: 'customHandler'}) }}
 #}
-{% macro formValidateHandlerJs(form, formOverlayClass, filesToLoad, submitHandler) %}
-    {% import _self as macros %}
+{% macro formValidateHandlerJs(form, config) %}
+    {# Make sure that the config variable is an object #}
+    {% set config = config ?? {} %}
 
-    {% set formOverlayClass = formOverlayClass ?: 'js-formOverlay' ~ random_string() %}
+    {# Set up the form overlay class #}
+    {% set formOverlayClass = config.formOverlayClass ?: 'js-formOverlay' ~ random_string() %}
     <div class="FormOverlay {{ formOverlayClass }}"><div class="FormOverlay-text">Please wait&hellip;</div></div>
 
     {# Load for form Javascript if necessary. This holds the form validation library. #}
@@ -366,148 +581,53 @@
         {% do _page.registerJs('just-validate/just-validate.production.min.js'|theme_url) %}
     {% endif %}
 
+    {% set setupFunction = 'setupForm' ~ random_string() %}
+    {% set formHandlerObject = 'formHandler' ~ random_string() %}
+
     {% inlinejs %}
-        {% if filesToLoad is iterable and filesToLoad|length > 0 %}
+        {# Function to set up the form handler and validation #}
+        function {{ setupFunction }}(formHandler) {
+            formHandler.setFormSelector('.{{ form.class }}');
+            formHandler.setFormOverlaySelector('.{{ formOverlayClass }}');
+            {% if form.captcha.type == 'recaptchaV3' %}
+                {# Because the function is passed as a string we remove "window." from the function name so that it can be called in the form class using window[functionName] #}
+                formHandler.setUseRecaptchaV3('{{ form.captcha.script.function|replace('window.', '') }}', '.{{ form.captcha.input.class }}');
+            {% endif %}
+            formHandler.initValidation();
+        }
+
+        {# Load additional files or handle when the validation libray is loaded #}
+        {% set loadJsKeys = ['validate'] %}
+        {% if config.filesToLoad is iterable and config.filesToLoad|length > 0 %}
+            {% set extraFilesKey = config.filesToLoadKey ?? ('formExtraFiles' ~ random_string()) %}
+            {# Load the additional files #}
             loadjs.ready('validate', {
                 success: function() {
-                    loadjs([{% for file in filesToLoad %}{% if loop.first == false and loop.lsat == false %},{% endif %}'{{ file }}'{% endfor %}], 'formExtraFiles');
+                    loadjs([{% for file in config.filesToLoad %}{% if loop.first == false and loop.lsat == false %},{% endif %}'{{ file }}'{% endfor %}], '{{ extraFilesKey }}');
                 }
             });
-            loadjs.ready('formExtraFiles', {
-        {% else %}
-            loadjs.ready('validate', {
+            {% set loadJsKeys = [extraFilesKey] %}
         {% endif %}
+        {# Handle any extra loadJs keys #}
+        {% if config.loadJsKeys is iterable and config.loadJsKeys|length > 0 %}
+            {% set loadJsKeys = loadJsKeys|merge(config.loadJsKeys) %}
+        {% elseif config.loadJsKeys is string %}
+            {% set loadJsKeys = loadJsKeys|merge([config.loadJsKeys]) %}
+        {% elseif config.loadJsKey is string %}
+            {% set loadJsKeys = loadJsKeys|merge([config.loadJsKey]) %}
+        {% endif %}
+
+        {# After loading the necessary files, set up the form handler #}
+        loadjs.ready({{ loadJsKeys|json }}, {
             success: function() {
-                {# Handle event listener to revalidate fields when they've been previously invalidated. #}
-                const inputListener = (e) => {
-                    validator.revalidateField(`#${e.target.id}`).then(isValid => {
-                        if (isValid) {
-                            e.target.removeEventListener('input', inputListener);
-                        }
-                    });
-                }
-
-                {# Create validator instance #}
-                const validator = new JustValidate('.{{ form.class }}');
-
-                {# Add validation rules #}
-                {% for field in form.fields %}
-                    {{ macros.addValidationRule(field) }}
-                {% endfor %}
-
-                {# Add event listener to handle reCAPTCHA #}
-                validator.onSuccess(e => {
-                    {# Show the submission overlay #}
-                    document.querySelector('.{{ formOverlayClass }}').style.display = 'block';
-
-                    {# Disable the submit button #}
-                    document.querySelector('.{{ form.class }} [type="submit"]').disabled = true;
-
-                    {# Handle submission via either reCAPTCHA v3, a custom handler, or just a regular submission. #}
-                    {% if form.captcha.type == 'recaptchaV3' %}
-                        {{ form.captcha.script.function }}(grecaptcha, {
-                            inputSelector: '.{{ form.captcha.input.class }}'
-                        }).then(function() {
-                            {% if submitHandler %}
-                                {{ submitHandler }}(form);
-                            {% else %}
-                                document.querySelector('.{{ form.class }}').submit();
-                            {% endif %}
-                        }).catch(function(e) {
-                            console.error(e);
-                            document.querySelector('.{{ formOverlayClass }}').style.display = 'none';
-                            document.querySelector('.{{ form.class }} [type="submit"]').disabled = false;
-                        });
-                    {% else %}
-                        {% if submitHandler %}
-                            {{ submitHandler }}(form);
-                        {% else %}
-                            document.querySelector('.{{ form.class }}').submit();
-                        {% endif %}
-                    {% endif %}
-                });
+                {% if config.formHandler %}
+                    const {{ formHandlerObject }} = {{ config.formHandler }};
+                {% else %}
+                    const {{ formHandlerObject }} = new FormHandler();
+                {% endif %}
+                {{ setupFunction }}({{ formHandlerObject }});
             }
         });
     {% endinlinejs %}
-{% endmacro %}
 
-{% macro addValidationRule(field) %}
-    {# Handle rules for field #}
-    {% if field.rules|length > 0 and field.fieldType not in ["radio", "multiCheckbox", "checkbox"] %}
-        {# Add rules for field to validator #}
-        validator.addField('#{{ field.id }}', [
-            {% for rule in field.rules %}
-                {
-                    rule: '{{ rule.type|camel }}',
-                    errorMessage: '{{ rule.message }}',
-                    {% if rule.type == 'min_length' %}
-                        value: {{ rule.rule }}
-                    {% endif %}
-                },
-            {% endfor %}
-        ]);
-
-        {# Validate field on blur #}
-        document.querySelector('#{{ field.id }}').addEventListener('blur', () => {
-            validator.revalidateField('#{{ field.id }}').then(isValid => {
-                if (!isValid) {
-                    document.querySelector('#{{ field.id }}').addEventListener('input', inputListener);
-                }
-            });
-        });
-    {% elseif field.isRequired and field.fieldType in ["radio", "multiCheckbox", "checkbox"] %}
-        {# Get required text #}
-        {% set reqText = "This field is required." %}
-        {% for rule in field.rules %}
-            {% if rule.type == "required" %}
-                {% set reqText = rule.message %}
-            {% endif %}
-        {% endfor %}
-
-        {# Add rules for field to validator #}
-        validator.addRequiredGroup('.{{ field.groupId }}', '{{ reqText }}');
-    {% endif %}
-
-    {# Handle child fields #}
-    {% if field.columns|length > 0 %}
-        {% import _self as macros %}
-        {% for column in field.columns %}
-            {% if column.childFields|length > 0 %}
-                {% for field in column.childFields %}
-                    {{ macros.addValidationRule(field)}}
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
-    {% elseif field.childFields|length > 0 %}
-        {% import _self as macros %}
-        {% for field in field.childFields %}
-            {{ macros.addValidationRule(field)}}
-        {% endfor %}
-    {% endif %}
-{% endmacro %}
-
-{# Form fields required message
-    showRequiredMessage: (string) The value of the showRequiredMessage setting. This comes from a custom value set on the "form" tag.
-                {% set form.showRequiredMessage = 'no' %}
-#}
-{% macro requiredMessage(showRequiredMessage) %}
-    {% if _core.theme.settings.formRequiredShowMessage == 'yes' && showRequiredMessage != 'no' %}
-        <div class="FormRequired-message">{{ _core.theme.settings.formRequiredMessageText }}</div>
-    {% endif %}
-{% endmacro %}
-
-
-{# Form button #}
-{% macro formButton(buttonText, additionalClass) %}
-    {% set buttonClass = 'Button' %}
-    {% if _core.theme.settings.formButtonSize in ['sm', 'lg'] %}
-        {% set buttonClass = buttonClass ~ ' Button--'  ~ _core.theme.settings.formButtonSize %}
-    {% endif %}
-    {% if _core.theme.settings.formButtonStyle in ['alt', 'alt2'] %}
-        {% set buttonClass = buttonClass ~ ' Button--' ~ _core.theme.settings.formButtonStyle %}
-    {% endif %}
-    {% if _core.theme.settings.formButtonFullWidthSmallScreens == 'yes' %}
-        {% set buttonClass = buttonClass ~ ' Button--smFull' %}
-    {% endif %}
-    <div class="FormButton"><button type="submit" class="{{ buttonClass }}{% if additionalClass %} {{ additionalClass}}{% endif %}">{{ buttonText }}</button></div>
 {% endmacro %}
