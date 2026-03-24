@@ -3,6 +3,7 @@
 \* =========================================================================== */
 
 .FormLabel {
+    display: inline-block;
     margin: var(--FormLabel-margin-top, 0) var(--FormLabel-margin-right, 0) var(--FormLabel-margin-bottom, 0)
         var(--FormLabel-margin-left, 0);
 }

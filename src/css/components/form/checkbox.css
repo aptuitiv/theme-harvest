@@ -1,0 +1,51 @@
+/* =========================================================================== *\
+    Styled checkboxes
+    Based on https://www.cssscript.com/pure-css-checkbox-radio-button-replacement-bootstrap-icheck/
+\* =========================================================================== */
+
+/* @define Checkbox */
+
+.Checkbox {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    position: relative; /* This is neccessary so that the input stays within this element. Without this, weird things happen if checkboxes are in an overflow div. */
+    white-space: nowrap;
+    width: max-content;
+}
+
+.Checkbox-input {
+    opacity: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.Checkbox-pseudo {
+    background-color: var(--Checkbox-background-color, transparent);
+    border: var(--Checkbox-border-size, 1px) solid var(--Checkbox-border-color);
+    border-radius: var(--Checkbox-border-radius);
+    content: '';
+    display: block;
+    height: var(--Checkbox-size, 16px);
+    position: relative;
+    width: var(--Checkbox-size, 16px);
+}
+
+.Checkbox-input:checked + .Checkbox-pseudo::before {
+    border: var(--Checkbox-checkmark-thickness, 2px) solid var(--Checkbox-color);
+    border-left: none;
+    border-top: none;
+    content: '';
+    height: var(--Checkbox-checkmark-height, 10px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(5px, 1px) rotate(45deg);
+    width: var(--Checkbox-checkmark-width, 5px);
+}
+
+.Checkbox-iconLabel {
+    align-items: center;
+    column-gap: 2px;
+    display: flex;
+}

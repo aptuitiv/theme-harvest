@@ -45,15 +45,15 @@
    Child Spacing
  * ------------------------------------------- */
 
- @import 'cacao-css/dist/child-spacing/variables.css';
+@import 'cacao-css/dist/child-spacing/variables.css';
 
- /* First Child */
- @import 'cacao-css/dist/child-spacing/first-child/margin/top/top-0.css';
- @import 'cacao-css/dist/child-spacing/first-child/spacing/top/top-0.css';
+/* First Child */
+@import 'cacao-css/dist/child-spacing/first-child/margin/top/top-0.css';
+@import 'cacao-css/dist/child-spacing/first-child/spacing/top/top-0.css';
 
- /* Last Child */
- @import 'cacao-css/dist/child-spacing/last-child/spacing/bottom/bottom-0.css';
- @import 'cacao-css/dist/child-spacing/last-child/margin/bottom/bottom-0.css';
+/* Last Child */
+@import 'cacao-css/dist/child-spacing/last-child/spacing/bottom/bottom-0.css';
+@import 'cacao-css/dist/child-spacing/last-child/margin/bottom/bottom-0.css';
 
 /* --------------------------------------------*
    Display
@@ -159,6 +159,7 @@
 
 /* Gutter (lg) */
 @import 'cacao-css/dist/gutter/lg/all.css';
+@import 'cacao-css/dist/gutter/lg/horizontal.css';
 
 /* --------------------------------------------*
    Height

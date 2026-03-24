@@ -177,7 +177,7 @@
                             "label": "Background color",
                             "type": "color",
                             "description": "Background color will only be seen if no image is uploaded.",
-                            "defaultValue": "#38871A",
+                            "defaultValue": "#00263e",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-background"
@@ -209,13 +209,28 @@
                             "type": "select",
                             "defaultValue": "center",
                             "options": {
-                                "start": "Left",
+                                "start": "Top",
                                 "center": "Center",
-                                "end": "Right"
+                                "end": "Bottom"
                             },
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-align-vertical"
+                            }
+                        },
+                        {
+                            "name": "bannerContentWithMediaAlignVertical",
+                            "label": "Vertical alignment when there is an image or video",
+                            "type": "select",
+                            "defaultValue": "center",
+                            "options": {
+                                "start": "Top",
+                                "center": "Center",
+                                "end": "Bottom"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-align-vertical-with-media"
                             }
                         },
                         {
@@ -294,7 +309,7 @@
                             "name": "bannerContentFontSize",
                             "label": "Paragraph content font size",
                             "type": "fontSize",
-                            "defaultValue": "20px",
+                            "defaultValue": "2rem",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-content-font-size"
@@ -426,7 +441,7 @@
                             "name": "bannerSliderDotPaginationColorActive",
                             "label": "Dot pagination color (active)",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-dot-pagination-color-active"
@@ -463,7 +478,7 @@
                             "name": "bannerSliderTextPaginationBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871A",
+                            "defaultValue": "#a21514",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-text-background"
@@ -473,7 +488,7 @@
                             "name": "bannerSliderTextPaginationBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#2A6614",
+                            "defaultValue": "#7a0504",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-text-background-hover"
@@ -790,7 +805,7 @@
         },
         {
             "name": "Blocks - Icon Grid",
-            "description": "Styles for the \"Image Grid\" block.",
+            "description": "Styles for the \"Icon Grid\" block.",
             "groups": [
                 {
                     "name": "General styles",
@@ -2043,7 +2058,7 @@
                             "name": "defaultButtonBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871A",
+                            "defaultValue": "#a21514",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-background"
@@ -2053,7 +2068,7 @@
                             "name": "defaultButtonBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#2A6614",
+                            "defaultValue": "#7a0504",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-background-hover"
@@ -2105,7 +2120,7 @@
                             "name": "defaultButtonBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "0",
+                            "defaultValue": "4px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-border-radius"
@@ -2125,7 +2140,7 @@
                             "name": "defaultButtonPadding",
                             "label": "Padding",
                             "type": "padding",
-                            "defaultValue": "6px 20px",
+                            "defaultValue": "6px 12px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-padding"
@@ -2140,7 +2155,7 @@
                             "name": "alt1ButtonBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#fff",
+                            "defaultValue": "#a21514",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-background"
@@ -2150,7 +2165,7 @@
                             "name": "alt1ButtonBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#38871A",
+                            "defaultValue": "#7a0504",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-background-hover"
@@ -2164,7 +2179,7 @@
                             "useHover": true,
                             "useTextAlign": false,
                             "color": {
-                                "defaultValue": "#38871A"
+                                "defaultValue": "#333333"
                             },
                             "colorHover": {
                                 "defaultValue": "#fffff"
@@ -2184,7 +2199,6 @@
                             "name": "alt1ButtonBorderColor",
                             "label": "Border color",
                             "type": "color",
-                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-color"
@@ -2194,7 +2208,6 @@
                             "name": "alt1ButtonBorderColorHover",
                             "label": "Border color (hover)",
                             "type": "color",
-                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-color-hover"
@@ -2204,7 +2217,7 @@
                             "name": "alt1ButtonBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "0",
+                            "defaultValue": "4px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-radius"
@@ -2214,7 +2227,7 @@
                             "name": "alt1ButtonBorderWidth",
                             "label": "Border width",
                             "type": "size",
-                            "defaultValue": "2px",
+                            "defaultValue": "0",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-border-width"
@@ -2239,7 +2252,7 @@
                             "name": "alt2ButtonBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#1A7189",
+                            "defaultValue": "#a21514",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-background"
@@ -2249,7 +2262,7 @@
                             "name": "alt2ButtonBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#1A5E89",
+                            "defaultValue": "#7a0504",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-background-hover"
@@ -2263,7 +2276,7 @@
                             "useHover": true,
                             "useTextAlign": false,
                             "color": {
-                                "defaultValue": "#fff"
+                                "defaultValue": "#333333"
                             },
                             "colorHover": {
                                 "defaultValue": "#fff"
@@ -2295,7 +2308,7 @@
                             "name": "alt2ButtonBorderRadius",
                             "label": "Border radius",
                             "type": "borderRadius",
-                            "defaultValue": "0",
+                            "defaultValue": "4px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-border-radius"
@@ -2490,7 +2503,7 @@
                             "name": "calendarGridHeadingBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#0E766A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--CalendarGrid-heading-background"
@@ -2696,7 +2709,7 @@
                             "name": "footerBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Footer",
@@ -2729,16 +2742,6 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Footer-sm"
-                            }
-                        },
-                        {
-                            "name": "footerLogoMargin",
-                            "label": "Margin around logo",
-                            "type": "margin",
-                            "defaultValue": "0 0 20px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-logo-margin"
                             }
                         }
                     ]
@@ -2796,102 +2799,6 @@
                     ]
                 },
                 {
-                    "name": "Social",
-                    "fields": [
-                        {
-                            "name": "footerSocialMargin",
-                            "label": "Margin around social icons",
-                            "type": "margin",
-                            "defaultValue": "10 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-margin"
-                            }
-                        },
-                        {
-                            "name": "footerSocialGap",
-                            "label": "Space between social icons",
-                            "type": "size",
-                            "defaultValue": "10px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-gap"
-                            }
-                        },
-                        {
-                            "name": "footerSocialBorderRadius",
-                            "label": "Border radius around the icon",
-                            "type": "borderRadius",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-border-radius"
-                            }
-                        },
-                        {
-                            "name": "footerSocialSize",
-                            "label": "Icon size",
-                            "type": "size",
-                            "defaultValue": "1.8rem",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-size"
-                            }
-                        },
-                        {
-                            "name": "footerSocialPadding",
-                            "label": "Padding around the icon",
-                            "type": "padding",
-                            "description": "The padding shows more of the background around the icon",
-                            "defaultValue": "4px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-padding"
-                            }
-                        },
-                        {
-                            "name": "footerSocialBackground",
-                            "label": "Social background color",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-background"
-                            }
-                        },
-                        {
-                            "name": "footerSocialBackgroundHover",
-                            "label": "Social background color (hover)",
-                            "type": "color",
-                            "defaultValue": "#38871a",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-backgroundHover"
-                            }
-                        },
-                        {
-                            "name": "footerSocialColor",
-                            "label": "Social icon color",
-                            "type": "color",
-                            "defaultValue": "#38871a",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-color"
-                            }
-                        },
-                        {
-                            "name": "footerSocialColorHover",
-                            "label": "Social icon color (hover)",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Footer-social-colorHover"
-                            }
-                        }
-                    ]
-                },
-                {
                     "name": "Footer links",
                     "description": "This is for other links in the footer like an email link.",
                     "fields": [
@@ -2917,29 +2824,6 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Footer-link"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Footer copyright",
-                    "description": "Styles for the copyright text at the bottom of the footer.",
-                    "fields": [
-                        {
-                            "name": "footerCopyrightTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useTextAlign": false,
-                            "color": {
-                                "defaultValue": "#fff"
-                            },
-                            "fontSize": {
-                                "defaultValue": "1.4rem"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".Footer-copyright"
                             }
                         }
                     ]
@@ -2992,6 +2876,466 @@
             "name": "Forms",
             "description": "Styles for all forms on the website.",
             "groups": [
+                {
+                    "name": "Button",
+                    "fields": [
+                        {
+                            "name": "formButtonSize",
+                            "label": "Button size",
+                            "type": "radio",
+                            "defaultValue": "defaultValue",
+                            "options": {
+                                "defaultValue": "Default",
+                                "sm": "Small",
+                                "lg": "Large"
+                            }
+                        },
+                        {
+                            "name": "formButtonStyle",
+                            "label": "Button style",
+                            "type": "radio",
+                            "defaultValue": "defaultValue",
+                            "options": {
+                                "defaultValue": "Default",
+                                "alt": "Alternate 1",
+                                "alt2": "Alternate 2"
+                            }
+                        },
+                        {
+                            "name": "formButtonAlign",
+                            "label": "Button alignment",
+                            "type": "textAlign",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FormButton-text-align"
+                            }
+                        },
+                        {
+                            "name": "formButtonMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FormButton-margin"
+                            }
+                        },
+                        {
+                            "name": "formButtonFullWidthSmallScreens",
+                            "label": "Have the button be full width on small screens",
+                            "type": "switch",
+                            "defaultValue": "yes"
+                        }
+                    ]
+                },
+                {
+                    "name": "Checkbox",
+                    "description": "Styles for the checkbox",
+                    "fields": [
+                        {
+                            "name": "checkboxBackgroundColor",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-background-color"
+                            }
+                        },
+                        {
+                            "name": "checkboxBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "defaultValue": "#3D3D3D",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-border-color"
+                            }
+                        },
+                        {
+                            "name": "checkboxBorderSize",
+                            "label": "Checkbox border size",
+                            "type": "size",
+                            "defaultValue": "1px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-border-size"
+                            }
+                        },
+                        {
+                            "name": "checkboxBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "defaultValue": "4px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-border-radius"
+                            }
+                        },
+                        {
+                            "name": "checkboxColor",
+                            "label": "Checkbox color",
+                            "type": "color",
+                            "description": "The color of the checkmark when the field is selected",
+                            "defaultValue": "#3D3D3D",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-color"
+                            }
+                        },
+                        {
+                            "name": "checkboxSize",
+                            "label": "Checkbox field height and width",
+                            "type": "size",
+                            "defaultValue": "16px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-size"
+                            }
+                        },
+                        {
+                            "name": "checkboxCheckmarkHeight",
+                            "label": "Checkmark height",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-checkmark-height"
+                            }
+                        },
+                        {
+                            "name": "checkboxCheckmarkWidth",
+                            "label": "Checkmark width",
+                            "type": "size",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-checkmark-width"
+                            }
+                        },
+                        {
+                            "name": "checkboxCheckmarkThickness",
+                            "label": "Checkmark thickness",
+                            "type": "size",
+                            "defaultValue": "2px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-checkmark-thickness"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Field Descriptions",
+                    "fields": [
+                        {
+                            "name": "formDescriptionPosition",
+                            "label": "Where to display the description",
+                            "type": "radio",
+                            "defaultValue": "belowExceptRadioCheckbox",
+                            "options": {
+                                "above": "Above the field",
+                                "below": "Below the field",
+                                "belowExceptRadioCheckbox": "Below the field unless the field type is radio or checkbox"
+                            }
+                        },
+                        {
+                            "name": "formDescriptionTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useMargin": true,
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".FormDescription"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Field Labels",
+                    "fields": [
+                        {
+                            "name": "formLabelTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useMargin": true,
+                            "marginRender": {
+                                "cssSelector": "",
+                                "cssVariable": "--FormLabel-margin",
+                                "config": {
+                                    "combine": false
+                                }
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".FormLabel"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "File upload field",
+                    "description": "Styles for the file upload field on a form",
+                    "fields": [
+                        {
+                            "name": "fileUploadButtonBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#5D5D5D",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FileButton-background"
+                            }
+                        },
+                        {
+                            "name": "fileUploadButtonBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "defaultValue": "#5D5D5D",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FileButton-border-color"
+                            }
+                        },
+                        {
+                            "name": "fileUploadButtonColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FileButton-color"
+                            }
+                        },
+                        {
+                            "name": "fileUploadButtonBackgroundHover",
+                            "label": "Background color (hover)",
+                            "type": "color",
+                            "defaultValue": "#3D3D3D",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FileButton-background-hover"
+                            }
+                        },
+                        {
+                            "name": "fileUploadButtonBorderColorHover",
+                            "label": "Border color (hover)",
+                            "type": "color",
+                            "defaultValue": "#3D3D3D",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FileButton-border-color-hover"
+                            }
+                        },
+                        {
+                            "name": "fileUploadButtonColorHover",
+                            "label": "Text color (hover)",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FileButton-color-hover"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Form Overlay",
+                    "description": "Styles for the overlay which pops up on a form submission.",
+                    "fields": [
+                        {
+                            "name": "formOverlayBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#000000b3",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".FormOverlay",
+                                "cssProperty": "background-color"
+                            }
+                        },
+                        {
+                            "name": "formOverlayTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useTextAlign": false,
+                            "color": {
+                                "defaultValue": "#fff"
+                            },
+                            "fontSize": {
+                                "defaultValue": "3rem"
+                            },
+                            "textShadow": {
+                                "defaultValue": "0 1px 2px rgba(0, 0, 0, 0.5)"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".FormOverlay"
+                            }
+                        },
+                        {
+                            "name": "formOverlayTextShadow",
+                            "label": "Text shadow",
+                            "type": "textShadow",
+                            "defaultValue": "0 1px 2px rgba(0, 0, 0, 0.5)",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".FormOverlay-text"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Required Fields",
+                    "fields": [
+                        {
+                            "name": "formRequiredShowAsterisk",
+                            "label": "Show the \"*\" next to the field label for required fields",
+                            "type": "switch",
+                            "defaultValue": "yes",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FormRequiredMessage-asterisk-display",
+                                "template": "{{ value == 'yes' ? 'inline' : 'none' }}"
+                            }
+                        },
+                        {
+                            "name": "formRequiredColor",
+                            "label": "Asterisk color",
+                            "type": "color",
+                            "defaultValue": "#b2130c",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FormRequired-color"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Required Fields Message",
+                    "fields": [
+                        {
+                            "name": "formRequiredShowMessage",
+                            "label": "Show the \"Required fields\" message below the form",
+                            "type": "switch",
+                            "defaultValue": "yes",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--FormRequiredMessage-display",
+                                "template": "{{ value == 'yes' ? 'block' : 'none' }}"
+                            }
+                        },
+                        {
+                            "name": "formRequiredMessageText",
+                            "label": "Required fields text",
+                            "type": "text",
+                            "description": "The text to show at the bottom of the form to explain what the asterix beside fields means.",
+                            "defaultValue": "* Required fields"
+                        },
+                        {
+                            "name": "formRequiredMessageTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useMargin": true,
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".FormRequired-message"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Select Menu",
+                    "fields": [
+                        {
+                            "name": "selectMenuBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-background"
+                            }
+                        },
+                        {
+                            "name": "selectMenuColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "defaultValue": "#333",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-color"
+                            }
+                        },
+                        {
+                            "name": "selectMenuBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-border-radius"
+                            }
+                        },
+                        {
+                            "name": "selectMenuBorderWidth",
+                            "label": "Border width",
+                            "type": "size",
+                            "allowedUnits": ["px"],
+                            "defaultValue": "1px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-border-width"
+                            }
+                        },
+                        {
+                            "name": "selectMenuBorderColor",
+                            "label": "Border color",
+                            "type": "color",
+                            "defaultValue": "#777",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-border-color"
+                            }
+                        },
+                        {
+                            "name": "selectMenuArrowType",
+                            "label": "Arrow type",
+                            "type": "select",
+                            "defaultValue": "triangle",
+                            "options": {
+                                "caret": "Caret",
+                                "triangle": "Triangle"
+                            }
+                        },
+                        {
+                            "name": "selectMenuArrowColor",
+                            "label": "Arrow color",
+                            "type": "color",
+                            "defaultValue": "#777",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-arrow-color"
+                            }
+                        },
+                        {
+                            "name": "selectMenuPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-padding"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "Text Field",
                     "fields": [
@@ -3058,294 +3402,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "Select Menu",
-                    "fields": [
-                        {
-                            "name": "selectInputBackground",
-                            "label": "Background color",
-                            "type": "color",
-                            "defaultValue": "#fff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-background"
-                            }
-                        },
-                        {
-                            "name": "selectInputColor",
-                            "label": "Text color",
-                            "type": "color",
-                            "defaultValue": "#333",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-color"
-                            }
-                        },
-                        {
-                            "name": "selectInputBorderRadius",
-                            "label": "Border radius",
-                            "type": "borderRadius",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-border-radius"
-                            }
-                        },
-                        {
-                            "name": "selectInputBorderWidth",
-                            "label": "Border width",
-                            "type": "size",
-                            "allowedUnits": ["px"],
-                            "defaultValue": "1px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-border-width"
-                            }
-                        },
-                        {
-                            "name": "selectInputBorderColor",
-                            "label": "Border color",
-                            "type": "color",
-                            "defaultValue": "#777",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-border-color"
-                            }
-                        },
-                        {
-                            "name": "selectInputArrowColor",
-                            "label": "Arrow color",
-                            "type": "color",
-                            "defaultValue": "#777",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-arrow-color"
-                            }
-                        },
-                        {
-                            "name": "selectInputPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "5px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--SelectInput-padding"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Field Labels",
-                    "fields": [
-                        {
-                            "name": "formLabelTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useMargin": true,
-                            "marginRender": {
-                                "cssSelector": "",
-                                "cssVariable": "--FormLabel-margin",
-                                "config": {
-                                    "combine": false
-                                }
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".FormLabel"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Required Fields",
-                    "fields": [
-                        {
-                            "name": "formRequiredShowAsterisk",
-                            "label": "Show the \"*\" next to the field label for required fields",
-                            "type": "switch",
-                            "defaultValue": "yes",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--FormRequiredMessage-asterisk-display",
-                                "template": "{{ value == 'yes' ? 'inline' : 'none' }}"
-                            }
-                        },
-                        {
-                            "name": "formRequiredColor",
-                            "label": "Asterisk color",
-                            "type": "color",
-                            "defaultValue": "#b2130c",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--FormRequired-color"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Required Fields Message",
-                    "fields": [
-                        {
-                            "name": "formRequiredShowMessage",
-                            "label": "Show the \"Required fields\" message below the form",
-                            "type": "switch",
-                            "defaultValue": "yes",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--FormRequiredMessage-display",
-                                "template": "{{ value == 'yes' ? 'block' : 'none' }}"
-                            }
-                        },
-                        {
-                            "name": "formRequiredMessageText",
-                            "label": "Required fields text",
-                            "type": "text",
-                            "description": "The text to show at the bottom of the form to explain what the asterix beside fields means.",
-                            "defaultValue": "* Required fields"
-                        },
-                        {
-                            "name": "formRequiredMessageTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useMargin": true,
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".FormRequired-message"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Field Descriptions",
-                    "fields": [
-                        {
-                            "name": "formDescriptionPosition",
-                            "label": "Where to display the description",
-                            "type": "radio",
-                            "defaultValue": "belowExceptRadioCheckbox",
-                            "options": {
-                                "above": "Above the field",
-                                "below": "Below the field",
-                                "belowExceptRadioCheckbox": "Below the field unless the field type is radio or checkbox"
-                            }
-                        },
-                        {
-                            "name": "formDescriptionTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useMargin": true,
-                            "fontSize": {
-                                "defaultValue": "14px"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".FormDescription"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Button",
-                    "fields": [
-                        {
-                            "name": "formButtonSize",
-                            "label": "Button size",
-                            "type": "radio",
-                            "defaultValue": "defaultValue",
-                            "options": {
-                                "defaultValue": "Default",
-                                "sm": "Small",
-                                "lg": "Large"
-                            }
-                        },
-                        {
-                            "name": "formButtonStyle",
-                            "label": "Button style",
-                            "type": "radio",
-                            "defaultValue": "defaultValue",
-                            "options": {
-                                "defaultValue": "Default",
-                                "alt": "Alternate 1",
-                                "alt2": "Alternate 2"
-                            }
-                        },
-                        {
-                            "name": "formButtonAlign",
-                            "label": "Button alignment",
-                            "type": "textAlign",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--FormButton-text-align"
-                            }
-                        },
-                        {
-                            "name": "formButtonMargin",
-                            "label": "Margin",
-                            "type": "margin",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--FormButton-margin"
-                            }
-                        },
-                        {
-                            "name": "formButtonFullWidthSmallScreens",
-                            "label": "Have the button be full width on small screens",
-                            "type": "switch",
-                            "defaultValue": "yes"
-                        }
-                    ]
-                },
-                {
-                    "name": "Form Overlay",
-                    "description": "Styles for the overlay which pops up on a form submission.",
-                    "fields": [
-                        {
-                            "name": "formOverlayBackground",
-                            "label": "Background color",
-                            "type": "color",
-                            "defaultValue": "#000000b3",
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".FormOverlay",
-                                "cssProperty": "background-color"
-                            }
-                        },
-                        {
-                            "name": "formOverlayTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useTextAlign": false,
-                            "color": {
-                                "defaultValue": "#fff"
-                            },
-                            "fontSize": {
-                                "defaultValue": "3rem"
-                            },
-                            "textShadow": {
-                                "defaultValue": "0 1px 2px rgba(0, 0, 0, 0.5)"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".FormOverlay"
-                            }
-                        },
-                        {
-                            "name": "formOverlayTextShadow",
-                            "label": "Text shadow",
-                            "type": "textShadow",
-                            "defaultValue": "0 1px 2px rgba(0, 0, 0, 0.5)",
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".FormOverlay-text"
-                            }
-                        }
-                    ]
                 }
             ]
         },
@@ -3354,46 +3410,26 @@
             "description": "Styles for the header of the website.",
             "groups": [
                 {
-                    "name": "General",
+                    "name": "Padding",
                     "fields": [
                         {
-                            "name": "headerBackground",
-                            "label": "Background",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-background"
-                            }
-                        },
-                        {
-                            "name": "headerInnerPadding",
-                            "label": "Padding around the logo and navigation",
-                            "type": "padding",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-inner-padding"
-                            }
-                        },
-                        {
-                            "name": "headerLogoPadding",
-                            "label": "Padding around logo only",
+                            "name": "headerPadding",
+                            "label": "Padding",
                             "type": "padding",
                             "defaultValue": "20px 0",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Header-logo-padding"
+                                "cssVariable": "--Header-padding"
                             }
                         },
                         {
-                            "name": "headerLogoPaddingSm",
-                            "label": "Padding around logo only (small screens)",
+                            "name": "headerPaddingSm",
+                            "label": "Padding (small screens)",
                             "type": "padding",
-                            "defaultValue": "10px",
+                            "defaultValue": "20px 0",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Header-logo-padding-sm"
+                                "cssVariable": "--Header-padding-sm"
                             }
                         }
                     ]
@@ -3406,7 +3442,7 @@
                             "name": "headerTextLogoFontSizeSm",
                             "label": "Font size (small screens)",
                             "type": "size",
-                            "defaultValue": "40px",
+                            "defaultValue": "4rem",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-text-logo-font-size-sm"
@@ -3421,7 +3457,7 @@
                             "useTextAlign": false,
                             "useTextDecoration": false,
                             "fontSize": {
-                                "defaultValue": "60px"
+                                "defaultValue": "6rem"
                             },
                             "render": {
                                 "type": "css-head",
@@ -3429,7 +3465,7 @@
                             },
                             "fontSizeRender": {
                                 "cssSelector": "",
-                                "cssVariable": "--Header-text-logo-font-size"
+                                "cssVariable": "--Header-text-logo"
                             }
                         }
                     ]
@@ -3466,6 +3502,52 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Header-link"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Skip to Main Button",
+                    "description": "Styles for the \"Skip to Main\" button when using a keyboard to navigate the site. It shows at the very top of the page when it has focus.",
+                    "fields": [
+                        {
+                            "name": "skipMainButtonBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-background"
+                            }
+                        },
+                        {
+                            "name": "skipMainButtonColor",
+                            "label": "Text color",
+                            "type": "color",
+                            "defaultValue": "#008576",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-color"
+                            }
+                        },
+                        {
+                            "name": "skipMainButtonFontWeight",
+                            "label": "Font weight",
+                            "type": "fontWeight",
+                            "defaultValue": "bold",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-font-weight"
+                            }
+                        },
+                        {
+                            "name": "skipMainButtonPadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "5px 10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-skipMain-padding"
                             }
                         }
                     ]
@@ -3639,93 +3721,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "Skip to Main Button",
-                    "description": "Styles for the \"Skip to Main\" button when using a keyboard to navigate the site. It shows at the very top of the page when it has focus.",
-                    "fields": [
-                        {
-                            "name": "skipMainButtonBackground",
-                            "label": "Background color",
-                            "type": "color",
-                            "defaultValue": "#fff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-skipMain-background"
-                            }
-                        },
-                        {
-                            "name": "skipMainButtonColor",
-                            "label": "Text color",
-                            "type": "color",
-                            "defaultValue": "#38871A",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-skipMain-color"
-                            }
-                        },
-                        {
-                            "name": "skipMainButtonFontWeight",
-                            "label": "Font weight",
-                            "type": "fontWeight",
-                            "defaultValue": "bold",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-skipMain-font-weight"
-                            }
-                        },
-                        {
-                            "name": "skipMainButtonPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "5px 10px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-skipMain-padding"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Sticky header",
-                    "fields": [
-                        {
-                            "name": "headerStickyEnabled",
-                            "label": "Enable sticky header",
-                            "type": "switch",
-                            "defaultValue": "no"
-                        },
-                        {
-                            "name": "headerStickyHeaderBackground",
-                            "label": "Header background when sticky",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-sticky-background"
-                            }
-                        },
-                        {
-                            "name": "headerStickyHeaderLogoWidth",
-                            "label": "Logo width when sticky",
-                            "type": "size",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-sticky-logo-width"
-                            }
-                        },
-                        {
-                            "name": "headerStickyHeaderHeight",
-                            "label": "Approximate sticky header height",
-                            "type": "size",
-                            "description": "This is used to offset any anchor links so that they don't end up under the sticky header.",
-                            "defaultValue": "200px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-sticky-height"
-                            }
-                        }
-                    ]
                 }
             ]
         },
@@ -3740,30 +3735,10 @@
                             "name": "navBarBackground",
                             "label": "Background color",
                             "type": "color",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--NavBar-background"
-                            }
-                        },
-                        {
-                            "name": "navBarBorder",
-                            "label": "Border",
-                            "type": "border",
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".NavBar",
-                                "config": {
-                                    "combine": false
-                                }
-                            }
-                        },
-                        {
-                            "name": "navBarBackgroundSm",
-                            "label": "Background color (small screens)",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--NavBar-background-sm"
                             }
                         },
                         {
@@ -3821,8 +3796,6 @@
                             "collapsable": false,
                             "useHover": true,
                             "useFontSizeHover": false,
-                            "useTextDecoration": false,
-                            "useTextDecorationHover": false,
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav"
@@ -3864,114 +3837,6 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-background-hover"
-                            }
-                        },
-                        {
-                            "name": "mainNavLinkLineDisplay",
-                            "label": "Show the line above or below on hover",
-                            "type": "switch",
-                            "description": "Whether to show a line above or below the main navigation item when it's hovered or active. The line below only shows if the item does not have a dropdown. The line above would show even if there is a dropdown",
-                            "default": "yes",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-link-line-display",
-                                "template": "{{ value == 'yes' ? 'block' : 'none' }}"
-                            }
-                        },
-                        {
-                            "name": "mainNavLinkLineDisplayPosition",
-                            "label": "Where to show the line",
-                            "type": "radio",
-                            "default": "above",
-                            "options": {
-                                "above": "Above",
-                                "below": "Below"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "template": "{{ value == 'above' ? ':root {--MainNav-link-line-bottom: auto; --MainNav-link-line-top: -' ~ fields.mainNavLinkLineHeight.value ~ '; }'  : ':root {--MainNav-link-line-bottom: -' ~ fields.mainNavLinkLineHeight.value ~ '; --MainNav-link-line-top: auto}' }}"
-                            }
-                        },
-                        {
-                            "name": "mainNavLinkLineHeight",
-                            "label": "Line height",
-                            "type": "size",
-                            "default": "2px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-link-line-height"
-                            }
-                        },
-                        {
-                            "name": "mainNavLinkLineWidth",
-                            "label": "Line width",
-                            "type": "size",
-                            "default": "100%",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-link-line-width"
-                            }
-                        },
-                        {
-                            "name": "mainNavLinkLineColor",
-                            "label": "Line color",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-link-line-color"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Items (small screens)",
-                    "fields": [
-                        {
-                            "name": "mainNavItemBackgroundSm",
-                            "label": "Background color (small screens)",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-link-background-sm"
-                            }
-                        },
-                        {
-                            "name": "mainNavItemBackgroundHoverSm",
-                            "label": "Hover/active background color (small screens)",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-link-background-hover-sm"
-                            }
-                        },
-                        {
-                            "name": "mmainNavItemColorSm",
-                            "label": "Text color (small screens)",
-                            "type": "color",
-                            "defaultValue": "#fff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-color-sm"
-                            }
-                        },
-                        {
-                            "name": "mainNavItemColorHoverSm",
-                            "label": "Hover/active text color (small screens)",
-                            "type": "color",
-                            "defaultValue": "#fff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-color-hover-sm"
-                            }
-                        },
-                        {
-                            "name": "mainNavItemTextAlignSm",
-                            "label": "Text alignment (small screens)",
-                            "type": "textAlign",
-                            "defaultValue": "center",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--MainNav-text-align-sm"
                             }
                         }
                     ]
@@ -4037,7 +3902,7 @@
                             },
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Dropdown-left"
+                                "template": ":root {--Dropdown-left: {{ value }}; --Dropdown-transform: {% if value == '50%' %}translateX(-50%){% else %}none{% endif %};}"
                             }
                         }
                     ]
@@ -4070,7 +3935,7 @@
                             "name": "mainNavDropdownBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Dropdown-link-background"
@@ -4080,7 +3945,7 @@
                             "name": "navDropdownBackgroundHover",
                             "label": "Background color (hover)",
                             "type": "color",
-                            "defaultValue": "#2A6614",
+                            "defaultValue": "#591108",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Dropdown-link-background-hover"
@@ -4105,7 +3970,7 @@
                             "name": "navDropdownBackgroundSm",
                             "label": "Background color (small screens)",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Dropdown-link-background-sm"
@@ -4142,7 +4007,7 @@
                     "name": "smScBtnColor",
                     "label": "Hamburger color",
                     "type": "color",
-                    "defaultValue": "#38871a",
+                    "defaultValue": "#871E0F",
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--SmScBtn-color"
@@ -4226,7 +4091,7 @@
                             "name": "notificationBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#1A3A89",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Notification-background"
@@ -4694,27 +4559,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "Secondary content",
-                    "description": "This is used for smaller text in the sidebar. The blog sidebar uses this for dates and post counts.",
-                    "fields": [
-                        {
-                            "name": "sidebarSecondaryTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "color": {
-                                "defaultValue": "#4D4D4D"
-                            },
-                            "fontSize": {
-                                "defaultValue": "1.4rem"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".SidebarBox-secondary"
-                            }
-                        }
-                    ]
                 }
             ]
         },
@@ -4847,7 +4691,7 @@
                             "name": "modalCloseColorHover",
                             "label": "Icon color (hover)",
                             "type": "color",
-                            "defaultValue": "#38871a",
+                            "defaultValue": "#871E0F",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Modal-close-color-hover"
@@ -4948,7 +4792,7 @@
                             "name": "sideNavBackgroundHover",
                             "label": "Background (hover)",
                             "type": "color",
-                            "defaultValue": "#38871A",
+                            "defaultValue": "#008576",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--SidebarNav-background-hover"
@@ -4961,9 +4805,6 @@
                             "useHover": true,
                             "useTextAlign": false,
                             "usePadding": true,
-                            "colorHover": {
-                                "defaultValue": "#ffffff"
-                            },
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--SidebarNav"
@@ -4974,7 +4815,7 @@
                             "label": "Current link color",
                             "type": "color",
                             "description": "The link for the page page number a given user is on.",
-                            "defaultValue": "#38871A",
+                            "defaultValue": "#008576",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--SidebarNav-current-color"
@@ -5008,6 +4849,27 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".SidebarNav-link--isParent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Secondary content",
+                    "description": "This is used for smaller text in the sidebar. The blog sidebar uses this for dates and post counts.",
+                    "fields": [
+                        {
+                            "name": "sidebarSecondaryTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "color": {
+                                "defaultValue": "#4D4D4D"
+                            },
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".SidebarBox-secondary"
                             }
                         }
                     ]
@@ -5240,408 +5102,6 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Table-cell-even-color"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Top Bar",
-            "description": "Styles for the bar above the header.",
-            "groups": [
-                {
-                    "name": "General",
-                    "fields": [
-                        {
-                            "name": "topBarBackground",
-                            "label": "Background color",
-                            "type": "color",
-                            "defaultValue": "#38871a",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-background"
-                            }
-                        },
-                        {
-                            "name": "topBarColor",
-                            "label": "Text color",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-color"
-                            }
-                        },
-                        {
-                            "name": "topBarColorHover",
-                            "label": "Text color (hover)",
-                            "type": "color",
-                            "description": "This applies when hovering over a link, like a phone link",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-colorHover"
-                            }
-                        },
-                        {
-                            "name": "topBarPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "6px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-padding"
-                            }
-                        },
-                        {
-                            "name": "topBarPaddingSm",
-                            "label": "Padding (small screens)",
-                            "type": "padding",
-                            "defaultValue": "12px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-padding-sm"
-                            }
-                        },
-                        {
-                            "name": "topBarGap",
-                            "label": "Space between top bar columns",
-                            "type": "size",
-                            "defaultValue": "20px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-gap"
-                            }
-                        },
-                        {
-                            "name": "topBarFontSize",
-                            "label": "Font size for the entire top bar",
-                            "type": "fontSize",
-                            "description": "This can be overridden on some other Top Bar components below",
-                            "defaultValue": "1.6rem",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-font-size"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Social",
-                    "fields": [
-                        {
-                            "name": "topBarSocialGap",
-                            "label": "Space between social icons",
-                            "type": "size",
-                            "defaultValue": "10px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-gap"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialBorderRadius",
-                            "label": "Border radius around the icon",
-                            "type": "borderRadius",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-border-radius"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialSize",
-                            "label": "Icon size",
-                            "type": "size",
-                            "defaultValue": "18px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-size"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialPadding",
-                            "label": "Padding around the icon",
-                            "type": "padding",
-                            "description": "The padding shows more of the background around the icon",
-                            "defaultValue": "4px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-padding"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialBackground",
-                            "label": "Social background color",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-background"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialBackgroundHover",
-                            "label": "Social background color (hover)",
-                            "type": "color",
-                            "defaultValue": "#38871a",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-backgroundHover"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialColor",
-                            "label": "Social icon color",
-                            "type": "color",
-                            "defaultValue": "#38871a",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-color"
-                            }
-                        },
-                        {
-                            "name": "topBarSocialColorHover",
-                            "label": "Social icon color (hover)",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-social-colorHover"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Contact information",
-                    "fields": [
-                        {
-                            "name": "topBarContactGap",
-                            "label": "Space between contact items",
-                            "type": "size",
-                            "defaultValue": "20px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-contact-gap"
-                            }
-                        },
-                        {
-                            "name": "topBarContactGapSm",
-                            "label": "Space between contact items (small screens)",
-                            "type": "size",
-                            "defaultValue": "15px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-contact-gap-sm"
-                            }
-                        },
-                        {
-                            "name": "topBarContactTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "render": {
-                                "type": "css-head",
-                                "cssSelector": ".TopBar-contact"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Buttons general",
-                    "fields": [
-                        {
-                            "name": "topBarButtonGap",
-                            "label": "Space between top bar buttons",
-                            "type": "size",
-                            "defaultValue": "10px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-gap"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Primary buttons",
-                    "description": "Styles for the primary button type in the top bar",
-                    "fields": [
-                        {
-                            "name": "topBarPrimaryButtonBackground",
-                            "label": "Background color",
-                            "type": "color",
-                            "defaultValue": "#ffffff",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-background"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonBackgroundHover",
-                            "label": "Background color (hover)",
-                            "type": "color",
-                            "defaultValue": "#2A6614",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-background-hover"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useHover": true,
-                            "useTextAlign": false,
-                            "color": {
-                                "defaultValue": "#38871A"
-                            },
-                            "colorHover": {
-                                "defaultValue": "#fff"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-typography"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonBorderColor",
-                            "label": "Border color",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-border-color"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonBorderColorHover",
-                            "label": "Border color (hover)",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-border-color-hover"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonBorderRadius",
-                            "label": "Border radius",
-                            "type": "borderRadius",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-border-radius"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonBorderWidth",
-                            "label": "Border width",
-                            "type": "size",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-border-width"
-                            }
-                        },
-                        {
-                            "name": "topBarPrimaryButtonPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "6px 20px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-primary-padding"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Secondary buttons",
-                    "description": "Styles for the secondary button type in the top bar",
-                    "fields": [
-                        {
-                            "name": "topBarSecondaryButtonBackground",
-                            "label": "Background color",
-                            "type": "color",
-                            "defaultValue": "#38871A",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-background"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonBackgroundHover",
-                            "label": "Background color (hover)",
-                            "type": "color",
-                            "defaultValue": "#2A6614",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-background-hover"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonTypography",
-                            "label": "Typography",
-                            "type": "typography",
-                            "collapsable": false,
-                            "useHover": true,
-                            "useTextAlign": false,
-                            "color": {
-                                "defaultValue": "#ffffff"
-                            },
-                            "colorHover": {
-                                "defaultValue": "#ffffff"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-typography"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonBorderColor",
-                            "label": "Border color",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-border-color"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonBorderColorHover",
-                            "label": "Border color (hover)",
-                            "type": "color",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-border-color-hover"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonBorderRadius",
-                            "label": "Border radius",
-                            "type": "borderRadius",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-border-radius"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonBorderWidth",
-                            "label": "Border width",
-                            "type": "size",
-                            "defaultValue": "0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-border-width"
-                            }
-                        },
-                        {
-                            "name": "topBarSecondaryButtonPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "6px 20px",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--TopBar-button-secondary-padding"
                             }
                         }
                     ]

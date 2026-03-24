@@ -1,0 +1,89 @@
+/* =========================================================================== *\
+    File Upload fields
+    Based on https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+\* =========================================================================== */
+
+/* @define FileField */
+
+.FileField-input {
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.3px;
+    position: absolute;
+    visibility: hidden;
+    width: 0.1px;
+    z-index: -1;
+}
+
+/* postcss-bem-linter: ignore */
+.FileField:focus + label {
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.FileField-image {
+    height: auto;
+    max-height: 200px;
+    max-width: 100%;
+}
+
+/* ------------------------------------ *\
+    File upload button
+\* ------------------------------------ */
+
+.FileField-button {
+    background: var(--FileButton-background, var(--Button-background));
+    border-color: var(--FileButton-border-color, var(--Button-border-color));
+    color: var(--FileButton-color, var(--Button-color));
+    gap: 6px;
+}
+
+.FileField-button::after {
+    display: none;
+}
+
+/* postcss-bem-linter: ignore */
+.FileField-button + input[type='file'] {
+    height: 1px;
+    visibility: hidden;
+    width: 1px;
+}
+
+.FileField-button:hover,
+.FileField-button:focus,
+.FileField-button:active {
+    background: var(--FileButton-background-hover, var(--Button-background-hover));
+    border-color: var(--FileButton-border-color-hover, var(--Button-border-color-hover));
+    color: var(--FileButton-color-hover, var(--Button-color-hover));
+}
+
+/* ------------------------------------ *\
+    Action buttons to remove the image
+\* ------------------------------------ */
+
+.FileField-actionButton {
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: inherit;
+    column-gap: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    min-height: 1em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+}
+
+.FileField-actionButton--remove {
+    color: var(--base-typography-color);
+}
+
+.FileField-actionButton--remove:active,
+.FileField-actionButton--remove:focus,
+.FileField-actionButton--remove:hover {
+    color: var(--ButtonType-delete-color-hover);
+}

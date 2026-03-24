@@ -1,15 +1,18 @@
 {% import 'macros/form-macros.twig' as macros %}
 
-{{ macros.formSuccessMessage(form) }}
+{#
+ # Set the success message.
+ # Define "formSuccessMessage" in the template that includes this template if you want to customize the success message.
+ #}
+{{ macros.formSuccessMessage(form, formSuccessMessage) }}
 
-{% set form.class = 'js-form' ~ random_string() %}
+{% set form.class = form.class|default('js-form-' ~ random_string()) %}
 {{ form.openTag }}
     {{ macros.formErrorContainer(form) }}
+    {{ macros.buildLabelAboveFieldRequiredMessageAbove(hideRequiredMessage) }}
     {{ macros.buildLabelAboveFieldFields(form) }}
     {{ macros.captcha(form) }}
-
-    {{ macros.requiredMessage() }}
-    {{ macros.formButton(form.submitButtonText) }}
+    {{ macros.buildLabelAboveFieldSubmit(form, hideRequiredMessage) }}
 {{ form.closeTag }}
 
 {{ macros.formValidateHandlerJs(form) }}

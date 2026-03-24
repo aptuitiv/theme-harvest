@@ -2,12 +2,12 @@
     Select Input
 \* =========================================================================== */
 
-/* @define SelectInput */
-.SelectInput {
-    background: var(--SelectInput-background, #fff);
-    border: var(--SelectInput-border-width, 1px) solid var(--SelectInput-border-color, #777);
-    border-radius: var(--SelectInput-borderRadius, 0);
-    display: inline-block;
+/* @define SelectMenu */
+.SelectMenu {
+    background: var(--SelectMenu-background, #fff);
+    border: var(--SelectMenu-border-width, 1px) solid var(--SelectMenu-border-color, #777);
+    border-radius: var(--SelectMenu-borderRadius, 0);
+    display: inline-flex;
     outline: none;
     position: relative;
     width: 100%;
@@ -17,15 +17,17 @@
     Arrow
 \* ------------------------------------ */
 
-.SelectInput::before {
+/* Don't add the triangle to select menus that use TomSelect. If the select menu has the class "js-select" then it will use TomSelect */
+
+.SelectMenu:not(.js-select)::before {
     background: none;
     border: 6px solid;
-    border-color: var(--SelectInput-arrow-color, #777) transparent transparent transparent;
+    border-color: var(--SelectMenu-arrow-color, #777) transparent transparent transparent;
     content: '';
     height: 0;
     padding: 0;
     position: absolute;
-    right: 0.6rem;
+    right: 6px;
     top: 50%;
     transform: translateY(-25%);
     width: 0;
@@ -36,15 +38,15 @@
 \* ------------------------------------ */
 
 /* postcss-bem-linter: ignore */
-.SelectInput > select {
+.SelectMenu > select {
     appearance: none;
     background: transparent;
     border: 0;
-    color: var(--SelectInput-color, #333);
+    color: var(--SelectMenu-color, #333);
     display: block;
     margin: 0;
     outline: 0;
-    padding: var(--SelectInput-padding, 5px 10px);
+    padding: var(--SelectMenu-padding, 5px 10px);
     position: relative;
     width: 100%;
 }
