@@ -1,7 +1,7 @@
 {% extends 'two-column-right-sidebar' %}
 
 {% block banner %}
-    {% set content = '<h1 class="flex flex-col align-center g-1">Blog Archive<span class="h3 m-0">' ~ startDate ~ ' to ' ~ endDate ~ '</span></h1>' %}
+    {% set content = '<h1 class="flex flex-col align-center g-1">Blog Archive<span class="h3 m-0">' ~ startDateTimestamp|date('F d, Y') ~ ' to ' ~ endDateTimestamp|date('F d, Y') ~ '</span></h1>' %}
     {% include('content-builder/banner') %}
 {% endblock %}
 

@@ -1,4 +1,4 @@
-{% extends 'narrow' %}
+{% extends 'two-column-right-sidebar' %}
 {% import 'macros/macros' as macros %}
 
 {% block banner %}
@@ -68,3 +68,6 @@
 {% endblock %}
 
 
+{% block sidebar %}
+    {% include 'blog/sidebar' %}
+{% endblock %}
