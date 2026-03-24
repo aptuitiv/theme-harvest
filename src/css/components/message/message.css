@@ -5,6 +5,7 @@
 /* @define Message */
 .Message {
     border-radius: var(--Message-border-radius);
+    margin-bottom: var(--base-typography-spacing, 2.5rem);
     padding: var(--Message-padding, 20px);
 }
 
