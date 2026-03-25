@@ -550,16 +550,16 @@
 
     Examples:
     Basic:
-    {{ macros.formHandlerJs(form) }}
+    {{ macros.formValidateHandlerJs(form) }}
     All parameters:
-    {{ macros.formHandlerJs(form, {filesToLoad: ['js/stripe.js'|theme_url], formHandler: 'stripePayment', formOverlayClass: 'js-formOverlay'}) }}
+    {{ macros.formValidateHandlerJs(form, {filesToLoad: ['js/stripe.js'|theme_url], formHandler: 'stripePayment', formOverlayClass: 'js-formOverlay'}) }}
     Form handler:
     <script>
         const customHandler = new FormHandler();
         // Do some other intial setup of the form handler.
         customHandler.setUseAjax();
     </script>
-    {{ macros.formHandlerJs(form, {formHandler: 'customHandler'}) }}
+    {{ macros.formValidateHandlerJs(form, {formHandler: 'customHandler'}) }}
 #}
 {% macro formValidateHandlerJs(form, config) %}
     {# Make sure that the config variable is an object #}
