@@ -58,7 +58,7 @@ const main = {
 
 // Wait until page is ready before running any scripts
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', main.init);
+    document.addEventListener('DOMContentLoaded', () => main.init());
 } else {
     main.init();
 }
