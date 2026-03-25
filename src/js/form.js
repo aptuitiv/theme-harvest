@@ -21,6 +21,13 @@ class FormHandler {
     form;
 
     /**
+     * Holds the success container DOM element
+     *
+     * @type {HTMLElement}
+     */
+    successContainer;
+
+    /**
      * Holds the form overlay DOM element
      *
      * @type {HTMLElement}
@@ -122,6 +129,15 @@ class FormHandler {
      */
     setErrorContainerSelector(selector) {
         this.errorContainer = document.querySelector(selector);
+    }
+
+    /**
+     * Set the success container DOM selector
+     *
+     * @param {string} selector The success container DOM selector
+     */
+    setSuccessContainerSelector(selector) {
+        this.successContainer = document.querySelector(selector);
     }
 
     /**
@@ -650,6 +666,8 @@ class FormHandler {
                     if (typeof this.submitCallback === 'function') {
                         // response is an instance of Response
                         this.submitCallback(response, this);
+                    } else {
+                        this.showSuccess();
                     }
                 })
                 .catch((errorResponse) => {
@@ -725,19 +743,27 @@ class FormHandler {
     /**
      * Show the form error
      *
-     * The "error" could be the JSON returned from the server and something like this:
-     * {
-     *   "status": "error",
-     *   "message": "Error",
-     *   "errorList": [
-     *       "Your username and\/or password is incorrect"
-     *   ]
-     * }
-     * or it could be a string message.
+     * There are three modes:
+     * - 'full' (default): Wraps the error content in a Message--failure div and sets it in the error container.
+     *   The error can be a string, an object with errorList/message properties, or a Response.
+     * - 'message': Sets the error string as the inner content of the error container without wrapping markup.
+     * - 'show': Simply shows the error container by removing the 'hidden' class.
+     *   Use this when the error container already has its content set in the HTML.
      *
-     * @param {string|object|Response} error The error message or object
+     * @param {string|object|Response} [error] The error message, object, or Response
+     * @param {string} [mode] The display mode: 'full' to wrap in Message--failure markup, 'message' to set inner text, or 'show' to reveal the container
      */
-    showError(error) {
+    showError(error, mode = 'full') {
+        if (!this.errorContainer) {
+            return;
+        }
+
+        if (mode === 'show') {
+            this.errorContainer.classList.remove('hidden');
+            this.errorContainer.scrollIntoView({ behavior: 'smooth' });
+            return;
+        }
+
         /**
          * Process the error object and return the error HTML string
          *
@@ -772,22 +798,54 @@ class FormHandler {
          * @param {string} errorContent The error string or HTML
          */
         const outputError = (errorContent) => {
-            const output = `<div class="Message Message--failure mb-5">${errorContent}</div>`;
-            this.errorContainer.innerHTML = output;
+            if (mode === 'full') {
+                this.errorContainer.innerHTML = `<div class="Message Message--failure mb-5">${errorContent}</div>`;
+            } else {
+                this.errorContainer.innerHTML = errorContent;
+            }
             this.errorContainer.classList.remove('hidden');
             this.errorContainer.scrollIntoView({ behavior: 'smooth' });
         };
 
-        if (this.errorContainer) {
-            if (typeof error === 'string') {
-                outputError(error);
-            } else if (error instanceof Response) {
-                error.json().then((errorData) => {
-                    outputError(processErrorObject(errorData));
-                });
-            } else if (typeof error === 'object') {
-                outputError(processErrorObject(error));
-            }
+        if (typeof error === 'string') {
+            outputError(error);
+        } else if (error instanceof Response) {
+            error.json().then((errorData) => {
+                outputError(processErrorObject(errorData));
+            });
+        } else if (typeof error === 'object') {
+            outputError(processErrorObject(error));
         }
+    }
+
+    /**
+     * Show a success message
+     *
+     * There are three modes:
+     * - No argument or 'show': Simply shows the success container by removing the 'hidden' class.
+     *   Use this when the success container already has its content set in the HTML.
+     * - A string message: Sets the message as the inner content of the success container.
+     * - 'full' mode with a message: Wraps the message in a Message--success div and sets the full HTML.
+     *
+     * @param {string|null} [message] The success message string, or 'show' to simply reveal the container
+     * @param {string} [mode] The display mode: 'show' to reveal the container, 'message' to set inner text, or 'full' to wrap in Message--success markup
+     */
+    showSuccess(message, mode = 'message') {
+        if (!this.successContainer) {
+            return;
+        }
+        if (!message || mode === 'show') {
+            // Simply show the existing success container
+            this.successContainer.classList.remove('hidden');
+        } else if (mode === 'full') {
+            // Wrap the message in the full success markup
+            this.successContainer.innerHTML = `<div class="Message Message--success">${message}</div>`;
+            this.successContainer.classList.remove('hidden');
+        } else {
+            // Set the message as the inner content
+            this.successContainer.innerHTML = message;
+            this.successContainer.classList.remove('hidden');
+        }
+        this.successContainer.scrollIntoView({ behavior: 'smooth' });
     }
 }
