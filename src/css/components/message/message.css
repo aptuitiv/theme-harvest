@@ -14,7 +14,17 @@
     color: var(--Message-color-success);
 }
 
+/* postcss-bem-linter: ignore */
+.Message--success a {
+    color: var(--Message-color-success);
+}
+
 .Message--failure {
     background-color: var(--Message-background-failure);
+    color: var(--Message-color-failure);
+}
+
+/* postcss-bem-linter: ignore */
+.Message--failure a {
     color: var(--Message-color-failure);
 }
