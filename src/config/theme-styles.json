@@ -2337,6 +2337,41 @@
                     ]
                 },
                 {
+                    "name": "Disabled",
+                    "fields": [
+                        {
+                            "name": "buttonDisabledBackground",
+                            "label": "Disabled button background",
+                            "type": "color",
+                            "defaultValue": "#707070",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-background-disabled"
+                            }
+                        },
+                        {
+                            "name": "buttonDisabledBorderColor",
+                            "label": "Disabled button border color",
+                            "type": "color",
+                            "defaultValue": "#707070",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-border-color-disabled"
+                            }
+                        },
+                        {
+                            "name": "buttonDisabledTypographyColor",
+                            "label": "Disabled button typography color",
+                            "type": "color",
+                            "defaultValue": "#cccccc",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-typography-color-disabled"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Size variants",
                     "fields": [
                         {

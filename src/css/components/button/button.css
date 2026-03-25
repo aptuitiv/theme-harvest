@@ -155,6 +155,26 @@
     }
 }
 
+/* Disabled state */
+
+.Button:disabled,
+.Button:disabled:active,
+.Button:disabled:focus,
+.Button:disabled:hover,
+.Button--alt:disabled,
+.Button--alt:disabled:active,
+.Button--alt:disabled:focus,
+.Button--alt:disabled:hover,
+.Button--alt2:disabled,
+.Button--alt2:disabled:active,
+.Button--alt2:disabled:focus,
+.Button--alt2:disabled:hover {
+    background: var(--Button-background-disabled);
+    border-color: var(--Button-border-color-disabled);
+    color: var(--Button-typography-color-disabled);
+    cursor: not-allowed;
+}
+
 /** Button styles for when the button has an icon beside the text */
 
 .Button--withIcon {
