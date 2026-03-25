@@ -86,6 +86,15 @@ class FormHandler {
     submitErrorCallback;
 
     /**
+     * Holds an optional custom submit handler function.
+     * When set, this function is called instead of the default submit logic.
+     * The function receives the FormHandler instance as its argument.
+     *
+     * @type {(formHandler: FormHandler) => void}
+     */
+    customSubmitHandler;
+
+    /**
      * Whether to use AJAX to submit the form
      *
      * @type {boolean}
@@ -373,16 +382,21 @@ class FormHandler {
      * @private
      */
     checkRequiredImages() {
-        let disableButton = false;
-        Object.values(this.requiredImages).forEach((value) => {
-            if (!value) {
-                disableButton = true;
+        // Don't do anything if there are no required images.
+        // This includes setting the button as enabled. It's possible
+        // that the button was disabled externally and this could re-enable it.
+        if (Object.keys(this.requiredImages).length > 0) {
+            let disableButton = false;
+            Object.values(this.requiredImages).forEach((value) => {
+                if (!value) {
+                    disableButton = true;
+                }
+            });
+            if (disableButton) {
+                this.disableButton();
+            } else {
+                this.enableButton();
             }
-        });
-        if (disableButton) {
-            this.disableButton();
-        } else {
-            this.enableButton();
         }
     }
 
@@ -457,6 +471,18 @@ class FormHandler {
         }
         if (typeof errorCallback === 'function') {
             this.submitErrorCallback = errorCallback;
+        }
+    }
+
+    /**
+     * Set a custom submit handler that replaces the default form submission logic.
+     * The handler receives this FormHandler instance as its argument.
+     *
+     * @param {(formHandler: FormHandler) => void} handler The custom submit handler function
+     */
+    setCustomSubmitHandler(handler) {
+        if (typeof handler === 'function') {
+            this.customSubmitHandler = handler;
         }
     }
 
@@ -609,6 +635,12 @@ class FormHandler {
         this.showFormOverlay();
         this.disableButton();
         this.hideErrors();
+
+        // If a custom submit handler is set, call it instead of the default logic
+        if (typeof this.customSubmitHandler === 'function') {
+            this.customSubmitHandler(this);
+            return;
+        }
 
         if (!this.useAjax) {
             this.form.submit();

@@ -538,6 +538,7 @@
     config: (array) OPTIONAL Configuration options for the form validation
 
     config options:
+    - customSubmitHandler: (string) The name of a custom submit handler function to use. The function needs to be globally accessible.
     - filesToLoad: (array) Array of additional Javascript files to load
     - filesToLoadKey: (string) The key to use for the loadjs.ready function to load additional files referenced in filesToLoad. This can be used
             in some other Javascript to run code once the files load.
@@ -624,6 +625,9 @@
                     const {{ formHandlerObject }} = {{ config.formHandler }};
                 {% else %}
                     const {{ formHandlerObject }} = new FormHandler();
+                {% endif %}
+                {% if config.customSubmitHandler %}
+                    {{ formHandlerObject }}.setCustomSubmitHandler({{ config.customSubmitHandler }});
                 {% endif %}
                 {{ setupFunction }}({{ formHandlerObject }});
             }
