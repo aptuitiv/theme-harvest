@@ -660,12 +660,12 @@ class FormHandler {
             })
                 .then((response) => {
                     if (response.ok) {
-                        response.json().then((data) => {
-                            resolve(data);
+                        response.json().then((jsonData) => {
+                            resolve(jsonData);
                         });
                     } else {
-                        response.json().then((data) => {
-                            reject(data);
+                        response.json().then((jsonData) => {
+                            reject(jsonData);
                         });
                     }
                 })
