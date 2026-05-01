@@ -22,15 +22,17 @@ const loadIframeOnObserve = (element, src, title, className) => {
                     const iframeEl = document.createElement('iframe');
                     iframeEl.title = title;
                     iframeEl.src = src;
-                    iframeEl.className = className;
-                    iframeEl.style.display = 'none';
+                    if (typeof className === 'string') {
+                        iframeEl.className = className;
+                    }
+                    iframeEl.style.visibility = 'hidden';
 
                     element.appendChild(loadingEl);
                     element.appendChild(iframeEl);
 
                     iframeEl.addEventListener('load', () => {
                         element.removeChild(loadingEl);
-                        iframeEl.style.display = 'block';
+                        iframeEl.style.visibility = 'visible';
                     });
                 }
             });
