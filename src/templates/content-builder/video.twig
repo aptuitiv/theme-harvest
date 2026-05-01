@@ -1,14 +1,12 @@
 {% if video %}
     {% import 'macros/macros' as macros %}
     <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
-        <div class="my-5">
-            {% if thumbnail %}
-                {% do thumbnail.crop({ ar: '16x9' }) %}
-            {% endif %}
-            <video preload="metadata" class="w-100" {{ thumbnail ? 'poster="' ~ thumbnail.src ~ '"' }}{% if showControls is not same as(false) %} controls{% endif %}{% if autoplay %} autoplay muted playsinline{% endif %} {% if loop %} loop{% endif %}>
-                <source src="{{ video.src }}">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+        {% if thumbnail %}
+            {% do thumbnail.crop({ ar: '16x9' }) %}
+        {% endif %}
+        <video preload="metadata" class="w-100" {{ thumbnail ? 'poster="' ~ thumbnail.src ~ '"' }}{% if showControls is not same as(false) %} controls{% endif %}{% if autoplay %} autoplay muted playsinline{% endif %} {% if loop %} loop{% endif %}>
+            <source src="{{ video.src }}">
+            Your browser does not support the video tag.
+        </video>
     </div>
 {% endif %}
