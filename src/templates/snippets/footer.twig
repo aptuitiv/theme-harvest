@@ -7,7 +7,7 @@
                     {% set _core.theme.settings.footerLogo.class = "Footer-logo" %}
                     {% do _core.theme.settings.footerLogo.resize(_core.theme.settings.footerLogoWidth + 100) %}
                     {% do _core.theme.settings.footerLogo.alt.default(_core.settings.companyName) %}
-                    <a href="/" title="return to home page">{{ _core.theme.settings.footerLogo.tag }}</a></div>
+                    <a href="/" title="return to home page">{{ _core.theme.settings.footerLogo.tag }}</a>
                 {% endif %}
             </div>
             {% if _core.theme.settings.footerShowNavigation == 'yes' %}
