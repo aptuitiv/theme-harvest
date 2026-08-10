@@ -3597,6 +3597,16 @@
                             }
                         },
                         {
+                            "name": "headerInnerPaddingSm",
+                            "label": "Padding around the logo and navigation (small screens)",
+                            "type": "padding",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-inner-padding-sm"
+                            }
+                        },
+                        {
                             "name": "headerLogoPadding",
                             "label": "Padding around logo only",
                             "type": "padding",
@@ -3614,31 +3624,6 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Header-logo-padding-sm"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "Padding",
-                    "fields": [
-                        {
-                            "name": "headerPadding",
-                            "label": "Padding",
-                            "type": "padding",
-                            "defaultValue": "20px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-padding"
-                            }
-                        },
-                        {
-                            "name": "headerPaddingSm",
-                            "label": "Padding (small screens)",
-                            "type": "padding",
-                            "defaultValue": "20px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Header-padding-sm"
                             }
                         }
                     ]

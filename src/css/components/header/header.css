@@ -9,7 +9,14 @@
 }
 
 .Header-inner {
-    padding: var(--Header-inner-padding, 0);
+    padding: var(--Header-inner-padding-sm, 0);
+    transition: padding 250ms ease;
+}
+
+@media (--m-lg) {
+    .Header-inner {
+        padding: var(--Header-inner-padding, 0);
+    }
 }
 
 /* ------------------------------------ *\
