@@ -166,7 +166,7 @@
                             "render": {
                                 "type": "replace",
                                 "contentSelector": "#header-logo",
-                                "template": "<div class=\"Header-logoWrap hidden flex-md\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\">{% if url %}<img src=\"{{ url }}\" height=\"{{ imageHeight }}\" width=\"{{ imageWidth }}\" class=\"Header-logo\">{% elseif fields.headerTextLogo.value %}<span class=\"Header-textLogo\">{{ fields.headerTextLogo.value }}</span>{% endif %}</a></div>"
+                                "template": "<div class=\"Header-logoWrap hidden flex-md\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\" class=\"Header-logoLink\">{% if url %}<img src=\"{{ url }}\" height=\"{{ imageHeight }}\" width=\"{{ imageWidth }}\" class=\"Header-logo\">{% elseif fields.headerTextLogo.value %}<span class=\"Header-textLogo\">{{ fields.headerTextLogo.value }}</span>{% endif %}</a></div>"
                             }
                         },
                         {
@@ -206,7 +206,7 @@
                             "render": {
                                 "type": "replace",
                                 "contentSelector": "#header-logo",
-                                "template": "<div class=\"Header-logoWrap hidden flex-md\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\">{% if fields.headerLogo %}<img src=\"{{ fields.headerLogo.url }}\" height=\"{{ fields.headerLogo.imageHeight }}\" width=\"{{ fields.headerLogo.imageWidth }}\" class=\"Header-logo\">{% elseif value %}<span class=\"Header-textLogo\">{{ value }}</span>{% endif %}</a></div>"
+                                "template": "<div class=\"Header-logoWrap hidden flex-md\" id=\"header-logo\"><a href=\"/\" title=\"return to home page\" class=\"Header-logoLink\">{% if fields.headerLogo %}<img src=\"{{ fields.headerLogo.url }}\" height=\"{{ fields.headerLogo.imageHeight }}\" width=\"{{ fields.headerLogo.imageWidth }}\" class=\"Header-logo\">{% elseif value %}<span class=\"Header-textLogo\">{{ value }}</span>{% endif %}</a></div>"
                             }
                         }
                     ]

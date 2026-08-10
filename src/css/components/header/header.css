@@ -35,6 +35,24 @@
     transition: padding 250ms ease;
 }
 
+.Header-logoLink {
+    color: var(--Header-text-logo-color);
+    display: contents; /* This fixes an issue where in Firefox the link tag would collapse around an SVG logo. */
+    text-decoration: none;
+}
+
+.Header-logoLink:focus-visible {
+    color: var(--Header-text-logo-color-hover);
+    text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .Header-logoLink:hover {
+        color: var(--Header-text-logo-color-hover);
+        text-decoration: none;
+    }
+}
+
 .Header-logo {
     max-width: var(--Header-logo-width-sm);
     transition:
