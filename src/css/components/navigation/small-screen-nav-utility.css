@@ -1,0 +1,21 @@
+/* ===========================================================================
+    Utility styles for the small screen navigation
+=========================================================================== */
+
+/**
+ * Prevent the body from scrolling when the menu is open.
+ * This is targeted at iOS devices.
+ * The `touch-action: none;` is to disable touch scrolling and the "bounce" scroll effect on iOS devices.
+ * https://stackoverflow.com/questions/59193062/how-to-disable-scrolling-on-body-in-ios-13-safari-when-saved-as-pwa-to-the-hom
+ */
+html.menu-open {
+    height: 100vh; /* Prevents the body expanding beyond the screen */
+    overflow: hidden;
+    touch-action: none; /* Disables all touch-scrolling gestures entirely */
+}
+
+html.menu-open body {
+    height: 100vh; /* Prevents the body expanding beyond the screen */
+    overflow: hidden;
+    touch-action: none; /* Disables all touch-scrolling gestures entirely */
+}
