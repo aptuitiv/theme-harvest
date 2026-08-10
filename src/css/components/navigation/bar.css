@@ -4,9 +4,32 @@
 
 /* @define NavBar */
 .NavBar {
+    --navbar-offset: 100px;
+
     background-color: var(--NavBar-background-sm);
     display: none;
     padding: var(--NavBar-padding-sm, 0);
+}
+
+/**
+ * Small screen off-canvas menu. small-screen.js measures the hamburger button
+ * and writes the real value into --navbar-offset when the menu opens, then sets
+ * data-open="yes" to reveal it.
+ */
+@media (--m-lg-below) {
+    .NavBar {
+        height: calc(100svh - var(--navbar-offset));
+        left: 0;
+        overflow-y: auto;
+        position: fixed;
+        top: var(--navbar-offset);
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .NavBar[data-open='yes'] {
+        display: block;
+    }
 }
 
 @media (--m-lg) {
