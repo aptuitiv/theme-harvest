@@ -4166,7 +4166,7 @@
                             "label": "Show the line above or below on hover",
                             "type": "switch",
                             "description": "Whether to show a line above or below the main navigation item when it's hovered or active. The line below only shows if the item does not have a dropdown. The line above would show even if there is a dropdown",
-                            "default": "yes",
+                            "defaultValue": "yes",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-line-display",
@@ -4177,7 +4177,7 @@
                             "name": "mainNavLinkLineDisplayPosition",
                             "label": "Where to show the line",
                             "type": "radio",
-                            "default": "above",
+                            "defaultValue": "above",
                             "options": {
                                 "above": "Above",
                                 "below": "Below"
@@ -4191,7 +4191,7 @@
                             "name": "mainNavLinkLineHeight",
                             "label": "Line height",
                             "type": "size",
-                            "default": "2px",
+                            "defaultValue": "2px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-line-height"
@@ -4201,7 +4201,7 @@
                             "name": "mainNavLinkLineWidth",
                             "label": "Line width",
                             "type": "size",
-                            "default": "100%",
+                            "defaultValue": "100%",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-line-width"
