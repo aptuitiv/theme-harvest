@@ -26,6 +26,7 @@
     <link rel="dns-prefetch preconnect" href="//ajax.googleapis.com">
     <link rel="dns-prefetch preconnect" href="//fonts.googleapis.com">
     <title>{{ _page.title }}</title>
+    {{ _page.priorityHead() }}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ _page.meta() }}
     <link type="text/css" rel="stylesheet" href="{{ 'css/main.css'|theme_url }}">
