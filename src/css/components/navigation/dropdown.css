@@ -107,12 +107,12 @@
     }
 
     .Dropdown:hover > .Dropdown-menu,
-    .Dropdown.is-active > .Dropdown-menu, /* Needed for keyboard navigation */
+    .Dropdown.is-focused > .Dropdown-menu, /* Needed for keyboard navigation */
     .Dropdown-item:hover > .Dropdown-menu {
         display: block;
     }
 
-    .Dropdown-item.is-active > .Dropdown-menu, /* Needed for keyboard navigation */
+    .Dropdown-item.is-focused > .Dropdown-menu, /* Needed for keyboard navigation */
     .Dropdown-item:hover > .Dropdown-menu {
         display: block;
         left: 100%;
@@ -128,7 +128,7 @@
 
     /* fly-out to the left if root parent is last item */
     .Dropdown.is-last .Dropdown-item:hover > .Dropdown-menu,
-    .Dropdown.is-last .Dropdown-item.is-active > .Dropdown-menu {
+    .Dropdown.is-last .Dropdown-item.is-focused > .Dropdown-menu {
         display: block;
         left: auto;
         right: 100%;
