@@ -88,4 +88,14 @@
         margin: var(--Footer-margin, 0);
         padding: var(--Footer-padding, 20px 0);
     }
+
+    .Footer-social--hideLg {
+        display: none;
+    }
+}
+
+@media (--m-lg-below) {
+    .Footer-social--hideSm {
+        display: none;
+    }
 }

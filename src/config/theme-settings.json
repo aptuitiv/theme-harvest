@@ -141,8 +141,16 @@
                     "fields": [
                         {
                             "name": "footerShowSocial",
-                            "label": "Show social",
+                            "label": "Show social icons (large screens)",
                             "type": "switch",
+                            "description": "Show the social icons in the footer on large screens. They render after the navigation and above the address.",
+                            "defaultValue": "yes"
+                        },
+                        {
+                            "name": "footerShowSocialSm",
+                            "label": "Show social icons (small screens)",
+                            "type": "switch",
+                            "description": "Show the social icons in the footer on small screens. Use together with the large-screen toggle to control each independently.",
                             "defaultValue": "yes"
                         },
                         {
