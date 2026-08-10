@@ -12,7 +12,7 @@ const smallScreenNav = {
         // Select elements
         const html = document.documentElement;
         const button = document.querySelector('.js-ssNavBtn');
-        const nav = document.querySelector('.js-mainNav');
+        const nav = document.querySelector('.js-navBar');
         const dropdowns = document.querySelectorAll('.js-dropdown');
 
         /**
