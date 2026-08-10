@@ -36,7 +36,7 @@
 }
 
 .Header-logo {
-    max-width: var(--Header-logo-width);
+    max-width: var(--Header-logo-width-sm);
     transition:
         max-width 250ms ease,
         width 250ms ease;
@@ -47,7 +47,7 @@
 .Header-logo[src$='.svg'] {
     height: auto;
     max-width: 100%;
-    width: var(--Header-logo-width);
+    width: var(--Header-logo-width-sm);
 }
 
 .Header-textLogo {
@@ -55,7 +55,20 @@
     transition: font-size 250ms ease;
 }
 
+/**
+ * The two logo wraps swap at md (`hidden-md` / `hidden flex-md` in header.twig),
+ * so that is where the logo switches from its small-screen width to its full
+ * width — same breakpoint the text logo already uses.
+ */
 @media (--m-md) {
+    .Header-logo {
+        max-width: var(--Header-logo-width);
+    }
+
+    .Header-logo[src$='.svg'] {
+        width: var(--Header-logo-width);
+    }
+
     .Header-textLogo {
         font-size: var(--Header-text-logo-font-size);
     }
@@ -125,18 +138,28 @@ html.has-sticky-header {
 }
 
 .Header.is-sticky .Header-logo {
-    max-width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+    max-width: calc(var(--Header-logo-width-sm) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
 }
 
 .Header.is-sticky .Header-logo[src$='.svg'] {
-    width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+    width: calc(var(--Header-logo-width-sm) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
 }
 
 .Header.is-sticky .Header-textLogo {
     font-size: calc(var(--Header-text-logo-font-size-sm) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
 }
 
+/* From md the full-width logo is the one on screen, but the small-screen
+   sticky scale still applies until the large-screen breakpoint below. */
 @media (--m-md) {
+    .Header.is-sticky .Header-logo {
+        max-width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+    }
+
+    .Header.is-sticky .Header-logo[src$='.svg'] {
+        width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+    }
+
     .Header.is-sticky .Header-textLogo {
         font-size: calc(var(--Header-text-logo-font-size) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
     }

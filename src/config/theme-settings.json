@@ -180,6 +180,18 @@
                                 "cssVariable": "--Header-logo-width",
                                 "template": "{{ value }}px"
                             }
+                        },
+                        {
+                            "name": "headerLogoWidthSm",
+                            "label": "Logo width (small screens)",
+                            "type": "stepper",
+                            "after": "px",
+                            "defaultValue": "425",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-logo-width-sm",
+                                "template": "{{ value }}px"
+                            }
                         }
                     ]
                 },
