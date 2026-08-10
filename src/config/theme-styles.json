@@ -2788,6 +2788,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--Footer-logo-margin"
                             }
+                        },
+                        {
+                            "name": "footerContactGap",
+                            "label": "Vertical space between address, phone number, and email",
+                            "type": "size",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-contact-gap"
+                            }
                         }
                     ]
                 },
@@ -2935,6 +2945,21 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Footer-social-colorHover"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Phone number",
+                    "fields": [
+                        {
+                            "name": "footerPhoneTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "useMargin": true,
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Footer-phone"
                             }
                         }
                     ]

@@ -27,6 +27,16 @@
 }
 
 /* ------------------------------------ *\
+    Contact information
+\* ------------------------------------ */
+
+.Footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--Footer-contact-gap, 5px);
+}
+
+/* ------------------------------------ *\
     Social
 \* ------------------------------------ */
 
