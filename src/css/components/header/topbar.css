@@ -52,9 +52,14 @@
     Social
 \* ------------------------------------ */
 
+/**
+ * Visibility is driven by the "Show social icons" settings via the --hideLg /
+ * --hideSm modifiers below, not by the base rule. The md boundary matches the
+ * rest of the top bar's small/large split.
+ */
 .TopBar-social {
     align-items: center;
-    display: none;
+    display: flex;
     gap: var(--TopBar-social-gap, 10px);
     justify-content: flex-end;
     line-height: 1;
@@ -86,8 +91,14 @@
 }
 
 @media (--m-md) {
-    .TopBar-social {
-        display: flex;
+    .TopBar-social--hideLg {
+        display: none;
+    }
+}
+
+@media (--m-md-below) {
+    .TopBar-social--hideSm {
+        display: none;
     }
 }
 

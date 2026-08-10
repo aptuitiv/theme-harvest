@@ -385,9 +385,17 @@
                 },
                 {
                     "name": "headerShowSocial",
-                    "label": "Show social icons",
+                    "label": "Show social icons (large screens)",
                     "type": "switch",
+                    "description": "Show the social icons in the top bar on large screens.",
                     "defaultValue": "yes"
+                },
+                {
+                    "name": "headerShowSocialSm",
+                    "label": "Show social icons (small screens)",
+                    "type": "switch",
+                    "description": "Show the social icons in the top bar on small screens. Use together with the large-screen toggle to control each independently.",
+                    "defaultValue": "no"
                 },
                 {
                     "name": "headerSmallScreenPhoneText",

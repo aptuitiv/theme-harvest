@@ -74,17 +74,29 @@
         <div class="TopBar">
             <div class="Container Container--pad">
                 <div class="TopBar-inner flex align-center justify-center justify-between-md">
-                    {% if (_core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes') or (_core.theme.settings.headerLeftButtons|first.button and _core.theme.settings.headerShowLeftButtons == 'yes') %}
-                        <div class="hidden flex-md align-center gx-2">
-                            {% if _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
-                                <div class="TopBar-social">
+                    {#
+                        Social / left-button group. The left buttons are large-screen only
+                        (each carries `hidden flex-lg`), so at small screens this group is
+                        only ever shown for the social icons. Its visibility is worked out
+                        per breakpoint so an empty group never takes up a gap in TopBar-inner.
+                    #}
+                    {% set showSocialLg = _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocial == 'yes' %}
+                    {% set showSocialSm = _core.theme.settings.social|first.url and _core.theme.settings.headerShowSocialSm == 'yes' %}
+                    {% set showLeftButtons = _core.theme.settings.headerLeftButtons|first.button and _core.theme.settings.headerShowLeftButtons == 'yes' %}
+                    {% if showSocialLg or showSocialSm or showLeftButtons %}
+                        <div class="align-center gx-2 {{ showSocialSm ? 'flex' : 'hidden' }} {{ (showSocialLg or showLeftButtons) ? 'flex-md' : 'hidden-md' }}">
+                            {% if showSocialLg or showSocialSm %}
+                                <div class="TopBar-social
+                                    {%- if not showSocialLg %} TopBar-social--hideLg{% endif -%}
+                                    {%- if not showSocialSm %} TopBar-social--hideSm{% endif -%}
+                                ">
                                     {% set socialNames = {facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', pinterest: 'Pinterest', x: 'X', youtube: 'YouTube'} %}
                                     {% for social in _core.theme.settings.social %}
                                         <a href="{{ social.url }}" title="Follow us on {{ attribute(socialNames, social.icon)|default(social.icon) }}" target="_blank" rel="noopenner noreferrer" class="TopBar-socialLink">{{ macros.iconImg(social.icon, attribute(socialNames, social.icon)|default(social.icon), "TopBar-socialIcon") }}</a>
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {% if _core.theme.settings.headerLeftButtons|first.button and _core.theme.settings.headerShowLeftButtons == 'yes' %}
+                            {% if showLeftButtons %}
                                 <div class="TopBar-buttons">
                                     {% for button in _core.theme.settings.headerLeftButtons %}
                                         {% if button.style == 'primary' %}
