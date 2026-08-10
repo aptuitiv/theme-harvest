@@ -45,7 +45,7 @@
 
 {# ASSIGN MENU CLASS #}
 {% set menu.class = menu.class ~ ' MainNav js-mainNav' %}
-<ul{{menu.class.attr}}{{ menu.id.attr }} data-access-nav role="menubar" id="navbar">
+<ul{{menu.class.attr}}{{ menu.id.attr }} data-access-nav role="menubar">
     {% for item in items %}
         {% if item.subItems and ('is-currentParent' in item.link.class or 'is-current' in item.link.class) %}
             {% set item.link.class = item.link.class ~ " is-active" %}
