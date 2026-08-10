@@ -15,33 +15,27 @@ const smallScreenNav = {
         const nav = document.querySelector('.js-mainNav');
         const dropdowns = document.querySelectorAll('.js-dropdown');
 
-        // Make sure that the navigation gets displayed if the window resizes.
-        // If you resize to make the small screen nav display, show and hide the nav,
-        // and then resize so that regular nav should show, the regular nav doesn't show
-        // because there are inline styles on the nav to hide it.
-        // We do this by clearing out any inline CSS styles so that the styles
-        // from the stylesheet are used.
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= width) {
-                nav.style.display = '';
-                nav.style.opacity = '';
-                html.classList.remove('menu-open');
-            }
-        });
+        /**
+         * Close the small screen navigation and undo everything opening it changed
+         */
+        function closeNav() {
+            nav.dataset.open = 'no';
+            button.classList.remove('is-active');
+            button.setAttribute('aria-expanded', 'false');
+            html.classList.remove('menu-open');
+        }
 
         /**
          * Function to toggle showing and hiding the small screen navigation
          */
         function toggleNav() {
-            button.classList.toggle('is-active');
             if (nav.dataset.open === 'yes') {
                 // Hide the menu
-                nav.dataset.open = 'no';
-                button.setAttribute('aria-expanded', 'false');
-                html.classList.remove('menu-open');
+                closeNav();
             } else {
                 // Show the menu
                 nav.dataset.open = 'yes';
+                button.classList.add('is-active');
                 button.setAttribute('aria-expanded', 'true');
                 // Set the offset position for the menu
                 const buttonPosition =
@@ -58,6 +52,23 @@ const smallScreenNav = {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 toggleNav();
+            });
+
+            // Make sure that the navigation gets displayed if the window resizes.
+            // If you resize to make the small screen nav display, show and hide the nav,
+            // and then resize so that regular nav should show, the regular nav doesn't show
+            // because there are inline styles on the nav to hide it.
+            // We do this by clearing out any inline CSS styles so that the styles
+            // from the stylesheet are used.
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= width) {
+                    nav.style.display = '';
+                    nav.style.opacity = '';
+                    // Reset the open state as well. Only dropping the scroll lock left
+                    // the button, its ARIA state and data-open stuck open, so the menu
+                    // came back open (unlocked) when resizing back down.
+                    closeNav();
+                }
             });
         }
 
