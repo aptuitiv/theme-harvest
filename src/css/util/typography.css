@@ -2,19 +2,25 @@
     Typography utilities
 \* =========================================================================== */
 
+/**
+ * Centered heading with an underline rule beneath it. Applied by editors
+ * through the CMS rich text editor, so it has no matching template markup.
+ * The custom properties are set from Theme Styles - Typography - Centered Heading.
+ */
 .heading-centered {
-    margin-bottom: 35px;
+    margin: var(--heading-centered-margin, 0 0 35px);
     position: relative;
     text-align: center;
 }
 
 .heading-centered::after {
-    background: #38871a;
+    background: var(--heading-centered-after-background, #38871a);
     bottom: -12px;
     content: '';
-    height: 3px;
+    display: var(--heading-centered-after-display, block);
+    height: var(--heading-centered-after-height, 3px);
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
-    width: 100px;
+    width: var(--heading-centered-after-width, 100px);
 }

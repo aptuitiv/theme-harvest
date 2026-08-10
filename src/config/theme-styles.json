@@ -6357,6 +6357,66 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "Centered Heading",
+                    "description": "Styles for the \"heading-centered\" class, which centers a heading and draws a short rule beneath it. Apply it to a heading from the \"Styles\" menu in the editor.",
+                    "fields": [
+                        {
+                            "name": "centeredHeadingMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "defaultValue": "0 0 35px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--heading-centered-margin"
+                            }
+                        },
+                        {
+                            "name": "centeredHeadingAfterBackground",
+                            "label": "Line color",
+                            "type": "color",
+                            "description": "Color of the rule drawn beneath the heading.",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--heading-centered-after-background"
+                            }
+                        },
+                        {
+                            "name": "centeredHeadingAfterHeight",
+                            "label": "Line height",
+                            "type": "size",
+                            "description": "Thickness of the rule drawn beneath the heading.",
+                            "defaultValue": "3px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--heading-centered-after-height"
+                            }
+                        },
+                        {
+                            "name": "centeredHeadingAfterWidth",
+                            "label": "Line width",
+                            "type": "size",
+                            "defaultValue": "100px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--heading-centered-after-width"
+                            }
+                        },
+                        {
+                            "name": "centeredHeadingAfterDisplay",
+                            "label": "Show the line",
+                            "type": "switch",
+                            "description": "Turn off to center the heading without drawing a rule beneath it.",
+                            "defaultValue": "yes",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--heading-centered-after-display",
+                                "template": "{{ value == 'yes' ? 'block' : 'none' }}"
+                            }
+                        }
+                    ]
                 }
             ]
         }
