@@ -25,8 +25,8 @@
 }
 
 .MainNav-link {
-    background: var(--MainNav-link-background-sm, --MainNav-link-background);
-    color: var(--MainNav-color-sm, --MainNav-color);
+    background: var(--MainNav-link-background-sm, var(--MainNav-link-background));
+    color: var(--MainNav-color-sm, var(--MainNav-color));
     display: block;
     font-weight: var(--MainNav-font-weight);
     padding: var(--MainNav-item-padding-sm);
@@ -38,8 +38,8 @@
 .MainNav-item.is-current > .MainNav-link,
 .MainNav-item.is-currentParent > .MainNav-link,
 .MainNav-item:hover > .MainNav-link {
-    background: var(--MainNav-link-background-hover-sm, --MainNav-link-background-hover);
-    color: var(--MainNav-color-hover-sm, --MainNav-color-hover);
+    background: var(--MainNav-link-background-hover-sm, var(--MainNav-link-background-hover));
+    color: var(--MainNav-color-hover-sm, var(--MainNav-color-hover));
     text-decoration: var(--MainNav-link-text-decoration-hover, none);
 }
 
