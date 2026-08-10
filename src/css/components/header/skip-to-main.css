@@ -14,7 +14,11 @@
     position: absolute;
     top: 5px;
     width: 1px;
-    z-index: 100;
+
+    /* Must outrank the sticky header (--Header-sticky-z-index, default 100),
+       otherwise the focused link is painted underneath it once the header
+       sticks to the top of the viewport. */
+    z-index: calc(var(--Header-sticky-z-index, 100) + 1);
 }
 
 .HeaderSkipToMain:focus {

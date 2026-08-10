@@ -1,7 +1,25 @@
 {% import 'macros/macros' as macros %}
 
+{# Sticky header state. `stickyCollapse*` tell the CSS whether anything actually
+   collapses at that breakpoint, which is what turns off scroll anchoring. #}
+{% set stickyEnabled = _core.theme.settings.headerStickyEnabled == 'yes' %}
+{% set stickyCollapseLg = stickyEnabled and (
+    _core.theme.settings.headerStickyHideTopBar == 'yes'
+    or _core.theme.settings.headerStickyHideSocial == 'yes'
+    or _core.theme.settings.headerStickyHideAddress == 'yes'
+    or _core.theme.settings.headerStickyHidePhone == 'yes'
+    or _core.theme.settings.headerStickyHideButtons == 'yes'
+) %}
+{% set stickyCollapseSm = stickyEnabled and (
+    _core.theme.settings.headerStickyHideTopBarSm == 'yes'
+    or _core.theme.settings.headerStickyHideSocialSm == 'yes'
+    or _core.theme.settings.headerStickyHideAddressSm == 'yes'
+    or _core.theme.settings.headerStickyHidePhoneSm == 'yes'
+    or _core.theme.settings.headerStickyHideButtonsSm == 'yes'
+) %}
+
 <!doctype html>
-<html lang="en"{% if _core.theme.settings.headerStickyEnabled == 'yes' %} class="has-sticky-header"{% endif %}>
+<html lang="en"{% if stickyEnabled %} class="has-sticky-header{% if stickyCollapseLg %} has-sticky-collapse-lg{% endif %}{% if stickyCollapseSm %} has-sticky-collapse-sm{% endif %}"{% endif %}>
 <head>
     <meta charset="utf-8">
     <link rel="dns-prefetch preconnect" href="//www.google-analytics.com">
@@ -29,7 +47,19 @@
     <div class="visually-hidden" aria-hidden="true">{{ source('snippets/svg-icons.twig') }}</div>
     {{ _api.widgets.collection.get('notifications') }}
 
-    <header role="banner" class="Header{% if _core.theme.settings.headerStickyEnabled == 'yes' %} js-stickyHeader{% endif %}">
+    <header role="banner" class="Header
+        {%- if stickyEnabled and _core.theme.settings.headerStickyHideOnScroll == 'yes' %} Header--hideOnScroll{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideTopBar == 'yes' %} Header--hideTopBarWhenSticky{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideSocial == 'yes' %} Header--hideSocialWhenSticky{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideAddress == 'yes' %} Header--hideAddressWhenSticky{% endif -%}
+        {%- if _core.theme.settings.headerStickyHidePhone == 'yes' %} Header--hidePhoneWhenSticky{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideButtons == 'yes' %} Header--hideButtonsWhenSticky{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideTopBarSm == 'yes' %} Header--hideTopBarWhenStickySm{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideSocialSm == 'yes' %} Header--hideSocialWhenStickySm{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideAddressSm == 'yes' %} Header--hideAddressWhenStickySm{% endif -%}
+        {%- if _core.theme.settings.headerStickyHidePhoneSm == 'yes' %} Header--hidePhoneWhenStickySm{% endif -%}
+        {%- if _core.theme.settings.headerStickyHideButtonsSm == 'yes' %} Header--hideButtonsWhenStickySm{% endif -%}
+    ">
         {# Logo for small screens #}
         <div class="Header-logoWrapSm hidden-md flex justify-center">
             {% if _core.theme.settings.headerLogo %}
@@ -71,13 +101,13 @@
                     {% if _core.theme.settings.headerShowPhone == 'yes' or _core.theme.settings.headerShowAddress == 'yes' %}
                         <div class="TopBar-contact">
                             {% if _core.theme.settings.headerShowPhone == 'yes' and _core.settings.companyPhone|length > 0 %}
-                                <span class="TopBar-contactItem">
+                                <span class="TopBar-contactItem TopBar-phone">
                                     <a class="hidden inline-md" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}">{{ _core.settings.companyPhone }}</a>
                                     <a class="hidden-md mb-2 TopBar-buttonPrimary" href="tel:{{ _core.settings.companyPhone|replace({'(': '', '}': '', '-': '', ' ': ''}) }}" aria-label="Call {{ _core.settings.companyPhone }}"><span>{{ _core.theme.settings.headerSmallScreenPhoneText }}</span></a>
                                 </span>
                             {% endif %}
                             {% if _core.theme.settings.headerShowAddress == 'yes' %}
-                                <span class="TopBar-contactItem hidden block-md">
+                                <span class="TopBar-contactItem TopBar-address hidden block-md">
                                     {% if _core.theme.settings.headerCustomAddress %}
                                         {{ _core.theme.settings.headerCustomAddress }}
                                     {% else %}

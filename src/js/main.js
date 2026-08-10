@@ -6,6 +6,7 @@ import accordion from './accordion';
 import { setCookie } from './lib/cookie';
 import smallScreenNav from './navigation/small-screen';
 import navAccessibility from './navigation/accessibility';
+import stickyHeader from './sticky-header';
 
 /* global MicroModal:readonly notificationBarCookieExpirationDuration */
 
@@ -21,6 +22,7 @@ const main = {
         accordion.init();
         smallScreenNav.init();
         navAccessibility.init();
+        stickyHeader.init();
         MicroModal.init({
             disableFocus: true,
         });

@@ -12,24 +12,6 @@
     padding: var(--Header-inner-padding, 0);
 }
 
-@media (--c-bp-largeScreenNav) {
-    .Header.is-sticky {
-        background: var(--Header-sticky-background);
-        box-shadow: 1px 1px 3px rgb(43 26 35 / 40%);
-        position: sticky;
-        top: 0;
-        z-index: 11;
-    }
-
-    .Header.is-sticky .Header-logoWrap {
-        padding: var(--Header-sticky-logo-padding, var(--Header-logo-padding, 20px 0));
-    }
-
-    .Header.is-sticky .Header-logo {
-        max-width: var(--Header-sticky-logo-width, var(--Header-logo-width));
-    }
-}
-
 /* ------------------------------------ *\
     Logo
 \* ------------------------------------ */
@@ -38,14 +20,19 @@
     display: flex;
     justify-content: center;
     padding: var(--Header-logo-padding, 20px 0);
+    transition: padding 250ms ease;
 }
 
 .Header-logoWrapSm {
     padding: var(--Header-logo-padding-sm, 10px);
+    transition: padding 250ms ease;
 }
 
 .Header-logo {
     max-width: var(--Header-logo-width);
+    transition:
+        max-width 250ms ease,
+        width 250ms ease;
     width: 100%;
 }
 
@@ -58,10 +45,150 @@
 
 .Header-textLogo {
     font-size: var(--Header-text-logo-font-size-sm);
+    transition: font-size 250ms ease;
 }
 
 @media (--m-md) {
     .Header-textLogo {
         font-size: var(--Header-text-logo-font-size);
+    }
+}
+
+/* =========================================================================== *\
+    Sticky header
+
+    Enabled by the "Sticky Header" theme settings. header.twig adds
+    `.has-sticky-header` to <html> and the `Header--*WhenSticky` modifiers to
+    the header itself; sticky-header.js toggles `.is-sticky` on scroll and
+    drives the small-screen hide-on-scroll behavior.
+
+\* =========================================================================== */
+
+/* Sticky header anchor fix
+ * https://getpublii.com/blog/one-line-css-solution-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header.html */
+/* stylelint-disable-next-line plugin/selector-bem-pattern -- Utility class applied to <html> by header.twig when sticky is enabled. */
+html.has-sticky-header {
+    scroll-padding-top: var(--Header-sticky-anchor-offset, 100px);
+}
+
+/* Disable scroll anchoring only when a hide-when-sticky setting is active for
+   the current breakpoint — those collapses cause large enough layout shifts
+   that the browser's scroll anchoring would nudge scrollY back across the
+   sticky threshold and produce an oscillation loop. The smaller layout change
+   from the logo shrink alone is absorbed by the JS hysteresis, so anchoring
+   stays on by default. */
+@media (--m-large-screen-nav) {
+    /* stylelint-disable-next-line plugin/selector-bem-pattern -- Utility class applied to <html> by header.twig. */
+    .has-sticky-collapse-lg {
+        overflow-anchor: none;
+    }
+}
+
+@media (--m-small-screen-nav) {
+    /* stylelint-disable-next-line plugin/selector-bem-pattern -- Utility class applied to <html> by header.twig. */
+    .has-sticky-collapse-sm {
+        overflow-anchor: none;
+    }
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern -- Scoped via the .has-sticky-header utility on <html>, applied by header.twig when sticky is enabled. */
+.has-sticky-header .Header {
+    position: sticky;
+    top: 0;
+    transition:
+        top 500ms ease,
+        box-shadow 250ms ease;
+    z-index: var(--Header-sticky-z-index, 100);
+}
+
+.Header.is-sticky {
+    background: var(--Header-sticky-background, var(--Header-background, #fff));
+    box-shadow: var(--Header-sticky-box-shadow, 0 1px 6px rgb(0 0 0 / 30%));
+}
+
+/* Logo shrink. The two logo wraps are already breakpoint-gated by the
+   `hidden-md` / `hidden flex-md` utilities in header.twig, so each one only
+   needs its own padding value — no media query required. */
+.Header.is-sticky .Header-logoWrapSm {
+    padding: var(--Header-sticky-logo-padding-sm, var(--Header-logo-padding-sm, 10px));
+}
+
+.Header.is-sticky .Header-logoWrap {
+    padding: var(--Header-sticky-logo-padding, var(--Header-logo-padding, 20px 0));
+}
+
+.Header.is-sticky .Header-logo {
+    max-width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+}
+
+.Header.is-sticky .Header-logo[src$='.svg'] {
+    width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+}
+
+.Header.is-sticky .Header-textLogo {
+    font-size: calc(var(--Header-text-logo-font-size-sm) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+}
+
+@media (--m-md) {
+    .Header.is-sticky .Header-textLogo {
+        font-size: calc(var(--Header-text-logo-font-size) * var(--Header-sticky-logo-scale-pct-sm, 75) / 100);
+    }
+}
+
+@media (--m-large-screen-nav) {
+    .Header.is-sticky .Header-logo {
+        max-width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct, 75) / 100);
+    }
+
+    .Header.is-sticky .Header-logo[src$='.svg'] {
+        width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct, 75) / 100);
+    }
+
+    .Header.is-sticky .Header-textLogo {
+        font-size: calc(var(--Header-text-logo-font-size) * var(--Header-sticky-logo-scale-pct, 75) / 100);
+    }
+}
+
+/* ------------------------------------ *\
+    Hide elements when sticky
+
+    The hidden elements live in the TopBar component but are switched by
+    modifiers on the Header, so the rules belong here.
+\* ------------------------------------ */
+
+@media (--m-large-screen-nav) {
+    /* postcss-bem-linter: ignore */
+    .Header--hideTopBarWhenSticky.is-sticky .TopBar,
+    .Header--hideSocialWhenSticky.is-sticky .TopBar-social,
+    .Header--hideAddressWhenSticky.is-sticky .TopBar-address,
+    .Header--hidePhoneWhenSticky.is-sticky .TopBar-phone,
+    .Header--hideButtonsWhenSticky.is-sticky .TopBar-buttons {
+        display: none !important;
+    }
+
+    /* The contact items draw a separator before every item except the first.
+       When the phone is hidden the address becomes the first *visible* item,
+       so its separator has to go too — `:first-child` is structural and can't
+       see the `display: none`. */
+
+    /* postcss-bem-linter: ignore */
+    .Header--hidePhoneWhenSticky.is-sticky .TopBar-phone + .TopBar-contactItem::before {
+        display: none;
+    }
+}
+
+@media (--m-small-screen-nav) {
+    /* postcss-bem-linter: ignore */
+    .Header--hideTopBarWhenStickySm.is-sticky .TopBar,
+    .Header--hideSocialWhenStickySm.is-sticky .TopBar-social,
+    .Header--hideAddressWhenStickySm.is-sticky .TopBar-address,
+    .Header--hidePhoneWhenStickySm.is-sticky .TopBar-phone,
+    .Header--hideButtonsWhenStickySm.is-sticky .TopBar-buttons {
+        display: none !important;
+    }
+
+    /* postcss-bem-linter: ignore */
+    .Header--hidePhoneWhenStickySm.is-sticky .TopBar-phone + .TopBar-contactItem::before {
+        display: none;
     }
 }

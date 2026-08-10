@@ -3756,6 +3756,98 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "Sticky Header",
+                    "description": "How the header looks once it sticks to the top of the page. Turn the sticky header on under Theme Settings - Sticky Header.",
+                    "fields": [
+                        {
+                            "name": "headerStickyBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "description": "Background of the header while it is stuck to the top of the page. Leave empty to keep the normal header background.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-background"
+                            }
+                        },
+                        {
+                            "name": "headerStickyBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "description": "Drop shadow applied beneath the header once it's in its stuck state.",
+                            "defaultValue": {
+                                "x": 0,
+                                "y": "1px",
+                                "blur": "6px",
+                                "spread": 0,
+                                "color": "rgba(0, 0, 0, 0.3)"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-box-shadow"
+                            }
+                        },
+                        {
+                            "name": "headerStickyZIndex",
+                            "label": "Z-index",
+                            "type": "stepper",
+                            "description": "Stacking order of the sticky header. Increase if other elements overlap it.",
+                            "defaultValue": "100",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-z-index"
+                            }
+                        },
+                        {
+                            "name": "headerStickyLogoScale",
+                            "label": "Logo size when sticky",
+                            "type": "stepper",
+                            "description": "Percentage of the normal logo width while the header is sticky on large screens. 100 = unchanged, 75 = three-quarters size.",
+                            "after": "%",
+                            "defaultValue": "75",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-logo-scale-pct",
+                                "template": "{{ value }}"
+                            }
+                        },
+                        {
+                            "name": "headerStickyLogoScaleSm",
+                            "label": "Logo size when sticky (small screens)",
+                            "type": "stepper",
+                            "description": "Percentage of the normal logo width while the header is sticky on small screens. 100 = unchanged, 75 = three-quarters size.",
+                            "after": "%",
+                            "defaultValue": "75",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-logo-scale-pct-sm",
+                                "template": "{{ value }}"
+                            }
+                        },
+                        {
+                            "name": "headerStickyLogoPadding",
+                            "label": "Logo padding when sticky",
+                            "type": "padding",
+                            "description": "Padding around the logo while the header is sticky on large screens. This is what tightens up the header height.",
+                            "defaultValue": "10px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-logo-padding"
+                            }
+                        },
+                        {
+                            "name": "headerStickyLogoPaddingSm",
+                            "label": "Logo padding when sticky (small screens)",
+                            "type": "padding",
+                            "description": "Padding around the logo while the header is sticky on small screens.",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-sticky-logo-padding-sm"
+                            }
+                        }
+                    ]
                 }
             ]
         },

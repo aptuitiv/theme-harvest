@@ -262,6 +262,106 @@
             ]
         },
         {
+            "name": "Sticky Header",
+            "description": "Make the header stay at the top of the page as the user scrolls, with control over what shrinks or hides at each screen size.",
+            "sidebarSize": "small",
+            "groups": [
+                {
+                    "name": "General",
+                    "fields": [
+                        {
+                            "name": "headerStickyEnabled",
+                            "label": "Enable sticky header",
+                            "type": "switch",
+                            "description": "When enabled the header stays visible at the top of the page as the user scrolls.",
+                            "defaultValue": "no"
+                        },
+                        {
+                            "name": "headerStickyHideOnScroll",
+                            "label": "Hide on scroll down (small screens)",
+                            "type": "switch",
+                            "description": "On small screens, hide the header when scrolling down and reveal it when scrolling up. Requires the sticky header to be enabled.",
+                            "defaultValue": "no"
+                        }
+                    ]
+                },
+                {
+                    "name": "Large screen show/hide",
+                    "description": "Hide parts of the top bar when the header is sticky on large screens (1051px and wider).",
+                    "fields": [
+                        {
+                            "name": "headerStickyHideTopBar",
+                            "label": "Hide the whole top bar",
+                            "type": "switch",
+                            "description": "Hides the entire top bar band, including its background. Use this instead of the individual options below if you want the sticky header to be just the logo and navigation.",
+                            "defaultValue": "yes"
+                        },
+                        {
+                            "name": "headerStickyHideSocial",
+                            "label": "Hide social icons",
+                            "type": "switch",
+                            "defaultValue": "no"
+                        },
+                        {
+                            "name": "headerStickyHideAddress",
+                            "label": "Hide address",
+                            "type": "switch",
+                            "defaultValue": "yes"
+                        },
+                        {
+                            "name": "headerStickyHidePhone",
+                            "label": "Hide phone",
+                            "type": "switch",
+                            "defaultValue": "no"
+                        },
+                        {
+                            "name": "headerStickyHideButtons",
+                            "label": "Hide buttons",
+                            "type": "switch",
+                            "defaultValue": "no"
+                        }
+                    ]
+                },
+                {
+                    "name": "Small screen show/hide",
+                    "description": "Hide parts of the top bar when the header is sticky on small screens (1050px and below) — applies in the same range as the hide-on-scroll behavior.",
+                    "fields": [
+                        {
+                            "name": "headerStickyHideTopBarSm",
+                            "label": "Hide the whole top bar",
+                            "type": "switch",
+                            "description": "Hides the entire top bar band, including its background.",
+                            "defaultValue": "yes"
+                        },
+                        {
+                            "name": "headerStickyHideSocialSm",
+                            "label": "Hide social icons",
+                            "type": "switch",
+                            "defaultValue": "no"
+                        },
+                        {
+                            "name": "headerStickyHideAddressSm",
+                            "label": "Hide address",
+                            "type": "switch",
+                            "defaultValue": "yes"
+                        },
+                        {
+                            "name": "headerStickyHidePhoneSm",
+                            "label": "Hide phone",
+                            "type": "switch",
+                            "defaultValue": "no"
+                        },
+                        {
+                            "name": "headerStickyHideButtonsSm",
+                            "label": "Hide buttons",
+                            "type": "switch",
+                            "defaultValue": "no"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Top bar",
             "description": "Options for the top bar that appears above the header.",
             "fields": [

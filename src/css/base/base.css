@@ -3,14 +3,6 @@
    ========================================================================== */
 
 /**
- * Sticky header anchor fix
- * https://getpublii.com/blog/one-line-css-solution-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header.html
- */
-html.has-sticky-header {
-    scroll-padding-top: var(--Header-sticky-height, 200px);
-}
-
-/**
  * 1. By default, `<body>` has no `background-color` so we set one
  *    as a best practice.
  */
