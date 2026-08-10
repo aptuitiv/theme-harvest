@@ -2778,6 +2778,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--Footer-sm"
                             }
+                        },
+                        {
+                            "name": "footerLogoMargin",
+                            "label": "Margin around logo",
+                            "type": "margin",
+                            "defaultValue": "0 0 20px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-logo-margin"
+                            }
                         }
                     ]
                 },
@@ -2834,6 +2844,102 @@
                     ]
                 },
                 {
+                    "name": "Social",
+                    "fields": [
+                        {
+                            "name": "footerSocialMargin",
+                            "label": "Margin around social icons",
+                            "type": "margin",
+                            "defaultValue": "10 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-margin"
+                            }
+                        },
+                        {
+                            "name": "footerSocialGap",
+                            "label": "Space between social icons",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-gap"
+                            }
+                        },
+                        {
+                            "name": "footerSocialBorderRadius",
+                            "label": "Border radius around the icon",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-border-radius"
+                            }
+                        },
+                        {
+                            "name": "footerSocialSize",
+                            "label": "Icon size",
+                            "type": "size",
+                            "defaultValue": "1.8rem",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-size"
+                            }
+                        },
+                        {
+                            "name": "footerSocialPadding",
+                            "label": "Padding around the icon",
+                            "type": "padding",
+                            "description": "The padding shows more of the background around the icon",
+                            "defaultValue": "4px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-padding"
+                            }
+                        },
+                        {
+                            "name": "footerSocialBackground",
+                            "label": "Social background color",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-background"
+                            }
+                        },
+                        {
+                            "name": "footerSocialBackgroundHover",
+                            "label": "Social background color (hover)",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-backgroundHover"
+                            }
+                        },
+                        {
+                            "name": "footerSocialColor",
+                            "label": "Social icon color",
+                            "type": "color",
+                            "defaultValue": "#38871a",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-color"
+                            }
+                        },
+                        {
+                            "name": "footerSocialColorHover",
+                            "label": "Social icon color (hover)",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Footer-social-colorHover"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Footer links",
                     "description": "This is for other links in the footer like an email link.",
                     "fields": [
@@ -2859,6 +2965,29 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Footer-link"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Footer copyright",
+                    "description": "Styles for the copyright text at the bottom of the footer.",
+                    "fields": [
+                        {
+                            "name": "footerCopyrightTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useTextAlign": false,
+                            "color": {
+                                "defaultValue": "#fff"
+                            },
+                            "fontSize": {
+                                "defaultValue": "1.4rem"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Footer-copyright"
                             }
                         }
                     ]
@@ -3445,6 +3574,51 @@
             "description": "Styles for the header of the website.",
             "groups": [
                 {
+                    "name": "General",
+                    "fields": [
+                        {
+                            "name": "headerBackground",
+                            "label": "Background",
+                            "type": "color",
+                            "defaultValue": "#ffffff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-background"
+                            }
+                        },
+                        {
+                            "name": "headerInnerPadding",
+                            "label": "Padding around the logo and navigation",
+                            "type": "padding",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-inner-padding"
+                            }
+                        },
+                        {
+                            "name": "headerLogoPadding",
+                            "label": "Padding around logo only",
+                            "type": "padding",
+                            "defaultValue": "20px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-logo-padding"
+                            }
+                        },
+                        {
+                            "name": "headerLogoPaddingSm",
+                            "label": "Padding around logo only (small screens)",
+                            "type": "padding",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Header-logo-padding-sm"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Padding",
                     "fields": [
                         {
@@ -3869,6 +4043,27 @@
                             }
                         },
                         {
+                            "name": "navBarBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".NavBar",
+                                "config": {
+                                    "combine": false
+                                }
+                            }
+                        },
+                        {
+                            "name": "navBarBackgroundSm",
+                            "label": "Background color (small screens)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--NavBar-background-sm"
+                            }
+                        },
+                        {
                             "name": "navBarPadding",
                             "label": "Padding",
                             "type": "padding",
@@ -3964,6 +4159,114 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-background-hover"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineDisplay",
+                            "label": "Show the line above or below on hover",
+                            "type": "switch",
+                            "description": "Whether to show a line above or below the main navigation item when it's hovered or active. The line below only shows if the item does not have a dropdown. The line above would show even if there is a dropdown",
+                            "default": "yes",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-display",
+                                "template": "{{ value == 'yes' ? 'block' : 'none' }}"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineDisplayPosition",
+                            "label": "Where to show the line",
+                            "type": "radio",
+                            "default": "above",
+                            "options": {
+                                "above": "Above",
+                                "below": "Below"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "template": "{{ value == 'above' ? ':root {--MainNav-link-line-bottom: auto; --MainNav-link-line-top: -' ~ fields.mainNavLinkLineHeight.value ~ '; }'  : ':root {--MainNav-link-line-bottom: -' ~ fields.mainNavLinkLineHeight.value ~ '; --MainNav-link-line-top: auto}' }}"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineHeight",
+                            "label": "Line height",
+                            "type": "size",
+                            "default": "2px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-height"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineWidth",
+                            "label": "Line width",
+                            "type": "size",
+                            "default": "100%",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-width"
+                            }
+                        },
+                        {
+                            "name": "mainNavLinkLineColor",
+                            "label": "Line color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-line-color"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Items (small screens)",
+                    "fields": [
+                        {
+                            "name": "mainNavItemBackgroundSm",
+                            "label": "Background color (small screens)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-background-sm"
+                            }
+                        },
+                        {
+                            "name": "mainNavItemBackgroundHoverSm",
+                            "label": "Hover/active background color (small screens)",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-link-background-hover-sm"
+                            }
+                        },
+                        {
+                            "name": "mmainNavItemColorSm",
+                            "label": "Text color (small screens)",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-color-sm"
+                            }
+                        },
+                        {
+                            "name": "mainNavItemColorHoverSm",
+                            "label": "Hover/active text color (small screens)",
+                            "type": "color",
+                            "defaultValue": "#fff",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-color-hover-sm"
+                            }
+                        },
+                        {
+                            "name": "mainNavItemTextAlignSm",
+                            "label": "Text alignment (small screens)",
+                            "type": "textAlign",
+                            "defaultValue": "center",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--MainNav-text-align-sm"
                             }
                         }
                     ]
