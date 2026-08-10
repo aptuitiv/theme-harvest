@@ -84,14 +84,14 @@ html.has-sticky-header {
    sticky threshold and produce an oscillation loop. The smaller layout change
    from the logo shrink alone is absorbed by the JS hysteresis, so anchoring
    stays on by default. */
-@media (--m-large-screen-nav) {
+@media (--m-lg) {
     /* stylelint-disable-next-line plugin/selector-bem-pattern -- Utility class applied to <html> by header.twig. */
     .has-sticky-collapse-lg {
         overflow-anchor: none;
     }
 }
 
-@media (--m-small-screen-nav) {
+@media (--m-lg-below) {
     /* stylelint-disable-next-line plugin/selector-bem-pattern -- Utility class applied to <html> by header.twig. */
     .has-sticky-collapse-sm {
         overflow-anchor: none;
@@ -142,7 +142,7 @@ html.has-sticky-header {
     }
 }
 
-@media (--m-large-screen-nav) {
+@media (--m-lg) {
     .Header.is-sticky .Header-logo {
         max-width: calc(var(--Header-logo-width) * var(--Header-sticky-logo-scale-pct, 75) / 100);
     }
@@ -163,7 +163,7 @@ html.has-sticky-header {
     modifiers on the Header, so the rules belong here.
 \* ------------------------------------ */
 
-@media (--m-large-screen-nav) {
+@media (--m-lg) {
     /* postcss-bem-linter: ignore */
     .Header--hideTopBarWhenSticky.is-sticky .TopBar,
     .Header--hideSocialWhenSticky.is-sticky .TopBar-social,
@@ -184,7 +184,7 @@ html.has-sticky-header {
     }
 }
 
-@media (--m-small-screen-nav) {
+@media (--m-lg-below) {
     /* postcss-bem-linter: ignore */
     .Header--hideTopBarWhenStickySm.is-sticky .TopBar,
     .Header--hideSocialWhenStickySm.is-sticky .TopBar-social,

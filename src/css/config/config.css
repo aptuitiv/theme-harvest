@@ -1,7 +1,0 @@
-/* =========================================================================== *\
-    Global Variable Configurations
-\* =========================================================================== */
-
-/* Primary navigation breakpoints */
-@custom-media --m-small-screen-nav (max-width: 1050px);
-@custom-media --m-large-screen-nav (min-width: 1051px);

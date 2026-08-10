@@ -29,9 +29,7 @@ const stickyHeader = {
     lastScrollY: 0,
     isSticky: false,
     isHidden: false,
-    // Matches the --m-large-screen-nav custom media (min-width: 1051px)
-    // defined in css/config/config.css.
-    smallScreenBreakpoint: 1051,
+    smallScreenBreakpoint: 1024,
     config: {
         // Once sticky, don't disengage until scrollY drops this many px
         // BELOW the natural threshold. The buffer prevents micro-toggling
