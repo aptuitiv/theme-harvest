@@ -1,6 +1,7 @@
 @import './bar.css';
 @import './dropdown';
 @import './footer';
+@import './list';
 @import './mainnav';
 @import './sidebar';
 @import './small-screen-button';
