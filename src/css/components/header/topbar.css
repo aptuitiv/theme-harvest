@@ -22,6 +22,33 @@
 }
 
 /* ------------------------------------ *\
+    Links
+\* ------------------------------------ */
+
+/**
+ * Plain links in the top bar — currently the phone number. The social links
+ * and the buttons carry their own colors, so they are deliberately not
+ * covered here.
+ *
+ * The [href^='tel'] variants are needed to outrank the base `a[href^='tel']`
+ * rule in base/typography.css, which forces `color: inherit` on tel links.
+ * Same approach the TopBar buttons below use.
+ */
+.TopBar-link,
+.TopBar-link[href^='tel'] {
+    color: var(--TopBar-color);
+}
+
+.TopBar-link:active,
+.TopBar-link:focus,
+.TopBar-link:hover,
+.TopBar-link[href^='tel']:active,
+.TopBar-link[href^='tel']:focus,
+.TopBar-link[href^='tel']:hover {
+    color: var(--TopBar-colorHover, var(--TopBar-color));
+}
+
+/* ------------------------------------ *\
     Social
 \* ------------------------------------ */
 
