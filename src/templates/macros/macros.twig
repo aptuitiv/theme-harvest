@@ -15,6 +15,22 @@
     {% endapply %}
 {% endmacro %}
 
+{#
+ # Macro to build the play/pause toggle for a video that auto plays without the native
+ # controls. Auto playing content needs a way for the user to stop it. WCAG 2.2.2.
+ # - videoId: The id of the video element the button controls
+ # - class: Extra classes for the button
+#}
+{% macro videoToggle(videoId, class) %}
+    {% apply spaceless %}
+        {% set class = (class ~ ' Video-toggle')|trim %}
+        <button type="button" class="{{ class }} js-videoToggle" data-video="{{ videoId }}" aria-controls="{{ videoId }}" data-state="playing" aria-label="Pause video" data-label-play="Play video" data-label-pause="Pause video">
+            {{ _self.iconAriaHidden('pause', 'Video-toggleIcon Video-toggleIcon--pause') }}
+            {{ _self.iconAriaHidden('play', 'Video-toggleIcon Video-toggleIcon--play') }}
+        </button>
+    {% endapply %}
+{% endmacro %}
+
 {# Macro to load Splide #}
 {% macro loadSplide() %}
     {% do _page.addCss('splide/splide.min.css'|theme_url, {'preload': true}) %}

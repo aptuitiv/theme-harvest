@@ -1584,6 +1584,92 @@
             ]
         },
         {
+            "name": "Blocks - Video",
+            "description": "Styles for the \"Video\" block.",
+            "fields": [
+                {
+                    "name": "blockVideoToggleBackground",
+                    "label": "Play/pause toggle background color",
+                    "type": "color",
+                    "defaultValue": "rgba(0, 0, 0, 0.6)",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-background"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleBackgroundHover",
+                    "label": "Play/pause toggle background color (hover)",
+                    "type": "color",
+                    "defaultValue": "rgba(0, 0, 0, 0.85)",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-background-hover"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleOutlineColor",
+                    "label": "Play/pause toggle outline color",
+                    "type": "color",
+                    "defaultValue": "#fff",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-outline-color"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleOutlineSize",
+                    "label": "Play/pause toggle outline size",
+                    "type": "size",
+                    "defaultValue": "2px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-outline-size"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleColor",
+                    "label": "Play/pause toggle text color",
+                    "type": "color",
+                    "defaultValue": "#fff",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-color"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleIconSize",
+                    "label": "Play/pause toggle icon size",
+                    "type": "size",
+                    "defaultValue": "13px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-icon-size"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleSize",
+                    "label": "Play/pause toggle size",
+                    "type": "size",
+                    "defaultValue": "26px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-size"
+                    }
+                },
+                {
+                    "name": "blockVideoToggleOffset",
+                    "label": "Play/pause toggle offset",
+                    "type": "size",
+                    "defaultValue": "12px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-offset"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Blocks - Wrapper",
             "description": "Styles for the \"Wrapper\" block.",
             "fields": [

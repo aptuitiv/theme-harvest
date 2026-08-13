@@ -7,6 +7,7 @@ import { setCookie } from './lib/cookie';
 import smallScreenNav from './navigation/small-screen';
 import navAccessibility from './navigation/accessibility';
 import stickyHeader from './sticky-header';
+import video from './video';
 
 /* global MicroModal:readonly notificationBarCookieExpirationDuration */
 
@@ -23,6 +24,7 @@ const main = {
         smallScreenNav.init();
         navAccessibility.init();
         stickyHeader.init();
+        video.init();
         MicroModal.init({
             disableFocus: true,
         });

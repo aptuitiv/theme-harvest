@@ -51,6 +51,13 @@
     object-position: bottom;
 }
 
+/* Play/pause toggle for the banner video. Position and appearance come from
+   .Video-toggle. This only needs to lift it above the Banner-fg overlay (2) and
+   the Banner content (3) so that it stays clickable. */
+.Banner-videoToggle {
+    z-index: 4;
+}
+
 /* ------------------------------------ *\
     Background Image Overlay
 \* ------------------------------------ */

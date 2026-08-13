@@ -1,12 +1,21 @@
 {% if video %}
     {% import 'macros/macros' as macros %}
+    {% set hasControls = showControls is not same as(false) %}
+    {# An auto-playing video without the native controls still needs a way to stop it. WCAG 2.2.2 (Pause, Stop, Hide) #}
+    {% set needsToggle = autoplay and not hasControls %}
+    {% set videoId = 'video-' ~ random_string(6) %}
     <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
         {% if thumbnail %}
             {% do thumbnail.crop({ ar: '16x9' }) %}
         {% endif %}
-        <video preload="metadata" class="w-100" {{ thumbnail ? 'poster="' ~ thumbnail.src ~ '"' }}{% if showControls is not same as(false) %} controls{% endif %}{% if autoplay %} autoplay muted playsinline{% endif %} {% if loop %} loop{% endif %}>
-            <source src="{{ video.src }}">
-            Your browser does not support the video tag.
-        </video>
+        <div class="Video">
+            <video id="{{ videoId }}" preload="metadata" class="Video-player w-100{{ autoplay ? ' js-video' }}" {{ thumbnail ? 'poster="' ~ thumbnail.src ~ '"' }}{% if hasControls %} controls{% endif %}{% if autoplay %} autoplay muted playsinline{% endif %} {% if loop %} loop{% endif %}>
+                <source src="{{ video.src }}">
+                Your browser does not support the video tag.
+            </video>
+            {% if needsToggle %}
+                {{ macros.videoToggle(videoId) }}
+            {% endif %}
+        </div>
     </div>
 {% endif %}

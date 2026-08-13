@@ -1,0 +1,52 @@
+/* =========================================================================== *\
+    Video
+\* =========================================================================== */
+
+/* @define Video */
+.Video {
+    display: block;
+    position: relative;
+}
+
+.Video-player {
+    display: block;
+}
+
+/* Play/pause toggle shown when the video auto plays without the native controls */
+.Video-toggle {
+    align-items: center;
+    background: var(--Video-toggle-background, rgb(0 0 0 / 60%));
+    border: 0;
+    border-radius: 50%;
+    bottom: var(--Video-toggle-offset, 1.2rem);
+    color: var(--Video-toggle-color, #fff);
+    cursor: pointer;
+    display: flex;
+    font-size: var(--Video-toggle-icon-size, 1.3rem);
+    height: var(--Video-toggle-size, 2.6rem);
+    inset-inline-end: var(--Video-toggle-offset, 1.2rem);
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    transition: background 0.15s ease-in-out;
+    width: var(--Video-toggle-size, 2.6rem);
+}
+
+.Video-toggle:hover,
+.Video-toggle:focus-visible {
+    background: var(--Video-toggle-background-hover, rgb(0 0 0 / 85%));
+}
+
+.Video-toggle:focus-visible {
+    outline: var(--Video-toggle-outline-size, 2px) solid var(--Video-toggle-outline-color, #fff);
+    outline-offset: 2px;
+}
+
+.Video-toggleIcon {
+    pointer-events: none;
+}
+
+.Video-toggle[data-state='playing'] .Video-toggleIcon--play,
+.Video-toggle[data-state='paused'] .Video-toggleIcon--pause {
+    display: none;
+}

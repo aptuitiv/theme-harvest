@@ -149,9 +149,13 @@
  # - doCss: Whether to output the CSS for the aspect ratios
 #}
 {% macro bannerVideo(video, image, bannerImageSizes, doCss) %}
+    {% import 'macros/macros' as macros %}
+    {% set videoId = 'bannerVideo-' ~ random_string(6) %}
     <div class="Banner-bg">
-        <video class="Banner-video" autoplay muted loop playsinline src="{{ video.src }}"{% if image %} poster="{{ image.src }}"{% endif %}></video>
+        <video id="{{ videoId }}" class="Banner-video js-video" autoplay muted loop playsinline src="{{ video.src }}"{% if image %} poster="{{ image.src }}"{% endif %}></video>
     </div>
+    {# The toggle is a sibling of Banner-bg so that it sits above the Banner-fg overlay and stays clickable #}
+    {{ macros.videoToggle(videoId, 'Banner-videoToggle') }}
     {% if doCss %}
         {# Set the aspect ratio on the Banner to make this visible #}
         {# First set a default value #}
