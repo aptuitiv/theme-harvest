@@ -5,8 +5,6 @@
 /* @define SelectMenu */
 .SelectMenu {
     background: var(--SelectMenu-background, #fff);
-    border: var(--SelectMenu-border-width, 1px) solid var(--SelectMenu-border-color, #777);
-    border-radius: var(--SelectMenu-border-radius, 0);
     display: inline-flex;
     outline: none;
     position: relative;
@@ -41,7 +39,8 @@
 .SelectMenu > select {
     appearance: none;
     background: transparent;
-    border: 0;
+    border: var(--SelectMenu-border-width, 1px) solid var(--SelectMenu-border-color, #777);
+    border-radius: var(--SelectMenu-border-radius, 0);
     color: var(--SelectMenu-color, #333);
     display: block;
     margin: 0;
