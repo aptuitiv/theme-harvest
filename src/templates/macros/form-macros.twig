@@ -162,8 +162,8 @@
 {% macro buildLabelAboveFieldField(field) %}
     {% if field.fieldType != "hidden" %}
         <div class="mb-2">
-            {{ _self.buildFieldLabel(field, 'FormLabel--block') }}
-            {{ _self.buildField(field) }}
+            {{ _self.buildFieldLabel(field, 'FormLabel--block', 'labelAboveField') }}
+            {{ _self.buildField(field, true) }}
         </div>
     {% else %}
         {{ field.tag }}
@@ -235,7 +235,14 @@
         {% set field.required = true %}
         {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
     {% endif %}
-    {% if field.fieldType not in ['rating', 'checkbox'] %}
+    {% if field.fieldType in ['multiCheckbox', 'radio'] %}
+        {# The options are grouped in a fieldset in buildField. A <label> here would associate with a
+           single input in the group, so this is text only. When the label sits directly above the
+           field the fieldset's <legend> carries it instead and nothing is rendered here. #}
+        {% if formType != 'labelAboveField' %}
+            <span class="{{ field.label.class }}">{{ field.label.text }}</span>
+        {% endif %}
+    {% elseif field.fieldType not in ['rating', 'checkbox'] %}
         {{ field.label.tag }}
     {% endif %}
 {% endmacro %}
@@ -243,11 +250,17 @@
 {#
  # Build a form field
  # field: (array) The field data
+ # labelAbove: (bool) True if the label is displayed directly above the field.
+ #             False/omitted if the label is in a separate grid column.
  #}
-{% macro buildField(field) %}
+{% macro buildField(field, labelAbove) %}
     {% import 'macros/macros.twig' as macros %}
-    {# Display the field description above the field if necessary #}
-    {% if field.type not in ['grid', 'repeatingGrid'] %}
+    {% set isFieldsetGroup = field.fieldType in ['multiCheckbox', 'radio'] %}
+
+    {# Display the field description above the field if necessary.
+       When the label is above a radio/checkbox group the description is rendered inside the
+       fieldset, after the legend, so that it stays below the label. #}
+    {% if field.type not in ['grid', 'repeatingGrid'] and not (labelAbove and isFieldsetGroup) %}
         {{ _self.buildFieldDescription(field, 'above') }}
     {% endif %}
 
@@ -329,14 +342,22 @@
         <div class="SelectMenu SelectMenu--{{ _core.theme.settings.selectMenuArrowType }} w-100">
             {{ field.tag }}
         </div>
-    {% elseif field.fieldType == 'radio' or field.fieldType == 'multiCheckbox' %}
-        {% if field.config.separator == 'space' %}
-            {% for option in field.options %}
-                <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
-            {% endfor %}
-        {% else %}
-            {{ field.tag|replace({"error": "is-invalid"}) }}
-        {% endif %}
+    {% elseif isFieldsetGroup %}
+        {# Group the options in a fieldset. The group is named by the legend when the label is above
+           the field, otherwise the label lives in a separate grid column so aria-label names it. #}
+        <fieldset class="Fieldset"{% if not labelAbove %} aria-label="{{ field.label.text|striptags|trim }}"{% endif %}>
+            {% if labelAbove %}
+                <legend class="{{ field.label.class }}">{{ field.label.text }}</legend>
+                {{ _self.buildFieldDescription(field, 'above') }}
+            {% endif %}
+            {% if field.config.separator == 'space' %}
+                {% for option in field.options %}
+                    <label class="pe-2">{{ option.tagNoLabel }} {{ option.label }}</label>
+                {% endfor %}
+            {% else %}
+                {{ field.tag|replace({"error": "is-invalid"}) }}
+            {% endif %}
+        </fieldset>
     {% elseif field.fieldType == 'checkbox' %}
         <label class="Checkbox">
             {% set field.class = "Checkbox-input" %}
@@ -406,7 +427,7 @@
             <div class="col-1-2 col-1-3-md col-1-4-lg w-100">
                 <div class="flex justify-end-lg align-center-lg h-100 justify-start align-start mt-1 mt-0-lg">
                     {% for option in field.options %}
-                        <label class="pr-2">{{ option.tagNoLabel }} {{ option.label }}</label>
+                        <label class="pe-2">{{ option.tagNoLabel }} {{ option.label }}</label>
                     {% endfor %}
                 </div>
             </div>
@@ -429,8 +450,8 @@
                             {% set child.groupId = random_letters() %}
                         {% endif %}
                         <div class="mb-2 {{ child.groupId ?: '' }}">
-                            {{ _self.buildFieldLabel(child, 'FormLabel--block') }}
-                            {{ _self.buildField(child) }}
+                            {{ _self.buildFieldLabel(child, 'FormLabel--block', 'labelAboveField') }}
+                            {{ _self.buildField(child, true) }}
                         </div>
                     {% endfor %}
                 </div>

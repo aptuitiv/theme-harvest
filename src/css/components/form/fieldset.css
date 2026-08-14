@@ -1,0 +1,20 @@
+/* ===========================================================================
+    Fieldset styles
+=========================================================================== */
+
+/** @define Fieldset */
+
+.Fieldset {
+    border: none;
+
+    /* Fieldsets default to min-width: min-content, which stops them shrinking in a grid column */
+    min-inline-size: 0;
+    padding: 0;
+}
+
+/* Legends carry default inline padding that would misalign the label with the fields */
+
+/* postcss-bem-linter: ignore */
+.Fieldset > legend {
+    padding: 0;
+}
