@@ -45,8 +45,11 @@
     color: var(--SelectMenu-color, #333);
     display: block;
     margin: 0;
-    outline: 0;
     padding: var(--SelectMenu-padding, 5px 10px);
     position: relative;
     width: 100%;
+}
+
+.SelectMenu > select:focus-visible {
+    outline: auto 5px -webkit-focus-ring-color;
 }
