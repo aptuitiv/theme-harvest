@@ -2,7 +2,7 @@
 {% import 'macros/banner' as bannerMacros %}
 
 {% if heading or image or video or content %}
-    <div class="Banner{% if not image && not video %} Banner--noMedia{% endif %}" role="group" aria-label="Banner">
+    <section class="Banner{% if not image && not video %} Banner--noMedia{% endif %}" role="region" aria-label="Banner">
         {% if video %}
             {{ bannerMacros.bannerVideo(video, image, imageSize == 'large' ? _core.theme.settings.largeBannerImageSizes : _core.theme.settings.bannerImageSizes, true) }}
         {% elseif image %}
@@ -36,5 +36,5 @@
                 </div>
             </div>
         {% endif %}
-    </div>
+    </section>
 {% endif %}
