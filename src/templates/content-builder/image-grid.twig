@@ -135,7 +135,7 @@
                         {% if column.title and titleTextPosition == 'above' %}
                             <div class="ImageGridItem-titleAbove">
                                 {% if hasLink %}
-                                    <a href="{{ linkHref }}" class="ImageGridItem-link"{% if linkType == 'lightbox' %} data-fslightbox data-type="image" data-caption="{{ column.title }}"{% endif %}>{{ column.title }}</a>
+                                    <a href="{{ linkHref }}" class="ImageGridItem-link"{% if linkType == 'lightbox' %} data-fslightbox data-type="image" data-caption="{{ column.title }}" aria-label="View the image larger"{% endif %}>{{ column.title }}</a>
                                 {% else %}
                                     {{ column.title }}
                                 {% endif %}
@@ -149,7 +149,7 @@
 
                             <div class="ImageGridItem-image">
                                 {% if hasLink %}
-                                    <a href="{{ linkHref }}" class="ImageGridItem-link"{% if linkType == 'lightbox' %} data-fslightbox data-type="image" data-caption="{{ column.title }}"{% endif %}>
+                                    <a href="{{ linkHref }}" class="ImageGridItem-link"{% if linkType == 'lightbox' %} data-fslightbox data-type="image" data-caption="{{ column.title }}" aria-label="View the image larger"{% endif %}>
                                 {% endif %}
                                 {{ column.image.tag }}
                                 {{ _self.textOnImage(column, titleTextPosition) }}
@@ -161,7 +161,7 @@
                         {% if column.title and titleTextPosition == 'below' %}
                             <div class="ImageGridItem-titleBelow">
                                 {% if hasLink %}
-                                    <a href="{{ linkHref }}" class="ImageGridItem-link"{% if linkType == 'lightbox' %} data-fslightbox data-type="image" data-caption="{{ column.title }}"{% endif %}>{{ column.title }}</a>
+                                    <a href="{{ linkHref }}" class="ImageGridItem-link"{% if linkType == 'lightbox' %} data-fslightbox data-type="image" data-caption="{{ column.title }}" aria-label="View the image larger"{% endif %}>{{ column.title }}</a>
                                 {% else %}
                                     {{ column.title }}
                                 {% endif %}
