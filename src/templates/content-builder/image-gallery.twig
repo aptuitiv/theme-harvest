@@ -25,7 +25,7 @@
                                     {% do slide.image.alt|default(slide.title) %}
                                     {% do slide.image.lazy() %}
 
-                                    <a href="{{ lgImage.src }}" data-fslightbox data-type="image" data-caption="{{ slide.title }}" aria-label="View the image larger">{{ slide.image.tag }}</a>
+                                    <a href="{{ lgImage.src }}" data-fslightbox data-type="image" data-caption="{{ slide.title }}" aria-label="View the image larger: {{ slide.title|default(slide.image.alt) }}">{{ slide.image.tag }}</a>
                                     {% if slide.title %}
                                         <div class="Slider-content">{{ slide.title }}</div>
                                     {% endif %}
@@ -150,7 +150,7 @@
                     {% endif %}
                     {% do image.image.lazy() %}
                     <div class="{{ class }}" data-ar="{{ aspectRatio }}">
-                        <a data-fslightbox data-type="image" class="block link-subtle" href="{{ imageLink }}" {{ image.title ? 'data-caption="' ~ image.title ~ '"' }} aria-label="View the image larger">
+                        <a data-fslightbox data-type="image" class="block link-subtle" href="{{ imageLink }}" {{ image.title ? 'data-caption="' ~ image.title ~ '"' }} aria-label="View the image larger: {{ image.title|default(image.image.alt) }}">
                             {% if aspectRatio != 'Auto' %}
                                 <span class="flex aspect-{{ aspectRatio|replace('x', '-') }}">{{ image.image.tag }}</span>
                             {% else %}
