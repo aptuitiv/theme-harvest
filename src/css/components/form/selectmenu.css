@@ -6,7 +6,7 @@
 .SelectMenu {
     background: var(--SelectMenu-background, #fff);
     border: var(--SelectMenu-border-width, 1px) solid var(--SelectMenu-border-color, #777);
-    border-radius: var(--SelectMenu-borderRadius, 0);
+    border-radius: var(--SelectMenu-border-radius, 0);
     display: inline-flex;
     outline: none;
     position: relative;
@@ -50,6 +50,7 @@
     width: 100%;
 }
 
+/* postcss-bem-linter: ignore */
 .SelectMenu > select:focus-visible {
     outline: auto 5px -webkit-focus-ring-color;
 }
