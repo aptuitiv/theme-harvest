@@ -1,6 +1,6 @@
 {% if columns|first.content %}
     {# Set the image classes based on the number of columns #}
-    {% set count = _core.theme.settings.blockImageGridDefaultNumColumns %}
+    {% set count = _core.theme.settings.blockColumnContentDefaultNumColumns %}
     {% if numberOfColumns not in ['Auto', 'Site default'] %}
         {% set count = numberOfColumns %}
     {% elseif numberOfColumns == 'Auto' %}
