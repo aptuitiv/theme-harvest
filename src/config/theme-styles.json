@@ -219,21 +219,6 @@
                             }
                         },
                         {
-                            "name": "bannerContentWithMediaAlignVertical",
-                            "label": "Vertical alignment when there is an image or video",
-                            "type": "select",
-                            "defaultValue": "center",
-                            "options": {
-                                "start": "Top",
-                                "center": "Center",
-                                "end": "Bottom"
-                            },
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Banner-align-vertical-with-media"
-                            }
-                        },
-                        {
                             "name": "bannerContentWidth",
                             "label": "Max width for the content",
                             "type": "size",
