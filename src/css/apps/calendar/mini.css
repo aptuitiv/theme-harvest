@@ -36,7 +36,7 @@
 
 .CalendarMiniGrid-cell,
 .CalendarMiniGrid-headCell {
-    border: var(--CalendarMiniGrid-cell-border-siz, 1px) solid solid var(--CalendarMiniGrid-cell-border-color, #e6e6e6);
+    border: var(--CalendarMiniGrid-cell-border-size, 1px) solid var(--CalendarMiniGrid-cell-border-color, #e6e6e6);
     padding: var(--CalendarMiniGrid-cell-padding, 0);
     text-align: center;
 }
