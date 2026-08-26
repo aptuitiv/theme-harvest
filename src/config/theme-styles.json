@@ -4971,7 +4971,7 @@
                             "type": "fontWeight",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Pagination-item-font-weight-active"
+                                "cssSelector": ".Pagination-item--isActive"
                             }
                         },
                         {
