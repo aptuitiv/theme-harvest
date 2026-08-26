@@ -4056,7 +4056,7 @@
                             "name": "mainNavLinkLineHeight",
                             "label": "Line height",
                             "type": "size",
-                            "defaultValue": "2px",
+                            "defaultValue": "1px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-line-height"
@@ -4066,7 +4066,7 @@
                             "name": "mainNavLinkLineWidth",
                             "label": "Line width",
                             "type": "size",
-                            "defaultValue": "100%",
+                            "defaultValue": "90%",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--MainNav-link-line-width"
