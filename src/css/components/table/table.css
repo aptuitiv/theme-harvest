@@ -50,6 +50,7 @@
     border-right: var(--Table-cell-border-right-size, 0) solid var(--Table-cell-border-color);
     border-top: var(--Table-cell-border-top-size, 0) solid var(--Table-cell-border-color);
     color: var(--Table-cell-color, inherit);
+    font-weight: var(--Table-cell-font-weight, inherit);
     padding: var(--Table-padding, 8px 15px);
 }
 
