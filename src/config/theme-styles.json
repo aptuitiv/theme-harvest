@@ -426,7 +426,7 @@
                             "name": "bannerSliderDotPaginationColorActive",
                             "label": "Dot pagination color (active)",
                             "type": "color",
-                            "defaultValue": "#871E0F",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-dot-pagination-color-active"
@@ -2815,7 +2815,7 @@
                             "name": "footerBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#871E0F",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Footer",
@@ -4230,7 +4230,7 @@
                             "name": "mainNavDropdownBackground",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#871E0F",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Dropdown-link-background"
@@ -4265,7 +4265,7 @@
                             "name": "navDropdownBackgroundSm",
                             "label": "Background color (small screens)",
                             "type": "color",
-                            "defaultValue": "#871E0F",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Dropdown-link-background-sm"
@@ -4302,7 +4302,7 @@
                     "name": "smScBtnColor",
                     "label": "Hamburger color",
                     "type": "color",
-                    "defaultValue": "#871E0F",
+                    "defaultValue": "#38871A",
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--SmScBtn-color"
@@ -4713,7 +4713,7 @@
                             "name": "paginationItemBackgroundActive",
                             "label": "Background color",
                             "type": "color",
-                            "defaultValue": "#871E0F",
+                            "defaultValue": "#38871A",
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".Pagination-item--isActive",
