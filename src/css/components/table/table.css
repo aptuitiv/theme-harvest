@@ -49,19 +49,20 @@
     border-left: var(--Table-cell-border-left-size, 0) solid var(--Table-cell-border-color);
     border-right: var(--Table-cell-border-right-size, 0) solid var(--Table-cell-border-color);
     border-top: var(--Table-cell-border-top-size, 0) solid var(--Table-cell-border-color);
+    color: var(--Table-cell-color, inherit);
     padding: var(--Table-padding, 8px 15px);
 }
 
 /* postcss-bem-linter: ignore */
 .Table tr:nth-child(even) {
     background: var(--Table-cell-even-background, none);
-    color: var(--Table-cell-even-color, inherit);
+    color: var(--Table-cell-even-color, var(--Table-cell-color, inherit));
 }
 
 /* postcss-bem-linter: ignore */
 .Table tr:nth-child(odd) {
     background: var(--Table-cell-odd-background, none);
-    color: var(--Table-cell-odd-color, inherit);
+    color: var(--Table-cell-odd-color, var(--Table-cell-color, inherit));
 }
 
 /* postcss-bem-linter: ignore */
