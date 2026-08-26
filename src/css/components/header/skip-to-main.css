@@ -24,7 +24,7 @@
 .HeaderSkipToMain:focus {
     background-color: var(--Header-skipMain-background, #fff);
     color: var(--Header-skipMain-color);
-    font-weight: var(-Header-skipMain-font-weight, bold);
+    font-weight: var(--Header-skipMain-font-weight, bold);
     height: auto;
     left: 10px;
     padding: var(--Header-skipMain-padding, 5px 10px);
