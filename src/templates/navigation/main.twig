@@ -81,4 +81,19 @@
             {% endif %}
         </li>
     {% endfor %}
+
+    {# Include the header buttons in the main navigation for small screens #}
+    {% if _core.theme.settings.headerButtons|first.button and _core.theme.settings.headerShowButtons == 'yes' %}
+        {% set liClass = "MainNav-item" %}
+        {% if _core.theme.settings.mainNavLinkLineDisplayPosition %}
+            {% set liClass = liClass ~ ' MainNav-itemLine--' ~ _core.theme.settings.mainNavLinkLineDisplayPosition %}
+        {% endif %}
+        {% for button in _core.theme.settings.headerButtons %}
+            <li class="{{ liClass|trim }}" role="presentation">
+            {% set button.button.class = 'MainNav-link MainNav-item--smallScreen js-navLink' %}
+            {% set button.button.role = 'menuitem' %}
+            {{ button.button.tag }}
+            </li>
+        {% endfor %}
+    {% endif %}
 </ul>
