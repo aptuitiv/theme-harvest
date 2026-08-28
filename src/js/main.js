@@ -58,6 +58,16 @@ const main = {
             });
         }
     },
+
+    /**
+     * Set a cookie to keep a popup hidden
+     *
+     * @param {string} id Popup ID
+     * @param {number} expiration Number of days to set cookie for
+     */
+    setPopupCookie(id, expiration) {
+        setCookie(id, 'hide', expiration);
+    },
 };
 
 // Wait until page is ready before running any scripts
