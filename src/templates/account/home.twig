@@ -1,7 +1,14 @@
-{% extends 'one-column' %}
+{% extends 'narrow' %}
+
+{% block banner %}
+    {% set heading = 'My Account' %}
+    {% set content = '<p>' ~ account.firstName ~ ' ' ~ account.lastName ~ '</p>' %}
+    {% include('blocks/banner') %}
+{% endblock %}
 
 {% block main %}
-    <h1>My Account - {{ account.firstName }} {{ account.lastName }}</h1>
-    <p><a href="{{ appUrls.edit }}">Edit My Account</a></p>
-    <p><a href="{{ appUrls.logout }}">Log Out</a></p>
+    <div class="text-center">
+        <p><a href="{{ appUrls.edit }}">Edit My Account</a></p>
+        <p><a href="{{ appUrls.logout }}">Log Out</a></p>
+    </div>
 {% endblock %}

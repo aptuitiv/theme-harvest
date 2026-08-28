@@ -1,7 +1,11 @@
 {% extends 'narrow' %}
 
+{% block banner %}
+    {% set heading = 'Create an Account' %}
+    {% include('blocks/banner') %}
+{% endblock %}
+
 {% block main %}
-    <h1>Register</h1>
     {{ registerForm.content }}
 
     <p><a href="{{ appUrls.login }}">Already have an account? Login</a></p>

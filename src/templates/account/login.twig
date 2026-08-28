@@ -1,7 +1,11 @@
 {% extends 'narrow' %}
 
+{% block banner %}
+    {% set heading = 'Login' %}
+    {% include('blocks/banner') %}
+{% endblock %}
+
 {% block main %}
-    <h1>Login</h1>
     {{ loginForm.content }}
 
     <p><a href="{{ appUrls.passwordReset }}">Forgot your password? Request a new one</a></p>
