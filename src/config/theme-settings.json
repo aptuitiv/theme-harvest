@@ -68,7 +68,7 @@
                             "render": {
                                 "type": "replace",
                                 "contentSelector": "#footer-logo",
-                                "template": "<div class=\"text-center\" id=\"footer-logo\"><a href=\"/\" title=\"return to home page\" class=\"Footer-logoLink\"><img src=\"{{ url }}\" height=\"{{ imageHeight }}\" width=\"{{ imageWidth }}\" alt=\"{{ alt }}\" class=\"Footer-logo\"></a></div>"
+                                "template": "<div class=\"Footer-logoWrap flex justify-center\" id=\"footer-logo\"><a href=\"/\" title=\"return to home page\"><img src=\"{{ url }}\" height=\"{{ imageHeight }}\" width=\"{{ imageWidth }}\" alt=\"{{ alt }}\" class=\"Footer-logo\"></a></div>"
                             }
                         },
                         {
