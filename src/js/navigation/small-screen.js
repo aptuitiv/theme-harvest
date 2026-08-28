@@ -39,9 +39,7 @@ const smallScreenNav = {
                 button.setAttribute('aria-expanded', 'true');
                 // Set the offset position for the menu
                 const buttonPosition =
-                    button.getBoundingClientRect().top +
-                    button.offsetHeight +
-                    10;
+                    button.getBoundingClientRect().top + button.offsetHeight;
                 nav.style.setProperty('--navbar-offset', `${buttonPosition}px`);
                 html.classList.add('menu-open');
             }
