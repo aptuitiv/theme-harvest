@@ -5,9 +5,9 @@
  * @param {Element} element The element to load the iframe into
  * @param {string} src The iframe source
  * @param {string} title The iframe title
- * @param {string} className The iframe class name
+ * @param {string} [className] The iframe class name
  */
-const loadIframeOnObserve = (element, src, title, className) => {
+const loadIframeOnObserve = (element, src, title, className = '') => {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
