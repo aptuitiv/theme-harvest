@@ -1,4 +1,10 @@
+/* ===========================================================================
+    Load an iframe when it becomes visible in the viewport.
+    Concatenated into the main bundle, so this is a global rather than a module.
+=========================================================================== */
+
 /* eslint-disable no-unused-vars */
+
 /**
  * Load an iframe when it is visible in the viewport
  *
@@ -22,17 +28,19 @@ const loadIframeOnObserve = (element, src, title, className = '') => {
                     const iframeEl = document.createElement('iframe');
                     iframeEl.title = title;
                     iframeEl.src = src;
-                    if (typeof className === 'string') {
-                        iframeEl.className = className;
-                    }
-                    iframeEl.style.visibility = 'hidden';
+                    iframeEl.className = className;
+                    // Hide with opacity instead of "display: none" so that the iframe still has
+                    // its full width and height while loading. Providers like YouTube pick their
+                    // preview image size based on the player size when it initializes and a
+                    // display-less iframe would get a low resolution preview image.
+                    iframeEl.style.opacity = '0';
 
                     element.appendChild(loadingEl);
                     element.appendChild(iframeEl);
 
                     iframeEl.addEventListener('load', () => {
                         element.removeChild(loadingEl);
-                        iframeEl.style.visibility = 'visible';
+                        iframeEl.style.opacity = '';
                     });
                 }
             });
