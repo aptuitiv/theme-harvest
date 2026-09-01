@@ -1,18 +1,20 @@
 {% if items|length > 0 %}
     {% import 'macros/macros' as macros %}
-    <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}"{% if contentIsFaqs %} itemscope itemtype="https://schema.org/FAQPage"{% endif %}>
-        {% for item in items %}
-            <div class="Accordion js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}"{% if contentIsFaqs %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% endif %}>
-                <div class="Accordion-heading js-accordionHeading">
-                    <span class="Accordion-title"{% if contentIsFaqs %} itemprop="name"{% endif %}>{{ item.heading }}</span>
-                    <span class="Accordion-icon"></span>
+    <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
+        <div class="Accordion"{% if contentIsFaqs %} itemscope itemtype="https://schema.org/FAQPage"{% endif %}>
+            {% for item in items %}
+                <div class="Accordion-item  js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}"{% if contentIsFaqs %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% endif %}>
+                    <div class="Accordion-heading js-accordionHeading">
+                        <span class="Accordion-title"{% if contentIsFaqs %} itemprop="name"{% endif %}>{{ item.heading }}</span>
+                        <span class="Accordion-icon"></span>
+                    </div>
+                    <div class="Accordion-content clearfix last-child-sb-0 js-accordionContent"{% if contentIsFaqs %} itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"{% endif %}>
+                        {% if contentIsFaqs %}<div itemprop="text">{% endif %}
+                        {{ item.content }}
+                        {% if contentIsFaqs %}</div>{% endif %}
+                    </div>
                 </div>
-                <div class="Accordion-content clearfix last-child-mb-0 js-accordionContent"{% if contentIsFaqs %} itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"{% endif %}>
-                    {% if contentIsFaqs %}<div itemprop="text">{% endif %}
-                    {{ item.content }}
-                    {% if contentIsFaqs %}</div>{% endif %}
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endif %}

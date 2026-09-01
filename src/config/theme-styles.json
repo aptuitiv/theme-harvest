@@ -5,6 +5,21 @@
             "description": "Styles for the \"Accordion\" block.",
             "groups": [
                 {
+                    "name": "General",
+                    "fields": [
+                        {
+                            "name": "accordionItemGap",
+                            "label": "Vertical space between accordion items",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-item-gap"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Heading",
                     "fields": [
                         {
@@ -17,51 +32,49 @@
                             }
                         },
                         {
+                            "name": "accordingHeadingColor",
+                            "label": "Text and icon color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-heading-color"
+                            }
+                        },
+                        {
                             "name": "accordionHeadingTypography",
                             "label": "Heading typography",
                             "type": "typography",
                             "collapsable": false,
+                            "useColor": false,
                             "useTextAlign": false,
                             "fontSize": {
                                 "defaultValue": "2.4rem"
                             },
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Accordion-heading-typography"
-                            }
-                        },
-                        {
-                            "name": "accordionHeadingMargin",
-                            "label": "Margin",
-                            "type": "margin",
-                            "defaultValue": "10px 0",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Accordion-heading-margin"
+                                "cssVariable": "--Accordion-heading"
                             }
                         },
                         {
                             "name": "accordionHeadingPadding",
                             "label": "Padding",
                             "type": "padding",
-                            "defaultValue": "6px 0",
+                            "defaultValue": "6px 12px",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Accordion-heading-padding"
                             }
                         },
                         {
-                            "name": "accordionHeadingJustifyContent",
-                            "label": "Align icon",
-                            "type": "select",
-                            "defaultValue": "flex-start",
-                            "options": {
-                                "flex-start": "Beside the text",
-                                "space-between": "Opposite the text"
-                            },
+                            "name": "accordingHeadingBorder",
+                            "label": "Border",
+                            "type": "border",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Accordion-heading-justifyContent"
+                                "cssVariable": "--Accordion-heading-border",
+                                "config": {
+                                    "combine": false
+                                }
                             }
                         },
                         {
@@ -70,27 +83,22 @@
                             "type": "borderRadius",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Accordion-heading-borderRadius"
+                                "cssVariable": "--Accordion-heading-border-radius"
                             }
                         },
                         {
-                            "name": "accordingHeadingBottomSize",
-                            "label": "Bottom border size",
-                            "type": "size",
-                            "defaultValue": "1px",
+                            "name": "accordionHeadingAlignIcon",
+                            "label": "Align icon",
+                            "type": "select",
+                            "defaultValue": "flex-start",
+                            "options": {
+                                "before": "Before the text on the left",
+                                "flex-start": "After the text on the right",
+                                "space-between": "Opposite the text on the right"
+                            },
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Accordion-heading-bottom-border-size"
-                            }
-                        },
-                        {
-                            "name": "accordingHeadingBottomBorderColor",
-                            "label": "Bottom border color",
-                            "type": "color",
-                            "defaultValue": "#333",
-                            "render": {
-                                "type": "css-head",
-                                "cssVariable": "--Accordion-heading-bottom-border-color"
+                                "template": ".Accordion-heading { {% if value == 'before' %} justify-content: flex-end; flex-direction: row-reverse;{% else %} justify-content: {{ value }};{% endif %} }"
                             }
                         },
                         {
@@ -117,6 +125,50 @@
                     ]
                 },
                 {
+                    "name": "Heading - Open",
+                    "fields": [
+                        {
+                            "name": "accordingHeadingBackgroundOpen",
+                            "label": "Background color when open",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-heading-background-open"
+                            }
+                        },
+                        {
+                            "name": "accordingHeadingColorOpen",
+                            "label": "Text and icon color when open",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-heading-color-open"
+                            }
+                        },
+                        {
+                            "name": "accordingHeadingBorderOpen",
+                            "label": "Border when open",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-heading-border-open",
+                                "config": {
+                                    "combine": false
+                                }
+                            }
+                        },
+                        {
+                            "name": "accordionHeaderBorderRadiusOpen",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-heading-border-radius-open"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Content",
                     "fields": [
                         {
@@ -127,6 +179,33 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Accordion-content-padding"
+                            }
+                        },
+                        {
+                            "name": "accordingContentBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-content-background"
+                            }
+                        },
+                        {
+                            "name": "accordingContentBorder",
+                            "label": "Border",
+                            "type": "border",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".Accordion-item[data-collapsed='no'] .Accordion-content"
+                            }
+                        },
+                        {
+                            "name": "accordionContentBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-content-border-radius"
                             }
                         }
                     ]
