@@ -16,6 +16,14 @@
     gap: 10px;
 }
 
+.Pagination-pages .Pagination-item:first-child {
+    margin-left: 0;
+}
+
+.Pagination-pages .Pagination-item:last-child {
+    margin-right: 0;
+}
+
 @media (--m-sm) {
     .Pagination-pages {
         border-left: var(--Pagination-pages-wrapper-border-left);
@@ -31,39 +39,45 @@
         border-right: none;
         padding-right: 0;
     }
-
-    .Pagination-pages .Pagination-item:first-child {
-        margin-left: 0;
-    }
-
-    .Pagination-pages .Pagination-item:last-child {
-        margin-right: 0;
-    }
 }
 
-/* Hide the previous/next links on small screens */
+/**
+ * Keep the previous and next links from shrinking
+ * when there isn't enough space for the pagination.
+ */
+
 .Pagination-item--previous,
 .Pagination-item--next {
+    flex-shrink: 0;
+}
+
+.Pagination-prevNext {
     display: none;
 }
 
-@media (--m-sm) {
-    .Pagination-item--previous,
-    .Pagination-item--next {
-        display: inline-flex;
+@media (--m-md) {
+    .Pagination-prevNext {
+        display: inline;
     }
 }
 
-/* Hide some of the paginiation on smaller screens */
+/**
+ * On small screens hide the page numbers that aren't close to the current page
+ * so that the pagination fits. Ellipses show where the pages are hidden.
+ */
 
-@media (width <= 349px) {
-    .Pagination-item:nth-child(n + 7) {
+.Pagination-ellipsis {
+    line-height: 1;
+}
+
+@media (--m-md-below) {
+    .Pagination .Pagination-item--far {
         display: none;
     }
 }
 
-@media (width >= 350px) and (width <= 430px) {
-    .Pagination-item:nth-child(n + 9) {
+@media (--m-md) {
+    .Pagination-ellipsis {
         display: none;
     }
 }
