@@ -5,6 +5,7 @@
 .Icon {
     display: inline-block;
     fill: currentcolor;
+    flex-shrink: 0; /* Keep the icon from shrinking when it's inside a flex container that runs out of space */
     height: 1em;
     line-height: 1em;
     stroke: currentcolor;
