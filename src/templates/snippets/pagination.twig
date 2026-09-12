@@ -1,7 +1,7 @@
 {% if pagination.pageCount > 1 %}
-    <div class="Pagination">
+    <nav class="Pagination" aria-label="Pagination">
         {% if pagination.previousUrl %}
-            <a class="Pagination-item Pagination-item--previous js-paginationLink" href="{{ pagination.previousUrl }}" title="Previous Page"{% if noFollow %} rel="nofollow"{% endif %}><svg class="Icon Pagination-icon" role="img"><use xlink:href="#icon-chevron-left" /></svg> <span class="Pagination-prevNext">Previous</span></a>
+            <a class="Pagination-item Pagination-item--previous js-paginationLink" href="{{ pagination.previousUrl }}" title="Previous Page"{% if noFollow %} rel="nofollow"{% endif %}><svg class="Icon Pagination-icon" aria-hidden="true" focusable="false"><use xlink:href="#icon-chevron-left" /></svg> <span class="Pagination-prevNext">Previous</span></a>
         {% endif %}
         <div class="Pagination-pages">
             {% for page in pagination.pagesInRange %}
@@ -15,7 +15,7 @@
                 {% if page.number != pagination.current %}
                     <a class="Pagination-item{% if isFar %} Pagination-item--far{% endif %} js-paginationLink" href="{{ page.url }}" title="Go to Page {{ page.number }}"{% if noFollow %} rel="nofollow"{% endif %}>{{ page.number }}</a>
                 {% else %}
-                    <span class="Pagination-item Pagination-item--isActive">{{ page.number }}</span>
+                    <span class="Pagination-item Pagination-item--isActive" aria-current="page">{{ page.number }}</span>
                 {% endif %}
                 {% if loop.first and page.number < pagination.current - 2 %}
                     <span class="Pagination-ellipsis" aria-hidden="true">&hellip;</span>
@@ -23,10 +23,10 @@
             {% endfor %}
         </div>
         {% if pagination.nextUrl %}
-            <a class="Pagination-item Pagination-item--next js-paginationLink" href="{{ pagination.nextUrl }}" title="Next Page"{% if noFollow %} rel="nofollow"{% endif %}><span class="Pagination-prevNext">Next</span> <svg class="Icon Pagination-icon" role="img"><use xlink:href="#icon-chevron-right" /></svg></a>
+            <a class="Pagination-item Pagination-item--next js-paginationLink" href="{{ pagination.nextUrl }}" title="Next Page"{% if noFollow %} rel="nofollow"{% endif %}><span class="Pagination-prevNext">Next</span> <svg class="Icon Pagination-icon" aria-hidden="true" focusable="false"><use xlink:href="#icon-chevron-right" /></svg></a>
         {% endif %}
         {% if pagination.current > 1 %}
             {% set _page.title = _page.title ~ ' - Page ' ~ pagination.current %}
         {% endif %}
-    </div>
+    </nav>
 {% endif %}
