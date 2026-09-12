@@ -758,17 +758,6 @@
             "description": "Styles for the \"Google Ratings Bar\" block.",
             "groups": [
                 {
-                    "name": "Review link",
-                    "fields": [
-                        {
-                            "name": "googleRatingsBarReviewsLink",
-                            "label": "URL to view reviews on Google",
-                            "type": "url",
-                            "showLinkTextField": true
-                        }
-                    ]
-                },
-                {
                     "name": "General styles",
                     "fields": [
                         {
