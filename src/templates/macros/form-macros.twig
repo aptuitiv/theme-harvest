@@ -498,7 +498,7 @@
     message: (string) OPTIONAL A custom message to show above the error list.
 #}
 {% macro formErrorContainer(form, message) %}
-    <div class="Message Message--failure mb-5 {% if form.errors is empty and form.paymentErrors is empty %} hidden{% endif %}">
+    <div class="Message Message--failure mb-5 {% if form.errors is empty and form.paymentErrors is empty %} hidden{% endif %}" role="alert">
         {% set errorMessage = form.paymentErrors is empty ? 'There was a problem with your submission. Please correct the issues below' : 'Could not process your payment' %}
         {% set errorMessage = message ? message : errorMessage %}
         <p>{{ errorMessage }}</p>
@@ -530,7 +530,7 @@
     message: (string) The error message to show
 #}
 {% macro formErrorContainerSingleMessage(errorContainerClass, form, message) %}
-    <div class="Message Message--failure mb-5 {{ errorContainerClass}}{% if form.errors is empty and form.paymentErrors is empty %} hidden{% endif %}">
+    <div class="Message Message--failure mb-5 {{ errorContainerClass}}{% if form.errors is empty and form.paymentErrors is empty %} hidden{% endif %}" role="alert">
         {{ message }}
     </div>
 {% endmacro %}

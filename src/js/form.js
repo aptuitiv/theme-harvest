@@ -5,6 +5,45 @@
 
 /* global JustValidate, grecaptcha */
 
+/**
+ * Mark a field as valid or invalid for assistive technology and connect it
+ * to its Just-Validate error message with aria-describedby.
+ *
+ * @param {HTMLElement} field The form field element
+ * @param {boolean} isValid Whether the field is valid
+ */
+function setFieldAriaState(field, isValid) {
+    if (!field || !field.id) {
+        return;
+    }
+    const errorId = `${field.id}-error`;
+    // Keep any other aria-describedby values, such as the field description
+    const describedBy = (field.getAttribute('aria-describedby') || '')
+        .split(' ')
+        .filter((id) => id !== '' && id !== errorId);
+
+    if (isValid) {
+        field.removeAttribute('aria-invalid');
+    } else {
+        field.setAttribute('aria-invalid', 'true');
+        // Just-Validate adds the error label to the field's parent, or to the parent of the
+        // <label> when the field is inside a <label> tag.
+        const errorLabel = [field.parentElement, field.parentElement?.parentElement]
+            .map((el) => el?.querySelector(':scope > .just-validate-error-label'))
+            .find((el) => el);
+        if (errorLabel) {
+            errorLabel.id = errorId;
+            describedBy.push(errorId);
+        }
+    }
+
+    if (describedBy.length > 0) {
+        field.setAttribute('aria-describedby', describedBy.join(' '));
+    } else {
+        field.removeAttribute('aria-describedby');
+    }
+}
+
 class FormHandler {
     /**
      * Holds the error container selector
@@ -129,6 +168,10 @@ class FormHandler {
      */
     setErrorContainerSelector(selector) {
         this.errorContainer = document.querySelector(selector);
+        if (this.errorContainer) {
+            // Screen readers announce the errors when they're added to the container
+            this.errorContainer.setAttribute('role', 'alert');
+        }
     }
 
     /**
@@ -597,6 +640,17 @@ class FormHandler {
                 firstInvalid.elem.scrollIntoView({ behavior: 'smooth' });
                 firstInvalid.elem.focus({ preventScroll: true });
             }
+        });
+
+        // Just-Validate shows the error message visually, but it doesn't mark the field as invalid
+        // or connect the message to the field for screen readers. Do that whenever fields are validated.
+        this.validator.onValidate(({ fields }) => {
+            // Wait until Just-Validate has finished rendering the error messages
+            setTimeout(() => {
+                Object.values(fields).forEach((field) => {
+                    setFieldAriaState(field.elem, field.isValid !== false);
+                });
+            }, 0);
         });
     }
 
