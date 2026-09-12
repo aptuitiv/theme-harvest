@@ -233,7 +233,8 @@
     {% endif %}
     {% if field.isRequired %}
         {% set field.required = true %}
-        {% set field.label.text = field.label.text ~ ' <span class="FormRequired">*</span>' %}
+        {# The asterisk is hidden from screen readers. The required attribute on the field already tells them it's required. #}
+        {% set field.label.text = field.label.text ~ ' <span class="FormRequired" aria-hidden="true">*</span>' %}
     {% endif %}
     {% if field.fieldType in ['multiCheckbox', 'radio'] %}
         {# The options are grouped in a fieldset in buildField. A <label> here would associate with a
