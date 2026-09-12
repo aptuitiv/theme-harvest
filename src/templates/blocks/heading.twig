@@ -1,1 +1,4 @@
-<{{ type }}>{{ heading }}</{{ type }}>
+{% import 'macros/macros' as macros %}
+<div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
+    <{{ type }}>{{ heading }}</{{ type }}>
+</div>
