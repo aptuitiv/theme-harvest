@@ -6,7 +6,7 @@
                 {% set image.image.class = 'ImageRow-image' %}
                 {% do image.image.lazy() %}
                 {% if image.url %}
-                    <a href="{image.url}" target="_blank" class="ImageRow-link">{{ image.image.tag }}</a>
+                    <a href="{{ image.url }}" target="_blank" rel="noopener" class="ImageRow-link">{{ image.image.tag }}<span class="visually-hidden"> (opens in a new window)</span></a>
                 {% else %}
                     {{ image.image.tag }}
                 {% endif %}
