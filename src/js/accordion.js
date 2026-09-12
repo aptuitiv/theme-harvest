@@ -3,6 +3,9 @@
  *
  * Sort of based on https://codepen.io/brundolf/pen/dvoGyw?editors=1111
  * https://css-tricks.com/using-css-transitions-auto-dimensions/
+ *
+ * The heading is a <button>, so it already works with the Enter and Space keys.
+ * The aria-expanded value on the button is kept in sync with the open state.
  */
 const accordion = {
     /**
@@ -11,7 +14,7 @@ const accordion = {
     init() {
         document.querySelectorAll('.js-accordionHeading').forEach((el) => {
             el.addEventListener('click', (e) => {
-                const container = accordion.getContainer(e.target);
+                const container = accordion.getContainer(e.currentTarget);
                 const state = container.getAttribute('data-collapsed');
                 const isCollapsed = state === 'yes' || state === 'initial';
                 if (isCollapsed) {
@@ -35,6 +38,19 @@ const accordion = {
             return p;
         }
         return this.getContainer(p);
+    },
+
+    /**
+     * Set the aria-expanded value on the accordion heading button
+     *
+     * @param {HTMLElement} container The container element
+     * @param {boolean} isExpanded Whether the accordion is expanded
+     */
+    setExpanded(container, isExpanded) {
+        const heading = container.querySelector('.js-accordionHeading');
+        if (heading) {
+            heading.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        }
     },
 
     /**
@@ -62,6 +78,7 @@ const accordion = {
 
         // mark the section as "currently not collapsed"
         container.setAttribute('data-collapsed', 'no');
+        this.setExpanded(container, true);
     },
     /**
      * Collapse the accordion
@@ -93,6 +110,7 @@ const accordion = {
 
         // mark the section as "currently collapsed"
         container.setAttribute('data-collapsed', 'yes');
+        this.setExpanded(container, false);
     },
 };
 

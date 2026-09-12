@@ -1,14 +1,17 @@
 {% if items|length > 0 %}
     {% import 'macros/macros' as macros %}
+    {# Unique prefix so that each heading button can point to its content with aria-controls #}
+    {% set accordionId = 'accordion-' ~ random_string(6) %}
     <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width) }}">
         <div class="Accordion"{% if contentIsFaqs %} itemscope itemtype="https://schema.org/FAQPage"{% endif %}>
             {% for item in items %}
-                <div class="Accordion-item  js-accordion" data-collapsed="{% if expandFirstItem and loop.index == 1 %}no{% else %}initial{% endif %}"{% if contentIsFaqs %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% endif %}>
-                    <div class="Accordion-heading js-accordionHeading">
+                {% set isOpen = expandFirstItem and loop.index == 1 %}
+                <div class="Accordion-item  js-accordion" data-collapsed="{% if isOpen %}no{% else %}initial{% endif %}"{% if contentIsFaqs %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% endif %}>
+                    <button type="button" class="Accordion-heading js-accordionHeading" aria-expanded="{{ isOpen ? 'true' : 'false' }}" aria-controls="{{ accordionId }}-{{ loop.index }}">
                         <span class="Accordion-title"{% if contentIsFaqs %} itemprop="name"{% endif %}>{{ item.heading }}</span>
-                        <span class="Accordion-icon"></span>
-                    </div>
-                    <div class="Accordion-content clearfix last-child-sb-0 js-accordionContent"{% if contentIsFaqs %} itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"{% endif %}>
+                        <span class="Accordion-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="Accordion-content clearfix last-child-sb-0 js-accordionContent" id="{{ accordionId }}-{{ loop.index }}"{% if contentIsFaqs %} itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"{% endif %}>
                         {% if contentIsFaqs %}<div itemprop="text">{% endif %}
                         {{ item.content }}
                         {% if contentIsFaqs %}</div>{% endif %}

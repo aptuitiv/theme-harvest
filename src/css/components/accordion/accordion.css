@@ -40,6 +40,7 @@
     text-decoration: var(--Accordion-heading-text-decoration);
     text-transform: var(--Accordion-heading-text-transform);
     transition: 0.1s;
+    width: 100%; /* The heading is a <button>, which doesn't stretch to fill the row by default */
 }
 
 .Accordion-icon {
@@ -78,25 +79,31 @@
         opacity 0.25s ease-in-out,
         height 0.25s ease-in-out,
         padding-bottom 0.25s ease-in-out,
-        padding-top 0.25s ease-in-out;
+        padding-top 0.25s ease-in-out,
+        visibility 0.25s ease-in-out;
 }
 
 /**
  * States
  */
 
-/* Closed */
+/* Closed
+   "visibility: hidden" keeps links and other content in a closed accordion out of the
+   keyboard tab order and away from screen readers. Because visibility is transitioned,
+   the content stays visible until the closing animation finishes. */
 
 .Accordion-item[data-collapsed='initial'] .Accordion-content {
     height: 0;
     padding-bottom: 0;
     padding-top: 0;
+    visibility: hidden;
 }
 
 .Accordion-item[data-collapsed='yes'] .Accordion-content {
     opacity: 0;
     padding-bottom: 0;
     padding-top: 0;
+    visibility: hidden;
 }
 
 /* Open */
