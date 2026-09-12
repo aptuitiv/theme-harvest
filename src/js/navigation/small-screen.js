@@ -52,6 +52,14 @@ const smallScreenNav = {
                 toggleNav();
             });
 
+            // Close the open menu with the Escape key and return focus to the menu button
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && nav.dataset.open === 'yes') {
+                    closeNav();
+                    button.focus();
+                }
+            });
+
             // Make sure that the navigation gets displayed if the window resizes.
             // If you resize to make the small screen nav display, show and hide the nav,
             // and then resize so that regular nav should show, the regular nav doesn't show
@@ -74,8 +82,23 @@ const smallScreenNav = {
             dropdown.addEventListener('click', (e) => {
                 if (window.innerWidth <= width) {
                     e.preventDefault();
-                    e.target.classList.toggle('is-active');
-                    e.target.parentElement.classList.toggle('is-active');
+                    const link = e.currentTarget;
+                    link.classList.toggle('is-active');
+                    link.parentElement.classList.toggle('is-active');
+
+                    // Keep the ARIA state in sync with the open state so that screen
+                    // readers can reach the items in a submenu opened by tapping.
+                    const isOpen = link.classList.contains('is-active');
+                    link.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    const submenu = link.parentElement.querySelector(
+                        ':scope > .js-dropdownMenu',
+                    );
+                    if (submenu) {
+                        submenu.setAttribute(
+                            'aria-hidden',
+                            isOpen ? 'false' : 'true',
+                        );
+                    }
                 }
             });
         });

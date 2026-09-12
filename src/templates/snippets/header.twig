@@ -180,8 +180,8 @@
                     {% endif %}
                 </div>
 
-                <button class="SmScBtn js-ssNavBtn" aria-label="Navigation menu" aria-expanded="false" aria-controls="navbar"><span class="SmScBtn-icon"></span>Menu</button>
-                <nav class="NavBar js-navBar" id="navbar">
+                <button class="SmScBtn js-ssNavBtn" aria-expanded="false" aria-controls="navbar"><span class="SmScBtn-icon"></span>Menu</button>
+                <nav class="NavBar js-navBar" id="navbar" aria-label="Main">
                     {{ _api.navigation.get.key('main') }}
                 </nav>
             </div>

@@ -21,6 +21,8 @@
 {% import _self as macros %}
 
 {# Build the navigation menu #}
-<ul class="FooterNav">
-    {{ macros.menu_items(items) }}
-</ul>
+<nav aria-label="Footer">
+    <ul class="FooterNav">
+        {{ macros.menu_items(items) }}
+    </ul>
+</nav>

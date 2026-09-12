@@ -1,7 +1,7 @@
 {# Macro that handles building sub navigation #}
 {# Aria attributes based on https://stackoverflow.com/questions/12279113/recommended-wai-aria-implementation-for-navigation-bar-menu #}
 {% macro menu_sub_items(items, parentItemId) %}
-    <ul class="Dropdown-menu js-dropdownMenu" role="menu"{% if parentItemId %} aria-labelledby="{{ parentItemId }}"{% endif %} aria-expanded="false" aria-hidden="true">
+    <ul class="Dropdown-menu js-dropdownMenu" role="menu"{% if parentItemId %} aria-labelledby="{{ parentItemId }}"{% endif %} aria-hidden="true">
         {% for item in items %}
             {% if item.parent %}
                 {% if item.link.href != item.parent.link.href %}
@@ -24,6 +24,8 @@
                 {% if item.subItems %}
                     {% set item.link.class = item.link.class ~ " Dropdown-link--parent js-dropdown" %}
                     {% do item.link.set('aria-haspopup', 'true') %}
+                    {# aria-expanded belongs on the link that opens the dropdown, not on the dropdown <ul> #}
+                    {% do item.link.set('aria-expanded', 'false') %}
                     {% set item.link.id = random_string(8) %}
                 {% endif %}
                 {% set item.link.role = 'menuitem' %}
@@ -64,6 +66,8 @@
             {% if item.subItems %}
                 {% set item.link.class = item.link.class ~ ' is-dropdown js-dropdown' %}
                 {% do item.link.set('aria-haspopup', 'true') %}
+                {# aria-expanded belongs on the link that opens the dropdown, not on the dropdown <ul> #}
+                {% do item.link.set('aria-expanded', 'false') %}
                 {% set item.link.id = random_string(8) %}
             {% endif %}
             {% set item.link.role = 'menuitem' %}
