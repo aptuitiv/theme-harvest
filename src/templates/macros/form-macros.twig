@@ -388,7 +388,7 @@
             <div class="js-currentImgContainer" data-id="{{ field.id }}">
                 <div class="grid g-1 align-center mb-2 nc-2">
                     <div class="col-1-2">
-                        <img src="{{ field.value|file_url }}" data-id="{{ field.id }}" alt="Image" class="FileField-image">
+                        <img src="{{ field.value|file_url }}" data-id="{{ field.id }}" alt="Preview of the uploaded image" class="FileField-image">
                     </div>
                     <div class="col-1-2">
                         <button type="button" class="js-removeExistingImage FileField-actionButton FileField-actionButton--remove" data-id="{{ field.id }}">{{ macros.iconAriaHidden('trash') }}Remove</button>
@@ -407,7 +407,7 @@
         <div class="js-newImageContainer hidden" data-id="{{ field.id }}">
             <div class="grid g-1 align-center mb-2 nc-2">
                 <div class="col-1-2">
-                    <img src="" alt="Image" class="FileField-image js-newImage" data-id="{{ field.id }}">
+                    <img src="" alt="Preview of the uploaded image" class="FileField-image js-newImage" data-id="{{ field.id }}">
                 </div>
                 <div class="col-1-2">
                     <button type="button" class="js-removeNewImage FileField-actionButton FileField-actionButton--remove" data-id="{{ field.id }}"{% if hasExistingImage %} style="display: none"{% endif %}>{{ macros.iconAriaHidden('trash') }}Remove</button>
