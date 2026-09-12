@@ -12,6 +12,24 @@ body {
 }
 
 /**
+ * Respect the visitor's "reduce motion" setting.
+ * Transitions and animations still run, but so quickly that there's no visible
+ * movement. They aren't turned off completely so that "transitionend" events,
+ * which the accordion relies on, still fire.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/**
  * 1. Style alt text.
  * 2. Scale image fluidly within its container. Making this default has some
  *    known issues but can be very convenient when users are inserting images
