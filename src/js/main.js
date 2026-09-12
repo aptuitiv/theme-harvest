@@ -25,9 +25,8 @@ const main = {
         navAccessibility.init();
         stickyHeader.init();
         video.init();
-        MicroModal.init({
-            disableFocus: true,
-        });
+        // Focus moves into a modal when it opens so that keyboard and screen reader users are taken to it
+        MicroModal.init();
     },
 
     /**

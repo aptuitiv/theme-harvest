@@ -16,10 +16,10 @@
             {% if popup.id not in cookieIds %}
                 <div class="Modal Modal-slide" id="announcement-modal" aria-hidden="true" data-id="{{ popup.id }}">
                     <div class="Modal-overlay" tabindex="-1" data-micromodal-close>
-                        <div class="Modal-container" role="dialog" aria-modal="true">
+                        <div class="Modal-container" role="dialog" aria-modal="true"{% if popup.heading %} aria-labelledby="announcement-modal-title"{% else %} aria-label="Announcement"{% endif %}>
                             <div class="Modal-header {% if popup.heading %}justify-between{% else %}justify-end{% endif %}">
-                                <div class="Modal-title">{{ popup.heading }}</div>
-                                <button class="Modal-close" data-micromodal-close></button>
+                                <div class="Modal-title" id="announcement-modal-title">{{ popup.heading }}</div>
+                                <button type="button" class="Modal-close" aria-label="Close" data-micromodal-close></button>
                             </div>
                             <div class="Modal-content last-child-mb-0">
                                 {{ popup.content }}
@@ -31,8 +31,8 @@
                     loadjs.ready('main', {
                         success: function() {
                             setTimeout(() => {
+                                {# Focus moves into the popup when it opens so that keyboard and screen reader users are taken to it #}
                                 MicroModal.show('announcement-modal', {
-                                    disableFocus: true,
                                         onClose: () => {
                                             {% if popup.showEachPage == 'No' %}
                                                 main.helper.setPopupCookie('popup{{ popup.id }}', {{ popup.cookieExpiration }});
