@@ -68,10 +68,21 @@ ul {
  */
 
 blockquote {
-    border-left: 10px solid #ccc;
+    background: var(--base-typography-blockquote-background, transparent);
+    border-left: var(--base-typography-blockquote-border-width, 10px) solid
+        var(--base-typography-blockquote-border-color, #ccc);
+    color: var(--base-typography-blockquote-color, inherit);
+    font-family: var(--base-typography-blockquote-font-family, inherit);
+    font-size: var(--base-typography-blockquote-font-size, inherit);
+    font-style: var(--base-typography-blockquote-font-style, inherit);
+    font-weight: var(--base-typography-blockquote-font-weight, inherit);
+    letter-spacing: var(--base-typography-blockquote-letter-spacing, inherit);
+    line-height: var(--base-typography-blockquote-line-height, inherit);
     margin: var(--base-typography-spacing, 2.5rem) calc(var(--base-typography-spacing, 2.5rem) * 0.7);
-    padding: 0.5em 1em;
+    padding: var(--base-typography-blockquote-padding, 0.5em 1em);
     position: relative;
+    text-decoration: var(--base-typography-blockquote-text-decoration, inherit);
+    text-transform: var(--base-typography-blockquote-text-transform, inherit);
 }
 
 blockquote p:first-child {
@@ -162,7 +173,7 @@ address {
 hr {
     border-style: solid; /* 1 */
     border-width: var(--base-typography-hrule-width, 1px) 0 0 0;
-    color: inherit; /* 2 */
+    color: var(--base-typography-hrule-color, inherit); /* 2 */
 }
 
 /* Headings
@@ -273,7 +284,7 @@ h1:first-child {
  * Remove the margin-top from the first h2 in the main content if its in the first child of the #main element.
  * This targets the first child within the #main element and the first child H2 within that.
  */
- #main > :first-child h2:first-child{
+#main > :first-child h2:first-child {
     margin-top: 0;
 }
 
@@ -312,7 +323,6 @@ h1:first-child {
 /* ------------------------------------ *\
     Small text
 \* ------------------------------------ */
-
 
 small,
 .small-text {

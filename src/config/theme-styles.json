@@ -5900,6 +5900,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--base-typography-hrule-width"
                             }
+                        },
+                        {
+                            "name": "baseHorizontalRuleColor",
+                            "label": "Horizontal rule color",
+                            "type": "color",
+                            "description": "Leave empty to use the text color.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-hrule-color"
+                            }
                         }
                     ]
                 },
@@ -6037,6 +6047,62 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--ColumnList-padding"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Blockquote",
+                    "description": "Styles for quotes added with the blockquote format in the content editor.",
+                    "fields": [
+                        {
+                            "name": "blockquoteBorderColor",
+                            "label": "Left border color",
+                            "type": "color",
+                            "defaultValue": "#ccc",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-blockquote-border-color"
+                            }
+                        },
+                        {
+                            "name": "blockquoteBorderWidth",
+                            "label": "Left border width",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-blockquote-border-width"
+                            }
+                        },
+                        {
+                            "name": "blockquoteBackground",
+                            "label": "Background color",
+                            "type": "color",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-blockquote-background"
+                            }
+                        },
+                        {
+                            "name": "blockquotePadding",
+                            "label": "Padding",
+                            "type": "padding",
+                            "defaultValue": "0.5em 1em",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-blockquote-padding"
+                            }
+                        },
+                        {
+                            "name": "blockquoteTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "collapsable": false,
+                            "useTextAlign": false,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--base-typography-blockquote"
                             }
                         }
                     ]
