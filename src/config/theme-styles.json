@@ -5613,7 +5613,6 @@
                             "name": "tableCellFontWeight",
                             "label": "Font weight",
                             "type": "fontWeight",
-                            "defaultValue": "700",
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Table-cell-font-weight"
