@@ -8,11 +8,25 @@
     border: var(--TextInput-border-width, 1px) solid var(--TextInput-border-color, #777);
     border-radius: var(--TextInput-border-radius, 0);
     color: var(--TextInput-color, #333);
+    font-size: var(--TextInput-font-size, inherit);
     outline: none;
     padding: var(--TextInput-padding, 5px 10px);
     width: 100%;
 }
 
+.TextInput::placeholder {
+    color: var(--TextInput-placeholder-color, #757575);
+    opacity: 1; /* Firefox lowers the placeholder opacity by default */
+}
+
 .TextInput:focus {
+    border-color: var(--TextInput-border-color-focus, var(--TextInput-border-color, #777));
     outline: auto 5px -webkit-focus-ring-color;
+}
+
+/* Keep the font at least 16px on small screens so that mobile browsers don't zoom in when the field gets focus */
+@media (--m-md-below) {
+    .TextInput {
+        font-size: max(16px, var(--TextInput-font-size, 16px));
+    }
 }

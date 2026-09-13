@@ -3432,6 +3432,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--Checkbox-checkmark-thickness"
                             }
+                        },
+                        {
+                            "name": "checkboxLabelGap",
+                            "label": "Space between the checkbox and its label",
+                            "type": "size",
+                            "defaultValue": "10px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Checkbox-gap"
+                            }
                         }
                     ]
                 },
@@ -3744,6 +3754,16 @@
                                 "type": "css-head",
                                 "cssVariable": "--SelectMenu-padding"
                             }
+                        },
+                        {
+                            "name": "selectMenuBorderColorFocus",
+                            "label": "Border color (focus)",
+                            "type": "color",
+                            "description": "The border color when the menu is selected with the keyboard. Leave empty to keep the regular border color.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--SelectMenu-border-color-focus"
+                            }
                         }
                     ]
                 },
@@ -3810,6 +3830,37 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--TextInput-padding"
+                            }
+                        },
+                        {
+                            "name": "textInputBorderColorFocus",
+                            "label": "Border color (focus)",
+                            "type": "color",
+                            "description": "The border color while the field is being typed in. Leave empty to keep the regular border color.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TextInput-border-color-focus"
+                            }
+                        },
+                        {
+                            "name": "textInputPlaceholderColor",
+                            "label": "Placeholder text color",
+                            "type": "color",
+                            "description": "Make sure the color has enough contrast with the background color.",
+                            "defaultValue": "#757575",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TextInput-placeholder-color"
+                            }
+                        },
+                        {
+                            "name": "textInputFontSize",
+                            "label": "Font size",
+                            "type": "fontSize",
+                            "description": "Leave empty to use the base font size. On small screens the font size is never smaller than 16px so that phones don't zoom in on the field.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--TextInput-font-size"
                             }
                         }
                     ]

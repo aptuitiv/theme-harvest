@@ -51,5 +51,6 @@
 
 /* postcss-bem-linter: ignore */
 .SelectMenu > select:focus-visible {
+    border-color: var(--SelectMenu-border-color-focus, var(--SelectMenu-border-color, #777));
     outline: auto 5px -webkit-focus-ring-color;
 }
