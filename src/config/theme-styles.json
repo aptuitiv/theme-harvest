@@ -4545,6 +4545,18 @@
                     }
                 },
                 {
+                    "name": "messageBorder",
+                    "label": "Border",
+                    "type": "border",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Message-border",
+                        "config": {
+                            "combine": false
+                        }
+                    }
+                },
+                {
                     "name": "messageBackgroundSuccess",
                     "label": "Background color (successful message)",
                     "type": "color",
@@ -4582,6 +4594,19 @@
                     "render": {
                         "type": "css-head",
                         "cssVariable": "--Message-color-failure"
+                    }
+                },
+                {
+                    "name": "messageTypography",
+                    "label": "Typography",
+                    "type": "typography",
+                    "description": "The text colors are set above for each message type.",
+                    "collapsable": false,
+                    "useColor": false,
+                    "useTextDecoration": false,
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Message"
                     }
                 }
             ]

@@ -4,9 +4,21 @@
 
 /* @define Message */
 .Message {
+    border-bottom: var(--Message-border-bottom, none);
+    border-left: var(--Message-border-left, none);
     border-radius: var(--Message-border-radius);
+    border-right: var(--Message-border-right, none);
+    border-top: var(--Message-border-top, none);
+    font-family: var(--Message-font-family, inherit);
+    font-size: var(--Message-font-size, inherit);
+    font-style: var(--Message-font-style, inherit);
+    font-weight: var(--Message-font-weight, inherit);
+    letter-spacing: var(--Message-letter-spacing, inherit);
+    line-height: var(--Message-line-height, inherit);
     margin-bottom: var(--base-typography-spacing, 2.5rem);
     padding: var(--Message-padding, 20px);
+    text-align: var(--Message-text-align, inherit);
+    text-transform: var(--Message-text-transform, inherit);
 }
 
 .Message--success {
