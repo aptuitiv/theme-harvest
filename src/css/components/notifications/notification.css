@@ -13,18 +13,31 @@
 .Notification-more {
     background-color: transparent;
     border: none;
-    color: var(--Notification-color);
-    text-decoration: underline;
-    text-transform: var(--Notification-title-text-transform);
+    color: var(--Notification-more-color, var(--Notification-color));
+    font-family: var(--Notification-more-font-family, inherit);
+    font-size: var(--Notification-more-font-size, inherit);
+    font-style: var(--Notification-more-font-style, inherit);
+    font-weight: var(--Notification-more-font-weight, inherit);
+    letter-spacing: var(--Notification-more-letter-spacing, inherit);
+    line-height: var(--Notification-more-line-height, inherit);
+    text-decoration: var(--Notification-more-text-decoration, underline);
+    text-transform: var(--Notification-more-text-transform, var(--Notification-title-text-transform, inherit));
 }
 
 .Notification-more:focus-visible {
-    color: var(--Notification-color);
+    color: var(--Notification-more-color-hover, var(--Notification-more-color, var(--Notification-color)));
+    font-style: var(--Notification-more-font-style-hover, var(--Notification-more-font-style, inherit));
+    text-decoration: var(--Notification-more-text-decoration-hover, var(--Notification-more-text-decoration, underline));
 }
 
 @media (hover: hover) and (pointer: fine) {
     .Notification-more:hover {
-        color: var(--Notification-color);
+        color: var(--Notification-more-color-hover, var(--Notification-more-color, var(--Notification-color)));
+        font-style: var(--Notification-more-font-style-hover, var(--Notification-more-font-style, inherit));
+        text-decoration: var(
+            --Notification-more-text-decoration-hover,
+            var(--Notification-more-text-decoration, underline)
+        );
     }
 }
 

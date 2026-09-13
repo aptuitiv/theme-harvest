@@ -4676,6 +4676,28 @@
                     ]
                 },
                 {
+                    "name": "More link",
+                    "description": "The link after the notification title that opens the full message or goes to another page.",
+                    "fields": [
+                        {
+                            "name": "notificationMoreTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "description": "Leave empty to match the title text.",
+                            "collapsable": false,
+                            "useHover": true,
+                            "useTextAlign": false,
+                            "textDecoration": {
+                                "defaultValue": "underline"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Notification-more"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Close Button and Icon",
                     "fields": [
                         {
