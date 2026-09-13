@@ -5141,6 +5141,26 @@
                                 "type": "css-head",
                                 "cssVariable": "--Modal-border-radius"
                             }
+                        },
+                        {
+                            "name": "modalBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Modal-box-shadow"
+                            }
+                        },
+                        {
+                            "name": "modalScreenMargin",
+                            "label": "Space from the edge of the screen",
+                            "type": "size",
+                            "description": "The minimum space between the popup and the edges of the screen. The popup's height is limited so that this space is kept at the top and bottom too.",
+                            "defaultValue": "20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Modal-screen-margin"
+                            }
                         }
                     ]
                 },

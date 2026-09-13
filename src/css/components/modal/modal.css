@@ -24,9 +24,10 @@
 .Modal-container {
     background-color: var(--Modal-background);
     border-radius: var(--Modal-border-radius);
+    box-shadow: var(--Modal-box-shadow, none);
     color: var(--Modal-color);
-    margin: 20px;
-    max-height: calc(100vh - 40px);
+    margin: var(--Modal-screen-margin, 20px);
+    max-height: calc(100vh - (2 * var(--Modal-screen-margin, 20px)));
     max-width: var(--Modal-width);
     overflow-y: auto;
     width: 100%;
