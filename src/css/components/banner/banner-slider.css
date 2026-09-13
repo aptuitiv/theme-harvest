@@ -28,10 +28,10 @@
 /* postcss-bem-linter: ignore */
 .BannerSlider .splide__pagination__page {
     background-color: var(--Banner-slider-dot-pagination-color, #fff);
-    height: 17px;
+    height: var(--Banner-slider-dot-size, 17px);
     opacity: 1;
     transition: 250ms;
-    width: 17px;
+    width: var(--Banner-slider-dot-size, 17px);
 }
 
 /* postcss-bem-linter: ignore */
@@ -61,7 +61,7 @@
     border: none;
     border-bottom: var(--Banner-slider-text-pagination-bottom-border-size, 0) solid
         var(--Banner-slider-text-border-color);
-    border-radius: var(--Banner-slider-text-border-radius);
+    border-radius: var(--Banner-slider-text-border-radius, 0);
     color: var(--Banner-slider-text-pagination-color);
     cursor: pointer;
     display: inline-block;

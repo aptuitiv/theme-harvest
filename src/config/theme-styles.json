@@ -371,6 +371,16 @@
                             }
                         },
                         {
+                            "name": "bannerContentBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "description": "Most useful when the content has a background color.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-content-box-shadow"
+                            }
+                        },
+                        {
                             "name": "bannerContentButtonGap",
                             "label": "Space between buttons",
                             "type": "size",
@@ -542,6 +552,17 @@
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-dot-pagination-color-active"
                             }
+                        },
+                        {
+                            "name": "bannerSliderDotSize",
+                            "label": "Dot pagination size",
+                            "type": "size",
+                            "description": "The width and height of each dot.",
+                            "defaultValue": "17px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-slider-dot-size"
+                            }
                         }
                     ]
                 },
@@ -618,6 +639,15 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-slider-text-border-color-hover"
+                            }
+                        },
+                        {
+                            "name": "bannerSliderTextPaginationBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-slider-text-border-radius"
                             }
                         },
                         {

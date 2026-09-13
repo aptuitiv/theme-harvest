@@ -78,6 +78,7 @@
 
 .Banner-content {
     background-color: var(--Banner-content-background);
+    box-shadow: var(--Banner-content-box-shadow, none);
     display: flex;
     padding: var(--Banner-padding-sm);
     position: relative;
