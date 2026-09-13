@@ -19,10 +19,11 @@
 /* The selector is more specific so that the styles are applied when in a container that may override styles, like a .Wrapper */
 .IconGrid .IconGrid-item {
     align-items: center;
-    background-color: var(--IconGrid-background-color);
-    border: var(--ImageGrid-border);
+    background-color: var(--IconGrid-background-color, transparent);
+    border: var(--ImageGrid-border, none);
     border-radius: var(--IconGrid-border-radius, 0);
     box-shadow: var(--IconGrid-box-shadow, none);
+    color: var(--IconGrid-text-color, inherit);
     display: flex;
     flex-direction: var(--IconGrid-textPosition);
     gap: var(--IconGrid-gap-size-image-text);
@@ -31,12 +32,22 @@
     text-decoration: none;
 }
 
-/* The selector is more specific so that the styles are applied when in a container that may override styles, like a .Wrapper */
+/* The text color is set on the text itself so that it overrides the forced text color in a dark .Wrapper */
+.IconGrid .IconGrid-item .IconGrid-text {
+    color: var(--IconGrid-text-color, inherit);
+}
+
+/* The selector is more specific so that the styles are applied when in a container that may override styles, like a .Wrapper.
+   Each hover value falls back to the regular value so that hovering doesn't remove styles that don't have a hover value. */
 .IconGrid .IconGrid-link:hover {
-    background-color: var(--IconGrid-background-color-hover);
-    border: var(--IconGrid-border-hover);
+    background-color: var(--IconGrid-background-color-hover, var(--IconGrid-background-color, transparent));
+    border: var(--IconGrid-border-hover, var(--ImageGrid-border, none));
     box-shadow: var(--IconGrid-box-shadow-hover, var(--IconGrid-box-shadow, none));
-    color: var(--IconGrid-text-hover);
-    text-decoration: var(--IconGrid-text-decoration-hover);
-    transform: scale(var(--IconGrid-scale-stepper));
+    color: var(--IconGrid-text-hover, var(--IconGrid-text-color, inherit));
+    text-decoration: var(--IconGrid-text-decoration-hover, none);
+    transform: scale(var(--IconGrid-scale-stepper, 1));
+}
+
+.IconGrid .IconGrid-link:hover .IconGrid-text {
+    color: var(--IconGrid-text-hover, var(--IconGrid-text-color, inherit));
 }
