@@ -2828,7 +2828,7 @@
             ]
         },
         {
-            "name": "Container Widths",
+            "name": "Container Widths & Padding",
             "description": "Styles for page width containers.",
             "fields": [
                 {
@@ -2868,6 +2868,28 @@
                         "type": "css-head",
                         "cssVariable": "--Container-small-width",
                         "template": "{{ value }}px"
+                    }
+                },
+                {
+                    "name": "containerPadding",
+                    "label": "Side padding",
+                    "type": "size",
+                    "description": "Space between the page content and the left and right edges of the screen on extra large screens.",
+                    "defaultValue": "30px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Container-padding"
+                    }
+                },
+                {
+                    "name": "containerPaddingSm",
+                    "label": "Side padding (small screens)",
+                    "type": "size",
+                    "description": "Space between the page content and the left and right edges of the screen below extra large screens.",
+                    "defaultValue": "10px",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Container-padding-sm"
                     }
                 }
             ]
