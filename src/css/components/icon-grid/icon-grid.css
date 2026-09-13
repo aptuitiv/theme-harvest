@@ -21,6 +21,8 @@
     align-items: center;
     background-color: var(--IconGrid-background-color);
     border: var(--ImageGrid-border);
+    border-radius: var(--IconGrid-border-radius, 0);
+    box-shadow: var(--IconGrid-box-shadow, none);
     display: flex;
     flex-direction: var(--IconGrid-textPosition);
     gap: var(--IconGrid-gap-size-image-text);
@@ -33,6 +35,7 @@
 .IconGrid .IconGrid-link:hover {
     background-color: var(--IconGrid-background-color-hover);
     border: var(--IconGrid-border-hover);
+    box-shadow: var(--IconGrid-box-shadow-hover, var(--IconGrid-box-shadow, none));
     color: var(--IconGrid-text-hover);
     text-decoration: var(--IconGrid-text-decoration-hover);
     transform: scale(var(--IconGrid-scale-stepper));

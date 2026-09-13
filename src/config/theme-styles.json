@@ -983,6 +983,24 @@
                                 "type": "css-head",
                                 "cssVariable": "--IconGrid-item-padding"
                             }
+                        },
+                        {
+                            "name": "blockIconGridBorderRadius",
+                            "label": "Border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-border-radius"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-box-shadow"
+                            }
                         }
                     ]
                 },
@@ -1052,6 +1070,16 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--IconGrid-scale-stepper"
+                            }
+                        },
+                        {
+                            "name": "blockIconGridBoxShadowHover",
+                            "label": "Box shadow (hover)",
+                            "type": "boxShadow",
+                            "description": "Leave empty to keep the regular box shadow on hover.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--IconGrid-box-shadow-hover"
                             }
                         }
                     ]
