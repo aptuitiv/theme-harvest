@@ -13,7 +13,7 @@
 .Pagination-pages {
     align-items: center;
     display: flex;
-    gap: 10px;
+    gap: var(--Pagination-pages-gap, 10px);
 }
 
 .Pagination-pages .Pagination-item:first-child {

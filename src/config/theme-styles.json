@@ -4746,11 +4746,10 @@
                             "name": "paginationPagesGapSize",
                             "label": "Gap between page numbers",
                             "type": "size",
-                            "defaultValue": "5px",
+                            "defaultValue": "10px",
                             "render": {
                                 "type": "css-head",
-                                "cssSelector": ".Pagination",
-                                "cssProperty": "gap"
+                                "cssVariable": "--Pagination-pages-gap"
                             }
                         },
                         {
