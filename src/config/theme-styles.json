@@ -16,6 +16,26 @@
                                 "type": "css-head",
                                 "cssVariable": "--Accordion-item-gap"
                             }
+                        },
+                        {
+                            "name": "accordionItemBoxShadow",
+                            "label": "Box shadow around each item",
+                            "type": "boxShadow",
+                            "description": "Applied to the whole item (heading and content).",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-item-box-shadow"
+                            }
+                        },
+                        {
+                            "name": "accordionItemBorderRadius",
+                            "label": "Border radius of each item",
+                            "type": "borderRadius",
+                            "description": "Rounds the corners of the box shadow. The heading and content have their own border radius fields below. Set them to match so everything lines up.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-item-border-radius"
+                            }
                         }
                     ]
                 },
@@ -120,6 +140,18 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Accordion-icon-size"
+                            }
+                        },
+                        {
+                            "name": "accordionIconThickness",
+                            "label": "Icon line thickness",
+                            "type": "size",
+                            "description": "The thickness of the lines that make the + and − icon.",
+                            "defaultValue": "3px",
+                            "allowedUnits": ["px"],
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Accordion-icon-thickness"
                             }
                         }
                     ]

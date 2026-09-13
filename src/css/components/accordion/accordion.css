@@ -9,7 +9,10 @@
     gap: var(--Accordion-item-gap, 10px);
 }
 
+/* The border radius isn't paired with "overflow: hidden" because that would clip the heading's keyboard focus outline */
 .Accordion-item {
+    border-radius: var(--Accordion-item-border-radius, 0);
+    box-shadow: var(--Accordion-item-box-shadow, none);
     break-inside: avoid;
 }
 
@@ -56,7 +59,7 @@
 .Accordion-icon::before {
     background: currentcolor;
     content: '';
-    height: 3px;
+    height: var(--Accordion-icon-thickness, 3px);
     left: 50%;
     position: absolute;
     top: 50%;
