@@ -9,7 +9,8 @@
         from
         <span class="GoogleRatingsBar-rating">{{ _core.theme.settings.customerRatingsBarTotalReviews }} reviews</span>.
         <span class="block inline-lg">
-            <span class="GoogleRatingsBar-stars">
+            {# The number and stars repeat the rating in the text above, so they're hidden from screen readers #}
+            <span class="GoogleRatingsBar-stars" aria-hidden="true">
                 <span class="GoogleRatingsBar-starsNumber">{{ _core.theme.settings.customerRatingsBarAverageRating }}</span>
                 {% if _core.theme.settings.customerRatingsBarAverageRating %}
                     {# Get just the decimal part of the rating #}
@@ -39,23 +40,23 @@
                 {# Output the stars #}
                 {% if numWholeStars > 0 %}
                     {% for num in 1..numWholeStars %}
-                        {{ macros.iconImg('star', 'Star rating', "GoogleRatingsBar-star") }}
+                        {{ macros.iconAriaHidden('star', "GoogleRatingsBar-star") }}
                     {% endfor %}
                 {% endif %}
                 {% if numHalfStars > 0 %}
                     {% for num in 1..numHalfStars %}
-                        {{ macros.iconImg('star-half', 'Half star rating', "GoogleRatingsBar-star") }}
+                        {{ macros.iconAriaHidden('star-half', "GoogleRatingsBar-star") }}
                     {% endfor %}
                 {% endif %}
                 {% if numEmptyStars > 0 %}
                     {% for num in 1..numEmptyStars %}
-                        {{ macros.iconImg('star-empty', 'Empty star rating', "GoogleRatingsBar-star") }}
+                        {{ macros.iconAriaHidden('star-empty', "GoogleRatingsBar-star") }}
                     {% endfor %}
                 {% endif %}
             </span>
-            {% if _core.theme.settings.googleRatingsBarReviewsLink %}
-                {% set _core.theme.settings.googleRatingsBarReviewsLink.class = 'GoogleRatingsBar-link' %}
-                {{ _core.theme.settings.googleRatingsBarReviewsLink.tag }}
+            {% if _core.theme.settings.customerRatingsBarReviewsLink %}
+                {% set _core.theme.settings.customerRatingsBarReviewsLink.class = 'GoogleRatingsBar-link' %}
+                {{ _core.theme.settings.customerRatingsBarReviewsLink.tag }}
             {% endif %}
         </span>
     </div>
