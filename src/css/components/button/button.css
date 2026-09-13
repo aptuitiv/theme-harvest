@@ -23,6 +23,7 @@
     background: var(--Button-background);
     border: var(--Button-border-width) solid var(--Button-border-color);
     border-radius: var(--Button-border-radius);
+    box-shadow: var(--Button-box-shadow, none);
     color: var(--Button-typography-color);
     cursor: pointer;
     display: inline-flex;
@@ -54,6 +55,7 @@
 .Button[href^='tel']:active {
     background: var(--Button-background-hover);
     border-color: var(--Button-border-color-hover);
+    box-shadow: var(--Button-box-shadow-hover, var(--Button-box-shadow, none));
     color: var(--Button-typography-color-hover);
     font-style: var(--Button-typography-font-style-hover);
     text-decoration: var(--Button-typography-text-decoration-hover);
@@ -69,6 +71,7 @@
     border: var(--Button-alt-border-width, var(--Button-border-width)) solid
         var(--Button-alt-border-color, var(--Button-border-color));
     border-radius: var(--Button-alt-border-radius, var(--Button-border-radius));
+    box-shadow: var(--Button-alt-box-shadow, var(--Button-box-shadow, none));
     color: var(--Button-alt-typography-color, var(--Button-typography-color));
     font-family: var(--Button-alt-typography-font-family, var(--Button-typography-font-family));
     font-size: var(--Button-alt-typography-font-size, var(--Button-typography-font-size));
@@ -90,6 +93,10 @@
 .Button--alt[href^='tel']:active {
     background: var(--Button-alt-background-hover, var(--Button-background-hover));
     border-color: var(--Button-alt-border-color-hover, var(--Button-border-color-hover));
+    box-shadow: var(
+        --Button-alt-box-shadow-hover,
+        var(--Button-alt-box-shadow, var(--Button-box-shadow-hover, var(--Button-box-shadow, none)))
+    );
     color: var(--Button-alt-typography-color-hover, var(--Button-typography-color-hover));
     font-style: var(--Button-alt-typography-font-style-hover, var(--Button-typography-font-style-hover));
     text-decoration: var(--Button-alt-typography-text-decoration-hover, var(--Button-typography-text-decoration-hover));
@@ -101,6 +108,7 @@
     border: var(--Button-alt2-border-width, var(--Button-border-width)) solid
         var(--Button-alt2-border-color, var(--Button-border-color));
     border-radius: var(--Button-alt2-border-radius, var(--Button-border-radius));
+    box-shadow: var(--Button-alt2-box-shadow, var(--Button-box-shadow, none));
     color: var(--Button-alt2-typography-color, var(--Button-typography-color));
     font-family: var(--Button-alt2-typography-font-family, var(--Button-typography-font-family));
     font-size: var(--Button-alt2-typography-font-size, var(--Button-typography-font-size));
@@ -122,6 +130,10 @@
 .Button--alt2[href^='tel']:active {
     background: var(--Button-alt2-background-hover, var(--Button-background-hover));
     border-color: var(--Button-alt2-border-color-hover, var(--Button-border-color-hover));
+    box-shadow: var(
+        --Button-alt2-box-shadow-hover,
+        var(--Button-alt2-box-shadow, var(--Button-box-shadow-hover, var(--Button-box-shadow, none)))
+    );
     color: var(--Button-alt2-typography-color-hover, var(--Button-typography-color-hover));
     font-style: var(--Button-alt2-typography-font-style-hover, var(--Button-typography-font-style-hover));
     text-decoration: var(
@@ -172,6 +184,7 @@
 .Button--alt2:disabled:hover {
     background: var(--Button-background-disabled);
     border-color: var(--Button-border-color-disabled);
+    box-shadow: none;
     color: var(--Button-typography-color-disabled);
     cursor: not-allowed;
 }
@@ -182,5 +195,5 @@
     align-items: center;
     display: inline-flex;
     flex-direction: row;
-    gap: 5px;
+    gap: var(--Button-icon-gap, 5px);
 }

@@ -2284,6 +2284,25 @@
                                 "type": "css-head",
                                 "cssVariable": "--Button-padding"
                             }
+                        },
+                        {
+                            "name": "defaultButtonBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-box-shadow"
+                            }
+                        },
+                        {
+                            "name": "defaultButtonBoxShadowHover",
+                            "label": "Box shadow (hover)",
+                            "type": "boxShadow",
+                            "description": "Leave empty to keep the regular box shadow on hover.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-box-shadow-hover"
+                            }
                         }
                     ]
                 },
@@ -2381,6 +2400,26 @@
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt-padding"
                             }
+                        },
+                        {
+                            "name": "alt1ButtonBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "description": "Leave empty to use the default button's box shadow.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-alt-box-shadow"
+                            }
+                        },
+                        {
+                            "name": "alt1ButtonBoxShadowHover",
+                            "label": "Box shadow (hover)",
+                            "type": "boxShadow",
+                            "description": "Leave empty to keep the regular box shadow on hover.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-alt-box-shadow-hover"
+                            }
                         }
                     ]
                 },
@@ -2472,6 +2511,26 @@
                                 "type": "css-head",
                                 "cssVariable": "--Button-alt2-padding"
                             }
+                        },
+                        {
+                            "name": "alt2ButtonBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "description": "Leave empty to use the default button's box shadow.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-alt2-box-shadow"
+                            }
+                        },
+                        {
+                            "name": "alt2ButtonBoxShadowHover",
+                            "label": "Box shadow (hover)",
+                            "type": "boxShadow",
+                            "description": "Leave empty to keep the regular box shadow on hover.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-alt2-box-shadow-hover"
+                            }
                         }
                     ]
                 },
@@ -2550,6 +2609,17 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Button-lg-font-size"
+                            }
+                        },
+                        {
+                            "name": "buttonIconGap",
+                            "label": "Space between icon and text",
+                            "type": "size",
+                            "description": "Used when a button has an icon beside its text.",
+                            "defaultValue": "5px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Button-icon-gap"
                             }
                         }
                     ]
