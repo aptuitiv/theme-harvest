@@ -25,9 +25,14 @@
 }
 
 @media (--m-sm) {
+    /* We only care about the left and right border. The top and bottom are here for completeness.
+       The border is to separate the pages from the previous and next links.
+    */
     .Pagination-pages {
+        border-bottom: var(--Pagination-pages-wrapper-border-bottom);
         border-left: var(--Pagination-pages-wrapper-border-left);
         border-right: var(--Pagination-pages-wrapper-border-right);
+        border-top: var(--Pagination-pages-wrapper-border-top);
     }
 
     .Pagination .Pagination-pages:first-child {
