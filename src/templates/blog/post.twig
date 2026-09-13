@@ -47,7 +47,7 @@
                     {{ comment.anchor.tag }}{{ comment.createdOnDate }} {{ comment.createdOnTime }}<br>
                     {% if comment.name %}
                         {% if comment.website %}
-                            <a href="{{ comment.website|url }}" target="_blank">{{ comment.name }}</a>
+                            <a href="{{ comment.website|url }}" target="_blank" rel="noopener">{{ comment.name }}<span class="visually-hidden"> (opens in a new window)</span></a>
                         {% else %}
                             {{ comment.name }}
                         {% endif %}
