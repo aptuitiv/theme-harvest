@@ -5486,6 +5486,17 @@
                                 "type": "css-head",
                                 "cssVariable": "--Table-padding"
                             }
+                        },
+                        {
+                            "name": "tableMargin",
+                            "label": "Margin",
+                            "type": "margin",
+                            "description": "Space around every table, including tables added in the content editor.",
+                            "defaultValue": "0 0 20px 0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Table-margin"
+                            }
                         }
                     ]
                 },
@@ -5518,6 +5529,20 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Table-header-font-weight"
+                            }
+                        },
+                        {
+                            "name": "tableHeaderTypography",
+                            "label": "Typography",
+                            "type": "typography",
+                            "description": "The text color and font weight are set above.",
+                            "collapsable": false,
+                            "useColor": false,
+                            "useFontWeight": false,
+                            "useTextDecoration": false,
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Table-header"
                             }
                         },
                         {

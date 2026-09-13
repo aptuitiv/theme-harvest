@@ -37,10 +37,16 @@
     border-left: var(--Table-header-border-left-size, 0) solid var(--Table-header-border-color);
     border-right: var(--Table-header-border-right-size, 0) solid var(--Table-header-border-color);
     border-top: var(--Table-header-border-top-size, 0) solid var(--Table-header-border-color);
-    color: var(--Table-header-color);
-    font-family: inherit;
-    font-weight: var(--Table-header-font-weight);
+    color: var(--Table-header-color, inherit);
+    font-family: var(--Table-header-font-family, inherit);
+    font-size: var(--Table-header-font-size, inherit);
+    font-style: var(--Table-header-font-style, inherit);
+    font-weight: var(--Table-header-font-weight, 700);
+    letter-spacing: var(--Table-header-letter-spacing, inherit);
+    line-height: var(--Table-header-line-height, inherit);
     padding: var(--Table-padding, 8px 15px);
+    text-align: var(--Table-header-text-align, left);
+    text-transform: var(--Table-header-text-transform, inherit);
 }
 
 /* postcss-bem-linter: ignore */
