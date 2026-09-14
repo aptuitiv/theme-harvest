@@ -2051,6 +2051,17 @@
                                 "type": "css-head",
                                 "cssVariable": "--BlogRecentPosts-padding"
                             }
+                        },
+                        {
+                            "name": "blogRecentPostsCategoriesGap",
+                            "label": "Space between categories",
+                            "type": "size",
+                            "description": "The space between the category links on each post.",
+                            "defaultValue": "20px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--RecentPosts-categories-gap"
+                            }
                         }
                     ]
                 },
@@ -2111,6 +2122,26 @@
                             "render": {
                                 "type": "css-head",
                                 "cssSelector": ".RecentPosts-card"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsCardBoxShadow",
+                            "label": "Box shadow",
+                            "type": "boxShadow",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-card"
+                            }
+                        },
+                        {
+                            "name": "blogRecentPostsCardBoxShadowHover",
+                            "label": "Box shadow (hover)",
+                            "type": "boxShadow",
+                            "description": "Shown while the pointer is over a post.",
+                            "render": {
+                                "type": "css-head",
+                                "cssSelector": ".RecentPosts-card",
+                                "state": "hover"
                             }
                         }
                     ]
