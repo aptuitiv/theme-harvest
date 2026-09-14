@@ -1316,6 +1316,27 @@
                                 "type": "css-head",
                                 "cssVariable": "--Slider-arrow-background-hover"
                             }
+                        },
+                        {
+                            "name": "blocksImageSliderArrowWidth",
+                            "label": "Arrow width",
+                            "type": "size",
+                            "description": "The slider also gets this much space on the left and right so the arrows don't cover the images.",
+                            "defaultValue": "50px",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Slider-arrow-width"
+                            }
+                        },
+                        {
+                            "name": "blocksImageSliderArrowBorderRadius",
+                            "label": "Arrow border radius",
+                            "type": "borderRadius",
+                            "defaultValue": "0",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Slider-arrow-border-radius"
+                            }
                         }
                     ]
                 }

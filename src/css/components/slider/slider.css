@@ -5,7 +5,7 @@
 /* @define Slider */
 .Slider {
     margin: var(--Slider-margin, 2.5rem 0);
-    padding: 0 50px;
+    padding: 0 var(--Slider-arrow-width, 50px); /* Leave room on each side for the arrows */
 }
 
 .Slider-wrapper,
@@ -48,11 +48,11 @@
 /* postcss-bem-linter: ignore */
 .Slider .splide__arrow {
     background: var(--Slider-arrow-background);
-    border-radius: 0;
+    border-radius: var(--Slider-arrow-border-radius, 0);
     height: 100%;
     opacity: 1 !important;
     transition: all 250ms;
-    width: 50px;
+    width: var(--Slider-arrow-width, 50px);
 }
 
 /* postcss-bem-linter: ignore */
