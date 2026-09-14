@@ -1853,6 +1853,17 @@
                         "type": "css-head",
                         "cssVariable": "--Video-toggle-offset"
                     }
+                },
+                {
+                    "name": "blockVideoToggleBorderRadius",
+                    "label": "Play/pause toggle border radius",
+                    "type": "borderRadius",
+                    "description": "50% makes the button a circle.",
+                    "defaultValue": "50%",
+                    "render": {
+                        "type": "css-head",
+                        "cssVariable": "--Video-toggle-border-radius"
+                    }
                 }
             ]
         },
