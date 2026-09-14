@@ -23,7 +23,15 @@
 }
 
 .ImageGridItem-image {
+    border-radius: var(--ImageGridItem-image-border-radius, 0);
+    box-shadow: var(--ImageGridItem-box-shadow, none);
+    overflow: hidden; /* Clips the image and the overlays to the rounded corners */
     position: relative;
+}
+
+/* "overflow: hidden" above would clip the focus outline of the image link, so draw the outline inside the image */
+.ImageGridItem-image .ImageGridItem-link:focus-visible {
+    outline-offset: -4px;
 }
 
 /* ------------------------------------ *\

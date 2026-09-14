@@ -1400,6 +1400,25 @@
                                 "selector": ".ImageGrid",
                                 "cssVariable": "--ImageGrid-gap"
                             }
+                        },
+                        {
+                            "name": "blockImageGridImageBorderRadius",
+                            "label": "Image border radius",
+                            "type": "borderRadius",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--ImageGridItem-image-border-radius"
+                            }
+                        },
+                        {
+                            "name": "blockImageGridBoxShadow",
+                            "label": "Image box shadow",
+                            "type": "boxShadow",
+                            "description": "Applied around the image. It follows the image border radius.",
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--ImageGridItem-box-shadow"
+                            }
                         }
                     ]
                 },
