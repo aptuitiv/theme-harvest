@@ -10,7 +10,7 @@
                 loadjs.ready('main', {
                     success: function() {
                         const element = document.querySelector(".{{ id }}");
-                        loadIframeOnObserve(element, "{{ url.iframeEmbed.src }}", "{{ url.title ?: "Embedded Media" }}");
+                        loadIframeOnObserve(element, "{{ url.iframeEmbed.src }}", "{{ url.title|escape_quotes ?: "Embedded Media" }}");
                     }
                 });
             {% endinlinejs %}
