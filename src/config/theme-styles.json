@@ -2410,7 +2410,7 @@
                             },
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Button-typography"
+                                "cssVariable": "--Button"
                             }
                         },
                         {
@@ -2526,7 +2526,7 @@
                             },
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Button-alt-typography"
+                                "cssVariable": "--Button-alt"
                             }
                         },
                         {
@@ -2637,7 +2637,7 @@
                             },
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Button-alt2-typography"
+                                "cssVariable": "--Button-alt2"
                             }
                         },
                         {
@@ -2740,7 +2740,7 @@
                             "defaultValue": "#cccccc",
                             "render": {
                                 "type": "css-head",
-                                "cssVariable": "--Button-typography-color-disabled"
+                                "cssVariable": "--Button-color-disabled"
                             }
                         }
                     ]
