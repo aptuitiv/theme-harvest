@@ -1,0 +1,76 @@
+{
+    "colorSets": [
+        {
+            "name": "Content backgrounds",
+            "key": "contentBackgrounds",
+            "description": "Background colors and related text colors for Blocks.",
+            "variablePattern": "--Wrapper-{key}",
+            "colors": [
+                {
+                    "key": "background",
+                    "label": "Background"
+                },
+                {
+                    "key": "text",
+                    "label": "Text"
+                },
+                {
+                    "key": "heading",
+                    "label": "Heading",
+                    "variable": [
+                        "--base-typography-h1-color",
+                        "--base-typography-h2-color",
+                        "--base-typography-h3-color",
+                        "--base-typography-h4-color"
+                    ]
+                },
+                {
+                    "key": "buttonBackground",
+                    "label": "Button background",
+                    "variable": "--Button-background"
+                },
+                {
+                    "key": "buttonBorderColor",
+                    "label": "Button border color",
+                    "variable": "--Button-border-color"
+                },
+                {
+                    "key": "buttonText",
+                    "label": "Button text",
+                    "variable": "--Button-color"
+                },
+                {
+                    "key": "buttonBackgroundHover",
+                    "label": "Button background (hover)",
+                    "variable": "--Button-background-hover"
+                },
+                {
+                    "key": "buttonTextHover",
+                    "label": "Button text (hover)",
+                    "variable": "--Button-color-hover"
+                },
+                {
+                    "key": "buttonBorderColorHover",
+                    "label": "Button border color (hover)",
+                    "variable": "--Button-border-color-hover"
+                }
+            ],
+            "contrast": [
+                { "background": "background", "foreground": "text" },
+                { "background": "background", "foreground": "heading" },
+                { "background": "buttonBackground", "foreground": "buttonText" },
+                { "background": "buttonBackgroundHover", "foreground": "buttonTextHover" }
+            ],
+            "combinations": [
+                {
+                    "name": "Light gray",
+                    "values": {
+                        "background": "#eeeeee",
+                        "text": "#333333",
+                        "heading": "#333333"
+                    }
+                }
+            ]
+        }
+    ]
+}
