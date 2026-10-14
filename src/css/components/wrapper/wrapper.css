@@ -56,3 +56,26 @@
 .Wrapper h4 {
     color: var(--base-typography-h4-color);
 }
+
+/* ------------------------------------ *\
+    Remove child element top and bottom margins
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.Wrapper > .Container > :first-child > :is(h1, h2, h3, h4, h5, h6, blockquote):first-child,
+.Wrapper > .Container > .Container:first-child > .clearfix > :is(h1, h2, h3, h4, h5, h6, blockquote):first-child {
+    margin-top: 0;
+}
+
+/* postcss-bem-linter: ignore */
+.Wrapper
+    > .Container
+    > :last-child
+    > :is(h1, h2, h3, h4, h5, h6, address, blockquote, dl, hr, figure, p, ul, ol, table):last-child,
+.Wrapper
+    > .Container
+    > .Container:last-child
+    > .clearfix:last-child
+    > :is(h1, h2, h3, h4, h5, h6, address, blockquote, dl, hr, figure, p, ul, ol, table):last-child {
+    margin-bottom: 0;
+}
