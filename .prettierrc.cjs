@@ -1,7 +1,7 @@
 module.exports = {
     // Enforce arrow function parenthesis.
     // https://prettier.io/docs/en/options.html#arrow-function-parentheses
-    arrowParens: "always",
+    arrowParens: 'always',
     // Match indent to .editorconfig.
     // https://prettier.io/docs/en/options.html#tab-width
     tabWidth: 4,
@@ -12,17 +12,25 @@ module.exports = {
     singleQuote: true,
     // Consistent linux style line ending.
     // https://prettier.io/docs/en/options.html#end-of-line
-    endOfLine: "lf",
+    endOfLine: 'lf',
     // Overrides
     // https://prettier.io/docs/en/configuration#configuration-overrides
     overrides: [
         {
-            files: "*.css",
+            files: '*.css',
             options: {
                 // Match indent to .editorconfig.
                 // https://prettier.io/docs/en/options.html#tab-width
-                printWidth: 120
-            }
-        }
-    ]
-}
+                printWidth: 120,
+            },
+        },
+        {
+            files: '*.json',
+            options: {
+                // Match the CSS print width.
+                // https://prettier.io/docs/en/options.html#print-width
+                printWidth: 120,
+            },
+        },
+    ],
+};

@@ -18,3 +18,6 @@ node_modules/
 .DS_Store
 .env
 .stylelintcache
+
+.claude/*.local.json
+claude.local.md
