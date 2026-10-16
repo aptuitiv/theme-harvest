@@ -1,13 +1,21 @@
 {% import 'macros/macros' as macros %}
+{% set removeSpacingClasses = '' %}
+{% if removeChildSpacing == 'first' %}
+    {% set removeSpacingClasses = ' first-child-st-0' %}
+{% elseif removeChildSpacing == 'last' %}
+    {% set removeSpacingClasses = ' last-child-sb-0' %}
+{% elseif removeChildSpacing == 'both' %}
+    {% set removeSpacingClasses = ' first-child-st-0 last-child-sb-0' %}
+{% endif %}
 {% if styles %}
     {# There are background colors - do the wrapper with the background colors #}
     <div class="Wrapper{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}"{{ styles.cssStylesAttribute }}{{ styles.themeEditorDataAttribute }}>
         <div class="Container Container--pad{{ macros.blockWidth(width) }}">
-            <div class="clearfix">{{ content }}</div>
+            <div class="clearfix{{ removeSpacingClasses }}">{{ content }}</div>
         </div>
     </div>
 {% else %}
     <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}{{ macros.blockWidth(width) }}">
-        <div class="clearfix">{{ content }}</div>
+        <div class="clearfix{{ removeSpacingClasses }}">{{ content }}</div>
     </div>
 {% endif %}
