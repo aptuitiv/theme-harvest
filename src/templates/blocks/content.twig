@@ -2,10 +2,8 @@
 {% if styles %}
     {# There are background colors - do the wrapper with the background colors #}
     <div class="Wrapper{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}"{{ styles.cssStylesAttribute }}{{ styles.themeEditorDataAttribute }}>
-        <div class="Container first-child-mt-0 last-child-mb-0{{ macros.blockWidth(width) }}">
-            <div class="Container Container--pad{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}{{ macros.blockWidth(width) }}"{{ styles.cssStylesAttribute }}{{ styles.themeEditorDataAttribute }}>
-                <div class="clearfix">{{ content }}</div>
-            </div>
+        <div class="Container Container--pad{{ macros.blockWidth(width) }}">
+            <div class="clearfix">{{ content }}</div>
         </div>
     </div>
 {% else %}
