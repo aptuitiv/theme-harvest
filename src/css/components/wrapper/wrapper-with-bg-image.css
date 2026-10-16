@@ -5,18 +5,32 @@
 /* @define WrapperWithBgImage */
 
 .WrapperWithBgImage {
-    margin: var(--Wrapper-wbgimage-margin);
-    padding: var(--Wrapper-wbgimage-padding);
     position: relative;
 }
 
-.WrapperWithBgImage--marginTopNone {
-    margin-top: 0;
+/* ------------------------------------ *\
+    Padding when inside a container.
+    This means that the wrapper is not full width and the
+    content will likely touch the sides so it needs horizontal padding.
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.Container .WrapperWithBgImage {
+    padding-left: var(--Container-padding-sm, 10px);
+    padding-right: var(--Container-padding-sm, 10px);
 }
 
-.WrapperWithBgImage--noPad {
-    padding: 0;
+@media (--m-xl) {
+    /* postcss-bem-linter: ignore */
+    .Container .WrapperWithBgImage {
+        padding-left: var(--Container-padding, 30px);
+        padding-right: var(--Container-padding, 30px);
+    }
 }
+
+/* ------------------------------------ *\
+    Background and foreground
+\* ------------------------------------ */
 
 .WrapperWithBgImage-bg {
     background-position: 50%;
@@ -31,6 +45,7 @@
 }
 
 .WrapperWithBgImage-fg {
+    background-color: var(--WrapperWithBgImage-background);
     height: 100%;
     left: 0;
     position: absolute;
@@ -48,22 +63,72 @@
     z-index: 1;
 }
 
-.WrapperWithBgImage-fg--bgGray {
-    background-color: var(--Wrapper-wbgimage-background-grey);
-}
-
-.WrapperWithBgImage-fg--bgDark {
-    background-color: var(--Wrapper-wbgimage-background-dark);
-    color: #fff;
-}
+/* ------------------------------------ *\
+    Content
+\* ------------------------------------ */
 
 .WrapperWithBgImage-content {
     position: relative;
     z-index: 3;
 }
 
+/* ------------------------------------ *\
+    Text colors
+\* ------------------------------------ */
+
 /* postcss-bem-linter: ignore */
-.WrapperWithBgImage--bgDark *:not(.Button, input, select, textarea) {
-    color: var(--Wrapper-wbgimage-background-dark-color, #fff);
-    text-shadow: var(--Wrapper-wbgimage-background-dark-text-shadow);
+.WrapperWithBgImage *:not(.Button, input, select, textarea, h1, h2, h3, h4, h5, h6) {
+    color: var(--WrapperWithBgImage-text);
+    text-shadow: var(--WrapperWithBgImage-text-shadow, initial);
+}
+
+.WrapperWithBgImage :is(h1, h2, h3, h4, h5, h6) {
+    text-shadow: var(--WrapperWithBgImage-heading-text-shadow, initial);
+}
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage h1 {
+    color: var(--base-typography-h1-color);
+}
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage h2 {
+    color: var(--base-typography-h2-color);
+}
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage h3 {
+    color: var(--base-typography-h3-color);
+}
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage h4 {
+    color: var(--base-typography-h4-color);
+}
+
+/* ------------------------------------ *\
+    Remove child element top and bottom margins
+\* ------------------------------------ */
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage > .Container > :first-child > :is(h1, h2, h3, h4, h5, h6, blockquote):first-child,
+.WrapperWithBgImage
+    > .Container
+    > .Container:first-child
+    > .clearfix
+    > :is(h1, h2, h3, h4, h5, h6, blockquote):first-child {
+    margin-top: 0;
+}
+
+/* postcss-bem-linter: ignore */
+.WrapperWithBgImage
+    > .WrapperWithBgImage-content
+    > :last-child
+    > :is(h1, h2, h3, h4, h5, h6, address, blockquote, dl, hr, figure, p, ul, ol, table):last-child,
+.WrapperWithBgImage
+    > .WrapperWithBgImage-content
+    > .Container:last-child
+    > .clearfix:last-child
+    > :is(h1, h2, h3, h4, h5, h6, address, blockquote, dl, hr, figure, p, ul, ol, table):last-child {
+    margin-bottom: 0;
 }
