@@ -33,7 +33,7 @@
                 {% if slide.image or slide.video %}
                     <div class="Banner-fg"></div>
                 {% endif %}
-                <div class="Banner-contentContainer{% if video %} Banner-contentContainer--withVideo{% elseif image %} Banner-contentContainer--withImage{% endif %}">
+                <div class="Banner-contentContainer{% if slide.video %} Banner-contentContainer--withVideo{% elseif slide.image %} Banner-contentContainer--withImage{% endif %}">
                     <div class="Banner-content">
                         <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
                             {% if pagination is iterable && pagination|length > 0 %}
