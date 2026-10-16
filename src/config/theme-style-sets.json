@@ -1,0 +1,186 @@
+{
+    "sets": [
+        {
+            "name": "Content backgrounds",
+            "key": "contentBackgrounds",
+            "description": "Background colors and related text colors for Blocks.",
+            "variablePattern": "--Wrapper-{key}",
+            "fields": [
+                {
+                    "key": "background",
+                    "type": "color",
+                    "label": "Background"
+                },
+                {
+                    "key": "text",
+                    "type": "color",
+                    "label": "Text"
+                },
+                {
+                    "key": "heading",
+                    "type": "color",
+                    "label": "Heading",
+                    "variable": [
+                        "--base-typography-h1-color",
+                        "--base-typography-h2-color",
+                        "--base-typography-h3-color",
+                        "--base-typography-h4-color"
+                    ]
+                },
+                {
+                    "key": "buttonBackground",
+                    "type": "color",
+                    "label": "Button background",
+                    "variable": "--Button-background"
+                },
+                {
+                    "key": "buttonBorderColor",
+                    "type": "color",
+                    "label": "Button border color",
+                    "variable": "--Button-border-color"
+                },
+                {
+                    "key": "buttonText",
+                    "type": "color",
+                    "label": "Button text",
+                    "variable": "--Button-color"
+                },
+                {
+                    "key": "buttonBackgroundHover",
+                    "type": "color",
+                    "label": "Button background (hover)",
+                    "variable": "--Button-background-hover"
+                },
+                {
+                    "key": "buttonTextHover",
+                    "type": "color",
+                    "label": "Button text (hover)",
+                    "variable": "--Button-color-hover"
+                },
+                {
+                    "key": "buttonBorderColorHover",
+                    "type": "color",
+                    "label": "Button border color (hover)",
+                    "variable": "--Button-border-color-hover"
+                },
+                {
+                    "key": "headingTextShadow",
+                    "type": "textShadow",
+                    "label": "Heading text shadow"
+                },
+                {
+                    "key": "textShadow",
+                    "type": "textShadow",
+                    "label": "Text shadow"
+                }
+            ],
+            "contrast": [
+                { "background": "background", "foreground": "text" },
+                { "background": "background", "foreground": "heading" },
+                { "background": "buttonBackground", "foreground": "buttonText" },
+                { "background": "buttonBackgroundHover", "foreground": "buttonTextHover" }
+            ],
+            "combinations": [
+                {
+                    "name": "Light gray",
+                    "values": {
+                        "background": "#eeeeee",
+                        "text": "#333333",
+                        "heading": "#333333"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Wrapper with background image",
+            "key": "wrapperWithBackgroundImage",
+            "description": "Background colors and related text colors for the wrapper with a background image block.",
+            "variablePattern": "--WrapperWithBgImage-{key}",
+            "fields": [
+                {
+                    "key": "background",
+                    "type": "color",
+                    "label": "Background"
+                },
+                {
+                    "key": "text",
+                    "type": "color",
+                    "label": "Text"
+                },
+                {
+                    "key": "heading",
+                    "type": "color",
+                    "label": "Heading",
+                    "variable": [
+                        "--base-typography-h1-color",
+                        "--base-typography-h2-color",
+                        "--base-typography-h3-color",
+                        "--base-typography-h4-color"
+                    ]
+                },
+                {
+                    "key": "buttonBackground",
+                    "type": "color",
+                    "label": "Button background",
+                    "variable": "--Button-background"
+                },
+                {
+                    "key": "buttonBorderColor",
+                    "type": "color",
+                    "label": "Button border color",
+                    "variable": "--Button-border-color"
+                },
+                {
+                    "key": "buttonText",
+                    "type": "color",
+                    "label": "Button text",
+                    "variable": "--Button-color"
+                },
+                {
+                    "key": "buttonBackgroundHover",
+                    "type": "color",
+                    "label": "Button background (hover)",
+                    "variable": "--Button-background-hover"
+                },
+                {
+                    "key": "buttonTextHover",
+                    "type": "color",
+                    "label": "Button text (hover)",
+                    "variable": "--Button-color-hover"
+                },
+                {
+                    "key": "buttonBorderColorHover",
+                    "type": "color",
+                    "label": "Button border color (hover)",
+                    "variable": "--Button-border-color-hover"
+                },
+                {
+                    "key": "headingTextShadow",
+                    "type": "textShadow",
+                    "label": "Heading text shadow"
+                },
+                {
+                    "key": "textShadow",
+                    "type": "textShadow",
+                    "label": "Text shadow"
+                }
+            ],
+            "contrast": [
+                { "background": "background", "foreground": "text" },
+                { "background": "background", "foreground": "heading" },
+                { "background": "buttonBackground", "foreground": "buttonText" },
+                { "background": "buttonBackgroundHover", "foreground": "buttonTextHover" }
+            ],
+            "combinations": [
+                {
+                    "name": "Light",
+                    "values": {
+                        "background": "rgba(255, 255, 255, 0.4)",
+                        "text": "#333333",
+                        "heading": "#333333"
+                    }
+                }
+            ]
+        }
+    ]
+}
