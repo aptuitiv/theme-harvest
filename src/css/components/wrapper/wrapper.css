@@ -33,8 +33,13 @@
 \* ------------------------------------ */
 
 /* postcss-bem-linter: ignore */
-.Wrapper *:not(.Button, input, select, textarea, h1, h2, h3, h4) {
+.Wrapper *:not(.Button, input, select, textarea, h1, h2, h3, h4, h5, h6) {
     color: var(--Wrapper-text);
+    text-shadow: var(--Wrapper-text-shadow, initial);
+}
+
+.Wrapper :is(h1, h2, h3, h4, h5, h6) {
+    text-shadow: var(--Wrapper-heading-text-shadow, initial);
 }
 
 /* postcss-bem-linter: ignore */
