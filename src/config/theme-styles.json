@@ -315,6 +315,38 @@
                             }
                         },
                         {
+                            "name": "bannerContentAlignHorizontalWithImage",
+                            "label": "Horizontal alignment with image",
+                            "type": "select",
+                            "description": "This will override the horizontal alignment when an image is used and text is displayed on the image.",
+                            "defaultValue": "center",
+                            "options": {
+                                "start": "Left",
+                                "center": "Center",
+                                "end": "Right"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-align-horizontal-with-image"
+                            }
+                        },
+                        {
+                            "name": "bannerContentAlignHorizontalWithVideo",
+                            "label": "Horizontal alignment with video",
+                            "type": "select",
+                            "description": "This will override the horizontal alignment when a video is used and text is displayed on the video.",
+                            "defaultValue": "center",
+                            "options": {
+                                "start": "Left",
+                                "center": "Center",
+                                "end": "Right"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-align-horizontal-with-video"
+                            }
+                        },
+                        {
                             "name": "bannerContentAlignVertical",
                             "label": "Vertical alignment",
                             "type": "select",
@@ -327,6 +359,38 @@
                             "render": {
                                 "type": "css-head",
                                 "cssVariable": "--Banner-align-vertical"
+                            }
+                        },
+                        {
+                            "name": "bannerContentAlignVerticalWithImage",
+                            "label": "Vertical alignment with image",
+                            "type": "select",
+                            "description": "This will override the vertical alignment when an image is used and text is displayed on the image.",
+                            "defaultValue": "center",
+                            "options": {
+                                "start": "Top",
+                                "center": "Center",
+                                "end": "Bottom"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-align-vertical-with-image"
+                            }
+                        },
+                        {
+                            "name": "bannerContentAlignVerticalWithVideo",
+                            "label": "Vertical alignment with video",
+                            "type": "select",
+                            "description": "This will override the vertical alignment when a video is used and text is displayed on the video.",
+                            "defaultValue": "center",
+                            "options": {
+                                "start": "Top",
+                                "center": "Center",
+                                "end": "Bottom"
+                            },
+                            "render": {
+                                "type": "css-head",
+                                "cssVariable": "--Banner-align-vertical-with-video"
                             }
                         },
                         {

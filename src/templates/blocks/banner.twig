@@ -2,7 +2,19 @@
 {% import 'macros/banner' as bannerMacros %}
 
 {% if heading or image or video or content %}
-    <section class="Banner{% if not image && not video %} Banner--noMedia{% endif %}" aria-label="Banner">
+    {% set mediaVariableSuffix = video ? '-with-video' : image ? '-with-image' : '' %}
+
+    {% set styles = '' %}
+    {% if horizontalContentAlignment in ['start', 'center', 'end'] %}
+        {% set styles = styles ~ ' --Banner-align-horizontal' ~ mediaVariableSuffix ~ ': ' ~ horizontalContentAlignment ~ ';' %}
+    {% endif %}
+    {% if verticalContentAlignment in ['start', 'center', 'end'] %}
+        {% set styles = styles ~ ' --Banner-align-vertical' ~ mediaVariableSuffix ~ ': ' ~ verticalContentAlignment ~ ';' %}
+    {% endif %}
+    {% if styles|length > 0 %}
+        {% set styles = ' style="' ~ styles ~ '"' %}
+    {% endif %}
+    <section class="Banner{% if not image && not video %} Banner--noMedia{% endif %}"{{ styles }} aria-label="Banner">
         {% if video %}
             {{ bannerMacros.bannerVideo(video, image, imageSize == 'large' ? _core.theme.settings.largeBannerImageSizes : _core.theme.settings.bannerImageSizes, true) }}
         {% elseif image %}
@@ -23,16 +35,18 @@
             {% if image or video %}
                 <div class="Banner-fg"></div>
             {% endif %}
-            <div class="Banner-content">
-                <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
-                    {% if heading %}
-                        {% if displayHeadingAsH1 %}
-                            <h1>{{ heading }}</h1>
-                        {% else %}
-                            <div class="h1">{{ heading }}</div>
+            <div class="Banner-contentContainer{% if video %} Banner-contentContainer--withVideo{% elseif image %} Banner-contentContainer--withImage{% endif %}">
+                <div class="Banner-content">
+                    <div class="Banner-contentInner first-child-st-0 last-child-sb-0">
+                        {% if heading %}
+                            {% if displayHeadingAsH1 %}
+                                <h1>{{ heading }}</h1>
+                            {% else %}
+                                <div class="h1">{{ heading }}</div>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    {{ content }}
+                        {{ content }}
+                    </div>
                 </div>
             </div>
         {% endif %}

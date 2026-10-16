@@ -4,10 +4,8 @@
 
 /* @define Banner */
 .Banner {
-    align-items: var(--Banner-align-horizontal, center);
     display: flex;
     flex-direction: column;
-    justify-content: var(--Banner-align-vertical, center);
     position: relative;
 }
 
@@ -75,6 +73,27 @@
 /* ------------------------------------ *\
     Content
 \* ------------------------------------ */
+
+.Banner-contentContainer {
+    align-items: var(--Banner-align-horizontal, center);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: var(--Banner-align-vertical, center);
+    margin: 0 auto;
+    max-width: var(--Container-width);
+    width: 100%;
+}
+
+.Banner-contentContainer--withImage {
+    align-items: var(--Banner-align-horizontal-with-image, var(--Banner-align-horizontal, center));
+    justify-content: var(--Banner-align-vertical-with-image, var(--Banner-align-vertical, center));
+}
+
+.Banner-contentContainer--withVideo {
+    align-items: var(--Banner-align-horizontal-with-video, var(--Banner-align-horizontal, center));
+    justify-content: var(--Banner-align-vertical-with-video, var(--Banner-align-vertical, center));
+}
 
 .Banner-content {
     background-color: var(--Banner-content-background);
