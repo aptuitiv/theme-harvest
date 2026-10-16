@@ -1,6 +1,6 @@
 {% import 'macros/macros' as macros %}
 {% set uniqueClass = 'WrapperWithBgImage--' ~random_string() %}
-<div class="WrapperWithBgImage WrapperWithBgImage--{{ displayImage }}{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}"{{ colors.cssStylesAttribute }}{{ colors.themeEditorDataAttribute }}>
+<div class="WrapperWithBgImage WrapperWithBgImage--{{ displayImage }}{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}"{{ styles.cssStylesAttribute }}{{ styles.themeEditorDataAttribute }}>
     <div class="WrapperWithBgImage-bg {{ uniqueClass }}"></div>
     <div class="WrapperWithBgImage-fg"></div>
     <div class="WrapperWithBgImage-content Container first-child-mt-0 last-child-mb-0{{ macros.blockWidth(width) }}">

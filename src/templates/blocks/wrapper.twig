@@ -1,5 +1,5 @@
 {% import 'macros/macros' as macros %}
-<div class="Wrapper{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}"{{ colors.cssStylesAttribute }}{{ colors.themeEditorDataAttribute }}>
+<div class="Wrapper{{ macros.blockMargin(margin) }}{{ macros.blockPadding(padding) }}"{{ styles.cssStylesAttribute }}{{ styles.themeEditorDataAttribute }}>
     <div class="Container first-child-mt-0 last-child-mb-0{{ macros.blockWidth(width) }}">
         {% for block in content.blocks %}
             {{ block }}
