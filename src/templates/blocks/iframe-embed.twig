@@ -1,7 +1,7 @@
 {% import 'macros/macros' as macros %}
 {% set id = "js-iframe--" ~ random_string() %}
 <div class="{{ macros.blockMargin(margin) }}{{ macros.blockWidth(width, true) }}">
-    <div class="embed my-5 aspect-{{ embedRatio|replace(':', '-') }} {{ id }}">
+    <div class="embed aspect-{{ embedRatio|replace(':', '-') }} {{ id }}">
         {% inlinejs %}
             loadjs.ready('main', {
                 success: function() {
