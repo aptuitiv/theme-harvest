@@ -92,9 +92,16 @@
     right: 0;
 }
 
+/* Hide the padding when there is no overflow. https://splidejs.com/guides/overflow/  */
+
+/* postcss-bem-linter: ignore */
+.Slider.splide:not(.is-overflow) {
+    padding: 0;
+}
+
 /* Hide arrows when there is no overflow. https://splidejs.com/guides/overflow/  */
 
 /* postcss-bem-linter: ignore */
-.Slider .splide:not(.is-overflow) .splide__arrows {
+.Slider.splide:not(.is-overflow) .splide__arrows {
     display: none;
 }
