@@ -152,6 +152,8 @@ const stickyHeader = {
         // Don't move the header offscreen while keyboard focus is inside it,
         // otherwise the focused element would be hidden (WCAG 2.4.11).
         if (this.header.contains(document.activeElement)) return;
+        // Don't hide it while the small screen menu (which lives inside the header) is open
+        if (document.documentElement.classList.contains('menu-open')) return;
         this.header.style.top = `-${this.header.offsetHeight}px`;
         this.isHidden = true;
     },
@@ -160,6 +162,22 @@ const stickyHeader = {
         if (!this.isHidden) return;
         this.header.style.top = '0px';
         this.isHidden = false;
+    },
+
+    /**
+     * Show the header right away, skipping the slide-in transition, so that
+     * its final position can be measured immediately (e.g. when opening the
+     * small screen menu while the header is hidden or still sliding).
+     */
+    showImmediately() {
+        if (!this.header) return;
+        this.header.style.transition = 'none';
+        this.header.style.top = '0px';
+        this.isHidden = false;
+        // Force a reflow so the position is applied before the transition is restored
+        // eslint-disable-next-line no-unused-expressions
+        this.header.offsetHeight;
+        this.header.style.transition = '';
     },
 
     /**

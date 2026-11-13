@@ -21,6 +21,7 @@
         height: calc(100svh - var(--navbar-offset));
         left: 0;
         overflow-y: auto;
+        overscroll-behavior: contain; /* Don't scroll the page when scrolling reaches the end of the menu */
         position: fixed;
         top: var(--navbar-offset);
         width: 100%;

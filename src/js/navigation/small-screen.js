@@ -1,6 +1,8 @@
 /**
  * Small screen navigation
  */
+import stickyHeader from '../sticky-header';
+
 const smallScreenNav = {
     /**
      * Initialization
@@ -34,6 +36,10 @@ const smallScreenNav = {
                 closeNav();
             } else {
                 // Show the menu
+                // Lock the page scroll and bring back a hidden (or still sliding) sticky
+                // header first so that the button position is measured where it will stay
+                html.classList.add('menu-open');
+                stickyHeader.showImmediately();
                 nav.dataset.open = 'yes';
                 button.classList.add('is-active');
                 button.setAttribute('aria-expanded', 'true');
@@ -41,7 +47,6 @@ const smallScreenNav = {
                 const buttonPosition =
                     button.getBoundingClientRect().top + button.offsetHeight;
                 nav.style.setProperty('--navbar-offset', `${buttonPosition}px`);
-                html.classList.add('menu-open');
             }
         }
 
