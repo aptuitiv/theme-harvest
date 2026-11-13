@@ -8,6 +8,10 @@
 
 /* @define ImageWrapper */
 
+.ImageWrapper {
+    margin-bottom: var(--image-bottom-margin);
+}
+
 .ImageWrapper--default {
     margin: 0 0 var(--base-typography-spacing, 2.5rem);
 }
