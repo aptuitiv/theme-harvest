@@ -78,7 +78,7 @@
     align-items: var(--Banner-align-horizontal, center);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-grow: 1;
     justify-content: var(--Banner-align-vertical, center);
     margin: 0 auto;
     max-width: var(--Container-width);
